@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dghostmarket.com/sitemap.xml
