@@ -8,6 +8,8 @@ i18n.json. На выходе — готовые страницы, которые
 
     index.html, uz/index.html, en/index.html — лендинг на трёх языках;
     skins/index.html (+ uz/, en/) — цены на скины из лотов маркета;
+    prices/index.html, prices/<скин>/index.html (+ uz/, en/) — рыночные цены
+        популярных скинов в сумах (tools/skins.py);
     sitemap.xml, robots.txt.
 
 Лоты берутся из открытого API бота (/api/skins). Если API недоступен,
@@ -22,6 +24,8 @@ import os
 import re
 import sys
 import urllib.request
+
+import skins
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = 'https://dghostmarket.com'
@@ -49,7 +53,7 @@ L = {
         'updated': 'Обновлено {d} · лотов: {n}',
         'empty': 'Сейчас лотов нет — загляните позже или откройте маркет в Telegram.',
         'float': 'Float', 'other': 'Другое',
-        'home': 'Главная',
+        'home': 'Главная', 'market_prices': 'Рыночные цены всех скинов →',
     },
     'uz': {
         'cur': "so'm", 'buy': 'Sotib olish', 'below': "bozordan {p}% arzon", 'market': 'Steam bozori: {v}',
@@ -62,7 +66,7 @@ L = {
         'updated': '{d} yangilandi · lotlar: {n}',
         'empty': "Hozircha lotlar yo'q — keyinroq kiring yoki marketni Telegramda oching.",
         'float': 'Float', 'other': 'Boshqa',
-        'home': 'Bosh sahifa',
+        'home': 'Bosh sahifa', 'market_prices': 'Barcha skinlarning bozor narxlari →',
     },
     'en': {
         'cur': 'UZS', 'buy': 'Buy', 'below': '{p}% below market', 'market': 'Steam market: {v}',
@@ -75,7 +79,7 @@ L = {
         'updated': 'Updated {d} · listings: {n}',
         'empty': 'No listings right now — check back later or open the market in Telegram.',
         'float': 'Float', 'other': 'Other',
-        'home': 'Home',
+        'home': 'Home', 'market_prices': 'Market prices of all skins →',
     },
 }
 
@@ -112,8 +116,9 @@ def money(n):
 
 
 def page_url(lang, kind):
+    """kind: 'home', 'skins', 'prices' или 'prices/<скин>'."""
     base = '' if lang == 'ru' else f'/{lang}'
-    return f'{SITE}{base}/' if kind == 'home' else f'{SITE}{base}/skins/'
+    return f'{SITE}{base}/' if kind == 'home' else f'{SITE}{base}/{kind}/'
 
 
 def load_lots():
@@ -191,7 +196,7 @@ def alternates(kind):
     return '\n'.join(out)
 
 
-def localize(tpl, lang, i18n):
+def localize(tpl, lang, i18n, css=''):
     """Шаблон (русский) → страница на языке lang."""
     s = tpl
     if lang != 'ru':
@@ -216,10 +221,10 @@ def localize(tpl, lang, i18n):
     # Активная кнопка языка и ссылки внутри языка.
     s = re.sub(r'(<a href="[^"]*" data-lang="(\w+)")( class="on")?', lambda m: m.group(1) + (' class="on"' if m.group(2) == lang else ''), s)
     prefix = '' if lang == 'ru' else f'/{lang}'
-    s = s.replace('href="/skins/"', f'href="{prefix}/skins/"')
+    s = s.replace('href="/skins/"', f'href="{prefix}/skins/"').replace('href="/prices/"', f'href="{prefix}/prices/"')
     # Картинки и иконки — от корня сайта (страницы лежат и в подпапках).
     s = re.sub(r'(href|src)="(favicon\.png|apple-touch-icon\.png|logo\.webp|og\.jpg)"', r'\1="/\2"', s)
-    s = s.replace('</style>', EXTRA_CSS + '</style>', 1)
+    s = s.replace('</style>', EXTRA_CSS + css + '</style>', 1)
     return s
 
 
@@ -249,7 +254,8 @@ def preview_section(lots, lang):
     return (f'<section id="lots"><div class="wrap"><div class="sec-head"><h2>{esc(t["preview_title"])}</h2>'
             f'<p>{esc(t["preview_sub"])}</p></div><div class="lots">'
             + ''.join(lot_card(s, lang) for s in top)
-            + f'</div><p class="more"><a class="btn ghost" href="{prefix}/skins/">{esc(t["all_prices"])}</a></p></div></section>')
+            + f'</div><p class="more"><a class="btn ghost" href="{prefix}/skins/">{esc(t["all_prices"])}</a> '
+            f'<a class="btn ghost" href="{prefix}/prices/">{esc(t["market_prices"])}</a></p></div></section>')
 
 
 def catalog_main(lots, lang, today):
@@ -261,14 +267,85 @@ def catalog_main(lots, lang, today):
     body = ('<div class="lots">' + ''.join(lot_card(s, lang) for s in ordered) + '</div>') if ordered else f'<p>{esc(t["empty"])}</p>'
     return (f'<main id="top"><div class="wrap"><nav class="crumbs"><a href="{prefix}/">{esc(t["home"])}</a> / {esc(t["cat_title"])}</nav>'
             f'<h1>{esc(t["cat_title"])}</h1><p class="lead">{esc(t["cat_lead"])}</p>'
-            f'<p class="crumbs">{esc(t["updated"].format(d=today, n=len(lots)))}</p>{body}</div></main>')
+            f'<p class="crumbs">{esc(t["updated"].format(d=today, n=len(lots)))}</p>{body}'
+            f'<p class="more"><a class="btn ghost" href="{prefix}/prices/">{esc(t["market_prices"])}</a></p></div></main>')
 
 
 def write(rel, text):
+    """Пишет файл, только если он изменился. True — файл новый или другой."""
     path = os.path.join(ROOT, rel)
+    try:
+        if open(path, encoding='utf-8').read() == text:
+            return False
+    except OSError:
+        pass
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, 'w', encoding='utf-8') as f:
         f.write(text)
+    return True
+
+
+def build_prices(tpl, i18n, lots, iso):
+    """Страницы рыночных цен. Возвращает {путь страницы: дата изменения} для sitemap."""
+    lm_path = os.path.join(ROOT, 'data', 'prices-lastmod.json')
+    try:
+        lastmod = json.load(open(lm_path, encoding='utf-8'))
+    except Exception:
+        lastmod = {}
+    inputs, err = skins.load_inputs(ROOT)
+    if not inputs:
+        print(f'⚠️ Нет данных для цен ({err}) — страницы цен не трогаю', file=sys.stderr)
+        return {k: v for k, v in lastmod.items() if os.path.exists(os.path.join(ROOT, k, 'index.html'))}
+    meta, market, rate = inputs
+    keep = {k.split('/')[-1] for k in lastmod if k.startswith('prices/')}
+    items = skins.collect(meta, market, rate, keep)
+    if not items:
+        print('⚠️ Ни одного скина с ценой — страницы цен не трогаю', file=sys.stderr)
+        return lastmod
+    by_weapon = {}
+    for s in items:
+        by_weapon.setdefault(s['weapon'], []).append(s)
+    new, changed = {}, []
+
+    def put(rel, text):
+        # Переключатель языка ведёт на ту же страницу, а не на главную.
+        path = rel.split('/', 1)[1] if rel.split('/')[0] in LANGS else rel
+        for l in LANGS:
+            text = text.replace(f'href="{"/" if l == "ru" else f"/{l}/"}" data-lang="{l}"',
+                                f'href="{"" if l == "ru" else f"/{l}"}/{path}/" data-lang="{l}"')
+        if write(rel + '/index.html', text) or rel not in lastmod:
+            new[rel] = iso
+            changed.append(rel)
+        else:
+            new[rel] = lastmod[rel]
+
+    for lang in LANGS:
+        page = localize(tpl, lang, i18n, skins.CSS)
+        t = skins.T[lang]
+        base = '' if lang == 'ru' else f'{lang}/'
+        hub = set_meta(page, lang, 'prices', t['hub_title'], t['hub_desc'].format(n=len(items)))
+        hub = hub.replace('<!--JSONLD-->', '')
+        hub = re.sub(r'<main id="top">.*?</main>', lambda m: skins.hub_main(items, lang), hub, count=1, flags=re.S)
+        put(base + 'prices', hub)
+        for s in items:
+            kind = f'prices/{s["slug"]}'
+            title = t['title'].format(name=s['base'])
+            desc = t['desc'].format(name=s['base'], low=skins.money(s['low']), st=t['st_desc'] if s['stattrak'] else '')
+            out = set_meta(page, lang, kind, title, desc)
+            out = out.replace('<!--JSONLD-->', jsonld_tag(skins.skin_jsonld(s, lang, page_url(lang, kind))))
+            same = by_weapon.get(s['weapon'], [])
+            i = same.index(s)
+            related = (same[i + 1:] + same[:i])[:skins.RELATED]
+            body = skins.skin_main(s, lang, lots, related, rate, lot_card)
+            out = re.sub(r'<main id="top">.*?</main>', lambda m: body, out, count=1, flags=re.S)
+            put(base + kind, out)
+    # Страницы, которые больше не собираются (скина нет в справочнике), оставляем в sitemap.
+    for k, v in lastmod.items():
+        if k not in new and os.path.exists(os.path.join(ROOT, k, 'index.html')):
+            new[k] = v
+    write('data/prices-lastmod.json', json.dumps(dict(sorted(new.items())), ensure_ascii=False, indent=0) + '\n')
+    print(f'Цены: {len(items)} скинов, страниц {len(new)}, изменено {len(changed)}, курс {rate}')
+    return new
 
 
 def main():
@@ -294,12 +371,15 @@ def main():
         pages.append(page_url(lang, 'skins'))
 
     iso = dt.date.today().isoformat()
+    tpl_prices = tpl.replace('href="/skins/" data-i18n="nav_prices"', 'href="/prices/" data-i18n="nav_prices"')
+    prices = build_prices(tpl_prices, i18n, lots, iso)
     write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n'
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
           + ''.join(f'<url><loc>{u}</loc><lastmod>{iso}</lastmod><changefreq>daily</changefreq></url>\n' for u in pages)
+          + ''.join(f'<url><loc>{SITE}/{k}/</loc><lastmod>{v}</lastmod></url>\n' for k, v in sorted(prices.items()))
           + '</urlset>\n')
     write('robots.txt', f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
-    print(f'Готово: {len(pages)} страниц, лотов {len(lots)}{"" if fresh else " (из кэша)"}')
+    print(f'Готово: {len(pages) + len(prices)} страниц, лотов {len(lots)}{"" if fresh else " (из кэша)"}')
 
 
 if __name__ == '__main__':
