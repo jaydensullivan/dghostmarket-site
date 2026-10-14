@@ -59,6 +59,7 @@ T = {
         'hub_lead': 'Рыночные цены популярных скинов CS2 в узбекских сумах — по всем износам. Выберите скин, чтобы увидеть цены, float, коллекцию и предложения на DGhostMarket.',
         'from': 'от {p}',
         'other': 'Другое',
+        'guide': 'Как купить скин безопасно — пошаговая инструкция →',
     },
     'uz': {
         'h1': '{name} — narxi so‘mda',
@@ -81,6 +82,7 @@ T = {
         'hub_lead': 'Mashhur CS2 skinlarining so‘mdagi bozor narxlari — barcha holatlar bo‘yicha. Narxlar, float, kolleksiya va DGhostMarket’dagi takliflarni ko‘rish uchun skinni tanlang.',
         'from': '{p}dan',
         'other': 'Boshqa',
+        'guide': 'Skinni xavfsiz sotib olish — bosqichma-bosqich qo‘llanma →',
     },
     'en': {
         'h1': '{name} — price in Uzbek sum',
@@ -277,6 +279,8 @@ def skin_main(skin, lang, lots, related, rate, lot_card):
         q = urlquote(name)
         sale = (f'<section class="box"><h2>{esc(t["on_sale"])}</h2><p>{esc(t["none"])}</p>'
                 f'<a class="btn primary" href="https://app.dghostmarket.com/?open=wants&amp;q={q}" rel="nofollow">{esc(t["notify"])}</a></section>')
+    if t.get('guide'):
+        sale = sale.replace('</section>', f'<p class="pnote"><a href="{p}/guides/buy-cs2-skins-uzbekistan/">{esc(t["guide"])}</a></p></section>', 1)
     sell = (f'<section class="box"><p>{esc(t["sell"])}</p>'
             f'<a class="btn ghost" href="https://app.dghostmarket.com/?open=sell" rel="nofollow">{esc(t["sell_btn"])}</a></section>')
     rel = ''
@@ -320,4 +324,6 @@ def hub_main(skins, lang):
                   f'<span>{esc(t["from"].format(p=money(s["low"]) + " " + t["cur"]))}</span></a>' for s in groups[g])
         + '</div>' for g in order)
     return (f'<main id="top"><div class="wrap"><nav class="crumbs"><a href="{p}/">{esc(t["home"])}</a> / {esc(t["hub"])}</nav>'
-            f'<h1>{esc(t["hub_h1"])}</h1><p class="lead">{esc(t["hub_lead"])}</p>{body}</div></main>')
+            f'<h1>{esc(t["hub_h1"])}</h1><p class="lead">{esc(t["hub_lead"])}</p>'
+            + (f'<p><a href="{p}/guides/">{esc(t["guide"])}</a></p>' if t.get('guide') else '')
+            + f'{body}</div></main>')

@@ -10,6 +10,7 @@ i18n.json. На выходе — готовые страницы, которые
     skins/index.html (+ uz/, en/) — цены на скины из лотов маркета;
     prices/index.html, prices/<скин>/index.html (+ uz/, en/) — рыночные цены
         популярных скинов в сумах (tools/skins.py);
+    guides/index.html, guides/<статья>/index.html (+ uz/) — инструкции (tools/guides.py);
     sitemap.xml, robots.txt.
 
 Лоты берутся из открытого API бота (/api/skins). Если API недоступен,
@@ -25,6 +26,7 @@ import re
 import sys
 import urllib.request
 
+import guides
 import skins
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -53,7 +55,7 @@ L = {
         'updated': 'Обновлено {d} · лотов: {n}',
         'empty': 'Сейчас лотов нет — загляните позже или откройте маркет в Telegram.',
         'float': 'Float', 'other': 'Другое',
-        'home': 'Главная', 'market_prices': 'Рыночные цены всех скинов →',
+        'home': 'Главная', 'market_prices': 'Рыночные цены всех скинов →', 'guides': 'Как купить и продать — инструкции →',
     },
     'uz': {
         'cur': "so'm", 'buy': 'Sotib olish', 'below': "bozordan {p}% arzon", 'market': 'Steam bozori: {v}',
@@ -66,7 +68,7 @@ L = {
         'updated': '{d} yangilandi · lotlar: {n}',
         'empty': "Hozircha lotlar yo'q — keyinroq kiring yoki marketni Telegramda oching.",
         'float': 'Float', 'other': 'Boshqa',
-        'home': 'Bosh sahifa', 'market_prices': 'Barcha skinlarning bozor narxlari →',
+        'home': 'Bosh sahifa', 'market_prices': 'Barcha skinlarning bozor narxlari →', 'guides': 'Qanday sotib olish va sotish — qo‘llanmalar →',
     },
     'en': {
         'cur': 'UZS', 'buy': 'Buy', 'below': '{p}% below market', 'market': 'Steam market: {v}',
@@ -190,8 +192,8 @@ def site_jsonld(lang):
     ]
 
 
-def alternates(kind):
-    out = [f'<link rel="alternate" hreflang="{l}" href="{page_url(l, kind)}">' for l in LANGS]
+def alternates(kind, langs=LANGS):
+    out = [f'<link rel="alternate" hreflang="{l}" href="{page_url(l, kind)}">' for l in langs]
     out.append(f'<link rel="alternate" hreflang="x-default" href="{page_url("ru", kind)}">')
     return '\n'.join(out)
 
@@ -228,7 +230,7 @@ def localize(tpl, lang, i18n, css=''):
     return s
 
 
-def set_meta(s, lang, kind, title=None, desc=None):
+def set_meta(s, lang, kind, title=None, desc=None, langs=LANGS):
     url = page_url(lang, kind)
     s = re.sub(r'(<link rel="canonical" href=")[^"]*', lambda m: m.group(1) + url, s, count=1)
     s = re.sub(r'(<meta property="og:url" content=")[^"]*', lambda m: m.group(1) + url, s, count=1)
@@ -238,7 +240,7 @@ def set_meta(s, lang, kind, title=None, desc=None):
     if desc:
         s = re.sub(r'(<meta name="description" content=")[^"]*', lambda m: m.group(1) + esc(desc), s, count=1)
         s = re.sub(r'(<meta property="og:description" content=")[^"]*', lambda m: m.group(1) + esc(desc), s, count=1)
-    return s.replace('<!--ALTERNATES-->', alternates(kind))
+    return s.replace('<!--ALTERNATES-->', alternates(kind, langs))
 
 
 def jsonld_tag(obj):
@@ -268,7 +270,25 @@ def catalog_main(lots, lang, today):
     return (f'<main id="top"><div class="wrap"><nav class="crumbs"><a href="{prefix}/">{esc(t["home"])}</a> / {esc(t["cat_title"])}</nav>'
             f'<h1>{esc(t["cat_title"])}</h1><p class="lead">{esc(t["cat_lead"])}</p>'
             f'<p class="crumbs">{esc(t["updated"].format(d=today, n=len(lots)))}</p>{body}'
-            f'<p class="more"><a class="btn ghost" href="{prefix}/prices/">{esc(t["market_prices"])}</a></p></div></main>')
+            f'<p class="more"><a class="btn ghost" href="{prefix}/prices/">{esc(t["market_prices"])}</a>'
+            + (f' <a class="btn ghost" href="{prefix}/guides/">{esc(t["guides"])}</a>' if t.get('guides') else '')
+            + '</p></div></main>')
+
+
+def tag_links(text, page):
+    """Метка перехода для «Аналитика» бота: ссылки в мини-апп получают
+    src=site_<page>, в бота — /start site_<page>."""
+    src = f'site_{page}'
+
+    def app(m):
+        url = m.group(1)
+        if 'src=' in url:
+            return m.group(0)
+        sep = '&amp;' if '?' in url else '?'
+        return f'href="{url}{sep}src={src}"'
+
+    text = re.sub(r'href="(https://app\.dghostmarket\.com/[^"]*)"', app, text)
+    return text.replace('href="https://t.me/dghostmarketbot"', f'href="https://t.me/dghostmarketbot?start={src}"')
 
 
 def write(rel, text):
@@ -326,7 +346,7 @@ def build_prices(tpl, i18n, lots, iso):
         hub = set_meta(page, lang, 'prices', t['hub_title'], t['hub_desc'].format(n=len(items)))
         hub = hub.replace('<!--JSONLD-->', '')
         hub = re.sub(r'<main id="top">.*?</main>', lambda m: skins.hub_main(items, lang), hub, count=1, flags=re.S)
-        put(base + 'prices', hub)
+        put(base + 'prices', tag_links(hub, 'prices'))
         for s in items:
             kind = f'prices/{s["slug"]}'
             title = t['title'].format(name=s['base'])
@@ -338,13 +358,51 @@ def build_prices(tpl, i18n, lots, iso):
             related = (same[i + 1:] + same[:i])[:skins.RELATED]
             body = skins.skin_main(s, lang, lots, related, rate, lot_card)
             out = re.sub(r'<main id="top">.*?</main>', lambda m: body, out, count=1, flags=re.S)
-            put(base + kind, out)
+            put(base + kind, tag_links(out, 'price'))
     # Страницы, которые больше не собираются (скина нет в справочнике), оставляем в sitemap.
     for k, v in lastmod.items():
         if k not in new and os.path.exists(os.path.join(ROOT, k, 'index.html')):
             new[k] = v
     write('data/prices-lastmod.json', json.dumps(dict(sorted(new.items())), ensure_ascii=False, indent=0) + '\n')
     print(f'Цены: {len(items)} скинов, страниц {len(new)}, изменено {len(changed)}, курс {rate}')
+    return new
+
+
+def build_guides(tpl, i18n, iso):
+    """Инструкции (ru, uz). Возвращает {путь: дата изменения} для sitemap."""
+    lm_path = os.path.join(ROOT, 'data', 'guides-lastmod.json')
+    try:
+        lastmod = json.load(open(lm_path, encoding='utf-8'))
+    except Exception:
+        lastmod = {}
+    new = {}
+
+    def put(rel, kind, text):
+        # Переключатель языка: ru/uz — та же статья, en — английская главная.
+        for l in LANGS:
+            href = f'{guides.prefix(l)}/{kind}/' if l in guides.LANGS else '/en/'
+            text = text.replace(f'href="{"/" if l == "ru" else f"/{l}/"}" data-lang="{l}"', f'href="{href}" data-lang="{l}"')
+        text = tag_links(text, 'guide')
+        changed = write(rel + '/index.html', text)
+        new[rel] = iso if changed or rel not in lastmod else lastmod[rel]
+
+    for lang in guides.LANGS:
+        page = localize(tpl, lang, i18n, guides.CSS)
+        t = guides.T[lang]
+        base = '' if lang == 'ru' else f'{lang}/'
+        hub = set_meta(page, lang, 'guides', t['hub_title'], t['hub_desc'], guides.LANGS)
+        hub = hub.replace('<!--JSONLD-->', '')
+        hub = re.sub(r'<main id="top">.*?</main>', lambda m: guides.hub_main(lang), hub, count=1, flags=re.S)
+        put(base + 'guides', 'guides', hub)
+        for g in guides.GUIDES:
+            kind = f'guides/{g["slug"]}'
+            d = g[lang]
+            out = set_meta(page, lang, kind, d['title'] + ' | DGhostMarket', d['desc'], guides.LANGS)
+            out = out.replace('<!--JSONLD-->', jsonld_tag(guides.article_jsonld(g, lang, page_url(lang, kind), SITE)))
+            body = guides.guide_main(g, lang)
+            out = re.sub(r'<main id="top">.*?</main>', lambda m: body, out, count=1, flags=re.S)
+            put(base + kind, kind, out)
+    write('data/guides-lastmod.json', json.dumps(dict(sorted(new.items())), ensure_ascii=False, indent=0) + '\n')
     return new
 
 
@@ -360,19 +418,20 @@ def main():
         home = home.replace('<!--JSONLD-->', '\n'.join(jsonld_tag(o) for o in site_jsonld(lang)))
         home = home.replace('<!--LOTS-->', preview_section(lots, lang))
         base = '' if lang == 'ru' else f'{lang}/'
-        write(base + 'index.html', home)
+        write(base + 'index.html', tag_links(home, 'home'))
         pages.append(page_url(lang, 'home'))
 
         t = L[lang]
         cat = set_meta(page, lang, 'skins', t['cat_doc_title'], t['cat_desc'].format(n=len(lots), d=today))
         cat = cat.replace('<!--JSONLD-->', jsonld_tag(offers_jsonld(lots, lang)))
         cat = re.sub(r'<main id="top">.*?</main>', lambda m: catalog_main(lots, lang, today), cat, count=1, flags=re.S)
-        write(base + 'skins/index.html', cat)
+        write(base + 'skins/index.html', tag_links(cat, 'skins'))
         pages.append(page_url(lang, 'skins'))
 
     iso = dt.date.today().isoformat()
     tpl_prices = tpl.replace('href="/skins/" data-i18n="nav_prices"', 'href="/prices/" data-i18n="nav_prices"')
     prices = build_prices(tpl_prices, i18n, lots, iso)
+    prices.update(build_guides(tpl_prices, i18n, iso))
     write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n'
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
           + ''.join(f'<url><loc>{u}</loc><lastmod>{iso}</lastmod><changefreq>daily</changefreq></url>\n' for u in pages)
