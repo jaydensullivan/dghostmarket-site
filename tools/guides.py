@@ -134,7 +134,7 @@ GUIDES = [
 <h2>4. Передайте предмет за 24 часа</h2>
 <p>Когда скин купят, придёт уведомление. Отправьте обмен в Steam на trade-ссылку покупателя и нажмите «Отправил». Не успели за 24 часа — заказ отменяется, а деньги возвращаются покупателю.</p>
 <h2>5. Получите деньги</h2>
-<p>Через 8 дней после оплаты сумма за вычетом 5% приходит на баланс. Steam позволяет отменить обмен в течение 7 дней, поэтому выплата идёт чуть позже — так защищены обе стороны. Вывод на карту или криптокошелёк — без комиссии площадки, минимум 50 000 сум.</p>
+<p>Через 8 дней после оплаты сумма за вычетом 5% приходит на баланс. Steam позволяет отменить обмен в течение 7 дней, поэтому выплата идёт чуть позже — так защищены обе стороны. Вывод на банковскую карту — без комиссии площадки, минимум 50 000 сум.</p>
 <div class="tip">Пример: скин продан за 1 000 000 сум. Комиссия 5% — 50 000 сум, на баланс придёт 950 000 сум.</div>
 <h2>Советы, чтобы продать быстрее</h2>
 <ul>
@@ -159,7 +159,7 @@ GUIDES = [
 <h2>4. Buyumni 24 soat ichida topshiring</h2>
 <p>Skin sotib olinganda xabar keladi. Xaridorning trade havolasiga Steam’da almashuv yuboring va «Yubordim»ni bosing. 24 soatda ulgurmasangiz — buyurtma bekor bo‘ladi, pul xaridorga qaytadi.</p>
 <h2>5. Pulni oling</h2>
-<p>To‘lovdan 8 kun o‘tgach, summa 5% chegirilgan holda balansga tushadi. Steam almashuvni 7 kun ichida bekor qilishga ruxsat beradi, shuning uchun to‘lov biroz keyinroq bo‘ladi — shunda ikkala tomon ham himoyalangan. Kartaga yoki kripto hamyonga yechish — platforma komissiyasisiz, kamida 50 000 so‘m.</p>
+<p>To‘lovdan 8 kun o‘tgach, summa 5% chegirilgan holda balansga tushadi. Steam almashuvni 7 kun ichida bekor qilishga ruxsat beradi, shuning uchun to‘lov biroz keyinroq bo‘ladi — shunda ikkala tomon ham himoyalangan. Bank kartasiga yechish — platforma komissiyasisiz, kamida 50 000 so‘m.</p>
 <div class="tip">Misol: skin 1 000 000 so‘mga sotildi. 5% komissiya — 50 000 so‘m, balansga 950 000 so‘m tushadi.</div>
 <h2>Tezroq sotish uchun maslahatlar</h2>
 <ul>
