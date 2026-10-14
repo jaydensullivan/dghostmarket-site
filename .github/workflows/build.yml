@@ -1,5 +1,5 @@
-# Пересборка сайта: страницы на трёх языках и цены из живых лотов
-# (tools/build.py). Раз в сутки (лоты меняются) и после правок шаблона,
+# Пересборка сайта: страницы на трёх языках, цены из живых лотов
+# и рыночные цены ~400 популярных скинов в сумах (tools/build.py, tools/skins.py). Раз в сутки (лоты меняются) и после правок шаблона,
 # переводов или сборщика. Готовые страницы коммитятся в main — GitHub
 # Pages публикует их как обычно. Если ничего не изменилось, коммита нет.
 name: "Сайт: сборка страниц"
@@ -28,13 +28,38 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+      # Данные для страниц цен. Любой шаг может не скачаться — тогда страницы
+      # цен остаются вчерашними, а остальной сайт собирается как обычно.
+      - name: Справочник скинов (ByMykel/CSGO-API)
+        run: |
+          curl -fsSL --retry 3 -o data/skins-meta.json \
+            https://raw.githubusercontent.com/ByMykel/CSGO-API/main/public/api/en/skins.json \
+            || { echo "::warning::справочник скинов не скачался"; rm -f data/skins-meta.json; }
+      - name: Цены Skinport
+        run: |
+          curl -fsSL --retry 3 --compressed -H "Accept-Encoding: br" -o data/skinport.json \
+            "https://api.skinport.com/v1/items?app_id=730&currency=USD&tradable=0" \
+            || { echo "::warning::цены Skinport не скачались"; rm -f data/skinport.json; }
+      - name: Курс доллара ЦБ Узбекистана
+        run: |
+          curl -fsSL --retry 3 -o /tmp/cbu.json https://cbu.uz/uz/arkhiv-kursov-valyut/json/USD/ || true
+          python3 - <<'PY'
+          import json
+          try:
+              rate = float(json.load(open('/tmp/cbu.json'))[0]['Rate'])
+              assert 5000 < rate < 50000
+              json.dump({'usd_uzs': rate}, open('data/rate.json', 'w'))
+              print('курс', rate)
+          except Exception as e:
+              print('::warning::курс ЦБ не получен, остаётся прошлый:', repr(e))
+          PY
       - name: Сборка
         run: python3 tools/build.py
       - name: Коммит изменений
         run: |
           git config user.name "DGhost site bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A index.html uz en skins sitemap.xml robots.txt data
+          git add -A index.html uz en skins prices sitemap.xml robots.txt data
           git diff --cached --quiet && { echo "Без изменений."; exit 0; }
           git commit -q -m "Сайт: обновление страниц и цен"
           git push -q || { git pull -q --rebase && git push -q; }
