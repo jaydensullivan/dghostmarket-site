@@ -93,7 +93,7 @@
 "float_value": 0.4290852,
 "pattern": "316",
 "weapon_type": "USP-S",
-"market_price_uzs": 70343,
+"market_price_uzs": 69147,
 "view_count": 33,
 "created_at": "2026-09-28T08:58:50.414498+00:00"
 },
@@ -107,7 +107,7 @@
 "float_value": 0.02712554,
 "pattern": "817",
 "weapon_type": "★ Falchion Knife",
-"market_price_uzs": 2263310,
+"market_price_uzs": 2261875,
 "view_count": 68,
 "created_at": "2026-09-26T19:36:29.412586+00:00"
 },
@@ -121,7 +121,7 @@
 "float_value": 0.37001187,
 "pattern": "160",
 "weapon_type": "AK-47",
-"market_price_uzs": 1844600,
+"market_price_uzs": 1804284,
 "view_count": 113,
 "created_at": "2026-09-26T19:36:05.414193+00:00"
 },
@@ -135,7 +135,7 @@
 "float_value": 0.09046203,
 "pattern": "119",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 112693,
+"market_price_uzs": 111616,
 "view_count": 29,
 "created_at": "2026-09-25T08:44:53.829480+00:00"
 },
@@ -177,7 +177,7 @@
 "float_value": 0.48488378524780273,
 "pattern": "192",
 "weapon_type": "USP-S",
-"market_price_uzs": 322407,
+"market_price_uzs": 327192,
 "view_count": 36,
 "created_at": "2026-09-12T13:30:34.399586+00:00"
 },
@@ -191,7 +191,7 @@
 "float_value": 0.2156282514333725,
 "pattern": "361",
 "weapon_type": "★ Hand Wraps",
-"market_price_uzs": 485824,
+"market_price_uzs": 483790,
 "view_count": 41,
 "created_at": "2026-09-12T13:28:48.053652+00:00"
 },
@@ -247,7 +247,7 @@
 "float_value": 0.15178132057189941,
 "pattern": "147",
 "weapon_type": "Desert Eagle",
-"market_price_uzs": 11485,
+"market_price_uzs": 11365,
 "view_count": 50,
 "created_at": "2026-09-06T07:03:54.246781+00:00"
 },
@@ -261,7 +261,7 @@
 "float_value": 0.3315984308719635,
 "pattern": "88",
 "weapon_type": "AK-47",
-"market_price_uzs": 358895,
+"market_price_uzs": 359732,
 "view_count": 33,
 "created_at": "2026-09-03T08:10:04.671396+00:00"
 },
@@ -415,7 +415,7 @@
 "float_value": 0.29872363805770874,
 "pattern": "547",
 "weapon_type": "AWP",
-"market_price_uzs": 450772,
+"market_price_uzs": 442398,
 "view_count": 50,
 "created_at": "2026-08-31T10:53:27.597694+00:00"
 },
@@ -429,7 +429,7 @@
 "float_value": 0.3146037757396698,
 "pattern": "363",
 "weapon_type": "AWP",
-"market_price_uzs": 1088767,
+"market_price_uzs": 1107190,
 "view_count": 17,
 "created_at": "2026-08-27T13:11:36.408724+00:00"
 },
@@ -443,7 +443,7 @@
 "float_value": 0.1148870587348938,
 "pattern": "222",
 "weapon_type": "AK-47",
-"market_price_uzs": 1324681,
+"market_price_uzs": 1339395,
 "view_count": 14,
 "created_at": "2026-08-27T13:11:07.917650+00:00"
 },
@@ -457,7 +457,7 @@
 "float_value": 0.20688357949256897,
 "pattern": "714",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 1782511,
+"market_price_uzs": 1803207,
 "view_count": 21,
 "created_at": "2026-08-27T13:10:36.336524+00:00"
 },
@@ -471,7 +471,7 @@
 "float_value": 0.1664382368326187,
 "pattern": "469",
 "weapon_type": "★ Sport Gloves",
-"market_price_uzs": 1356024,
+"market_price_uzs": 1351478,
 "view_count": 18,
 "created_at": "2026-08-27T13:10:14.203474+00:00"
 },
@@ -485,7 +485,7 @@
 "float_value": 0.0890907347202301,
 "pattern": "211",
 "weapon_type": "★ Butterfly Knife",
-"market_price_uzs": 12735980,
+"market_price_uzs": 12740765,
 "view_count": 127,
 "created_at": "2026-08-27T13:09:49.920725+00:00"
 }
