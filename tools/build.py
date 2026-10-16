@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Сборка сайта dghostmarket.com из шаблона и живых лотов.
+"""Сборка сайта dghostmarket.uz из шаблона и живых лотов.
 
     python3 tools/build.py
 
@@ -30,7 +30,7 @@ import guides
 import skins
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITE = 'https://dghostmarket.com'
+SITE = 'https://dghostmarket.uz'
 API = 'https://api.dghostmarket.com/api/skins'
 APP = 'https://app.dghostmarket.com/'
 LANGS = ['ru', 'uz', 'en']

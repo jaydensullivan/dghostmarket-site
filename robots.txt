@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dghostmarket.com/sitemap.xml
+Sitemap: https://dghostmarket.uz/sitemap.xml
