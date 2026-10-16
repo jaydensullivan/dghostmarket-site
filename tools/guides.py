@@ -254,7 +254,7 @@ GUIDES = [
 <h2>5. Подмена предмета в обмене</h2>
 <p>Похожий скин другого износа, без StatTrak™ или без наклеек. Перед тем как принять обмен, проверьте название, износ и float — всё должно совпадать с купленным лотом. Не совпадает — не принимайте и откройте спор.</p>
 <h2>6. Фейковые «админы» и поддержка</h2>
-<p>Администраторы DGhostMarket не просят коды Steam Guard, пароли, API-ключи и не просят перевести деньги на личную карту. Все вопросы по сделке решаются в приложении, а связаться с поддержкой можно через support@dghostmarket.com.</p>
+<p>Администраторы DGhostMarket не просят коды Steam Guard, пароли, API-ключи и не просят перевести деньги на личную карту. Все вопросы по сделке решаются в приложении, а связаться с поддержкой можно через support@dghostmarket.uz.</p>
 <div class="tip">Простое правило: никому не давайте пароль, коды Steam Guard и API-ключ, а платите только внутри площадки с удержанием оплаты.</div>
 <h2>Как защищает DGhostMarket</h2>
 <ul>
@@ -283,7 +283,7 @@ GUIDES = [
 <h2>5. Almashuvda buyumni almashtirish</h2>
 <p>Boshqa holatdagi, StatTrak™siz yoki stikerlarsiz o‘xshash skin. Almashuvni qabul qilishdan oldin nomi, holati va float’ni tekshiring — hammasi sotib olingan lot bilan mos bo‘lishi kerak. Mos kelmasa — qabul qilmang va nizo oching.</p>
 <h2>6. Soxta «adminlar» va yordam xizmati</h2>
-<p>DGhostMarket administratorlari Steam Guard kodlari, parollar, API kalitlarni so‘ramaydi va shaxsiy kartaga pul o‘tkazishni so‘ramaydi. Bitim bo‘yicha barcha savollar ilovada hal qilinadi, yordam xizmati bilan esa support@dghostmarket.com orqali bog‘lanish mumkin.</p>
+<p>DGhostMarket administratorlari Steam Guard kodlari, parollar, API kalitlarni so‘ramaydi va shaxsiy kartaga pul o‘tkazishni so‘ramaydi. Bitim bo‘yicha barcha savollar ilovada hal qilinadi, yordam xizmati bilan esa support@dghostmarket.uz orqali bog‘lanish mumkin.</p>
 <div class="tip">Oddiy qoida: parol, Steam Guard kodlari va API kalitni hech kimga bermang, faqat to‘lov ushlab turiladigan platforma ichida to‘lang.</div>
 <h2>DGhostMarket qanday himoya qiladi</h2>
 <ul>
