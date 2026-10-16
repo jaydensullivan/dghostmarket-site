@@ -99,7 +99,8 @@
   "final_title": "Birinchi bitimga tayyormisiz?",
   "final_sub": "DGhostMarket'ni Telegramda oching — ro'yxatdan o'tish shart emas.",
   "disclaimer": "DGhostMarket Valve Corporation bilan bog'liq emas. CS2, Counter-Strike va Steam — Valve Corporation tovar belgilari.",
-  "nav_prices": "Narxlar"
+  "nav_prices": "Narxlar",
+  "foot_3d": "Biznes uchun 3D-render"
  },
  "en": {
   "_title": "DGhostMarket — CS2 skin marketplace in Telegram",
@@ -201,6 +202,7 @@
   "final_title": "Ready for your first deal?",
   "final_sub": "Open DGhostMarket in Telegram — no sign-up needed.",
   "disclaimer": "DGhostMarket is not affiliated with Valve Corporation. CS2, Counter-Strike and Steam are trademarks of Valve Corporation.",
-  "nav_prices": "Prices"
+  "nav_prices": "Prices",
+  "foot_3d": "3D rendering for business"
  }
 }

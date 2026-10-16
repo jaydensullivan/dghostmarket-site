@@ -27,6 +27,7 @@ import sys
 import urllib.request
 
 import guides
+import render
 import skins
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -224,6 +225,7 @@ def localize(tpl, lang, i18n, css=''):
     s = re.sub(r'(<a href="[^"]*" data-lang="(\w+)")( class="on")?', lambda m: m.group(1) + (' class="on"' if m.group(2) == lang else ''), s)
     prefix = '' if lang == 'ru' else f'/{lang}'
     s = s.replace('href="/skins/"', f'href="{prefix}/skins/"').replace('href="/prices/"', f'href="{prefix}/prices/"')
+    s = s.replace('href="/3d-api/"', f'href="{prefix}/3d-api/"')
     # Картинки и иконки — от корня сайта (страницы лежат и в подпапках).
     s = re.sub(r'(href|src)="(favicon\.png|apple-touch-icon\.png|logo\.webp|og\.jpg)"', r'\1="/\2"', s)
     s = s.replace('</style>', EXTRA_CSS + css + '</style>', 1)
@@ -287,7 +289,7 @@ def tag_links(text, page):
         sep = '&amp;' if '?' in url else '?'
         return f'href="{url}{sep}src={src}"'
 
-    text = re.sub(r'href="(https://app\.dghostmarket\.com/[^"]*)"', app, text)
+    text = re.sub(r'href="(https://app\.dghostmarket\.(?:uz|com)/[^"]*)"', app, text)
     return text.replace('href="https://t.me/dghostmarketbot"', f'href="https://t.me/dghostmarketbot?start={src}"')
 
 
@@ -406,6 +408,31 @@ def build_guides(tpl, i18n, iso):
     return new
 
 
+def build_render(tpl, i18n, iso):
+    """Страница сервиса 3D-рендера (ru, uz, en). Возвращает {путь: дата изменения} для sitemap."""
+    lm_path = os.path.join(ROOT, 'data', 'render-lastmod.json')
+    try:
+        lastmod = json.load(open(lm_path, encoding='utf-8'))
+    except Exception:
+        lastmod = {}
+    new = {}
+    for lang in render.LANGS:
+        t = render.T[lang]
+        page = localize(tpl, lang, i18n, render.CSS)
+        out = set_meta(page, lang, '3d-api', t['title'], t['desc'], render.LANGS)
+        out = out.replace('<!--JSONLD-->', jsonld_tag(render.offer_jsonld(lang, page_url(lang, '3d-api'), SITE)))
+        out = re.sub(r'<main id="top">.*?</main>', lambda m: render.render_main(lang, APP), out, count=1, flags=re.S)
+        # Переключатель языка ведёт на эту же страницу.
+        for l in render.LANGS:
+            out = out.replace(f'href="{"/" if l == "ru" else f"/{l}/"}" data-lang="{l}"',
+                              f'href="{render.prefix(l)}/3d-api/" data-lang="{l}"')
+        rel = ('' if lang == 'ru' else f'{lang}/') + '3d-api'
+        changed = write(rel + '/index.html', tag_links(out, 'render3d'))
+        new[rel] = iso if changed or rel not in lastmod else lastmod[rel]
+    write('data/render-lastmod.json', json.dumps(dict(sorted(new.items())), ensure_ascii=False, indent=0) + '\n')
+    return new
+
+
 def main():
     tpl = open(os.path.join(ROOT, 'src', 'index.html'), encoding='utf-8').read()
     i18n = json.load(open(os.path.join(ROOT, 'i18n.json'), encoding='utf-8'))
@@ -432,6 +459,7 @@ def main():
     tpl_prices = tpl.replace('href="/skins/" data-i18n="nav_prices"', 'href="/prices/" data-i18n="nav_prices"')
     prices = build_prices(tpl_prices, i18n, lots, iso)
     prices.update(build_guides(tpl_prices, i18n, iso))
+    prices.update(build_render(tpl_prices, i18n, iso))
     write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n'
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
           + ''.join(f'<url><loc>{u}</loc><lastmod>{iso}</lastmod><changefreq>daily</changefreq></url>\n' for u in pages)
