@@ -51,7 +51,7 @@
 "float_value": 0.05871461,
 "pattern": "349",
 "weapon_type": "Glock-18",
-"market_price_uzs": 24984,
+"market_price_uzs": 26666,
 "view_count": 6,
 "created_at": "2026-10-09T19:04:26.239447+00:00"
 },
@@ -149,7 +149,7 @@
 "float_value": 0.06004025,
 "pattern": "642",
 "weapon_type": "SSG 08",
-"market_price_uzs": 9609,
+"market_price_uzs": 9369,
 "view_count": 13,
 "created_at": "2026-09-24T04:22:35.596913+00:00"
 },
@@ -388,7 +388,7 @@
 "pattern": null,
 "weapon_type": null,
 "market_price_uzs": null,
-"view_count": 5,
+"view_count": 6,
 "created_at": "2026-09-01T13:58:25.554954+00:00"
 },
 {
@@ -472,7 +472,7 @@
 "pattern": "211",
 "weapon_type": "★ Butterfly Knife",
 "market_price_uzs": 12756372,
-"view_count": 135,
+"view_count": 137,
 "created_at": "2026-08-27T13:09:49.920725+00:00"
 }
 ]
