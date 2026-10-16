@@ -278,11 +278,11 @@ def skin_main(skin, lang, lots, related, rate, lot_card):
     else:
         q = urlquote(name)
         sale = (f'<section class="box"><h2>{esc(t["on_sale"])}</h2><p>{esc(t["none"])}</p>'
-                f'<a class="btn primary" href="https://app.dghostmarket.com/?open=wants&amp;q={q}" rel="nofollow">{esc(t["notify"])}</a></section>')
+                f'<a class="btn primary" href="https://app.dghostmarket.uz/?open=wants&amp;q={q}" rel="nofollow">{esc(t["notify"])}</a></section>')
     if t.get('guide'):
         sale = sale.replace('</section>', f'<p class="pnote"><a href="{p}/guides/buy-cs2-skins-uzbekistan/">{esc(t["guide"])}</a></p></section>', 1)
     sell = (f'<section class="box"><p>{esc(t["sell"])}</p>'
-            f'<a class="btn ghost" href="https://app.dghostmarket.com/?open=sell" rel="nofollow">{esc(t["sell_btn"])}</a></section>')
+            f'<a class="btn ghost" href="https://app.dghostmarket.uz/?open=sell" rel="nofollow">{esc(t["sell_btn"])}</a></section>')
     rel = ''
     if related:
         rel = (f'<section><h2 class="hub-group">{esc(t["related"].format(weapon=skin["weapon"]))}</h2><div class="chips">'

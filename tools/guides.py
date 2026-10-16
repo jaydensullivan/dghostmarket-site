@@ -66,7 +66,7 @@ GUIDES = [
 </ul>
 <h2>Покупка за 5 шагов</h2>
 <ol>
-<li><b>Откройте маркет.</b> В Telegram — бот @dghostmarketbot, в браузере — app.dghostmarket.com (вход через Telegram).</li>
+<li><b>Откройте маркет.</b> В Telegram — бот @dghostmarketbot, в браузере — app.dghostmarket.uz (вход через Telegram).</li>
 <li><b>Привяжите trade-ссылку</b> в профиле. Покупателю проверка документов не нужна.</li>
 <li><b>Выберите скин.</b> Фильтры по оружию, износу, float и цене. На карточке видно, насколько цена ниже или выше рынка. Ориентир — <a href="/prices/">цены на скины в сумах</a>.</li>
 <li><b>Оплатите.</b> Пополните баланс способом из приложения и нажмите «Купить». Деньги удерживает площадка — продавец их пока не получает.</li>
@@ -98,7 +98,7 @@ GUIDES = [
 </ul>
 <h2>5 qadamda xarid</h2>
 <ol>
-<li><b>Marketni oching.</b> Telegram’da — @dghostmarketbot boti, brauzerda — app.dghostmarket.com (Telegram orqali kirish).</li>
+<li><b>Marketni oching.</b> Telegram’da — @dghostmarketbot boti, brauzerda — app.dghostmarket.uz (Telegram orqali kirish).</li>
 <li><b>Profilda trade havolani ulang.</b> Xaridor hujjat tekshiruvidan o‘tmaydi.</li>
 <li><b>Skinni tanlang.</b> Qurol, holat, float va narx bo‘yicha filtrlar bor. Kartochkada narx bozordan qancha arzon yoki qimmatligi ko‘rinadi. Mo‘ljal uchun — <a href="/prices/">skinlarning so‘mdagi narxlari</a>.</li>
 <li><b>To‘lang.</b> Balansni ilovadagi usul bilan to‘ldiring va «Sotib olish»ni bosing. Pulni platforma ushlab turadi — sotuvchi uni hali olmaydi.</li>
@@ -388,7 +388,7 @@ def guide_main(g, lang):
             f'<a href="{p}/guides/">{esc(t["hub"])}</a></nav><article class="article"><h1>{esc(d["h1"])}</h1>'
             f'<p class="crumbs">{esc(t["updated"])}: {UPDATED[8:10]}.{UPDATED[5:7]}.{UPDATED[:4]}</p>'
             f'{localize_links(d["body"], lang)}'
-            f'<div class="actions"><a class="btn primary" href="https://app.dghostmarket.com/">{esc(t["cta"])}</a>'
+            f'<div class="actions"><a class="btn primary" href="https://app.dghostmarket.uz/">{esc(t["cta"])}</a>'
             f'<a class="btn ghost" href="{p}/prices/">{esc(t["prices"])}</a></div>'
             f'<h2>{esc(t["more"])}</h2><div class="guide-list">{more}</div></article></div></main>')
 
