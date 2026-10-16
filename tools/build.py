@@ -31,8 +31,8 @@ import skins
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = 'https://dghostmarket.uz'
-API = 'https://api.dghostmarket.com/api/skins'
-APP = 'https://app.dghostmarket.com/'
+API = 'https://api.dghostmarket.uz/api/skins'
+APP = 'https://app.dghostmarket.uz/'
 LANGS = ['ru', 'uz', 'en']
 PREVIEW = 6
 
