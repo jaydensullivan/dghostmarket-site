@@ -1,4 +1,4 @@
-# dghostmarket.com
+# dghostmarket.uz
 
 Сайт-визитка DGhostMarket — маркетплейса скинов CS2 в Telegram.
 
