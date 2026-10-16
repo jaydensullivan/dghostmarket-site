@@ -273,11 +273,11 @@ def render_main(lang, app_url):
         f'{esc(d[0].replace("★ ", ""))}</button>' for i, d in enumerate(DEMO_SKINS))
     demo = (f'<div class="block" id="demo"><h2>{esc(t["demo_h"])}</h2><p class="sub">{esc(t["demo_sub"])}</p>'
             f'<div class="demo"><iframe id="demoFrame" src="{esc(src)}" title="3D" loading="lazy" '
-            'allow="xr-spatial-tracking; fullscreen"></iframe><div class="demo-skins">' + buttons + '</div></div>'
+            'allow="xr-spatial-tracking; fullscreen" allowfullscreen></iframe><div class="demo-skins">' + buttons + '</div></div>'
             '<script>document.querySelectorAll(".demo-skins button").forEach(function(b){b.addEventListener("click",function(){'
             'document.getElementById("demoFrame").src=b.dataset.src;'
             'document.querySelectorAll(".demo-skins button").forEach(function(x){x.classList.toggle("on",x===b);});});});</script></div>')
-    code = esc('<iframe src="' + embed_src('YOUR_KEY', first, lang) + '"\n  width="100%" height="420" style="border:0;border-radius:12px"\n  allow="xr-spatial-tracking; fullscreen" loading="lazy"></iframe>')
+    code = esc('<iframe src="' + embed_src('YOUR_KEY', first, lang) + '"\n  width="100%" height="420" style="border:0;border-radius:12px"\n  allow="xr-spatial-tracking; fullscreen" allowfullscreen loading="lazy"></iframe>')
     return (f'<main id="top" class="r3d"><div class="wrap">'
             f'<nav class="crumbs"><a href="{p}/">{esc(t["home"])}</a> / {esc(t["crumb"])}</nav>'
             f'<div class="hero-badge">{esc(t["badge"])}</div>'
