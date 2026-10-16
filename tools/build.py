@@ -185,7 +185,7 @@ def offers_jsonld(lots, lang):
 def site_jsonld(lang):
     return [
         {'@context': 'https://schema.org', '@type': 'Organization', 'name': 'DGhostMarket', 'url': SITE + '/',
-         'logo': SITE + '/apple-touch-icon.png', 'email': 'support@dghostmarket.com',
+         'logo': SITE + '/apple-touch-icon.png', 'email': 'support@dghostmarket.uz',
          'sameAs': ['https://t.me/dghostmarketbot', 'https://t.me/dghostmarket']},
         {'@context': 'https://schema.org', '@type': 'WebSite', 'name': 'DGhostMarket', 'url': page_url(lang, 'home'),
          'inLanguage': lang},
