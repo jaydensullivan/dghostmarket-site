@@ -8,7 +8,17 @@ import html
 from urllib.parse import quote
 
 LANGS = ['ru', 'uz', 'en']
-SUPPORT_TG = 'https://t.me/DGhostMarket_Support'
+# Заявки — в личные сообщения канала @dghostmarket.
+SUPPORT_TG = 'https://t.me/dghostmarket?direct'
+EMBED_URL = 'https://app.dghostmarket.uz/embed.html'
+# Скины для живого демо (ключ demo работает только на наших сайтах).
+DEMO_SKINS = [
+    ('AK-47 | Redline', 0.15, 661),
+    ('★ Karambit | Fade', 0.012, 412),
+    ('AWP | Asiimov', 0.24, 77),
+    ('M4A1-S | Printstream', 0.08, 233),
+    ('★ Butterfly Knife | Doppler', 0.02, 905),
+]
 SUPPORT_MAIL = 'support@dghostmarket.uz'
 RATE = 11900  # сум за $ — только для подписи «≈ … сум» у тарифов
 
@@ -35,6 +45,8 @@ T = {
         'h1': '3D-рендер скинов CS2 <span>для вашего сайта</span>',
         'lead': 'Тот же 3D-движок, что в маркете DGhostMarket: реальная раскраска, float и паттерн конкретного предмета. Подключите на свой сайт виджетом или получайте готовые картинки и видео по API.',
         'cta': 'Оставить заявку на пилот', 'cta_mail': 'Написать на почту', 'cta_demo': 'Посмотреть 3D в маркете',
+        'demo_h': 'Попробуйте прямо здесь', 'demo_sub': 'Это и есть виджет — так он будет выглядеть на вашем сайте. Крутите пальцем или мышкой, переключайте фоны и износ.',
+        'code_h': 'Код для вашего сайта', 'code_sub': 'Ключ выдаём после заявки. Скин, float и паттерн подставляете из своих товаров.',
         'what_h': 'Что вы получаете',
         'what': [
             ('🧊 3D-виджет', 'Вставляете одну строку кода — на странице товара появляется 3D-просмотр: вращение, приближение, фоны карт CS2, износ по float и рисунок по паттерну.'),
@@ -74,6 +86,8 @@ T = {
         'h1': 'CS2 skinlarining 3D-renderi <span>saytingiz uchun</span>',
         'lead': 'DGhostMarket marketidagi o‘sha 3D-dvigatel: aynan shu buyumning haqiqiy bo‘yog‘i, float va naqshi. Saytingizga vidjet orqali ulang yoki API orqali tayyor rasm va videolarni oling.',
         'cta': 'Pilotga ariza qoldirish', 'cta_mail': 'Pochtaga yozish', 'cta_demo': 'Marketda 3D’ni ko‘rish',
+        'demo_h': 'Shu yerning o‘zida sinab ko‘ring', 'demo_sub': 'Bu vidjetning o‘zi — saytingizda ham xuddi shunday ko‘rinadi. Barmoq yoki sichqoncha bilan aylantiring, fon va eskirishni almashtiring.',
+        'code_h': 'Saytingiz uchun kod', 'code_sub': 'Kalitni ariza qoldirgandan keyin beramiz. Skin, float va naqshni o‘z tovarlaringizdan qo‘yasiz.',
         'what_h': 'Siz nimani olasiz',
         'what': [
             ('🧊 3D-vidjet', 'Bitta qator kod qo‘shasiz — tovar sahifasida 3D-ko‘rinish paydo bo‘ladi: aylantirish, yaqinlashtirish, CS2 xaritalari fonlari, float bo‘yicha eskirish va naqsh bo‘yicha rasm.'),
@@ -113,6 +127,8 @@ T = {
         'h1': 'CS2 skin 3D rendering <span>for your website</span>',
         'lead': 'The same 3D engine that powers the DGhostMarket marketplace: real finish, float and pattern of the exact item. Embed it on your site with a widget or get ready-made images and videos via API.',
         'cta': 'Apply for the pilot', 'cta_mail': 'Email us', 'cta_demo': 'See 3D in the marketplace',
+        'demo_h': 'Try it right here', 'demo_sub': 'This is the widget itself — it will look the same on your website. Drag to rotate, switch backgrounds and wear.',
+        'code_h': 'Code for your website', 'code_sub': 'You get a key after applying. Fill in the skin, float and pattern from your own products.',
         'what_h': 'What you get',
         'what': [
             ('🧊 3D widget', 'Add one line of code and your product page gets a 3D viewer: rotate, zoom, CS2 map backgrounds, wear by float and artwork by pattern.'),
@@ -177,8 +193,14 @@ CSS = """
 .r3d summary{cursor:pointer;font-weight:600}
 .r3d details p{color:var(--muted);margin:10px 0 0;line-height:1.55}
 .r3d .legal{color:var(--muted);font-size:13px;max-width:760px;margin:36px 0 56px}
+.r3d .demo{display:grid;grid-template-columns:1fr;gap:12px;max-width:900px}
+.r3d .demo iframe{width:100%;height:440px;border:0;border-radius:18px;background:#0c0816}
+.r3d .demo-skins{display:flex;flex-wrap:wrap;gap:8px}
+.r3d .demo-skins button{font:inherit;font-size:14px;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer}
+.r3d .demo-skins button.on{background:var(--grad);border-color:transparent;color:#fff}
+.r3d pre.code{background:#0c0816;border:1px solid var(--line);border-radius:14px;padding:14px 16px;overflow-x:auto;font-size:13px;line-height:1.5;color:#d8c8ff;max-width:900px;white-space:pre-wrap;word-break:break-all}
 @media(max-width:1000px){.r3d .plans{grid-template-columns:repeat(2,1fr)}.r3d .cards{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.r3d .plans,.r3d .cards{grid-template-columns:1fr}}
+@media(max-width:560px){.r3d .plans,.r3d .cards{grid-template-columns:1fr}.r3d .demo iframe{height:360px}}
 """
 
 
@@ -227,6 +249,11 @@ def plan_card(p, lang):
             + '</dl></div>')
 
 
+def embed_src(key, skin, lang):
+    name, flt, seed = skin
+    return f'{EMBED_URL}?key={key}&skin={quote(name)}&float={flt}&seed={seed}&lang={lang}'
+
+
 def render_main(lang, app_url):
     t = T[lang]
     p = prefix(lang)
@@ -239,16 +266,30 @@ def render_main(lang, app_url):
     plans = ''.join(plan_card(pl, lang) for pl in PLANS)
     how = ''.join(f'<li>{esc(x)}</li>' for x in t['how'])
     faq = ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in t['faq'])
+    first = DEMO_SKINS[0]
+    src = embed_src('demo', first, lang)
+    buttons = ''.join(
+        '<button type="button"' + (' class="on"' if i == 0 else '') + f' data-src="{esc(embed_src("demo", d, lang))}">'
+        f'{esc(d[0].replace("★ ", ""))}</button>' for i, d in enumerate(DEMO_SKINS))
+    demo = (f'<div class="block" id="demo"><h2>{esc(t["demo_h"])}</h2><p class="sub">{esc(t["demo_sub"])}</p>'
+            f'<div class="demo"><iframe id="demoFrame" src="{esc(src)}" title="3D" loading="lazy" '
+            'allow="xr-spatial-tracking; fullscreen"></iframe><div class="demo-skins">' + buttons + '</div></div>'
+            '<script>document.querySelectorAll(".demo-skins button").forEach(function(b){b.addEventListener("click",function(){'
+            'document.getElementById("demoFrame").src=b.dataset.src;'
+            'document.querySelectorAll(".demo-skins button").forEach(function(x){x.classList.toggle("on",x===b);});});});</script></div>')
+    code = esc('<iframe src="' + embed_src('YOUR_KEY', first, lang) + '"\n  width="100%" height="420" style="border:0;border-radius:12px"\n  allow="xr-spatial-tracking; fullscreen" loading="lazy"></iframe>')
     return (f'<main id="top" class="r3d"><div class="wrap">'
             f'<nav class="crumbs"><a href="{p}/">{esc(t["home"])}</a> / {esc(t["crumb"])}</nav>'
             f'<div class="hero-badge">{esc(t["badge"])}</div>'
             f'<h1>{t["h1"]}</h1><p class="lead">{esc(t["lead"])}</p>{actions}'
+            f'{demo}'
             f'<div class="block"><h2>{esc(t["what_h"])}</h2><div class="cards">{what}</div></div>'
             f'<div class="block"><h2>{esc(t["who_h"])}</h2><ul class="who">{who}</ul></div>'
             f'<div class="block" id="plans"><h2>{esc(t["plans_h"])}</h2><p class="sub">{esc(t["plans_sub"])}</p>'
             f'<div class="plans">{plans}</div>'
             f'<div class="note"><b>{esc(t["over_h"])}</b>{esc(t["over"])}</div></div>'
             f'<div class="block"><h2>{esc(t["how_h"])}</h2><ol class="how">{how}</ol></div>'
+            f'<div class="block"><h2>{esc(t["code_h"])}</h2><p class="sub">{esc(t["code_sub"])}</p><pre class="code">{code}</pre></div>'
             f'<div class="block"><h2>{esc(t["faq_h"])}</h2>{faq}{actions}</div>'
             f'<p class="legal">{esc(t["legal"])}</p>'
             f'</div></main>')
