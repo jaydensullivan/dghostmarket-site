@@ -86,7 +86,14 @@ h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text
 .fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
 .fact b{display:block;font-size:18px}
 .fact span{font-size:13px;color:var(--muted)}
-.hero-art{display:flex;justify-content:center}
+.hero-art{display:flex;justify-content:center;order:2}
+/* Первый экран: 4 реальных лота под кнопками и строка доверия. */
+.hlots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:22px 0 4px}
+.hlot{display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,0.03);color:var(--text);text-decoration:none;min-width:0}
+.hlot img{width:100%;aspect-ratio:4/3;object-fit:contain;border-radius:10px;background:radial-gradient(ellipse at 50% 40%,#2a2238,#130e1c 70%)}
+.hlot b{font-size:13px;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.hlot span{font-size:14px;font-weight:700;white-space:nowrap}
+.trust{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;padding:0;margin:14px 0 0;color:var(--muted);font-size:13px}
 .hero-art img{width:100%;max-width:440px;height:auto;filter:drop-shadow(0 20px 60px rgba(123,44,255,0.45))}
 /* секции */
 section{padding:64px 0}
@@ -146,14 +153,17 @@ nav.links{display:none}
 .langs{margin-left:auto}
 .hero{padding-top:40px;padding-bottom:24px}
 .hero-grid{grid-template-columns:1fr}
-.hero-art{order:-1}
-.hero-art img{max-width:260px}
+.hero-grid{display:block}
+.hero-art{float:right;width:112px;margin:0 0 8px 12px}
+.hero-art img{max-width:112px}
+.trust{clear:both}
 .two,.fees,.cards{grid-template-columns:1fr}
 .docs{grid-template-columns:1fr 1fr}
 section{padding:44px 0}
 }
 @media (max-width:520px){
 .wrap{padding:0 16px}
+.hlots{grid-template-columns:repeat(2,minmax(0,1fr))}
 .bar .btn.small{display:none}
 .docs{grid-template-columns:1fr}
 .cta .btn{flex:1}

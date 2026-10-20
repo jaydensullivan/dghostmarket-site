@@ -250,11 +250,50 @@ def jsonld_tag(obj):
     return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False).replace('</', '<\\/') + '</script>'
 
 
+HERO_LOTS = 4
+SHOWCASE_FILLER_PRICE = 3000   # как в мини-аппе (app-catalog.js)
+OVERPRICED_SINK_RATIO = 1.5
+
+
+def showcase_order(lots):
+    """Порядок витрины мини-аппа (вкладка «Популярное», категория «Все»):
+    дешевле рынка — первыми, дальше по просмотрам, при равенстве новые;
+    сильно дороже рынка, наклейки и мелочь — в конец (showcaseRank)."""
+    def rank(s):
+        price = int(s.get('price') or 0)
+        market = float(s.get('market_price_uzs') or 0)
+        if 'sticker' in str(s.get('weapon_type') or '').lower() or str(s.get('title') or '').lower().startswith('sticker') \
+                or price < SHOWCASE_FILLER_PRICE:
+            return 3
+        if market > 0 and price > market * OVERPRICED_SINK_RATIO:
+            return 2
+        return 0 if market > 0 and price < market else 1
+    return sorted(lots, key=lambda s: (rank(s), -(s.get('view_count') or 0), -(s.get('id') or 0)))
+
+
+def hero_lots(lots, lang):
+    """4 реальных лота на первом экране главной — сразу под кнопками."""
+    t = L[lang]
+    top = [s for s in showcase_order(lots) if s.get('photo_url')][:HERO_LOTS]
+    if not top:
+        return ''
+    cards = []
+    for s in top:
+        name = ('StatTrak™ ' if s.get('stattrak') else '') + (s.get('title') or '')
+        img = skins.steam_img_attrs(s['photo_url'], '(max-width:520px) 45vw, 150px')
+        cards.append(f'<a class="hlot" href="{APP}?open=skin_{int(s["id"])}" rel="nofollow">'
+                     f'<img {img} alt="{esc(name)}" width="160" height="120">'
+                     f'<b>{esc(name)}</b><span>{money(int(s["price"]))} {esc(t["cur"])}</span></a>')
+    return '<div class="hlots">' + ''.join(cards) + '</div>'
+
+
 def preview_section(lots, lang):
     t = L[lang]
     if not lots:
         return ''
-    top = sorted(lots, key=lambda s: (-(s.get('view_count') or 0), -(s.get('id') or 0)))[:PREVIEW]
+    # Те же лоты, что на первом экране, не повторяем — дальше по витрине.
+    shown = {s['id'] for s in [x for x in showcase_order(lots) if x.get('photo_url')][:HERO_LOTS]}
+    top = [s for s in showcase_order(lots) if s['id'] not in shown][:PREVIEW]
     prefix = '' if lang == 'ru' else f'/{lang}'
     return (f'<section id="lots"><div class="wrap"><div class="sec-head"><h2>{esc(t["preview_title"])}</h2>'
             f'<p>{esc(t["preview_sub"])}</p></div><div class="lots">'
@@ -445,7 +484,7 @@ def main():
         page = localize(tpl, lang, i18n)
         home = set_meta(page, lang, 'home')
         home = home.replace('<!--JSONLD-->', '\n'.join(jsonld_tag(o) for o in site_jsonld(lang)))
-        home = home.replace('<!--LOTS-->', preview_section(lots, lang))
+        home = home.replace('<!--LOTS-->', preview_section(lots, lang)).replace('<!--HERO_LOTS-->', hero_lots(lots, lang))
         base = '' if lang == 'ru' else f'{lang}/'
         write(base + 'index.html', tag_links(home, 'home'))
         pages.append(page_url(lang, 'home'))
