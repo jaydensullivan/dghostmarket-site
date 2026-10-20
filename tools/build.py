@@ -160,7 +160,8 @@ def lot_card(s, lang):
         p = round((1 - price / market) * 100)
         if p >= 1:
             tag = f'<span class="tag">{esc(t["below"].format(p=p))}</span>'
-    img = f'<img src="{esc(s["photo_url"])}" alt="{esc(name)}" loading="lazy" width="320" height="240">' if s.get('photo_url') else ''
+    img = (f'<img {skins.steam_img_attrs(s["photo_url"], "(max-width:560px) 100vw, (max-width:900px) 50vw, 320px")} '
+           f'alt="{esc(name)}" loading="lazy" width="320" height="240">') if s.get('photo_url') else ''
     return (f'<a class="lot" href="{APP}?open=skin_{int(s["id"])}" rel="nofollow">{img}'
             f'<h3>{esc(name)}</h3><div class="sub">{esc(sub)}</div>'
             f'<div class="row"><div><div class="price">{money(price)} {esc(t["cur"])}</div>{tag}</div>'
