@@ -449,6 +449,57 @@ def build_guides(tpl, i18n, iso):
     return new
 
 
+def site_page(page, lang, path, title, desc, main_html, jsonld=None):
+    """Страница отдельного сайта render.dghostmarket.com из готовой страницы сайта маркета."""
+    s = re.sub(r'<header>.*?</header>', lambda m: render.site_header(lang, path), page, count=1, flags=re.S)
+    s = re.sub(r'<footer>.*?</footer>', lambda m: render.site_footer(lang), s, count=1, flags=re.S)
+    s = re.sub(r'<main id="top">.*?</main>', lambda m: main_html, s, count=1, flags=re.S)
+    url = render.site_url(lang, path)
+    s = re.sub(r'(<link rel="canonical" href=")[^"]*', lambda m: m.group(1) + url, s, count=1)
+    s = re.sub(r'(<meta property="og:url" content=")[^"]*', lambda m: m.group(1) + url, s, count=1)
+    s = re.sub(r'<title>.*?</title>', lambda m: f'<title>{txt(title)}</title>', s, count=1)
+    for prop in ('og:title',):
+        s = re.sub(r'(<meta property="' + prop + r'" content=")[^"]*', lambda m: m.group(1) + esc(title), s, count=1)
+    s = re.sub(r'(<meta name="description" content=")[^"]*', lambda m: m.group(1) + esc(desc), s, count=1)
+    s = re.sub(r'(<meta property="og:description" content=")[^"]*', lambda m: m.group(1) + esc(desc), s, count=1)
+    s = re.sub(r'<link rel="alternate" hreflang="[^"]*" href="[^"]*">\n?', '', s)
+    s = s.replace('</title>', '</title>\n' + render.site_alternates(path), 1)
+    s = re.sub(r'<script type="application/ld\+json">.*?</script>', '', s, flags=re.S)
+    if jsonld:
+        s = s.replace('</head>', jsonld_tag(jsonld) + '</head>', 1)
+    # Переадресация по языку браузера — для сайта маркета; здесь своя схема адресов.
+    s = re.sub(r'<script>(?:(?!</script>).)*dgm_lang.*?</script>', '', s, flags=re.S)
+    # Ссылки «в маркет» на отдельном сайте не нужны.
+    s = s.replace('href="/skins/"', 'href="/"').replace('href="/prices/"', 'href="/"')
+    return s
+
+
+def build_render_site(tpl, i18n):
+    """Отдельный сайт 3D-рендера: render/ (en), render/ru/, render/uz/, условия, конфиденциальность, возвраты."""
+    for lang in render.SITE_LANGS:
+        t = render.T[lang]
+        page = localize(tpl, lang, i18n, render.CSS)
+        # «Посмотреть 3D» на отдельном сайте ведёт к демо на этой же странице, а не в маркет.
+        main_html = render.render_main(lang, '#demo')
+        main_html = re.sub(r'<nav class="crumbs">.*?</nav>', '', main_html, count=1, flags=re.S)
+        main_html = main_html.replace('<div class="block"><h2>' + esc(t['faq_h']), '<div class="block" id="faq"><h2>' + esc(t['faq_h']), 1)
+        ld = render.offer_jsonld(lang, render.site_url(lang), render.RENDER_SITE)
+        ld['provider'] = {'@type': 'Organization', 'name': 'DGhost 3D', 'url': render.RENDER_SITE + '/'}
+        out = site_page(page, lang, '', t['title'], t['desc'], main_html, ld)
+        write('render/' + ('' if lang == 'en' else f'{lang}/') + 'index.html', out)
+    page = localize(tpl, 'en', i18n, render.CSS + render.LEGAL_CSS)
+    for kind in render.LEGAL:
+        title = render.LEGAL[kind][0]
+        out = site_page(page, 'en', f'{kind}/', f'{title} | DGhost 3D', f'{title} of DGhost 3D, an embeddable 3D viewer for CS2 item listings.',
+                        render.legal_main(kind))
+        out = re.sub(r'<link rel="alternate" hreflang="[^"]*" href="[^"]*">\n?', '', out)
+        write(f'render/{kind}/index.html', out)
+    urls = [render.site_url(l) for l in render.SITE_LANGS] + [render.site_url('en', f'{k}/') for k in render.LEGAL]
+    write('render/sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+          + ''.join(f'<url><loc>{u}</loc></url>\n' for u in urls) + '</urlset>\n')
+    write('render/robots.txt', f'User-agent: *\nAllow: /\n\nSitemap: {render.RENDER_SITE}/sitemap.xml\n')
+
+
 def build_render(tpl, i18n, iso):
     """Страница сервиса 3D-рендера (ru, uz, en). Возвращает {путь: дата изменения} для sitemap."""
     lm_path = os.path.join(ROOT, 'data', 'render-lastmod.json')
@@ -501,12 +552,13 @@ def main():
     prices = build_prices(tpl_prices, i18n, lots, iso)
     prices.update(build_guides(tpl_prices, i18n, iso))
     prices.update(build_render(tpl_prices, i18n, iso))
+    build_render_site(tpl_prices, i18n)
     write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n'
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
           + ''.join(f'<url><loc>{u}</loc><lastmod>{iso}</lastmod><changefreq>daily</changefreq></url>\n' for u in pages)
           + ''.join(f'<url><loc>{SITE}/{k}/</loc><lastmod>{v}</lastmod></url>\n' for k, v in sorted(prices.items()))
           + '</urlset>\n')
-    write('robots.txt', f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
+    write('robots.txt', f'User-agent: *\nAllow: /\nDisallow: /render/\n\nSitemap: {SITE}/sitemap.xml\n')
     print(f'Готово: {len(pages) + len(prices)} страниц, лотов {len(lots)}{"" if fresh else " (из кэша)"}')
 
 
