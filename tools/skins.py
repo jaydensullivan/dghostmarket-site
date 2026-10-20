@@ -131,6 +131,18 @@ CSS = """
 """
 
 
+def steam_img_attrs(url, sizes):
+    """src + srcset для картинки Steam. Сервер Steam отдаёт уменьшенные копии
+    по суффиксу /256fx256f, /360fx360f; без суффикса — 512×384. Браузер сам
+    выбирает: на ПК в узкой колонке — лёгкую, на телефоне с плотным экраном —
+    полную, так что качество там не падает."""
+    if '/economy/image/' not in url or re.search(r'/\d+fx\d+f/?$', url):
+        return f'src="{esc(url)}"'
+    u = url.rstrip('/')
+    return (f'src="{esc(u)}/360fx360f" srcset="{esc(u)}/256fx256f 256w, {esc(u)}/360fx360f 360w, {esc(u)} 512w" '
+            f'sizes="{sizes}"')
+
+
 def esc(s):
     return html.escape(str(s), quote=True)
 
@@ -270,7 +282,8 @@ def skin_main(skin, lang, lots, related, rate, lot_card):
         facts.append((t['case'], ', '.join(skin['crates'])))
     facts_html = '<dl class="facts-list">' + ''.join(f'<dt>{esc(a)}</dt><dd>{esc(b)}</dd>' for a, b in facts) + '</dl>'
 
-    img = f'<img src="{esc(skin["image"])}" alt="{esc(name)}" width="560" height="420">' if skin['image'] else ''
+    img = (f'<img {steam_img_attrs(skin["image"], "(max-width:760px) 100vw, 280px")} alt="{esc(name)}" '
+           f'width="560" height="420" fetchpriority="high">') if skin['image'] else ''
     found = matching_lots(skin, lots)
     if found:
         sale = (f'<section class="box"><h2>{esc(t["on_sale"])}</h2><div class="lots">'
