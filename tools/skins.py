@@ -18,6 +18,12 @@ import json
 import os
 import re
 
+# 3D-виджет на страницах цен (тот же просмотрщик, что в мини-аппе).
+# Ключ публичный (pk_…), выдан командой /embed_new в боте для нашего
+# сайта: показы считаются отдельно от клиентов. Пустой — кнопок нет.
+EMBED_KEY = ''
+EMBED_URL = 'https://app.dghostmarket.uz/embed.html'
+
 TOP_SKINS = 400          # сколько скинов: самые торгуемые по количеству на Skinport
 RELATED = 6              # ссылок на соседние скины того же оружия
 
@@ -49,6 +55,7 @@ T = {
         'on_sale': 'В продаже на DGhostMarket', 'buy': 'Купить',
         'none': 'Сейчас этого скина нет в продаже. Добавьте его в «Хочу» — бот напишет, как только он появится, а продавцам подскажет, что его ищут.',
         'notify': 'Сообщить, когда появится',
+        'rotate3d': 'Покрутить в 3D',
         'sell': 'Есть такой скин? Выставите его за минуту — DGhostMarket подскажет цену по рынку, оплата через гаранта.',
         'sell_btn': 'Продать на DGhostMarket',
         'related': 'Другие скины {weapon}',
@@ -72,6 +79,7 @@ T = {
         'on_sale': 'DGhostMarket’da sotuvda', 'buy': 'Sotib olish',
         'none': 'Hozir bu skin sotuvda yo‘q. Uni «Xohlayman» ro‘yxatiga qo‘shing — paydo bo‘lishi bilan bot xabar beradi, sotuvchilarga esa uni qidirishayotganini aytadi.',
         'notify': 'Paydo bo‘lganda xabar berish',
+        'rotate3d': '3D da aylantirish',
         'sell': 'Sizda shu skin bormi? Bir daqiqada sotuvga qo‘ying — DGhostMarket bozor narxini taklif qiladi, to‘lov kafil orqali.',
         'sell_btn': 'DGhostMarket’da sotish',
         'related': '{weapon} uchun boshqa skinlar',
@@ -95,6 +103,7 @@ T = {
         'on_sale': 'On sale at DGhostMarket', 'buy': 'Buy',
         'none': 'This skin isn’t on sale right now. Add it to your wishlist — the bot will message you as soon as it appears and let sellers know it’s wanted.',
         'notify': 'Notify me when available',
+        'rotate3d': 'Rotate in 3D',
         'sell': 'Own this skin? List it in a minute — DGhostMarket suggests a market price, payment goes through escrow.',
         'sell_btn': 'Sell on DGhostMarket',
         'related': 'More {weapon} skins',
@@ -108,8 +117,14 @@ T = {
     },
 }
 
+P3D_JS = ('<script>document.querySelectorAll("[data-3d]").forEach(function(b){b.addEventListener("click",function(){'
+          'var w=b.parentNode,f=document.createElement("iframe");f.src=b.dataset["3d"];f.title="3D";'
+          'f.setAttribute("allow","xr-spatial-tracking; fullscreen");f.setAttribute("allowfullscreen","");'
+          'var i=w.querySelector("img");if(i)i.replaceWith(f);else w.prepend(f);b.remove();});});</script>')
+
 CSS = """
 .price-head{display:grid;grid-template-columns:280px minmax(0,1fr);gap:28px;align-items:start;margin:8px 0 28px}
+.p3d{min-width:0}.p3d iframe{display:block;width:100%;aspect-ratio:1/1;border:1px solid rgba(255,255,255,0.06);border-radius:18px;background:#130e1c}.p3d-btn{width:100%;margin-top:10px}
 .price-head img{width:100%;max-width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;background:radial-gradient(ellipse at 50% 40%,#2a2238,#130e1c 70%);border-radius:18px;border:1px solid rgba(255,255,255,0.06)}
 .ptable{width:100%;border-collapse:collapse;background:var(--surface);border-radius:14px;overflow:hidden;font-size:15px}
 .ptable th,.ptable td{padding:11px 14px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.06)}
@@ -177,6 +192,16 @@ def load_inputs(root):
     if not isinstance(meta, list) or not isinstance(market, list) or not rate:
         return None, 'пустые данные'
     return (meta, market, rate), None
+
+
+def load_models(root):
+    """Названия скинов, для которых есть 3D-модель (data/models-3d.json, его
+    обновляет сборка в Actions из 3d.dghostmarket.com), в нижнем регистре."""
+    try:
+        names = json.load(open(os.path.join(root, 'data', 'models-3d.json'), encoding='utf-8'))
+    except Exception:
+        return set()
+    return {str(n).lower() for n in names} if isinstance(names, list) else set()
 
 
 def collect(meta, market, rate, keep=()):
@@ -247,7 +272,7 @@ def matching_lots(skin, lots):
     return sorted(out, key=lambda s: int(s['price']))
 
 
-def skin_main(skin, lang, lots, related, rate, lot_card):
+def skin_main(skin, lang, lots, related, rate, lot_card, has3d=False):
     t = T[lang]
     p = prefix(lang)
     name = skin['base']
@@ -284,6 +309,11 @@ def skin_main(skin, lang, lots, related, rate, lot_card):
 
     img = (f'<img {steam_img_attrs(skin["image"], "(max-width:760px) 100vw, 280px")} alt="{esc(name)}" '
            f'width="560" height="420" fetchpriority="high">') if skin['image'] else ''
+    if has3d and EMBED_KEY:
+        # Кнопка вместо тяжёлого 3D сразу: просмотрщик грузится только по нажатию.
+        src = f'{EMBED_URL}?key={EMBED_KEY}&skin={urlquote(skin["name"])}&lang={lang}'
+        img = (f'<div class="p3d">{img}<button type="button" class="btn ghost p3d-btn" data-3d="{esc(src)}">'
+               f'🧊 {esc(t["rotate3d"])}</button></div>' + P3D_JS)
     found = matching_lots(skin, lots)
     if found:
         sale = (f'<section class="box"><h2>{esc(t["on_sale"])}</h2><div class="lots">'
