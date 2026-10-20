@@ -322,6 +322,7 @@ def build_prices(tpl, i18n, lots, iso):
     meta, market, rate = inputs
     keep = {k.split('/')[-1] for k in lastmod if k.startswith('prices/')}
     items = skins.collect(meta, market, rate, keep)
+    models3d = skins.load_models(ROOT)
     if not items:
         print('⚠️ Ни одного скина с ценой — страницы цен не трогаю', file=sys.stderr)
         return lastmod
@@ -359,7 +360,7 @@ def build_prices(tpl, i18n, lots, iso):
             same = by_weapon.get(s['weapon'], [])
             i = same.index(s)
             related = (same[i + 1:] + same[:i])[:skins.RELATED]
-            body = skins.skin_main(s, lang, lots, related, rate, lot_card)
+            body = skins.skin_main(s, lang, lots, related, rate, lot_card, has3d=s['base'].lower() in models3d)
             out = re.sub(r'<main id="top">.*?</main>', lambda m: body, out, count=1, flags=re.S)
             put(base + kind, tag_links(out, 'price'))
     # Страницы, которые больше не собираются (скина нет в справочнике), оставляем в sitemap.

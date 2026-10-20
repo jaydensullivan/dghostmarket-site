@@ -53,6 +53,31 @@ jobs:
           except Exception as e:
               print('::warning::курс ЦБ не получен, остаётся прошлый:', repr(e))
           PY
+      # Какие скины есть в 3D — для кнопки «Покрутить в 3D» на страницах цен.
+      # 3D-сервер отдаёт файлы только нашим сайтам (по заголовку Origin).
+      # Не скачалось — остаётся прошлый data/models-3d.json.
+      - name: Список 3D-моделей
+        run: |
+          for f in index extra; do
+            curl -fsSL --retry 3 -H "Origin: https://dghostmarket.uz" -o /tmp/m-$f.json \
+              https://3d.dghostmarket.com/models/$f.json || rm -f /tmp/m-$f.json
+          done
+          python3 - <<'PY'
+          import json
+          try:
+              index = json.load(open('/tmp/m-index.json'))
+              assert isinstance(index, dict) and len(index) > 100
+          except Exception as e:
+              print('::warning::список 3D-моделей не получен, остаётся прошлый:', repr(e))
+              raise SystemExit(0)
+          try:
+              extra = json.load(open('/tmp/m-extra.json'))
+          except Exception:
+              extra = {}
+          names = {n for n, v in {**extra, **index}.items() if isinstance(v, dict) and v.get('model')}
+          json.dump(sorted(names), open('data/models-3d.json', 'w'), ensure_ascii=False, indent=0)
+          print('3D-моделей:', len(names))
+          PY
       - name: Сборка
         run: python3 tools/build.py
       - name: Коммит изменений
