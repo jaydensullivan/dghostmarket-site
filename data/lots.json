@@ -9,8 +9,8 @@
 "float_value": null,
 "pattern": null,
 "weapon_type": "Charm",
-"market_price_uzs": 8190,
-"view_count": 9,
+"market_price_uzs": 8431,
+"view_count": 13,
 "created_at": "2026-10-19T17:32:09.479166+00:00"
 },
 {
@@ -234,7 +234,7 @@
 "pattern": "147",
 "weapon_type": "Desert Eagle",
 "market_price_uzs": 11202,
-"view_count": 60,
+"view_count": 61,
 "created_at": "2026-09-06T07:03:54.246781+00:00"
 },
 {
@@ -402,7 +402,7 @@
 "pattern": "547",
 "weapon_type": "AWP",
 "market_price_uzs": 457579,
-"view_count": 62,
+"view_count": 63,
 "created_at": "2026-08-31T10:53:27.597694+00:00"
 },
 {
