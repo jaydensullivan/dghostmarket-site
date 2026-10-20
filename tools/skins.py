@@ -21,7 +21,7 @@ import re
 # 3D-виджет на страницах цен (тот же просмотрщик, что в мини-аппе).
 # Ключ публичный (pk_…), выдан командой /embed_new в боте для нашего
 # сайта: показы считаются отдельно от клиентов. Пустой — кнопок нет.
-EMBED_KEY = ''
+EMBED_KEY = 'pk_t8OmVrXdGBHXUduePmG4'
 EMBED_URL = 'https://app.dghostmarket.uz/embed.html'
 
 TOP_SKINS = 400          # сколько скинов: самые торгуемые по количеству на Skinport
