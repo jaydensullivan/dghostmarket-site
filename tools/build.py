@@ -33,6 +33,14 @@ import skins
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = 'https://dghostmarket.uz'
 API = 'https://api.dghostmarket.uz/api/skins'
+PRO_API = 'https://api.dghostmarket.uz/api/pro/tiers'
+# Если бот недоступен и выгрузки ещё нет — тарифы как в боте (PRO_TIERS).
+PRO_FALLBACK = {'first_discount_percent': 50, 'tiers': [
+    {'key': 'start', 'price': 50000, 'days': 30, 'own_channels': 1, 'own_posts': 5, 'own_auctions': 0, 'own_raffles': 0, 'market_posts': 1, 'approval': False, 'popular': False},
+    {'key': 'pro', 'price': 150000, 'days': 30, 'own_channels': 5, 'own_posts': 20, 'own_auctions': 10, 'own_raffles': 4, 'market_posts': 3, 'approval': False, 'popular': True},
+    {'key': 'business', 'price': 400000, 'days': 30, 'own_channels': 15, 'own_posts': 60, 'own_auctions': 30, 'own_raffles': 10, 'market_posts': 5, 'approval': False, 'popular': False},
+    {'key': 'garant', 'price': 1199990, 'days': 30, 'own_channels': None, 'own_posts': None, 'own_auctions': None, 'own_raffles': None, 'market_posts': None, 'approval': True, 'popular': False},
+]}
 APP = 'https://app.dghostmarket.uz/'
 LANGS = ['ru', 'uz', 'en']
 PREVIEW = 6
@@ -86,7 +94,44 @@ L = {
     },
 }
 
-EXTRA_CSS = """
+# Блок тарифов PRO на главной (цены и лимиты — из бота, /api/pro/tiers).
+PRO_T = {
+    'ru': {'names': {'start': 'Старт', 'pro': 'PRO', 'business': 'Бизнес', 'garant': 'Гарант'},
+           'per': 'за {d} дней', 'popular': 'Популярный', 'unlimited': 'Без ограничений', 'by_request': 'по заявке',
+           'channels': 'Своих каналов: {v}', 'posts': 'Постов в свои каналы в день: {v}',
+           'market': 'Постов в канал @dghostmarket в день: {v}',
+           'auctions': 'Аукционов в месяц: {v}', 'raffles': 'Розыгрышей в месяц: {v}', 'none': '—',
+           'first': 'Скидка {p}% на первый месяц', 'cta': 'Подключить в приложении'},
+    'uz': {'names': {'start': 'Start', 'pro': 'PRO', 'business': 'Biznes', 'garant': 'Garant'},
+           'per': '{d} kun uchun', 'popular': 'Ommabop', 'unlimited': 'Cheklovsiz', 'by_request': 'ariza orqali',
+           'channels': "O'z kanallari: {v}", 'posts': "O'z kanallariga kunlik postlar: {v}",
+           'market': '@dghostmarket kanaliga kunlik postlar: {v}',
+           'auctions': 'Oyiga auksionlar: {v}', 'raffles': "Oyiga o'yinlar: {v}", 'none': '—',
+           'first': 'Birinchi oyga {p}% chegirma', 'cta': 'Ilovada ulash'},
+    'en': {'names': {'start': 'Start', 'pro': 'PRO', 'business': 'Business', 'garant': 'Garant'},
+           'per': 'per {d} days', 'popular': 'Popular', 'unlimited': 'Unlimited', 'by_request': 'on request',
+           'channels': 'Own channels: {v}', 'posts': 'Posts to own channels per day: {v}',
+           'market': 'Posts to @dghostmarket per day: {v}',
+           'auctions': 'Auctions per month: {v}', 'raffles': 'Giveaways per month: {v}', 'none': '—',
+           'first': '{p}% off the first month', 'cta': 'Subscribe in the app'},
+}
+
+PRO_CSS = """
+.pro-tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.pro-tier{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:20px;position:relative}
+.pro-tier.pop{border-color:var(--violet)}
+.pro-tier .tag{position:absolute;top:-11px;left:16px;background:var(--grad);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.pro-tier h3{margin:0 0 6px;font-size:18px}
+.pro-tier .p{font-size:24px;font-weight:800}
+.pro-tier .per{color:var(--muted);font-size:13px;margin-bottom:12px}
+.pro-tier ul{list-style:none;padding:0;margin:0;color:var(--muted);font-size:14px}
+.pro-tier li{margin:5px 0}
+.pro-first{margin-top:16px;font-weight:600}
+@media(max-width:900px){.pro-tiers{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.pro-tiers{grid-template-columns:1fr}}
+"""
+
+EXTRA_CSS = PRO_CSS + """
 .lots{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .lot{display:flex;flex-direction:column;background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:16px;text-decoration:none;color:inherit}
 .lot img{width:100%;aspect-ratio:4/3;object-fit:contain;background:radial-gradient(ellipse at 50% 40%,#2a2238,#130e1c 70%);border-radius:12px;margin-bottom:12px}
@@ -145,6 +190,62 @@ def load_lots():
             return [], False
 
 
+def load_pro_tiers():
+    """Тарифы PRO из бота; при сбое — прошлая выгрузка, затем PRO_FALLBACK."""
+    cache = os.path.join(ROOT, 'data', 'pro-tiers.json')
+    try:
+        req = urllib.request.Request(PRO_API, headers={'User-Agent': 'dghostmarket-site-build'})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            data = json.loads(r.read().decode('utf-8'))
+        if not data.get('tiers'):
+            raise ValueError('no tiers')
+        json.dump(data, open(cache, 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
+        return data
+    except Exception as e:
+        print(f'⚠️ Тарифы PRO недоступны ({e!r}) — беру data/pro-tiers.json', file=sys.stderr)
+        try:
+            return json.load(open(cache, encoding='utf-8'))
+        except Exception:
+            return PRO_FALLBACK
+
+
+def pro_tiers_html(data, lang):
+    t = PRO_T[lang]
+    cur = L[lang]['cur']
+
+    def lim(v):
+        if v is None:
+            return t['unlimited']
+        return t['none'] if not v else str(v)
+
+    cards = []
+    for x in data.get('tiers', []):
+        name = t['names'].get(x['key'], x.get('name', x['key']))
+        rows = [t['channels'].format(v=lim(x.get('own_channels'))), t['posts'].format(v=lim(x.get('own_posts'))),
+                t['market'].format(v=lim(x.get('market_posts'))), t['auctions'].format(v=lim(x.get('own_auctions'))),
+                t['raffles'].format(v=lim(x.get('own_raffles')))]
+        if x.get('approval'):
+            rows = [t['unlimited'] + ' · ' + t['by_request']]
+        tag = f'<span class="tag">{esc(t["popular"])}</span>' if x.get('popular') else ''
+        cards.append(f'<div class="pro-tier{" pop" if x.get("popular") else ""}">{tag}<h3>{esc(name)}</h3>'
+                     f'<div class="p">{money(x["price"])} {esc(cur)}</div>'
+                     f'<div class="per">{esc(t["per"].format(d=x.get("days", 30)))}</div>'
+                     '<ul>' + ''.join(f'<li>{esc(r)}</li>' for r in rows) + '</ul></div>')
+    first = data.get('first_discount_percent') or 0
+    first_html = f'<p class="pro-first">🎁 {esc(t["first"].format(p=first))}</p>' if first else ''
+    return f'<div class="pro-tiers">{"".join(cards)}</div>{first_html}'
+
+
+def faq_jsonld(page):
+    """FAQPage из блока «Частые вопросы» уже переведённой страницы."""
+    qa = re.findall(r'<details><summary[^>]*>(.*?)</summary><p[^>]*>(.*?)</p></details>', page, flags=re.S)
+    if not qa:
+        return None
+    strip = lambda h: html.unescape(re.sub(r'<[^>]+>', '', h)).strip()
+    return {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
+        {'@type': 'Question', 'name': strip(q), 'acceptedAnswer': {'@type': 'Answer', 'text': strip(a)}} for q, a in qa]}
+
+
 def lot_card(s, lang):
     t = L[lang]
     name = ('StatTrak™ ' if s.get('stattrak') else '') + (s.get('title') or '')
@@ -188,6 +289,8 @@ def site_jsonld(lang):
     return [
         {'@context': 'https://schema.org', '@type': 'Organization', 'name': 'DGhostMarket', 'url': SITE + '/',
          'logo': SITE + '/apple-touch-icon.png', 'email': 'support@dghostmarket.uz',
+         'contactPoint': {'@type': 'ContactPoint', 'contactType': 'customer support', 'email': 'support@dghostmarket.uz',
+                          'url': 'https://t.me/DGhostMarket_Support', 'availableLanguage': ['uz', 'ru', 'en']},
          'sameAs': ['https://t.me/dghostmarketbot', 'https://t.me/dghostmarket']},
         {'@context': 'https://schema.org', '@type': 'WebSite', 'name': 'DGhostMarket', 'url': page_url(lang, 'home'),
          'inLanguage': lang},
@@ -227,6 +330,10 @@ def localize(tpl, lang, i18n, css=''):
     prefix = '' if lang == 'ru' else f'/{lang}'
     s = s.replace('href="/skins/"', f'href="{prefix}/skins/"').replace('href="/prices/"', f'href="{prefix}/prices/"')
     s = s.replace('href="/3d-api/"', f'href="{prefix}/3d-api/"')
+    # Статьи есть на ru и uz; документы бот отдаёт на ru и uz (?lang=uz).
+    if lang == 'uz':
+        s = s.replace('href="/guides/', 'href="/uz/guides/')
+        s = s.replace('/legal?doc=', '/legal?lang=uz&amp;doc=')
     # Картинки и иконки — от корня сайта (страницы лежат и в подпапках).
     s = re.sub(r'(href|src)="(favicon\.png|apple-touch-icon\.png|logo\.webp|og\.jpg)"', r'\1="/\2"', s)
     s = s.replace('</style>', EXTRA_CSS + css + '</style>', 1)
@@ -333,8 +440,21 @@ def tag_links(text, page):
     return text.replace('href="https://t.me/dghostmarketbot"', f'href="https://t.me/dghostmarketbot?start={src}"')
 
 
+HOME_ANCHORS = ('how', 'view3d', 'fees', 'sellers', 'safety', 'faq', 'docs', 'contacts')
+
+
+def fix_anchors(rel, text):
+    """Меню шапки ведёт на разделы главной: на внутренних страницах
+    «#how» никуда не ведёт — превращаем в «/#how» (или «/uz/#how»)."""
+    if not rel.endswith('.html') or rel in ('index.html', 'uz/index.html', 'en/index.html') or rel.startswith('render/'):
+        return text
+    base = '/uz/' if rel.startswith('uz/') else '/en/' if rel.startswith('en/') else '/'
+    return re.sub(r'href="#(' + '|'.join(HOME_ANCHORS) + ')"', lambda m: f'href="{base}#{m.group(1)}"', text)
+
+
 def write(rel, text):
     """Пишет файл, только если он изменился. True — файл новый или другой."""
+    text = fix_anchors(rel, text)
     path = os.path.join(ROOT, rel)
     try:
         if open(path, encoding='utf-8').read() == text:
@@ -529,12 +649,15 @@ def main():
     tpl = open(os.path.join(ROOT, 'src', 'index.html'), encoding='utf-8').read()
     i18n = json.load(open(os.path.join(ROOT, 'i18n.json'), encoding='utf-8'))
     lots, fresh = load_lots()
+    pro = load_pro_tiers()
     today = dt.datetime.now(dt.timezone(dt.timedelta(hours=5))).strftime('%d.%m.%Y')
     pages = []
     for lang in LANGS:
         page = localize(tpl, lang, i18n)
         home = set_meta(page, lang, 'home')
-        home = home.replace('<!--JSONLD-->', '\n'.join(jsonld_tag(o) for o in site_jsonld(lang)))
+        home = home.replace('<!--PRO_TIERS-->', pro_tiers_html(pro, lang))
+        faq = faq_jsonld(home)
+        home = home.replace('<!--JSONLD-->', '\n'.join(jsonld_tag(o) for o in site_jsonld(lang) + ([faq] if faq else [])))
         home = home.replace('<!--LOTS-->', preview_section(lots, lang)).replace('<!--HERO_LOTS-->', hero_lots(lots, lang))
         base = '' if lang == 'ru' else f'{lang}/'
         write(base + 'index.html', tag_links(home, 'home'))

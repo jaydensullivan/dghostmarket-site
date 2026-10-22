@@ -47,7 +47,7 @@ CSS = """
 .guide-list span{color:var(--muted);font-size:14px}
 """
 
-UPDATED = '2026-10-14'
+UPDATED = '2026-10-22'
 
 GUIDES = [
     {
@@ -67,19 +67,23 @@ GUIDES = [
 <h2>Покупка за 5 шагов</h2>
 <ol>
 <li><b>Откройте маркет.</b> В Telegram — бот @dghostmarketbot, в браузере — app.dghostmarket.uz (вход через Telegram).</li>
-<li><b>Привяжите trade-ссылку</b> в профиле. Покупателю проверка документов не нужна.</li>
+<li><b>Привяжите trade-ссылку</b> в профиле. Для обычных покупок проверка документов не нужна — её попросят только для крупной покупки или если у нового аккаунта исчерпан лимит.</li>
 <li><b>Выберите скин.</b> Фильтры по оружию, износу, float и цене. На карточке видно, насколько цена ниже или выше рынка. Ориентир — <a href="/prices/">цены на скины в сумах</a>.</li>
-<li><b>Оплатите.</b> Пополните баланс способом из приложения и нажмите «Купить». Деньги удерживает площадка — продавец их пока не получает.</li>
+<li><b>Оплатите.</b> Нажмите «Купить» и выберите способ: перевод по реквизитам <b>со своей карты</b> с чеком или оплата с баланса. Деньги удерживает площадка — продавец их пока не получает.</li>
 <li><b>Примите обмен в Steam.</b> Продавец отправляет его в течение 24 часов. Проверьте, что в обмене именно тот предмет, примите его и нажмите «Получил» в приложении.</li>
 </ol>
-<div class="tip">Не отправил продавец за 24 часа — заказ отменяется сам, деньги возвращаются на баланс. Пришло не то — откройте спор, выплата продавцу замораживается до решения администрации.</div>
+<div class="tip">Не отправил продавец за 24 часа — заказ отменяется сам, а деньги возвращаются тем же путём, каким вы платили: на баланс — сразу, на карту — в течение 3 банковских дней. Пришло не то — откройте спор, выплата продавцу замораживается до решения администрации.</div>
+<h2>Платить — только со своей карты</h2>
+<p>При оплате переводом укажите имя владельца карты, с которой платите. Платёж с чужой карты отклоняется, а деньги возвращаются на карту отправителя — возврат делается только на ту карту, с которой пришли деньги. Это защита от мошенников и «грязных» денег.</p>
+<p>У новых аккаунтов есть лимиты на число и сумму покупок. Чтобы покупать больше, пройдите проверку личности в профиле.</p>
 <h2>Сколько это стоит</h2>
-<p>Покупатель платит ровно цену с карточки лота — комиссии площадки для покупателя нет. Если выбранный способ пополнения берёт свой сбор, итог показывается до оплаты.</p>
+<p>Покупатель платит ровно цену с карточки лота — комиссии площадки для покупателя нет. Если выбранный способ оплаты берёт свой сбор, итог показывается до оплаты.</p>
 <h2>Почему это безопасно</h2>
 <ul>
 <li>Продавцы проходят проверку: документ, селфи и номер телефона через Telegram.</li>
-<li>Деньги уходят продавцу только через 8 дней — дольше, чем Steam позволяет отменить обмен.</li>
+<li>Деньги уходят продавцу только через 8 дней — дольше, чем Steam позволяет отменить обмен. Подробнее — <a href="/guides/how-escrow-works/">как работает гарант</a>.</li>
 <li>Вся сделка идёт внутри приложения, каждый шаг сохраняется в истории.</li>
+<li>Скин можно рассмотреть в 3D со всех сторон и поставить на стол в натуральную величину кнопкой «На столе» (с телефона).</li>
 </ul>
 <p>Никогда не платите продавцу напрямую «в обход» площадки — тогда защиты нет. Больше советов — в статье <a href="/guides/avoid-scams/">как не попасть на мошенников</a>.</p>
 ''',
@@ -99,19 +103,23 @@ GUIDES = [
 <h2>5 qadamda xarid</h2>
 <ol>
 <li><b>Marketni oching.</b> Telegram’da — @dghostmarketbot boti, brauzerda — app.dghostmarket.uz (Telegram orqali kirish).</li>
-<li><b>Profilda trade havolani ulang.</b> Xaridor hujjat tekshiruvidan o‘tmaydi.</li>
+<li><b>Profilda trade havolani ulang.</b> Oddiy xaridlar uchun hujjat tekshiruvi kerak emas — u faqat katta xarid uchun yoki yangi akkauntning limiti tugaganda so‘raladi.</li>
 <li><b>Skinni tanlang.</b> Qurol, holat, float va narx bo‘yicha filtrlar bor. Kartochkada narx bozordan qancha arzon yoki qimmatligi ko‘rinadi. Mo‘ljal uchun — <a href="/prices/">skinlarning so‘mdagi narxlari</a>.</li>
-<li><b>To‘lang.</b> Balansni ilovadagi usul bilan to‘ldiring va «Sotib olish»ni bosing. Pulni platforma ushlab turadi — sotuvchi uni hali olmaydi.</li>
+<li><b>To‘lang.</b> «Sotib olish»ni bosing va usulni tanlang: rekvizitlarga <b>o‘z kartangizdan</b> o‘tkazma (chek bilan) yoki balansdan to‘lov. Pulni platforma ushlab turadi — sotuvchi uni hali olmaydi.</li>
 <li><b>Steam’da almashuvni qabul qiling.</b> Sotuvchi uni 24 soat ichida yuboradi. Almashuvda aynan o‘sha buyum ekanini tekshiring, qabul qiling va ilovada «Oldim»ni bosing.</li>
 </ol>
-<div class="tip">Sotuvchi 24 soat ichida yubormasa — buyurtma o‘zi bekor bo‘ladi, pul balansga qaytadi. Boshqa buyum kelsa — nizo oching, ma’muriyat qaror qilguncha sotuvchiga to‘lov muzlatiladi.</div>
+<div class="tip">Sotuvchi 24 soat ichida yubormasa — buyurtma o‘zi bekor bo‘ladi, pul esa qanday to‘lagan bo‘lsangiz, o‘sha yo‘l bilan qaytadi: balansga — darhol, kartaga — 3 bank kuni ichida. Boshqa buyum kelsa — nizo oching, ma’muriyat qaror qilguncha sotuvchiga to‘lov muzlatiladi.</div>
+<h2>To‘lov — faqat o‘z kartangizdan</h2>
+<p>O‘tkazma orqali to‘lashda to‘layotgan kartangiz egasining ismini ko‘rsating. Birovning kartasidan to‘lov rad etiladi, pul esa jo‘natuvchining kartasiga qaytariladi — qaytarish faqat pul kelgan kartaga qilinadi. Bu firibgarlar va «iflos» pullardan himoya.</p>
+<p>Yangi akkauntlar uchun xaridlar soni va summasiga limitlar bor. Ko‘proq xarid qilish uchun profilda shaxsingizni tasdiqlang.</p>
 <h2>Bu qancha turadi</h2>
-<p>Xaridor lot kartochkasidagi narxni to‘laydi — xaridor uchun platforma komissiyasi yo‘q. Tanlangan to‘ldirish usuli o‘z yig‘imini olsa, yakuniy summa to‘lovdan oldin ko‘rsatiladi.</p>
+<p>Xaridor lot kartochkasidagi narxni to‘laydi — xaridor uchun platforma komissiyasi yo‘q. Tanlangan to‘lov usuli o‘z yig‘imini olsa, yakuniy summa to‘lovdan oldin ko‘rsatiladi.</p>
 <h2>Nega bu xavfsiz</h2>
 <ul>
 <li>Sotuvchilar tekshiruvdan o‘tadi: hujjat, selfi va Telegram orqali telefon raqami.</li>
-<li>Pul sotuvchiga faqat 8 kundan keyin o‘tadi — bu Steam almashuvni bekor qilishga ruxsat beradigan muddatdan uzoqroq.</li>
+<li>Pul sotuvchiga faqat 8 kundan keyin o‘tadi — bu Steam almashuvni bekor qilishga ruxsat beradigan muddatdan uzoqroq. Batafsil — <a href="/guides/how-escrow-works/">kafil qanday ishlaydi</a>.</li>
 <li>Butun bitim ilova ichida o‘tadi, har bir qadam tarixda saqlanadi.</li>
+<li>Skinni 3D’da har tomondan ko‘rish va «Stolda» tugmasi bilan stolingizga haqiqiy o‘lchamda qo‘yish mumkin (telefondan).</li>
 </ul>
 <p>Hech qachon sotuvchiga platformani «chetlab» to‘g‘ridan-to‘g‘ri pul to‘lamang — unda himoya bo‘lmaydi. Ko‘proq maslahatlar — <a href="/guides/avoid-scams/">firibgarlarga qanday aldanmaslik</a> maqolasida.</p>
 ''',
@@ -128,19 +136,20 @@ GUIDES = [
 <h2>1. Пройдите проверку продавца</h2>
 <p>Один раз перед первым лотом: номер телефона через Telegram, фото документа и селфи. Решение принимает администратор. Это защищает покупателей — и поэтому они охотнее покупают у проверенных продавцов.</p>
 <h2>2. Выставьте предмет</h2>
-<p>Откройте «Продать» и выберите скин прямо из инвентаря Steam — фото, float и наклейки подтянутся сами. Инвентарь в Steam должен быть открыт.</p>
+<p>Откройте «Продать» → «Выбрать из инвентаря Steam». Приложение покажет, сколько стоит ваш инвентарь по ценам рынка, а у каждого скина — его цену. Отметьте скины — фото, float и наклейки подтянутся сами. Хотите быстро — кнопка «Все по рынку −3%» выставит всё выбранное одним нажатием. Инвентарь в Steam должен быть открыт.</p>
 <h2>3. Поставьте цену</h2>
 <p>Приложение подскажет рыночную цену. Лоты дешевле рынка продаются заметно быстрее, а сильно завышенные висят неделями — бот предложит снизить цену, если лот долго не продаётся. Сверьтесь с <a href="/prices/">ценами на скины в сумах</a>.</p>
 <h2>4. Передайте предмет за 24 часа</h2>
 <p>Когда скин купят, придёт уведомление. Отправьте обмен в Steam на trade-ссылку покупателя и нажмите «Отправил». Не успели за 24 часа — заказ отменяется, а деньги возвращаются покупателю.</p>
 <h2>5. Получите деньги</h2>
-<p>Через 8 дней после оплаты сумма за вычетом 5% приходит на баланс. Steam позволяет отменить обмен в течение 7 дней, поэтому выплата идёт чуть позже — так защищены обе стороны. Вывод на банковскую карту — без комиссии площадки, минимум 50 000 сум.</p>
+<p>Через 8 дней после оплаты сумма за вычетом 5% приходит на баланс. Steam позволяет отменить обмен в течение 7 дней, поэтому выплата идёт чуть позже — так защищены обе стороны. В сделках с повышенным риском (крупная сумма, новый аккаунт покупателя) удержание может быть дольше — срок видно в сделке. Вывод на свою банковскую карту — без комиссии площадки, минимум 50 000 сум: <a href="/guides/withdraw-money/">как вывести деньги</a>.</p>
 <div class="tip">Пример: скин продан за 1 000 000 сум. Комиссия 5% — 50 000 сум, на баланс придёт 950 000 сум.</div>
 <h2>Советы, чтобы продать быстрее</h2>
 <ul>
 <li>Ставьте цену на уровне рынка или чуть ниже.</li>
 <li>Выставляйте все скины сразу — у покупателя больше выбора, у вас больше шансов.</li>
-<li>Посмотрите раздел «Хочу»: там видно, какие скины сейчас ищут покупатели.</li>
+<li>Посмотрите раздел «Хочу»: там видно, какие скины сейчас ищут покупатели. Если ваш скин кто-то ищет, бот сам подскажет.</li>
+<li>Есть свой Telegram-канал? С <a href="/guides/pro-for-sellers/">тарифами PRO</a> лоты публикуются в него одной кнопкой, а ещё можно проводить аукционы и розыгрыши.</li>
 </ul>
 ''',
         },
@@ -153,19 +162,20 @@ GUIDES = [
 <h2>1. Sotuvchi tekshiruvidan o‘ting</h2>
 <p>Birinchi lotdan oldin bir marta: Telegram orqali telefon raqami, hujjat surati va selfi. Qarorni administrator qabul qiladi. Bu xaridorlarni himoya qiladi — shuning uchun ular tekshirilgan sotuvchilardan bajonidil sotib olishadi.</p>
 <h2>2. Buyumni sotuvga qo‘ying</h2>
-<p>«Sotish»ni oching va skinni to‘g‘ridan-to‘g‘ri Steam inventaridan tanlang — surat, float va stikerlar o‘zi chiqadi. Steam’dagi inventar ochiq bo‘lishi kerak.</p>
+<p>«Sotish» → «Steam inventaridan tanlash»ni oching. Ilova inventaringiz bozor narxida qancha turishini va har bir skinning narxini ko‘rsatadi. Skinlarni belgilang — surat, float va stikerlar o‘zi chiqadi. Tezroq kerak bo‘lsa — «Hammasi bozor narxidan −3%» tugmasi tanlanganlarning hammasini bir bosishda qo‘yadi. Steam’dagi inventar ochiq bo‘lishi kerak.</p>
 <h2>3. Narx qo‘ying</h2>
 <p>Ilova bozor narxini taklif qiladi. Bozordan arzon lotlar ancha tez sotiladi, juda qimmat qo‘yilganlari esa haftalab turib qoladi — lot uzoq sotilmasa, bot narxni tushirishni taklif qiladi. <a href="/prices/">Skinlarning so‘mdagi narxlari</a> bilan solishtiring.</p>
 <h2>4. Buyumni 24 soat ichida topshiring</h2>
 <p>Skin sotib olinganda xabar keladi. Xaridorning trade havolasiga Steam’da almashuv yuboring va «Yubordim»ni bosing. 24 soatda ulgurmasangiz — buyurtma bekor bo‘ladi, pul xaridorga qaytadi.</p>
 <h2>5. Pulni oling</h2>
-<p>To‘lovdan 8 kun o‘tgach, summa 5% chegirilgan holda balansga tushadi. Steam almashuvni 7 kun ichida bekor qilishga ruxsat beradi, shuning uchun to‘lov biroz keyinroq bo‘ladi — shunda ikkala tomon ham himoyalangan. Bank kartasiga yechish — platforma komissiyasisiz, kamida 50 000 so‘m.</p>
+<p>To‘lovdan 8 kun o‘tgach, summa 5% chegirilgan holda balansga tushadi. Steam almashuvni 7 kun ichida bekor qilishga ruxsat beradi, shuning uchun to‘lov biroz keyinroq bo‘ladi — shunda ikkala tomon ham himoyalangan. Xavfi yuqori bitimlarda (katta summa, xaridorning yangi akkaunti) ushlab turish uzoqroq bo‘lishi mumkin — muddat bitimda ko‘rinadi. O‘z bank kartangizga yechish — platforma komissiyasisiz, kamida 50 000 so‘m: <a href="/guides/withdraw-money/">pulni qanday yechish</a>.</p>
 <div class="tip">Misol: skin 1 000 000 so‘mga sotildi. 5% komissiya — 50 000 so‘m, balansga 950 000 so‘m tushadi.</div>
 <h2>Tezroq sotish uchun maslahatlar</h2>
 <ul>
 <li>Narxni bozor darajasida yoki biroz pastroq qo‘ying.</li>
 <li>Barcha skinlarni birdaniga qo‘ying — xaridorda tanlov ko‘p, sizda imkoniyat ko‘p.</li>
-<li>«Xohlayman» bo‘limiga qarang: hozir xaridorlar qaysi skinlarni qidirayotgani ko‘rinadi.</li>
+<li>«Xohlayman» bo‘limiga qarang: hozir xaridorlar qaysi skinlarni qidirayotgani ko‘rinadi. Skiningizni kimdir qidirsa, bot o‘zi aytadi.</li>
+<li>O‘z Telegram-kanalingiz bormi? <a href="/guides/pro-for-sellers/">PRO tariflari</a> bilan lotlar unga bitta tugma bilan chiqadi, auksion va o‘yinlar ham o‘tkazish mumkin.</li>
 </ul>
 ''',
         },
@@ -358,6 +368,171 @@ GUIDES = [
 <li>Narxni bozor bilan solishtiring: lot kartochkasida narx qancha past yoki baland ekani ko‘rinadi.</li>
 </ul>
 <p>Holatlar bo‘yicha narxlarni ko‘rish — <a href="/prices/">CS2 skinlari narxlari so‘mda katalogida</a>.</p>
+''',
+        },
+    },
+    {
+        'slug': 'how-escrow-works',
+        'ru': {
+            'title': 'Как работает гарант на DGhostMarket — холд, Trade Protection и споры',
+            'h1': 'Как работает гарант: кто и когда держит деньги',
+            'desc': 'Что происходит с деньгами в сделке на DGhostMarket: почему продавец получает оплату через 8 дней, что такое Trade Protection в Steam, как открыть спор и как вернуть деньги.',
+            'body': '''
+<p>Гарант — это площадка: она держит деньги покупателя, пока сделка не завершится. Так ни покупателю, ни продавцу не нужно доверять друг другу на слово.</p>
+<h2>Путь денег в сделке</h2>
+<ol>
+<li><b>Покупатель платит.</b> Деньги поступают площадке и удерживаются — продавец их ещё не получает.</li>
+<li><b>Продавец передаёт скин</b> обменом в Steam в течение 24 часов и отмечает «Отправил».</li>
+<li><b>Покупатель принимает обмен</b> и нажимает «Получил».</li>
+<li><b>Через 8 дней с оплаты</b> деньги за вычетом комиссии площадки уходят на баланс продавца.</li>
+</ol>
+<h2>Почему 8 дней</h2>
+<p>В Steam действует Trade Protection: 7 дней после обмена его можно отменить и вернуть предмет. Если бы продавец получал деньги сразу, он мог бы отменить обмен и остаться и с деньгами, и со скином. Площадка держит оплату чуть дольше этого срока — тогда обе стороны защищены.</p>
+<div class="tip">В сделках с повышенным риском (крупная сумма, новый аккаунт покупателя, подозрение на мошенничество) удержание может быть дольше — срок всегда видно в сделке.</div>
+<h2>Если что-то пошло не так</h2>
+<ul>
+<li><b>Продавец не передал скин за 24 часа</b> — заказ отменяется сам, деньги возвращаются покупателю.</li>
+<li><b>Пришёл не тот предмет</b> (другой износ, без StatTrak™, без наклеек) — не принимайте обмен и откройте спор в разделе «Сделки». Выплата продавцу замораживается, пока администрация не разберётся.</li>
+<li><b>Покупатель молчит</b> — если за 8 дней он не подтвердил получение и не открыл спор, заказ считается выполненным и деньги уходят продавцу.</li>
+</ul>
+<h2>Как возвращаются деньги</h2>
+<p>Только тем же путём, каким пришли: оплату с баланса — на баланс сразу, перевод с карты — на ту же карту в течение 3 банковских дней. На другие карты и счета возврат не делается — это защита от мошенников.</p>
+<p>Главное правило: <b>не платите продавцу напрямую</b> «в обход» площадки. Тогда гаранта нет и вернуть деньги некому. Больше советов — <a href="/guides/avoid-scams/">как не попасть на мошенников</a>.</p>
+''',
+        },
+        'uz': {
+            'title': 'DGhostMarket’da kafil qanday ishlaydi — xold, Trade Protection va nizolar',
+            'h1': 'Kafil qanday ishlaydi: pulni kim va qachon ushlab turadi',
+            'desc': 'DGhostMarket’dagi bitimda pul bilan nima bo‘ladi: nega sotuvchi to‘lovni 8 kundan keyin oladi, Steam’dagi Trade Protection nima, nizo qanday ochiladi va pul qanday qaytariladi.',
+            'body': '''
+<p>Kafil — bu platforma: bitim tugaguncha xaridorning pulini u ushlab turadi. Shunda xaridor ham, sotuvchi ham bir-birining so‘ziga ishonishi shart emas.</p>
+<h2>Bitimda pulning yo‘li</h2>
+<ol>
+<li><b>Xaridor to‘laydi.</b> Pul platformaga tushadi va ushlab turiladi — sotuvchi uni hali olmaydi.</li>
+<li><b>Sotuvchi skinni</b> 24 soat ichida Steam almashuvi orqali topshiradi va «Yubordim»ni bosadi.</li>
+<li><b>Xaridor almashuvni qabul qiladi</b> va «Oldim»ni bosadi.</li>
+<li><b>To‘lovdan 8 kun o‘tgach</b> pul platforma komissiyasi chegirilgan holda sotuvchi balansiga o‘tadi.</li>
+</ol>
+<h2>Nega 8 kun</h2>
+<p>Steam’da Trade Protection amal qiladi: almashuvdan keyin 7 kun ichida uni bekor qilib, buyumni qaytarish mumkin. Agar sotuvchi pulni darhol olsa, almashuvni bekor qilib, ham pul, ham skin bilan qolishi mumkin edi. Platforma to‘lovni bu muddatdan biroz uzoqroq ushlab turadi — shunda ikkala tomon ham himoyalangan.</p>
+<div class="tip">Xavfi yuqori bitimlarda (katta summa, xaridorning yangi akkaunti, firibgarlikka shubha) ushlab turish uzoqroq bo‘lishi mumkin — muddat har doim bitimda ko‘rinadi.</div>
+<h2>Agar nimadir noto‘g‘ri bo‘lsa</h2>
+<ul>
+<li><b>Sotuvchi skinni 24 soatda topshirmadi</b> — buyurtma o‘zi bekor bo‘ladi, pul xaridorga qaytadi.</li>
+<li><b>Boshqa buyum keldi</b> (boshqa holat, StatTrak™siz, stikersiz) — almashuvni qabul qilmang va «Bitimlar» bo‘limida nizo oching. Ma’muriyat hal qilguncha sotuvchiga to‘lov muzlatiladi.</li>
+<li><b>Xaridor javob bermayapti</b> — agar 8 kun ichida olganini tasdiqlamasa va nizo ochmasa, buyurtma bajarilgan hisoblanadi va pul sotuvchiga o‘tadi.</li>
+</ul>
+<h2>Pul qanday qaytariladi</h2>
+<p>Faqat qanday kelgan bo‘lsa, o‘sha yo‘l bilan: balansdan to‘lov — balansga darhol, kartadan o‘tkazma — o‘sha kartaga 3 bank kuni ichida. Boshqa karta va hisoblarga qaytarilmaydi — bu firibgarlardan himoya.</p>
+<p>Asosiy qoida: <b>sotuvchiga platformani «chetlab» to‘g‘ridan-to‘g‘ri pul to‘lamang</b>. Unda kafil bo‘lmaydi va pulni qaytaradigan hech kim yo‘q. Ko‘proq maslahatlar — <a href="/guides/avoid-scams/">firibgarlarga qanday aldanmaslik</a>.</p>
+''',
+        },
+    },
+    {
+        'slug': 'withdraw-money',
+        'ru': {
+            'title': 'Как вывести деньги с DGhostMarket на карту — сроки и правила',
+            'h1': 'Как вывести деньги с баланса на карту',
+            'desc': 'Как продавцу вывести деньги с DGhostMarket на банковскую карту: проверка личности, минимальная сумма, сроки обработки заявки и почему вывод только на свою карту.',
+            'body': '''
+<p>Деньги за проданные скины приходят на баланс в приложении через 8 дней после оплаты. Оттуда их можно вывести на банковскую карту.</p>
+<h2>Как вывести</h2>
+<ol>
+<li><b>Пройдите проверку личности</b>, если ещё не проходили: номер телефона через Telegram, фото документа и селфи. Продавцы проходят её перед первым лотом.</li>
+<li><b>Откройте «Профиль» → «Вывести».</b></li>
+<li><b>Укажите сумму и карту.</b> Минимум — 50 000 сум.</li>
+<li><b>Отправьте заявку.</b> Администратор обрабатывает заявки вручную, как правило в течение 24 часов. Когда деньги отправлены, бот пришлёт уведомление.</li>
+</ol>
+<h2>Только на свою карту</h2>
+<p>Карта для вывода должна принадлежать вам — тому, кто прошёл проверку. На карты родственников и друзей площадка вывод не делает. Так никто не сможет вывести ваши деньги, даже если получит доступ к аккаунту.</p>
+<h2>Комиссия</h2>
+<p>Площадка не берёт плату за вывод. Если банк или платёжная система берёт свой сбор за перевод, его оплачивает продавец — так записано в оферте.</p>
+<h2>Что видно на балансе</h2>
+<ul>
+<li><b>Доступно</b> — можно вывести прямо сейчас.</li>
+<li><b>В холде</b> — деньги за продажи, по которым ещё не прошли 8 дней. Они станут доступны автоматически.</li>
+</ul>
+<div class="tip">Почему 8 дней и что такое холд — в статье <a href="/guides/how-escrow-works/">как работает гарант</a>.</div>
+''',
+        },
+        'uz': {
+            'title': 'DGhostMarket’dan pulni kartaga qanday yechish — muddatlar va qoidalar',
+            'h1': 'Balansdan pulni kartaga qanday yechish',
+            'desc': 'Sotuvchi DGhostMarket’dan pulni bank kartasiga qanday yechadi: shaxsni tasdiqlash, eng kam summa, arizani ko‘rib chiqish muddati va nega faqat o‘z kartangizga.',
+            'body': '''
+<p>Sotilgan skinlar uchun pul to‘lovdan 8 kun o‘tgach ilovadagi balansga tushadi. U yerdan uni bank kartasiga yechish mumkin.</p>
+<h2>Qanday yechiladi</h2>
+<ol>
+<li><b>Shaxsingizni tasdiqlang</b>, agar hali qilmagan bo‘lsangiz: Telegram orqali telefon raqami, hujjat surati va selfi. Sotuvchilar buni birinchi lotdan oldin o‘tadi.</li>
+<li><b>«Profil» → «Yechish»ni oching.</b></li>
+<li><b>Summa va kartani kiriting.</b> Eng kami — 50 000 so‘m.</li>
+<li><b>Arizani yuboring.</b> Administrator arizalarni qo‘lda, odatda 24 soat ichida ko‘rib chiqadi. Pul yuborilganda bot xabar beradi.</li>
+</ol>
+<h2>Faqat o‘z kartangizga</h2>
+<p>Yechish kartasi sizga — tekshiruvdan o‘tgan shaxsga tegishli bo‘lishi kerak. Qarindosh va do‘stlarning kartalariga platforma pul yechmaydi. Shunda akkauntingizga kimdir kirib olsa ham, pulingizni yecha olmaydi.</p>
+<h2>Komissiya</h2>
+<p>Platforma pul yechish uchun haq olmaydi. Agar bank yoki to‘lov tizimi o‘tkazma uchun yig‘im olsa, uni sotuvchi to‘laydi — bu ofertada yozilgan.</p>
+<h2>Balansda nima ko‘rinadi</h2>
+<ul>
+<li><b>Mavjud</b> — hozir yechish mumkin.</li>
+<li><b>Xoldda</b> — 8 kuni hali o‘tmagan sotuvlar uchun pul. U avtomatik ravishda mavjud bo‘ladi.</li>
+</ul>
+<div class="tip">Nega 8 kun va xold nima — <a href="/guides/how-escrow-works/">kafil qanday ishlaydi</a> maqolasida.</div>
+''',
+        },
+    },
+    {
+        'slug': 'pro-for-sellers',
+        'ru': {
+            'title': 'Тарифы PRO для продавцов скинов и владельцев Telegram-каналов | DGhostMarket',
+            'h1': 'Тарифы PRO: продажи через свой Telegram-канал',
+            'desc': 'Что дают тарифы PRO на DGhostMarket: 3D-видео и GIF лотов, публикация в канал @dghostmarket и в свои каналы, аукционы и розыгрыши для подписчиков. Скидка на первый месяц.',
+            'body': '''
+<p>Покупать и продавать на DGhostMarket можно бесплатно. Платные тарифы нужны тем, кто хочет, чтобы его лоты видело больше людей, и тем, у кого есть свой Telegram-канал или группа.</p>
+<h2>Что дают тарифы</h2>
+<ul>
+<li><b>3D-видео и GIF лотов.</b> Вместо обычной картинки — крутящийся 3D-ролик именно вашего скина: с его износом, паттерном и наклейками. В чатах и каналах он цепляет лучше.</li>
+<li><b>Публикация в канале @dghostmarket.</b> Ваш лот увидят все подписчики канала маркета.</li>
+<li><b>Публикация в свои каналы одной кнопкой.</b> Подключите канал — бот будет выкладывать туда ваши лоты с кнопкой «Купить» под постом.</li>
+<li><b>Аукционы в своём канале.</b> Подписчики делают ставки в мини-приложении, победитель оплачивает через гаранта.</li>
+<li><b>Розыгрыши в своём канале.</b> Под постом кнопка «Участвовать», победителя выбирает бот.</li>
+</ul>
+<h2>Тарифы</h2>
+<p>Есть четыре тарифа на 30 дней — Старт, PRO, Бизнес и Гарант. Они отличаются числом каналов, постов в день, аукционов и розыгрышей в месяц. Тариф «Гарант» — без ограничений и подключается по заявке. Актуальные цены — <a href="/#sellers">на главной странице</a> и в приложении: «Профиль» → тарифы.</p>
+<div class="tip">На первую покупку подписки действует скидка. Для крупных каналов и магазинов обсуждаем индивидуальные условия — напишите в поддержку.</div>
+<h2>Как подключить канал</h2>
+<ol>
+<li>Добавьте бота @dghostmarketbot администратором своего канала с правом «Публикация сообщений».</li>
+<li>В приложении откройте «Профиль» → блок «Мои каналы» и впишите @имя канала или ссылку.</li>
+<li>Готово: под каждым вашим лотом появится кнопка публикации в этот канал.</li>
+</ol>
+<p>Подписка оплачивается с баланса сразу за 30 дней. Автопродления нет — продлите сами, когда захотите.</p>
+''',
+        },
+        'uz': {
+            'title': 'Skin sotuvchilari va Telegram-kanal egalari uchun PRO tariflar | DGhostMarket',
+            'h1': 'PRO tariflar: o‘z Telegram-kanalingiz orqali savdo',
+            'desc': 'DGhostMarket’da PRO tariflari nima beradi: lotlarning 3D-videosi va GIF, @dghostmarket kanaliga va o‘z kanallaringizga e’lon, obunachilar uchun auksion va o‘yinlar. Birinchi oyga chegirma.',
+            'body': '''
+<p>DGhostMarket’da sotib olish va sotish bepul. Pullik tariflar lotlarini ko‘proq odam ko‘rishini xohlaganlar va o‘z Telegram-kanali yoki guruhi borlar uchun.</p>
+<h2>Tariflar nima beradi</h2>
+<ul>
+<li><b>Lotlarning 3D-videosi va GIF.</b> Oddiy rasm o‘rniga aynan sizning skiningizning aylanib turadigan 3D-roligi: uning holati, naqshi va stikerlari bilan. Chat va kanallarda ko‘proq e’tibor tortadi.</li>
+<li><b>@dghostmarket kanalida e’lon.</b> Lotingizni market kanalining barcha obunachilari ko‘radi.</li>
+<li><b>O‘z kanallaringizga bitta tugma bilan.</b> Kanalni ulang — bot lotlaringizni unga ostida «Sotib olish» tugmasi bilan chiqaradi.</li>
+<li><b>Kanalingizda auksionlar.</b> Obunachilar mini-ilovada stavka qiladi, g‘olib kafil orqali to‘laydi.</li>
+<li><b>Kanalingizda o‘yinlar (konkurslar).</b> Post ostida «Qatnashish» tugmasi, g‘olibni bot tanlaydi.</li>
+</ul>
+<h2>Tariflar</h2>
+<p>30 kunlik to‘rtta tarif bor — Start, PRO, Biznes va Garant. Ular kanallar, kunlik postlar, oylik auksion va o‘yinlar soni bilan farq qiladi. «Garant» tarifi — cheklovsiz va ariza orqali ulanadi. Dolzarb narxlar — <a href="/#sellers">bosh sahifada</a> va ilovada: «Profil» → tariflar.</p>
+<div class="tip">Obunani birinchi marta sotib olishda chegirma bor. Yirik kanallar va do‘konlar bilan individual shartlarni kelishamiz — qo‘llab-quvvatlashga yozing.</div>
+<h2>Kanalni qanday ulash</h2>
+<ol>
+<li>@dghostmarketbot botini kanalingizga «Xabarlarni e’lon qilish» huquqi bilan administrator qilib qo‘shing.</li>
+<li>Ilovada «Profil» → «Mening kanallarim» blokini oching va kanalning @nomi yoki havolasini kiriting.</li>
+<li>Tayyor: har bir lotingiz ostida shu kanalga e’lon qilish tugmasi paydo bo‘ladi.</li>
+</ol>
+<p>Obuna balansdan 30 kunga birdaniga to‘lanadi. Avtomatik uzaytirish yo‘q — xohlaganingizda o‘zingiz uzaytirasiz.</p>
 ''',
         },
     },

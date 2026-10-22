@@ -4,6 +4,7 @@
 и видео в разработке — в тарифах его нет.
 Тарифы — в PLANS (цены в долларах; суммы в сумах — по RATE, округлены).
 """
+import os
 import html
 from urllib.parse import quote
 
@@ -20,7 +21,17 @@ DEMO_SKINS = [
     ('★ Butterfly Knife | Doppler', 0.02, 905),
 ]
 SUPPORT_MAIL = 'support@dghostmarket.uz'
-RATE = 11900  # сум за $ — только для подписи «≈ … сум» у тарифов
+def _load_rate(default=11900):
+    """Курс сум за $ из data/rate.json (его обновляет build.py) — только для подписи «≈ … сум»."""
+    try:
+        import json as _json
+        with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'rate.json'), encoding='utf-8') as f:
+            return float(_json.load(f)['usd_uzs']) or default
+    except Exception:
+        return default
+
+
+RATE = _load_rate()
 
 # Лимиты в месяц; None — «по договору», 0 — нет в тарифе.
 PLANS = [

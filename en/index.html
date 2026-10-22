@@ -14,8 +14,9 @@
 <link rel="alternate" hreflang="uz" href="https://dghostmarket.uz/uz/">
 <link rel="alternate" hreflang="en" href="https://dghostmarket.uz/en/">
 <link rel="alternate" hreflang="x-default" href="https://dghostmarket.uz/">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DGhostMarket", "url": "https://dghostmarket.uz/", "logo": "https://dghostmarket.uz/apple-touch-icon.png", "email": "support@dghostmarket.uz", "sameAs": ["https://t.me/dghostmarketbot", "https://t.me/dghostmarket"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DGhostMarket", "url": "https://dghostmarket.uz/", "logo": "https://dghostmarket.uz/apple-touch-icon.png", "email": "support@dghostmarket.uz", "contactPoint": {"@type": "ContactPoint", "contactType": "customer support", "email": "support@dghostmarket.uz", "url": "https://t.me/DGhostMarket_Support", "availableLanguage": ["uz", "ru", "en"]}, "sameAs": ["https://t.me/dghostmarketbot", "https://t.me/dghostmarket"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "DGhostMarket", "url": "https://dghostmarket.uz/en/", "inLanguage": "en"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What if the seller doesn't transfer the item?", "acceptedAnswer": {"@type": "Answer", "text": "If within 24 hours of payment the seller hasn't marked the transfer and the item isn't in your Steam inventory, the order is cancelled automatically and you get your money back."}}, {"@type": "Question", "name": "Why does the seller get paid after 8 days?", "acceptedAnswer": {"@type": "Answer", "text": "Steam allows a trade to be reversed within 7 days. The platform holds the payment a little longer so the buyer isn't left without the item, and the seller isn't left without the money."}}, {"@type": "Question", "name": "Do buyers need to get verified?", "acceptedAnswer": {"@type": "Answer", "text": "Not for regular purchases: just sign in with Telegram and add your Steam trade link. For a large purchase, or once a new account hits its limit, the platform will ask you to verify your identity. Sellers are verified before their first listing."}}, {"@type": "Question", "name": "Can I pay with someone else's card?", "acceptedAnswer": {"@type": "Answer", "text": "No. When paying by transfer you enter the cardholder's name, and you can only pay from your own card. A payment from someone else's card is declined and refunded to the sender's card."}}, {"@type": "Question", "name": "How and when are refunds made?", "acceptedAnswer": {"@type": "Answer", "text": "The same way you paid: to your balance right away, to a card within 3 banking days of the refund decision. Refunds are never sent to other cards or accounts."}}, {"@type": "Question", "name": "Is the platform affiliated with Valve or Steam?", "acceptedAnswer": {"@type": "Answer", "text": "No. DGhostMarket is an independent platform. Items move via standard Steam trades between users' accounts."}}, {"@type": "Question", "name": "How do I contact support?", "acceptedAnswer": {"@type": "Answer", "text": "Message @DGhostMarket_Support on Telegram or email support@dghostmarket.uz — we reply within 24 hours. For a specific deal, it's easiest to write from the app."}}]}</script>
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -180,6 +181,19 @@ section{padding:44px 0}
 .langs a::after{content:'';position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
 footer a,.crumbs a{display:inline-block;padding:6px 0}
 
+.pro-tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.pro-tier{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:20px;position:relative}
+.pro-tier.pop{border-color:var(--violet)}
+.pro-tier .tag{position:absolute;top:-11px;left:16px;background:var(--grad);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.pro-tier h3{margin:0 0 6px;font-size:18px}
+.pro-tier .p{font-size:24px;font-weight:800}
+.pro-tier .per{color:var(--muted);font-size:13px;margin-bottom:12px}
+.pro-tier ul{list-style:none;padding:0;margin:0;color:var(--muted);font-size:14px}
+.pro-tier li{margin:5px 0}
+.pro-first{margin-top:16px;font-weight:600}
+@media(max-width:900px){.pro-tiers{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.pro-tiers{grid-template-columns:1fr}}
+
 .lots{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .lot{display:flex;flex-direction:column;background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:16px;text-decoration:none;color:inherit}
 .lot img{width:100%;aspect-ratio:4/3;object-fit:contain;background:radial-gradient(ellipse at 50% 40%,#2a2238,#130e1c 70%);border-radius:12px;margin-bottom:12px}
@@ -205,6 +219,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <nav class="links">
 <a href="#how" data-i18n="nav_how">How it works</a>
 <a href="#fees" data-i18n="nav_fees">Fees</a>
+<a href="#sellers" data-i18n="nav_sellers">For sellers</a>
 <a href="#safety" data-i18n="nav_safety">Safety</a>
 <a href="#docs" data-i18n="nav_docs">Documents</a>
 <a href="#contacts" data-i18n="nav_contacts">Contacts</a>
@@ -260,8 +275,8 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <h3 data-i18n="how_buyer">🛒 For buyers</h3>
 <ol class="steps">
 <li><b data-i18n="b1_t">Pick a skin</b><span data-i18n="b1">A catalog with filters by weapon, quality, float and price.</span></li>
-<li><b data-i18n="b2_t">Pay for the order</b><span data-i18n="b2">With a method from the app. The platform holds the money — the seller doesn't get it yet.</span></li>
-<li><b data-i18n="b3_t">Receive the item</b><span data-i18n="b3">The seller sends a Steam trade within 24 hours. If not — you get a refund.</span></li>
+<li><b data-i18n="b2_t">Pay for the order</b><span data-i18n="b2">By transfer from your own card with a receipt, or from your balance. The platform holds the money — the seller doesn't get it yet.</span></li>
+<li><b data-i18n="b3_t">Receive the item</b><span data-i18n="b3">The seller sends a Steam trade within 24 hours. If not — you're refunded the same way you paid.</span></li>
 <li><b data-i18n="b4_t">Confirm receipt</b><span data-i18n="b4">Accept the trade in Steam and tap “Received”. Something wrong — open a dispute.</span></li>
 </ol>
 </div>
@@ -269,11 +284,25 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <h3 data-i18n="how_seller">💼 For sellers</h3>
 <ol class="steps">
 <li><b data-i18n="s1_t">Get verified</b><span data-i18n="s1">Phone number via Telegram, a document photo and a selfie — once, before your first listing.</span></li>
-<li><b data-i18n="s2_t">List an item</b><span data-i18n="s2">Straight from your Steam inventory: photo, float and stickers are filled in automatically.</span></li>
+<li><b data-i18n="s2_t">List an item</b><span data-i18n="s2">Straight from your Steam inventory: photo, float and stickers are filled in, and the app suggests the market price. List your whole inventory at once with “All at market −3%”.</span></li>
 <li><b data-i18n="s3_t">Transfer within 24 hours</b><span data-i18n="s3">After payment, send the Steam trade and mark it as “Sent”.</span></li>
-<li><b data-i18n="s4_t">Get paid</b><span data-i18n="s4">8 days after payment, the amount minus 5% lands on your balance. Card withdrawals are free.</span></li>
+<li><b data-i18n="s4_t">Get paid</b><span data-i18n="s4">8 days after payment, the amount minus 5% lands on your balance. Withdrawals to your own card carry no platform fee.</span></li>
 </ol>
 </div>
+</div>
+</div>
+</section>
+
+<section id="view3d">
+<div class="wrap">
+<div class="sec-head">
+<h2 data-i18n="v3_title">The skin in 3D and on your desk</h2>
+<p data-i18n="v3_sub">See the exact item you're buying, not a stock Steam image.</p>
+</div>
+<div class="cards">
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></div><h3 data-i18n="v3_1_t">3D from every side</h3><p data-i18n="v3_1">Rotate the skin, zoom into details, switch the background to a CS2 map. Models are built from the game files.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M12 8l4 2.2v4.4L12 17l-4-2.4v-4.4z"/></svg></div><h3 data-i18n="v3_2_t">“On the table” — AR</h3><p data-i18n="v3_2">From your phone, place the skin on a desk or floor at real size: a knife is about 25 cm, an AK about 88 cm.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h16"/><path d="M6 18V9M10 18V6M14 18v-8M18 18v-5"/></svg></div><h3 data-i18n="v3_3_t">Float, pattern and stickers</h3><p data-i18n="v3_3">Wear, pattern and stickers are shown as on that exact listing, with the price next to the market price.</p></div>
 </div>
 </div>
 </section>
@@ -292,6 +321,22 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 </div>
 </section>
 
+<section id="sellers">
+<div class="wrap">
+<div class="sec-head">
+<h2 data-i18n="sel_title">For sellers and channel owners</h2>
+<p data-i18n="sel_sub">Listing is free. Plans are for those who want more reach and sell through their own Telegram channel.</p>
+</div>
+<div class="cards">
+<div class="card"><h3 data-i18n="sel_1_t">🎬 3D videos and GIFs</h3><p data-i18n="sel_1">A spinning 3D clip of your listing instead of a plain image — for chats and channels.</p></div>
+<div class="card"><h3 data-i18n="sel_2_t">📢 Posting to channels</h3><p data-i18n="sel_2">To @dghostmarket and your own channels in one tap — with a “Buy” button under the post.</p></div>
+<div class="card"><h3 data-i18n="sel_3_t">🔨 Auctions and giveaways</h3><p data-i18n="sel_3">Right in your channel: bids in the mini app, payment through escrow, the bot picks the giveaway winner.</p></div>
+</div>
+<div class="pro-tiers"><div class="pro-tier"><h3>Start</h3><div class="p">50 000 UZS</div><div class="per">per 30 days</div><ul><li>Own channels: 1</li><li>Posts to own channels per day: 5</li><li>Posts to @dghostmarket per day: 1</li><li>Auctions per month: —</li><li>Giveaways per month: —</li></ul></div><div class="pro-tier pop"><span class="tag">Popular</span><h3>PRO</h3><div class="p">150 000 UZS</div><div class="per">per 30 days</div><ul><li>Own channels: 5</li><li>Posts to own channels per day: 20</li><li>Posts to @dghostmarket per day: 3</li><li>Auctions per month: 10</li><li>Giveaways per month: 4</li></ul></div><div class="pro-tier"><h3>Business</h3><div class="p">400 000 UZS</div><div class="per">per 30 days</div><ul><li>Own channels: 15</li><li>Posts to own channels per day: 60</li><li>Posts to @dghostmarket per day: 5</li><li>Auctions per month: 30</li><li>Giveaways per month: 10</li></ul></div><div class="pro-tier"><h3>Garant</h3><div class="p">1 199 990 UZS</div><div class="per">per 30 days</div><ul><li>Unlimited · on request</li></ul></div></div><p class="pro-first">🎁 50% off the first month</p>
+<p class="note" data-i18n-html="sel_note">For large channels and shops we discuss custom terms — contact support.</p>
+</div>
+</section>
+
 <section id="safety">
 <div class="wrap">
 <div class="sec-head">
@@ -300,10 +345,10 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 </div>
 <div class="cards">
 <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2.5"/><path d="M14 10h4M14 14h3"/></svg></div><h3 data-i18n="c1_t">Verified sellers</h3><p data-i18n="c1">Passport or ID, a selfie with the document and a phone number confirmed via Telegram. An admin makes the decision.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3 data-i18n="c2_t">Protected payment</h3><p data-i18n="c2">Money is held for 8 days from payment — longer than Steam allows a trade to be reversed. Only then does it go to the seller.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3 data-i18n="c2_t">Protected payment</h3><p data-i18n="c2">Money is held for 8 days from payment — longer than Steam allows a trade to be reversed, and longer for higher-risk deals. Only then does it go to the seller.</p></div>
 <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3 data-i18n="c3_t">Strict deadlines</h3><p data-i18n="c3">24 hours to transfer the item. Miss it — the order is cancelled and the buyer is refunded.</p></div>
 <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3 data-i18n="c4_t">Disputes</h3><p data-i18n="c4">If the item doesn't arrive, the buyer opens a dispute. The payout is frozen until the admins sort it out.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div><h3 data-i18n="c5_t">Anti-fraud</h3><p data-i18n="c5">The system looks for linked accounts, reused numbers and suspicious deals. Stolen items mean a ban and frozen funds.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div><h3 data-i18n="c5_t">Anti-fraud</h3><p data-i18n="c5">Pay only from your own card; refunds go only back where the money came from. New accounts have limits. The system looks for linked accounts and suspicious deals.</p></div>
 <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><h3 data-i18n="c6_t">Clear history</h3><p data-i18n="c6">Every step is recorded: payment, transfer, confirmation, payout. The history is always available in the app.</p></div>
 </div>
 <div class="note" data-i18n="no_gambling">🚫 DGhostMarket is a platform for deals between players. We don't run gambling, don't sell cases and don't accept bets. Giveaways are free: no payment is required to take part.</div>
@@ -315,9 +360,11 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <div class="sec-head"><h2 data-i18n="faq_title">FAQ</h2></div>
 <details><summary data-i18n="q1">What if the seller doesn't transfer the item?</summary><p data-i18n="a1">If within 24 hours of payment the seller hasn't marked the transfer and the item isn't in your Steam inventory, the order is cancelled automatically and you get your money back.</p></details>
 <details><summary data-i18n="q2">Why does the seller get paid after 8 days?</summary><p data-i18n="a2">Steam allows a trade to be reversed within 7 days. The platform holds the payment a little longer so the buyer isn't left without the item, and the seller isn't left without the money.</p></details>
-<details><summary data-i18n="q3">Do buyers need to get verified?</summary><p data-i18n="a3">No. Buyers just sign in with Telegram and add their Steam trade link. Only sellers get verified.</p></details>
+<details><summary data-i18n="q3">Do buyers need to get verified?</summary><p data-i18n="a3">Not for regular purchases: just sign in with Telegram and add your Steam trade link. For a large purchase, or once a new account hits its limit, the platform will ask you to verify your identity. Sellers are verified before their first listing.</p></details>
+<details><summary data-i18n="q6">Can I pay with someone else's card?</summary><p data-i18n="a6">No. When paying by transfer you enter the cardholder's name, and you can only pay from your own card. A payment from someone else's card is declined and refunded to the sender's card.</p></details>
+<details><summary data-i18n="q7">How and when are refunds made?</summary><p data-i18n="a7">The same way you paid: to your balance right away, to a card within 3 banking days of the refund decision. Refunds are never sent to other cards or accounts.</p></details>
 <details><summary data-i18n="q4">Is the platform affiliated with Valve or Steam?</summary><p data-i18n="a4">No. DGhostMarket is an independent platform. Items move via standard Steam trades between users' accounts.</p></details>
-<details><summary data-i18n="q5">How do I contact support?</summary><p data-i18n="a5">Email support@dghostmarket.uz — we reply within 24 hours. For a specific deal, it's easiest to write from the app.</p></details>
+<details><summary data-i18n="q5">How do I contact support?</summary><p data-i18n="a5">Message @DGhostMarket_Support on Telegram or email support@dghostmarket.uz — we reply within 24 hours. For a specific deal, it's easiest to write from the app.</p></details>
 </div>
 </section>
 
@@ -325,7 +372,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <div class="wrap">
 <div class="sec-head">
 <h2 data-i18n="docs_title">Documents</h2>
-<p data-i18n="docs_sub">The rules the platform runs on. The current versions are always at these links.</p>
+<p data-i18n="docs_sub">The rules the platform runs on, in Uzbek and Russian. We announce changes at least 30 days in advance.</p>
 </div>
 <div class="docs">
 <a class="doc" href="https://api.dghostmarket.uz/legal?doc=terms"><b data-i18n="d1">Terms of use</b><span data-i18n="d1s">For all users</span></a>
@@ -341,6 +388,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <div class="panel">
 <h3 data-i18n="ct_title">Contacts</h3>
 <dl class="req">
+<dt data-i18n="ct_tg">Support on Telegram</dt><dd><a href="https://t.me/DGhostMarket_Support">@DGhostMarket_Support</a></dd>
 <dt data-i18n="ct_mail">Support</dt><dd><a href="mailto:support@dghostmarket.uz">support@dghostmarket.uz</a></dd>
 <dt data-i18n="ct_bot">Telegram bot</dt><dd><a href="https://t.me/dghostmarketbot?start=site_home">@dghostmarketbot</a></dd>
 <dt data-i18n="ct_time">Response</dt><dd data-i18n="ct_time_v">within 24 hours</dd>
@@ -362,7 +410,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <div class="wrap">
 <div class="cta-final">
 <h2 data-i18n="final_title">Ready for your first deal?</h2>
-<p data-i18n="final_sub">Open DGhostMarket in Telegram — no sign-up needed.</p>
+<p data-i18n="final_sub">Open DGhostMarket in Telegram — you sign in with Telegram, no separate sign-up needed.</p>
 <a class="btn primary" href="https://t.me/dghostmarketbot?start=site_home" data-i18n="cta_open">Open in Telegram</a>
 </div>
 </div>

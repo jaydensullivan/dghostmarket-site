@@ -179,6 +179,19 @@ section{padding:44px 0}
 .langs a::after{content:'';position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
 footer a,.crumbs a{display:inline-block;padding:6px 0}
 
+.pro-tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.pro-tier{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:20px;position:relative}
+.pro-tier.pop{border-color:var(--violet)}
+.pro-tier .tag{position:absolute;top:-11px;left:16px;background:var(--grad);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.pro-tier h3{margin:0 0 6px;font-size:18px}
+.pro-tier .p{font-size:24px;font-weight:800}
+.pro-tier .per{color:var(--muted);font-size:13px;margin-bottom:12px}
+.pro-tier ul{list-style:none;padding:0;margin:0;color:var(--muted);font-size:14px}
+.pro-tier li{margin:5px 0}
+.pro-first{margin-top:16px;font-weight:600}
+@media(max-width:900px){.pro-tiers{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.pro-tiers{grid-template-columns:1fr}}
+
 .lots{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .lot{display:flex;flex-direction:column;background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:16px;text-decoration:none;color:inherit}
 .lot img{width:100%;aspect-ratio:4/3;object-fit:contain;background:radial-gradient(ellipse at 50% 40%,#2a2238,#130e1c 70%);border-radius:12px;margin-bottom:12px}
@@ -202,11 +215,12 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <div class="wrap bar">
 <a class="brand" href="#top"><img src="/favicon.png" alt=""><span>DGhost<b>Market</b></span></a>
 <nav class="links">
-<a href="#how" data-i18n="nav_how">Qanday ishlaydi</a>
-<a href="#fees" data-i18n="nav_fees">Komissiyalar</a>
-<a href="#safety" data-i18n="nav_safety">Xavfsizlik</a>
-<a href="#docs" data-i18n="nav_docs">Hujjatlar</a>
-<a href="#contacts" data-i18n="nav_contacts">Kontaktlar</a>
+<a href="/uz/#how" data-i18n="nav_how">Qanday ishlaydi</a>
+<a href="/uz/#fees" data-i18n="nav_fees">Komissiyalar</a>
+<a href="/uz/#sellers" data-i18n="nav_sellers">Sotuvchilarga</a>
+<a href="/uz/#safety" data-i18n="nav_safety">Xavfsizlik</a>
+<a href="/uz/#docs" data-i18n="nav_docs">Hujjatlar</a>
+<a href="/uz/#contacts" data-i18n="nav_contacts">Kontaktlar</a>
 <a href="/uz/skins/" data-i18n="nav_prices">Narxlar</a>
 </nav>
 <div class="langs" role="group" aria-label="Language">

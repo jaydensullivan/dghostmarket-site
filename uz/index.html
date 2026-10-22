@@ -14,8 +14,9 @@
 <link rel="alternate" hreflang="uz" href="https://dghostmarket.uz/uz/">
 <link rel="alternate" hreflang="en" href="https://dghostmarket.uz/en/">
 <link rel="alternate" hreflang="x-default" href="https://dghostmarket.uz/">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DGhostMarket", "url": "https://dghostmarket.uz/", "logo": "https://dghostmarket.uz/apple-touch-icon.png", "email": "support@dghostmarket.uz", "sameAs": ["https://t.me/dghostmarketbot", "https://t.me/dghostmarket"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DGhostMarket", "url": "https://dghostmarket.uz/", "logo": "https://dghostmarket.uz/apple-touch-icon.png", "email": "support@dghostmarket.uz", "contactPoint": {"@type": "ContactPoint", "contactType": "customer support", "email": "support@dghostmarket.uz", "url": "https://t.me/DGhostMarket_Support", "availableLanguage": ["uz", "ru", "en"]}, "sameAs": ["https://t.me/dghostmarketbot", "https://t.me/dghostmarket"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "DGhostMarket", "url": "https://dghostmarket.uz/uz/", "inLanguage": "uz"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Sotuvchi buyumni yubormasa-chi?", "acceptedAnswer": {"@type": "Answer", "text": "To'lovdan keyin 24 soat ichida sotuvchi yuborishni belgilamasa va buyum Steam'ingizda paydo bo'lmasa, buyurtma avtomatik bekor qilinadi va pul qaytariladi."}}, {"@type": "Question", "name": "Nega sotuvchiga pul 8 kundan keyin tushadi?", "acceptedAnswer": {"@type": "Answer", "text": "Steam almashuvni 7 kun ichida bekor qilishga ruxsat beradi. Platforma to'lovni biroz uzoqroq ushlab turadi — xaridor buyumsiz, sotuvchi esa pulsiz qolmasligi uchun."}}, {"@type": "Question", "name": "Xaridor tekshiruvdan o'tishi kerakmi?", "acceptedAnswer": {"@type": "Answer", "text": "Oddiy xaridlar uchun — yo'q: Telegram orqali kirish va Steam almashuv havolasini bog'lash kifoya. Katta xarid uchun yoki yangi akkauntning limiti tugaganda platforma shaxsni tasdiqlashni so'raydi. Sotuvchilar birinchi lotdan oldin tekshiruvdan o'tadi."}}, {"@type": "Question", "name": "Birovning kartasidan to'lash mumkinmi?", "acceptedAnswer": {"@type": "Answer", "text": "Yo'q. O'tkazma orqali to'lashda karta egasining ismini ko'rsatasiz va faqat o'z kartangizdan to'lash mumkin. Birovning kartasidan to'lov rad etiladi, pul esa jo'natuvchining kartasiga qaytariladi."}}, {"@type": "Question", "name": "Pul qanday va qachon qaytariladi?", "acceptedAnswer": {"@type": "Answer", "text": "Qanday to'lagan bo'lsangiz, o'sha yo'l bilan: balansga — darhol, kartaga — qaytarish to'g'risidagi qarordan keyin 3 bank kuni ichida. Boshqa karta va hisoblarga qaytarilmaydi."}}, {"@type": "Question", "name": "Platforma Valve yoki Steam bilan bog'liqmi?", "acceptedAnswer": {"@type": "Answer", "text": "Yo'q. DGhostMarket — mustaqil platforma. Buyumlar foydalanuvchi akkauntlari o'rtasida standart Steam almashuvlari orqali o'tkaziladi."}}, {"@type": "Question", "name": "Qo'llab-quvvatlash bilan qanday bog'lanish mumkin?", "acceptedAnswer": {"@type": "Answer", "text": "Telegram'da @DGhostMarket_Support ga yoki support@dghostmarket.uz manziliga yozing — 24 soat ichida javob beramiz. Muayyan bitim bo'yicha to'g'ridan-to'g'ri ilovadan yozish qulayroq."}}]}</script>
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -180,6 +181,19 @@ section{padding:44px 0}
 .langs a::after{content:'';position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
 footer a,.crumbs a{display:inline-block;padding:6px 0}
 
+.pro-tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.pro-tier{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:20px;position:relative}
+.pro-tier.pop{border-color:var(--violet)}
+.pro-tier .tag{position:absolute;top:-11px;left:16px;background:var(--grad);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.pro-tier h3{margin:0 0 6px;font-size:18px}
+.pro-tier .p{font-size:24px;font-weight:800}
+.pro-tier .per{color:var(--muted);font-size:13px;margin-bottom:12px}
+.pro-tier ul{list-style:none;padding:0;margin:0;color:var(--muted);font-size:14px}
+.pro-tier li{margin:5px 0}
+.pro-first{margin-top:16px;font-weight:600}
+@media(max-width:900px){.pro-tiers{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.pro-tiers{grid-template-columns:1fr}}
+
 .lots{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .lot{display:flex;flex-direction:column;background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:16px;text-decoration:none;color:inherit}
 .lot img{width:100%;aspect-ratio:4/3;object-fit:contain;background:radial-gradient(ellipse at 50% 40%,#2a2238,#130e1c 70%);border-radius:12px;margin-bottom:12px}
@@ -205,6 +219,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <nav class="links">
 <a href="#how" data-i18n="nav_how">Qanday ishlaydi</a>
 <a href="#fees" data-i18n="nav_fees">Komissiyalar</a>
+<a href="#sellers" data-i18n="nav_sellers">Sotuvchilarga</a>
 <a href="#safety" data-i18n="nav_safety">Xavfsizlik</a>
 <a href="#docs" data-i18n="nav_docs">Hujjatlar</a>
 <a href="#contacts" data-i18n="nav_contacts">Kontaktlar</a>
@@ -260,8 +275,8 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <h3 data-i18n="how_buyer">🛒 Xaridorga</h3>
 <ol class="steps">
 <li><b data-i18n="b1_t">Skin tanlang</b><span data-i18n="b1">Qurol, sifat, float va narx bo'yicha filtrlari bor katalog.</span></li>
-<li><b data-i18n="b2_t">Buyurtmani to'lang</b><span data-i18n="b2">Ilovadagi usul bilan. Pulni platforma ushlab turadi — sotuvchi uni hali olmaydi.</span></li>
-<li><b data-i18n="b3_t">Buyumni oling</b><span data-i18n="b3">Sotuvchi 24 soat ichida Steam'da almashuv yuboradi. Yubormasa — pul qaytariladi.</span></li>
+<li><b data-i18n="b2_t">Buyurtmani to'lang</b><span data-i18n="b2">Rekvizitlarga o'z kartangizdan o'tkazma (chek bilan) yoki balansdan. Pulni platforma ushlab turadi — sotuvchi uni hali olmaydi.</span></li>
+<li><b data-i18n="b3_t">Buyumni oling</b><span data-i18n="b3">Sotuvchi 24 soat ichida Steam'da almashuv yuboradi. Yubormasa — pul qanday to'lagan bo'lsangiz, o'sha yo'l bilan qaytadi.</span></li>
 <li><b data-i18n="b4_t">Qabul qilishni tasdiqlang</b><span data-i18n="b4">Steam'da almashuvni qabul qiling va «Oldim»ni bosing. Muammo bo'lsa — nizo oching.</span></li>
 </ol>
 </div>
@@ -269,11 +284,25 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <h3 data-i18n="how_seller">💼 Sotuvchiga</h3>
 <ol class="steps">
 <li><b data-i18n="s1_t">Tekshiruvdan o'ting</b><span data-i18n="s1">Telegram orqali telefon raqami, hujjat surati va selfi — birinchi lotdan oldin bir marta.</span></li>
-<li><b data-i18n="s2_t">Buyumni joylang</b><span data-i18n="s2">To'g'ridan-to'g'ri Steam inventaridan: surat, float va stikerlar avtomatik qo'shiladi.</span></li>
+<li><b data-i18n="s2_t">Buyumni joylang</b><span data-i18n="s2">To'g'ridan-to'g'ri Steam inventaridan: surat, float va stikerlar o'zi qo'shiladi, ilova bozor narxini ko'rsatadi. Butun inventarni birdaniga qo'yish mumkin — «Hammasi bozor narxidan −3%».</span></li>
 <li><b data-i18n="s3_t">24 soat ichida yuboring</b><span data-i18n="s3">To'lovdan keyin Steam'da almashuv yuboring va «Yubordim»ni belgilang.</span></li>
-<li><b data-i18n="s4_t">Pulingizni oling</b><span data-i18n="s4">To'lovdan 8 kun o'tgach, 5% chegirilgan summa balansga tushadi. Kartaga yechish — komissiyasiz.</span></li>
+<li><b data-i18n="s4_t">Pulingizni oling</b><span data-i18n="s4">To'lovdan 8 kun o'tgach, 5% chegirilgan summa balansga tushadi. O'z kartangizga yechish — platforma komissiyasisiz.</span></li>
 </ol>
 </div>
+</div>
+</div>
+</section>
+
+<section id="view3d">
+<div class="wrap">
+<div class="sec-head">
+<h2 data-i18n="v3_title">Skin 3D'da va stolingizda</h2>
+<p data-i18n="v3_sub">Steam'dagi rasmni emas, aynan sotib olayotgan buyumingizni ko'ring.</p>
+</div>
+<div class="cards">
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></div><h3 data-i18n="v3_1_t">Har tomondan 3D</h3><p data-i18n="v3_1">Skinni aylantiring, detallarni yaqinlashtiring, fonni CS2 xaritasiga almashtiring. Modellar o'yin fayllaridan yig'ilgan.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M12 8l4 2.2v4.4L12 17l-4-2.4v-4.4z"/></svg></div><h3 data-i18n="v3_2_t">«Stolda» — AR</h3><p data-i18n="v3_2">Telefondan skinni stol yoki polga haqiqiy o'lchamda qo'ying: pichoq taxminan 25 sm, AK — taxminan 88 sm.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h16"/><path d="M6 18V9M10 18V6M14 18v-8M18 18v-5"/></svg></div><h3 data-i18n="v3_3_t">Float, naqsh va stikerlar</h3><p data-i18n="v3_3">Holat, naqsh chizmasi va stikerlar aynan shu lotdagidek ko'rsatiladi, narx esa bozor narxi yonida.</p></div>
 </div>
 </div>
 </section>
@@ -292,6 +321,22 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 </div>
 </section>
 
+<section id="sellers">
+<div class="wrap">
+<div class="sec-head">
+<h2 data-i18n="sel_title">Sotuvchilar va kanal egalariga</h2>
+<p data-i18n="sel_sub">Lot qo'yish bepul. Tariflar ko'proq ko'rinishni xohlaganlar va o'z Telegram-kanali orqali sotadiganlar uchun.</p>
+</div>
+<div class="cards">
+<div class="card"><h3 data-i18n="sel_1_t">🎬 3D-video va GIF</h3><p data-i18n="sel_1">Oddiy rasm o'rniga lotingizning aylanib turadigan 3D-roligi — chat va kanallar uchun.</p></div>
+<div class="card"><h3 data-i18n="sel_2_t">📢 Kanallarga e'lon</h3><p data-i18n="sel_2">@dghostmarket kanaliga va o'z kanallaringizga bitta tugma bilan — post ostida «Sotib olish» tugmasi bilan.</p></div>
+<div class="card"><h3 data-i18n="sel_3_t">🔨 Auksion va o'yinlar</h3><p data-i18n="sel_3">To'g'ridan-to'g'ri kanalingizda: stavkalar — mini-ilovada, to'lov — kafil orqali, o'yin g'olibini bot tanlaydi.</p></div>
+</div>
+<div class="pro-tiers"><div class="pro-tier"><h3>Start</h3><div class="p">50 000 so&#x27;m</div><div class="per">30 kun uchun</div><ul><li>O&#x27;z kanallari: 1</li><li>O&#x27;z kanallariga kunlik postlar: 5</li><li>@dghostmarket kanaliga kunlik postlar: 1</li><li>Oyiga auksionlar: —</li><li>Oyiga o&#x27;yinlar: —</li></ul></div><div class="pro-tier pop"><span class="tag">Ommabop</span><h3>PRO</h3><div class="p">150 000 so&#x27;m</div><div class="per">30 kun uchun</div><ul><li>O&#x27;z kanallari: 5</li><li>O&#x27;z kanallariga kunlik postlar: 20</li><li>@dghostmarket kanaliga kunlik postlar: 3</li><li>Oyiga auksionlar: 10</li><li>Oyiga o&#x27;yinlar: 4</li></ul></div><div class="pro-tier"><h3>Biznes</h3><div class="p">400 000 so&#x27;m</div><div class="per">30 kun uchun</div><ul><li>O&#x27;z kanallari: 15</li><li>O&#x27;z kanallariga kunlik postlar: 60</li><li>@dghostmarket kanaliga kunlik postlar: 5</li><li>Oyiga auksionlar: 30</li><li>Oyiga o&#x27;yinlar: 10</li></ul></div><div class="pro-tier"><h3>Garant</h3><div class="p">1 199 990 so&#x27;m</div><div class="per">30 kun uchun</div><ul><li>Cheklovsiz · ariza orqali</li></ul></div></div><p class="pro-first">🎁 Birinchi oyga 50% chegirma</p>
+<p class="note" data-i18n-html="sel_note">Yirik kanallar va do'konlar bilan individual shartlarni kelishamiz — qo'llab-quvvatlashga yozing. Batafsil — <a href="/uz/guides/pro-for-sellers/">sotuvchilar uchun PRO tariflar</a>.</p>
+</div>
+</section>
+
 <section id="safety">
 <div class="wrap">
 <div class="sec-head">
@@ -300,10 +345,10 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 </div>
 <div class="cards">
 <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2.5"/><path d="M14 10h4M14 14h3"/></svg></div><h3 data-i18n="c1_t">Sotuvchilarni tekshirish</h3><p data-i18n="c1">Pasport yoki ID, hujjat bilan selfi va Telegram orqali tasdiqlangan raqam. Qarorni administrator qabul qiladi.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3 data-i18n="c2_t">Himoyalangan to'lov</h3><p data-i18n="c2">Pul to'lovdan keyin 8 kun ushlab turiladi — Steam almashuvni bekor qilishga ruxsat beradigan muddatdan uzoqroq. Shundan keyingina sotuvchiga o'tadi.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3 data-i18n="c2_t">Himoyalangan to'lov</h3><p data-i18n="c2">Pul to'lovdan keyin 8 kun ushlab turiladi — Steam almashuvni bekor qilishga ruxsat beradigan muddatdan uzoqroq. Xavfi yuqori bitimlarda — uzoqroq. Shundan keyingina sotuvchiga o'tadi.</p></div>
 <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3 data-i18n="c3_t">Qat'iy muddatlar</h3><p data-i18n="c3">Buyumni yuborish uchun 24 soat. Ulgurmasa — buyurtma bekor qilinadi, xaridor pulini qaytarib oladi.</p></div>
 <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3 data-i18n="c4_t">Nizolar</h3><p data-i18n="c4">Buyum kelmasa, xaridor nizo ochadi. Administratsiya ko'rib chiqmaguncha to'lov muzlatiladi.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div><h3 data-i18n="c5_t">Antifrod</h3><p data-i18n="c5">Tizim bog'langan akkauntlar, takroriy raqamlar va shubhali bitimlarni qidiradi. O'g'irlangan buyumlar — bloklash va mablag'larni muzlatish.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div><h3 data-i18n="c5_t">Antifrod</h3><p data-i18n="c5">To'lov — faqat o'z kartangizdan, qaytarish — faqat pul kelgan joyga. Yangi akkauntlar uchun limitlar bor. Tizim bog'langan akkauntlar va shubhali bitimlarni qidiradi.</p></div>
 <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><h3 data-i18n="c6_t">Shaffof tarix</h3><p data-i18n="c6">Bitimning har bir qadami qayd etiladi: to'lov, yuborish, tasdiqlash, to'lov. Tarix ilovada doim mavjud.</p></div>
 </div>
 <div class="note" data-i18n="no_gambling">🚫 DGhostMarket — o'yinchilar o'rtasidagi bitimlar uchun platforma. Biz qimor o'yinlari o'tkazmaymiz, keyslar sotmaymiz va stavkalar qabul qilmaymiz. O'yinlar bepul: ishtirok uchun to'lov talab qilinmaydi.</div>
@@ -315,9 +360,11 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <div class="sec-head"><h2 data-i18n="faq_title">Ko'p so'raladigan savollar</h2></div>
 <details><summary data-i18n="q1">Sotuvchi buyumni yubormasa-chi?</summary><p data-i18n="a1">To'lovdan keyin 24 soat ichida sotuvchi yuborishni belgilamasa va buyum Steam'ingizda paydo bo'lmasa, buyurtma avtomatik bekor qilinadi va pul qaytariladi.</p></details>
 <details><summary data-i18n="q2">Nega sotuvchiga pul 8 kundan keyin tushadi?</summary><p data-i18n="a2">Steam almashuvni 7 kun ichida bekor qilishga ruxsat beradi. Platforma to'lovni biroz uzoqroq ushlab turadi — xaridor buyumsiz, sotuvchi esa pulsiz qolmasligi uchun.</p></details>
-<details><summary data-i18n="q3">Xaridor tekshiruvdan o'tishi kerakmi?</summary><p data-i18n="a3">Yo'q. Xaridorga Telegram orqali kirish va Steam almashuv havolasini bog'lash kifoya. Tekshiruvdan faqat sotuvchilar o'tadi.</p></details>
+<details><summary data-i18n="q3">Xaridor tekshiruvdan o'tishi kerakmi?</summary><p data-i18n="a3">Oddiy xaridlar uchun — yo'q: Telegram orqali kirish va Steam almashuv havolasini bog'lash kifoya. Katta xarid uchun yoki yangi akkauntning limiti tugaganda platforma shaxsni tasdiqlashni so'raydi. Sotuvchilar birinchi lotdan oldin tekshiruvdan o'tadi.</p></details>
+<details><summary data-i18n="q6">Birovning kartasidan to'lash mumkinmi?</summary><p data-i18n="a6">Yo'q. O'tkazma orqali to'lashda karta egasining ismini ko'rsatasiz va faqat o'z kartangizdan to'lash mumkin. Birovning kartasidan to'lov rad etiladi, pul esa jo'natuvchining kartasiga qaytariladi.</p></details>
+<details><summary data-i18n="q7">Pul qanday va qachon qaytariladi?</summary><p data-i18n="a7">Qanday to'lagan bo'lsangiz, o'sha yo'l bilan: balansga — darhol, kartaga — qaytarish to'g'risidagi qarordan keyin 3 bank kuni ichida. Boshqa karta va hisoblarga qaytarilmaydi.</p></details>
 <details><summary data-i18n="q4">Platforma Valve yoki Steam bilan bog'liqmi?</summary><p data-i18n="a4">Yo'q. DGhostMarket — mustaqil platforma. Buyumlar foydalanuvchi akkauntlari o'rtasida standart Steam almashuvlari orqali o'tkaziladi.</p></details>
-<details><summary data-i18n="q5">Qo'llab-quvvatlash bilan qanday bog'lanish mumkin?</summary><p data-i18n="a5">support@dghostmarket.uz manziliga yozing — 24 soat ichida javob beramiz. Muayyan bitim bo'yicha to'g'ridan-to'g'ri ilovadan yozish qulayroq.</p></details>
+<details><summary data-i18n="q5">Qo'llab-quvvatlash bilan qanday bog'lanish mumkin?</summary><p data-i18n="a5">Telegram'da @DGhostMarket_Support ga yoki support@dghostmarket.uz manziliga yozing — 24 soat ichida javob beramiz. Muayyan bitim bo'yicha to'g'ridan-to'g'ri ilovadan yozish qulayroq.</p></details>
 </div>
 </section>
 
@@ -325,13 +372,13 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <div class="wrap">
 <div class="sec-head">
 <h2 data-i18n="docs_title">Hujjatlar</h2>
-<p data-i18n="docs_sub">Platforma ishlaydigan qoidalar. Amaldagi tahrirlar — doim shu havolalarda.</p>
+<p data-i18n="docs_sub">Platforma ishlaydigan qoidalar — o'zbek va rus tillarida. O'zgarishlar haqida kamida 30 kun oldin ogohlantiramiz.</p>
 </div>
 <div class="docs">
-<a class="doc" href="https://api.dghostmarket.uz/legal?doc=terms"><b data-i18n="d1">Umumiy foydalanish shartlari</b><span data-i18n="d1s">Barcha foydalanuvchilar uchun</span></a>
-<a class="doc" href="https://api.dghostmarket.uz/legal?doc=buyer"><b data-i18n="d2">Xaridor uchun oferta</b><span data-i18n="d2s">To'lov, olish, qaytarish</span></a>
-<a class="doc" href="https://api.dghostmarket.uz/legal?doc=seller"><b data-i18n="d3">Sotuvchi uchun oferta</b><span data-i18n="d3s">Komissiya, hold, yechish</span></a>
-<a class="doc" href="https://api.dghostmarket.uz/legal?doc=privacy"><b data-i18n="d4">Maxfiylik siyosati</b><span data-i18n="d4s">Qaysi ma'lumotlarni va nima uchun saqlaymiz</span></a>
+<a class="doc" href="https://api.dghostmarket.uz/legal?lang=uz&amp;doc=terms"><b data-i18n="d1">Umumiy foydalanish shartlari</b><span data-i18n="d1s">Barcha foydalanuvchilar uchun</span></a>
+<a class="doc" href="https://api.dghostmarket.uz/legal?lang=uz&amp;doc=buyer"><b data-i18n="d2">Xaridor uchun oferta</b><span data-i18n="d2s">To'lov, olish, qaytarish</span></a>
+<a class="doc" href="https://api.dghostmarket.uz/legal?lang=uz&amp;doc=seller"><b data-i18n="d3">Sotuvchi uchun oferta</b><span data-i18n="d3s">Komissiya, hold, yechish</span></a>
+<a class="doc" href="https://api.dghostmarket.uz/legal?lang=uz&amp;doc=privacy"><b data-i18n="d4">Maxfiylik siyosati</b><span data-i18n="d4s">Qaysi ma'lumotlarni va nima uchun saqlaymiz</span></a>
 </div>
 </div>
 </section>
@@ -341,6 +388,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <div class="panel">
 <h3 data-i18n="ct_title">Kontaktlar</h3>
 <dl class="req">
+<dt data-i18n="ct_tg">Telegram'da qo'llab-quvvatlash</dt><dd><a href="https://t.me/DGhostMarket_Support">@DGhostMarket_Support</a></dd>
 <dt data-i18n="ct_mail">Qo'llab-quvvatlash</dt><dd><a href="mailto:support@dghostmarket.uz">support@dghostmarket.uz</a></dd>
 <dt data-i18n="ct_bot">Telegram-bot</dt><dd><a href="https://t.me/dghostmarketbot?start=site_home">@dghostmarketbot</a></dd>
 <dt data-i18n="ct_time">Javob</dt><dd data-i18n="ct_time_v">24 soat ichida</dd>
@@ -362,7 +410,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <div class="wrap">
 <div class="cta-final">
 <h2 data-i18n="final_title">Birinchi bitimga tayyormisiz?</h2>
-<p data-i18n="final_sub">DGhostMarket'ni Telegramda oching — ro'yxatdan o'tish shart emas.</p>
+<p data-i18n="final_sub">DGhostMarket'ni Telegramda oching — Telegram orqali kirasiz, alohida ro'yxatdan o'tish shart emas.</p>
 <a class="btn primary" href="https://t.me/dghostmarketbot?start=site_home" data-i18n="cta_open">Telegramda ochish</a>
 </div>
 </div>

@@ -14,8 +14,9 @@
 <link rel="alternate" hreflang="uz" href="https://dghostmarket.uz/uz/">
 <link rel="alternate" hreflang="en" href="https://dghostmarket.uz/en/">
 <link rel="alternate" hreflang="x-default" href="https://dghostmarket.uz/">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DGhostMarket", "url": "https://dghostmarket.uz/", "logo": "https://dghostmarket.uz/apple-touch-icon.png", "email": "support@dghostmarket.uz", "sameAs": ["https://t.me/dghostmarketbot", "https://t.me/dghostmarket"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "DGhostMarket", "url": "https://dghostmarket.uz/", "logo": "https://dghostmarket.uz/apple-touch-icon.png", "email": "support@dghostmarket.uz", "contactPoint": {"@type": "ContactPoint", "contactType": "customer support", "email": "support@dghostmarket.uz", "url": "https://t.me/DGhostMarket_Support", "availableLanguage": ["uz", "ru", "en"]}, "sameAs": ["https://t.me/dghostmarketbot", "https://t.me/dghostmarket"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "DGhostMarket", "url": "https://dghostmarket.uz/", "inLanguage": "ru"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что, если продавец не передаст предмет?", "acceptedAnswer": {"@type": "Answer", "text": "Если за 24 часа после оплаты продавец не отметил передачу и предмет не появился у вас в Steam, заказ отменяется автоматически, а деньги возвращаются."}}, {"@type": "Question", "name": "Почему деньги продавцу приходят через 8 дней?", "acceptedAnswer": {"@type": "Answer", "text": "Steam позволяет отменить обмен в течение 7 дней. Площадка держит оплату чуть дольше, чтобы покупатель не остался без предмета, а продавец — без денег."}}, {"@type": "Question", "name": "Нужно ли покупателю проходить проверку?", "acceptedAnswer": {"@type": "Answer", "text": "Для обычных покупок — нет: достаточно войти через Telegram и привязать ссылку на обмен Steam. Для крупной покупки или когда у нового аккаунта исчерпан лимит, площадка попросит подтвердить личность. Продавцы проходят проверку перед первым лотом."}}, {"@type": "Question", "name": "Можно ли платить с чужой карты?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. При оплате переводом вы указываете имя владельца карты, и платить можно только со своей. Платёж с чужой карты отклоняется, а деньги возвращаются на карту отправителя."}}, {"@type": "Question", "name": "Как и когда возвращаются деньги?", "acceptedAnswer": {"@type": "Answer", "text": "Тем же путём, каким вы платили: на баланс — сразу, на карту — в течение 3 банковских дней с решения о возврате. На другие карты и счета возврат не делается."}}, {"@type": "Question", "name": "Связана ли площадка с Valve или Steam?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. DGhostMarket — независимая площадка. Предметы передаются стандартными обменами Steam между аккаунтами пользователей."}}, {"@type": "Question", "name": "Как связаться с поддержкой?", "acceptedAnswer": {"@type": "Answer", "text": "Напишите в Telegram @DGhostMarket_Support или на support@dghostmarket.uz — отвечаем в течение 24 часов. По конкретной сделке удобнее писать прямо из приложения."}}]}</script>
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -180,6 +181,19 @@ section{padding:44px 0}
 .langs a::after{content:'';position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
 footer a,.crumbs a{display:inline-block;padding:6px 0}
 
+.pro-tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.pro-tier{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:20px;position:relative}
+.pro-tier.pop{border-color:var(--violet)}
+.pro-tier .tag{position:absolute;top:-11px;left:16px;background:var(--grad);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.pro-tier h3{margin:0 0 6px;font-size:18px}
+.pro-tier .p{font-size:24px;font-weight:800}
+.pro-tier .per{color:var(--muted);font-size:13px;margin-bottom:12px}
+.pro-tier ul{list-style:none;padding:0;margin:0;color:var(--muted);font-size:14px}
+.pro-tier li{margin:5px 0}
+.pro-first{margin-top:16px;font-weight:600}
+@media(max-width:900px){.pro-tiers{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.pro-tiers{grid-template-columns:1fr}}
+
 .lots{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .lot{display:flex;flex-direction:column;background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:16px;text-decoration:none;color:inherit}
 .lot img{width:100%;aspect-ratio:4/3;object-fit:contain;background:radial-gradient(ellipse at 50% 40%,#2a2238,#130e1c 70%);border-radius:12px;margin-bottom:12px}
@@ -205,6 +219,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <nav class="links">
 <a href="#how" data-i18n="nav_how">Как это работает</a>
 <a href="#fees" data-i18n="nav_fees">Комиссии</a>
+<a href="#sellers" data-i18n="nav_sellers">Продавцам</a>
 <a href="#safety" data-i18n="nav_safety">Безопасность</a>
 <a href="#docs" data-i18n="nav_docs">Документы</a>
 <a href="#contacts" data-i18n="nav_contacts">Контакты</a>
@@ -260,8 +275,8 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <h3 data-i18n="how_buyer">🛒 Покупателю</h3>
 <ol class="steps">
 <li><b data-i18n="b1_t">Выберите скин</b><span data-i18n="b1">Каталог с фильтрами по оружию, качеству, float и цене.</span></li>
-<li><b data-i18n="b2_t">Оплатите заказ</b><span data-i18n="b2">Способом из приложения. Деньги удерживает площадка — продавец их пока не получает.</span></li>
-<li><b data-i18n="b3_t">Получите предмет</b><span data-i18n="b3">Продавец отправляет обмен в Steam в течение 24 часов. Не отправил — деньги возвращаются.</span></li>
+<li><b data-i18n="b2_t">Оплатите заказ</b><span data-i18n="b2">Переводом со своей карты по реквизитам (с чеком) или с баланса. Деньги удерживает площадка — продавец их пока не получает.</span></li>
+<li><b data-i18n="b3_t">Получите предмет</b><span data-i18n="b3">Продавец отправляет обмен в Steam в течение 24 часов. Не отправил — деньги возвращаются тем же путём, каким вы платили.</span></li>
 <li><b data-i18n="b4_t">Подтвердите получение</b><span data-i18n="b4">Примите обмен в Steam и нажмите «Получил». Если что-то не так — откройте спор.</span></li>
 </ol>
 </div>
@@ -269,11 +284,25 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <h3 data-i18n="how_seller">💼 Продавцу</h3>
 <ol class="steps">
 <li><b data-i18n="s1_t">Пройдите проверку</b><span data-i18n="s1">Номер телефона через Telegram, фото документа и селфи — один раз перед первым лотом.</span></li>
-<li><b data-i18n="s2_t">Выставьте предмет</b><span data-i18n="s2">Прямо из инвентаря Steam: фото, float и наклейки подтянутся автоматически.</span></li>
+<li><b data-i18n="s2_t">Выставьте предмет</b><span data-i18n="s2">Прямо из инвентаря Steam: фото, float и наклейки подтянутся сами, а приложение подскажет цену рынка. Можно выставить весь инвентарь сразу — «Все по рынку −3%».</span></li>
 <li><b data-i18n="s3_t">Передайте за 24 часа</b><span data-i18n="s3">После оплаты отправьте обмен в Steam и отметьте «Отправил».</span></li>
-<li><b data-i18n="s4_t">Получите деньги</b><span data-i18n="s4">Через 8 дней с оплаты сумма за вычетом 5% приходит на баланс. Вывод на карту — без комиссии.</span></li>
+<li><b data-i18n="s4_t">Получите деньги</b><span data-i18n="s4">Через 8 дней с оплаты сумма за вычетом 5% приходит на баланс. Вывод на свою карту — без комиссии площадки.</span></li>
 </ol>
 </div>
+</div>
+</div>
+</section>
+
+<section id="view3d">
+<div class="wrap">
+<div class="sec-head">
+<h2 data-i18n="v3_title">Скин в 3D и на вашем столе</h2>
+<p data-i18n="v3_sub">Смотрите не картинку из Steam, а именно тот предмет, который покупаете.</p>
+</div>
+<div class="cards">
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></div><h3 data-i18n="v3_1_t">3D со всех сторон</h3><p data-i18n="v3_1">Покрутите скин, приблизьте детали, смените фон на карту CS2. Модели собраны из файлов игры.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M12 8l4 2.2v4.4L12 17l-4-2.4v-4.4z"/></svg></div><h3 data-i18n="v3_2_t">«На столе» — AR</h3><p data-i18n="v3_2">С телефона поставьте скин на стол или пол в натуральную величину: нож около 25 см, AK — около 88 см.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h16"/><path d="M6 18V9M10 18V6M14 18v-8M18 18v-5"/></svg></div><h3 data-i18n="v3_3_t">Float, паттерн и наклейки</h3><p data-i18n="v3_3">Износ, рисунок паттерна и наклейки показаны как у конкретного лота, а цена — рядом с ценой рынка.</p></div>
 </div>
 </div>
 </section>
@@ -292,6 +321,22 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 </div>
 </section>
 
+<section id="sellers">
+<div class="wrap">
+<div class="sec-head">
+<h2 data-i18n="sel_title">Продавцам и владельцам каналов</h2>
+<p data-i18n="sel_sub">Выставлять лоты можно бесплатно. Тарифы нужны тем, кто хочет больше показов и продаёт через свой Telegram-канал.</p>
+</div>
+<div class="cards">
+<div class="card"><h3 data-i18n="sel_1_t">🎬 3D-видео и GIF</h3><p data-i18n="sel_1">Крутящийся 3D-ролик вашего лота вместо обычной картинки — для чатов и каналов.</p></div>
+<div class="card"><h3 data-i18n="sel_2_t">📢 Публикация в каналы</h3><p data-i18n="sel_2">В канал @dghostmarket и в ваши каналы одной кнопкой — с кнопкой «Купить» под постом.</p></div>
+<div class="card"><h3 data-i18n="sel_3_t">🔨 Аукционы и розыгрыши</h3><p data-i18n="sel_3">Прямо в вашем канале: ставки — в мини-приложении, оплата — через гаранта, победителя розыгрыша выбирает бот.</p></div>
+</div>
+<div class="pro-tiers"><div class="pro-tier"><h3>Старт</h3><div class="p">50 000 сум</div><div class="per">за 30 дней</div><ul><li>Своих каналов: 1</li><li>Постов в свои каналы в день: 5</li><li>Постов в канал @dghostmarket в день: 1</li><li>Аукционов в месяц: —</li><li>Розыгрышей в месяц: —</li></ul></div><div class="pro-tier pop"><span class="tag">Популярный</span><h3>PRO</h3><div class="p">150 000 сум</div><div class="per">за 30 дней</div><ul><li>Своих каналов: 5</li><li>Постов в свои каналы в день: 20</li><li>Постов в канал @dghostmarket в день: 3</li><li>Аукционов в месяц: 10</li><li>Розыгрышей в месяц: 4</li></ul></div><div class="pro-tier"><h3>Бизнес</h3><div class="p">400 000 сум</div><div class="per">за 30 дней</div><ul><li>Своих каналов: 15</li><li>Постов в свои каналы в день: 60</li><li>Постов в канал @dghostmarket в день: 5</li><li>Аукционов в месяц: 30</li><li>Розыгрышей в месяц: 10</li></ul></div><div class="pro-tier"><h3>Гарант</h3><div class="p">1 199 990 сум</div><div class="per">за 30 дней</div><ul><li>Без ограничений · по заявке</li></ul></div></div><p class="pro-first">🎁 Скидка 50% на первый месяц</p>
+<p class="note" data-i18n-html="sel_note">Для крупных каналов и магазинов обсуждаем индивидуальные условия — напишите в поддержку. Подробнее — <a href="/guides/pro-for-sellers/">тарифы PRO для продавцов</a>.</p>
+</div>
+</section>
+
 <section id="safety">
 <div class="wrap">
 <div class="sec-head">
@@ -300,10 +345,10 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 </div>
 <div class="cards">
 <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2.5"/><path d="M14 10h4M14 14h3"/></svg></div><h3 data-i18n="c1_t">Проверка продавцов</h3><p data-i18n="c1">Паспорт или ID, селфи с документом и номер, подтверждённый через Telegram. Решение принимает администратор.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3 data-i18n="c2_t">Оплата под защитой</h3><p data-i18n="c2">Деньги удерживаются 8 дней с оплаты — дольше, чем Steam позволяет отменить обмен. Только потом они уходят продавцу.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3 data-i18n="c2_t">Оплата под защитой</h3><p data-i18n="c2">Деньги удерживаются 8 дней с оплаты — дольше, чем Steam позволяет отменить обмен. В сделках с повышенным риском — дольше. Только потом они уходят продавцу.</p></div>
 <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3 data-i18n="c3_t">Жёсткие сроки</h3><p data-i18n="c3">24 часа на передачу предмета. Не успел — заказ отменяется, а покупатель получает деньги обратно.</p></div>
 <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3 data-i18n="c4_t">Споры</h3><p data-i18n="c4">Если предмет не пришёл, покупатель открывает спор. Выплата замораживается, пока администрация не разберётся.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div><h3 data-i18n="c5_t">Антифрод</h3><p data-i18n="c5">Система ищет связанные аккаунты, повторные номера и подозрительные сделки. Краденые предметы — блокировка и заморозка средств.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div><h3 data-i18n="c5_t">Антифрод</h3><p data-i18n="c5">Оплата — только со своей карты, возврат — только туда, откуда пришли деньги. У новых аккаунтов есть лимиты. Система ищет связанные аккаунты и подозрительные сделки.</p></div>
 <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><h3 data-i18n="c6_t">Прозрачная история</h3><p data-i18n="c6">Каждый шаг сделки фиксируется: оплата, передача, подтверждение, выплата. История всегда доступна в приложении.</p></div>
 </div>
 <div class="note" data-i18n="no_gambling">🚫 DGhostMarket — площадка для сделок между игроками. Мы не проводим азартных игр, не продаём кейсы и не принимаем ставок. Розыгрыши бесплатны: участие не требует оплаты.</div>
@@ -315,9 +360,11 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <div class="sec-head"><h2 data-i18n="faq_title">Частые вопросы</h2></div>
 <details><summary data-i18n="q1">Что, если продавец не передаст предмет?</summary><p data-i18n="a1">Если за 24 часа после оплаты продавец не отметил передачу и предмет не появился у вас в Steam, заказ отменяется автоматически, а деньги возвращаются.</p></details>
 <details><summary data-i18n="q2">Почему деньги продавцу приходят через 8 дней?</summary><p data-i18n="a2">Steam позволяет отменить обмен в течение 7 дней. Площадка держит оплату чуть дольше, чтобы покупатель не остался без предмета, а продавец — без денег.</p></details>
-<details><summary data-i18n="q3">Нужно ли покупателю проходить проверку?</summary><p data-i18n="a3">Нет. Покупателю достаточно войти через Telegram и привязать ссылку на обмен Steam. Проверку проходят только продавцы.</p></details>
+<details><summary data-i18n="q3">Нужно ли покупателю проходить проверку?</summary><p data-i18n="a3">Для обычных покупок — нет: достаточно войти через Telegram и привязать ссылку на обмен Steam. Для крупной покупки или когда у нового аккаунта исчерпан лимит, площадка попросит подтвердить личность. Продавцы проходят проверку перед первым лотом.</p></details>
+<details><summary data-i18n="q6">Можно ли платить с чужой карты?</summary><p data-i18n="a6">Нет. При оплате переводом вы указываете имя владельца карты, и платить можно только со своей. Платёж с чужой карты отклоняется, а деньги возвращаются на карту отправителя.</p></details>
+<details><summary data-i18n="q7">Как и когда возвращаются деньги?</summary><p data-i18n="a7">Тем же путём, каким вы платили: на баланс — сразу, на карту — в течение 3 банковских дней с решения о возврате. На другие карты и счета возврат не делается.</p></details>
 <details><summary data-i18n="q4">Связана ли площадка с Valve или Steam?</summary><p data-i18n="a4">Нет. DGhostMarket — независимая площадка. Предметы передаются стандартными обменами Steam между аккаунтами пользователей.</p></details>
-<details><summary data-i18n="q5">Как связаться с поддержкой?</summary><p data-i18n="a5">Напишите на support@dghostmarket.uz — отвечаем в течение 24 часов. По конкретной сделке удобнее писать прямо из приложения.</p></details>
+<details><summary data-i18n="q5">Как связаться с поддержкой?</summary><p data-i18n="a5">Напишите в Telegram @DGhostMarket_Support или на support@dghostmarket.uz — отвечаем в течение 24 часов. По конкретной сделке удобнее писать прямо из приложения.</p></details>
 </div>
 </section>
 
@@ -325,7 +372,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <div class="wrap">
 <div class="sec-head">
 <h2 data-i18n="docs_title">Документы</h2>
-<p data-i18n="docs_sub">Правила, по которым работает площадка. Действующие редакции — всегда по этим ссылкам.</p>
+<p data-i18n="docs_sub">Правила, по которым работает площадка, — на узбекском и русском языках. Об изменениях мы предупреждаем не менее чем за 30 дней.</p>
 </div>
 <div class="docs">
 <a class="doc" href="https://api.dghostmarket.uz/legal?doc=terms"><b data-i18n="d1">Общие условия использования</b><span data-i18n="d1s">Для всех пользователей</span></a>
@@ -341,6 +388,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <div class="panel">
 <h3 data-i18n="ct_title">Контакты</h3>
 <dl class="req">
+<dt data-i18n="ct_tg">Поддержка в Telegram</dt><dd><a href="https://t.me/DGhostMarket_Support">@DGhostMarket_Support</a></dd>
 <dt data-i18n="ct_mail">Поддержка</dt><dd><a href="mailto:support@dghostmarket.uz">support@dghostmarket.uz</a></dd>
 <dt data-i18n="ct_bot">Telegram-бот</dt><dd><a href="https://t.me/dghostmarketbot?start=site_home">@dghostmarketbot</a></dd>
 <dt data-i18n="ct_time">Ответ</dt><dd data-i18n="ct_time_v">в течение 24 часов</dd>
@@ -362,7 +410,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <div class="wrap">
 <div class="cta-final">
 <h2 data-i18n="final_title">Готовы к первой сделке?</h2>
-<p data-i18n="final_sub">Откройте DGhostMarket в Telegram — регистрация не нужна.</p>
+<p data-i18n="final_sub">Откройте DGhostMarket в Telegram — вход через Telegram, отдельная регистрация не нужна.</p>
 <a class="btn primary" href="https://t.me/dghostmarketbot?start=site_home" data-i18n="cta_open">Открыть в Telegram</a>
 </div>
 </div>
