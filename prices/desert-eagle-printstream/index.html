@@ -96,6 +96,36 @@ h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text
 .hlot span{font-size:14px;font-weight:700;white-space:nowrap}
 .trust{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;padding:0;margin:14px 0 0;color:var(--muted);font-size:13px}
 .hero-art img{width:100%;max-width:440px;height:auto;filter:drop-shadow(0 20px 60px rgba(123,44,255,0.45))}
+/* Витрина: нож в 3D поворачивается прокруткой. Без JS, WebGL или при
+   «уменьшить движение» — обычный блок из трёх карточек. */
+.show3d{padding:24px 0 40px}
+.show3d .s3-stage{position:relative}
+.show3d .s3-frame{display:none}
+.show3d h2{text-align:center;margin:0 auto 22px;max-width:720px}
+.show3d h2 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.s3-caps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.s3-cap{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px}
+.s3-cap b{display:block;font-size:17px;margin-bottom:4px}
+.s3-cap span{color:var(--muted);font-size:15px}
+.show3d.live{height:260vh;padding:0}
+.show3d.live .s3-stage{position:sticky;top:64px;height:calc(100vh - 64px);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:24px 0}
+.show3d.live .s3-stage::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+background:radial-gradient(520px 360px at 50% 50%,rgba(123,44,255,0.30),transparent 70%),radial-gradient(360px 240px at 70% 70%,rgba(255,43,214,0.14),transparent 70%)}
+.show3d.live .s3-frame{display:block;position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;opacity:0;transition:opacity .8s ease;background:transparent;color-scheme:normal}
+.show3d.live .s3-frame.on{opacity:1}
+.show3d.live h2{position:relative;transition:opacity .4s,transform .4s}
+.show3d.live .s3-caps{position:relative;display:block;height:120px}
+.show3d.live .s3-cap{position:absolute;left:50%;bottom:0;width:min(520px,calc(100% - 40px));transform:translate(-50%,16px);opacity:0;transition:opacity .45s,transform .45s;
+background:rgba(19,14,28,0.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);text-align:center}
+.show3d.live .s3-cap.on{opacity:1;transform:translate(-50%,0)}
+.show3d.live .s3-bar{position:absolute;left:50%;bottom:10px;width:120px;height:3px;transform:translateX(-50%);border-radius:3px;background:rgba(255,255,255,0.08);overflow:hidden}
+.show3d.live .s3-bar i{display:block;height:100%;width:0;background:var(--grad)}
+.s3-bar{display:none}
+@media (max-width:900px){
+.s3-caps{grid-template-columns:1fr}
+.show3d.live .s3-stage{top:64px}
+.show3d.live .s3-caps{height:140px}
+}
 /* секции */
 section{padding:64px 0}
 .sec-head{max-width:640px;margin-bottom:32px}
@@ -253,7 +283,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 </div>
 </header>
 
-<main id="top"><div class="wrap"><nav class="crumbs"><a href="/">Главная</a> / <a href="/prices/">Цены на скины CS2</a> / Desert Eagle | Printstream</nav><div class="price-head"><div class="p3d"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha_nBovp3OGmdeqInyVP1V0XsYlRbEI50a5wNyzZr605AyI3t5MmCSohylAuC89_a9cBoMY9UkV/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha_nBovp3OGmdeqInyVP1V0XsYlRbEI50a5wNyzZr605AyI3t5MmCSohylAuC89_a9cBoMY9UkV/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha_nBovp3OGmdeqInyVP1V0XsYlRbEI50a5wNyzZr605AyI3t5MmCSohylAuC89_a9cBoMY9UkV/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha_nBovp3OGmdeqInyVP1V0XsYlRbEI50a5wNyzZr605AyI3t5MmCSohylAuC89_a9cBoMY9UkV 512w" sizes="(max-width:760px) 100vw, 280px" alt="Desert Eagle | Printstream" width="560" height="420" fetchpriority="high"><button type="button" class="btn ghost p3d-btn" data-3d="https://app.dghostmarket.uz/embed.html?key=pk_t8OmVrXdGBHXUduePmG4&amp;skin=Desert%20Eagle%20%7C%20Printstream&amp;lang=ru">🧊 Покрутить в 3D</button></div><script>document.querySelectorAll("[data-3d]").forEach(function(b){b.addEventListener("click",function(){var w=b.parentNode,f=document.createElement("iframe");f.src=b.dataset["3d"];f.title="3D";f.setAttribute("allow","xr-spatial-tracking; fullscreen");f.setAttribute("allowfullscreen","");var i=w.querySelector("img");if(i)i.replaceWith(f);else w.prepend(f);b.remove();});});</script><div><h1>Desert Eagle | Printstream — цена в сумах</h1><table class="ptable"><tr><th>Износ</th><th>Обычный</th><th>StatTrak™</th></tr><tr><td>Прямо с завода</td><td class="num">668 000 сум</td><td class="num">1 500 000 сум</td></tr><tr><td>Немного поношенное</td><td class="num">367 000 сум</td><td class="num">925 000 сум</td></tr><tr><td>После полевых испытаний</td><td class="num">304 000 сум</td><td class="num">657 000 сум</td></tr><tr><td>Поношенное</td><td class="num">347 000 сум</td><td class="num">—</td></tr><tr><td>Закалённое в боях</td><td class="num">352 000 сум</td><td class="num">587 000 сум</td></tr></table><p class="pnote">Рыночная цена — минимальное предложение на Skinport в долларах, пересчитанное по курсу ЦБ Узбекистана. Обновляется каждый день. В приложении DGhostMarket цена рынка считается по CSFloat, поэтому может немного отличаться.</p></div></div><section class="box"><h2>О скине</h2><dl class="facts-list"><dt>Оружие</dt><dd>Desert Eagle</dd><dt>Редкость</dt><dd>Тайное</dd><dt>Float</dt><dd>0.00 – 0.80</dd><dt>Коллекция</dt><dd>The Fracture Collection</dd><dt>Где выпадает</dt><dd>Fracture Case</dd></dl></section><section class="box"><h2>В продаже на DGhostMarket</h2><div class="lots"><a class="lot" href="https://app.dghostmarket.uz/?open=skin_217&amp;src=site_price" rel="nofollow"><img src="https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha-kBkupjDLz9_6c3mWPFBxX8N0EOMIsULpmtHjPuvq41bc2dhAzy3_2ngfvHpt5_FCD_RJLjxjaQ/360fx360f" srcset="https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha-kBkupjDLz9_6c3mWPFBxX8N0EOMIsULpmtHjPuvq41bc2dhAzy3_2ngfvHpt5_FCD_RJLjxjaQ/256fx256f 256w, https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha-kBkupjDLz9_6c3mWPFBxX8N0EOMIsULpmtHjPuvq41bc2dhAzy3_2ngfvHpt5_FCD_RJLjxjaQ/360fx360f 360w, https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha-kBkupjDLz9_6c3mWPFBxX8N0EOMIsULpmtHjPuvq41bc2dhAzy3_2ngfvHpt5_FCD_RJLjxjaQ 512w" sizes="(max-width:560px) 100vw, (max-width:900px) 50vw, 320px" alt="Desert Eagle | Printstream" loading="lazy" width="320" height="240"><h3>Desert Eagle | Printstream</h3><div class="sub">После полевых испытаний · Float 0.1908</div><div class="row"><div><div class="price">370 000 сум</div></div><span class="go">Купить</span></div></a></div><p class="pnote"><a href="/guides/buy-cs2-skins-uzbekistan/">Как купить скин безопасно — пошаговая инструкция →</a></p></section><section class="box"><p>Есть такой скин? Выставите его за минуту — DGhostMarket подскажет цену по рынку, оплата через гаранта.</p><a class="btn ghost" href="https://app.dghostmarket.uz/?open=sell&amp;src=site_price" rel="nofollow">Продать на DGhostMarket</a></section><section><h2 class="hub-group">Другие скины Desert Eagle</h2><div class="chips"><a href="/prices/desert-eagle-serpent-strike/">Desert Eagle | Serpent Strike</a><a href="/prices/desert-eagle-sputnik/">Desert Eagle | Sputnik</a><a href="/prices/desert-eagle-tilted/">Desert Eagle | Tilted</a><a href="/prices/desert-eagle-trigger-discipline/">Desert Eagle | Trigger Discipline</a><a href="/prices/desert-eagle-blue-ply/">Desert Eagle | Blue Ply</a><a href="/prices/desert-eagle-bronze-deco/">Desert Eagle | Bronze Deco</a></div></section></div></main>
+<main id="top"><div class="wrap"><nav class="crumbs"><a href="/">Главная</a> / <a href="/prices/">Цены на скины CS2</a> / Desert Eagle | Printstream</nav><div class="price-head"><div class="p3d"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha_nBovp3OGmdeqInyVP1V0XsYlRbEI50a5wNyzZr605AyI3t5MmCSohylAuC89_a9cBoMY9UkV/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha_nBovp3OGmdeqInyVP1V0XsYlRbEI50a5wNyzZr605AyI3t5MmCSohylAuC89_a9cBoMY9UkV/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha_nBovp3OGmdeqInyVP1V0XsYlRbEI50a5wNyzZr605AyI3t5MmCSohylAuC89_a9cBoMY9UkV/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha_nBovp3OGmdeqInyVP1V0XsYlRbEI50a5wNyzZr605AyI3t5MmCSohylAuC89_a9cBoMY9UkV 512w" sizes="(max-width:760px) 100vw, 280px" alt="Desert Eagle | Printstream" width="560" height="420" fetchpriority="high"><button type="button" class="btn ghost p3d-btn" data-3d="https://app.dghostmarket.uz/embed.html?key=pk_t8OmVrXdGBHXUduePmG4&amp;skin=Desert%20Eagle%20%7C%20Printstream&amp;lang=ru">🧊 Покрутить в 3D</button></div><script>document.querySelectorAll("[data-3d]").forEach(function(b){b.addEventListener("click",function(){var w=b.parentNode,f=document.createElement("iframe");f.src=b.dataset["3d"];f.title="3D";f.setAttribute("allow","xr-spatial-tracking; fullscreen");f.setAttribute("allowfullscreen","");var i=w.querySelector("img");if(i)i.replaceWith(f);else w.prepend(f);b.remove();});});</script><div><h1>Desert Eagle | Printstream — цена в сумах</h1><table class="ptable"><tr><th>Износ</th><th>Обычный</th><th>StatTrak™</th></tr><tr><td>Прямо с завода</td><td class="num">668 000 сум</td><td class="num">1 500 000 сум</td></tr><tr><td>Немного поношенное</td><td class="num">367 000 сум</td><td class="num">925 000 сум</td></tr><tr><td>После полевых испытаний</td><td class="num">304 000 сум</td><td class="num">657 000 сум</td></tr><tr><td>Поношенное</td><td class="num">313 000 сум</td><td class="num">—</td></tr><tr><td>Закалённое в боях</td><td class="num">352 000 сум</td><td class="num">587 000 сум</td></tr></table><p class="pnote">Рыночная цена — минимальное предложение на Skinport в долларах, пересчитанное по курсу ЦБ Узбекистана. Обновляется каждый день. В приложении DGhostMarket цена рынка считается по CSFloat, поэтому может немного отличаться.</p></div></div><section class="box"><h2>О скине</h2><dl class="facts-list"><dt>Оружие</dt><dd>Desert Eagle</dd><dt>Редкость</dt><dd>Тайное</dd><dt>Float</dt><dd>0.00 – 0.80</dd><dt>Коллекция</dt><dd>The Fracture Collection</dd><dt>Где выпадает</dt><dd>Fracture Case</dd></dl></section><section class="box"><h2>В продаже на DGhostMarket</h2><div class="lots"><a class="lot" href="https://app.dghostmarket.uz/?open=skin_217&amp;src=site_price" rel="nofollow"><img src="https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha-kBkupjDLz9_6c3mWPFBxX8N0EOMIsULpmtHjPuvq41bc2dhAzy3_2ngfvHpt5_FCD_RJLjxjaQ/360fx360f" srcset="https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha-kBkupjDLz9_6c3mWPFBxX8N0EOMIsULpmtHjPuvq41bc2dhAzy3_2ngfvHpt5_FCD_RJLjxjaQ/256fx256f 256w, https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha-kBkupjDLz9_6c3mWPFBxX8N0EOMIsULpmtHjPuvq41bc2dhAzy3_2ngfvHpt5_FCD_RJLjxjaQ/360fx360f 360w, https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha-kBkupjDLz9_6c3mWPFBxX8N0EOMIsULpmtHjPuvq41bc2dhAzy3_2ngfvHpt5_FCD_RJLjxjaQ 512w" sizes="(max-width:560px) 100vw, (max-width:900px) 50vw, 320px" alt="Desert Eagle | Printstream" loading="lazy" width="320" height="240"><h3>Desert Eagle | Printstream</h3><div class="sub">После полевых испытаний · Float 0.1908</div><div class="row"><div><div class="price">370 000 сум</div></div><span class="go">Купить</span></div></a></div><p class="pnote"><a href="/guides/buy-cs2-skins-uzbekistan/">Как купить скин безопасно — пошаговая инструкция →</a></p></section><section class="box"><p>Есть такой скин? Выставите его за минуту — DGhostMarket подскажет цену по рынку, оплата через гаранта.</p><a class="btn ghost" href="https://app.dghostmarket.uz/?open=sell&amp;src=site_price" rel="nofollow">Продать на DGhostMarket</a></section><section><h2 class="hub-group">Другие скины Desert Eagle</h2><div class="chips"><a href="/prices/desert-eagle-serpent-strike/">Desert Eagle | Serpent Strike</a><a href="/prices/desert-eagle-sputnik/">Desert Eagle | Sputnik</a><a href="/prices/desert-eagle-tilted/">Desert Eagle | Tilted</a><a href="/prices/desert-eagle-trigger-discipline/">Desert Eagle | Trigger Discipline</a><a href="/prices/desert-eagle-blue-ply/">Desert Eagle | Blue Ply</a><a href="/prices/desert-eagle-bronze-deco/">Desert Eagle | Bronze Deco</a></div></section></div></main>
 
 <footer>
 <div class="wrap">
@@ -275,6 +305,62 @@ let saved = null;
 try { saved = localStorage.getItem('dgm_lang'); } catch (e) {}
 if (!saved && (navigator.language || '').toLowerCase().startsWith('uz')) saved = 'uz';
 if (saved === 'uz' || saved === 'en') location.replace('/' + saved + '/' + location.hash);
+})();
+</script>
+<script>
+// Витрина: нож Karambit | Fade из 3D-движка мини-аппа (embed.html?hero=1)
+// поворачивается прокруткой. Не включаем при «уменьшить движение»,
+// экономии трафика, без WebGL и на слабых устройствах — там остаётся
+// обычный блок с карточками.
+(function(){
+var sec = document.getElementById('showcase');
+if (!sec) return;
+var nav = navigator, conn = nav.connection || {};
+if ((window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) || conn.saveData
+  || (nav.deviceMemory && nav.deviceMemory < 3) || (nav.hardwareConcurrency && nav.hardwareConcurrency < 4)) return;
+try { var c = document.createElement('canvas'); if (!(c.getContext('webgl2') || c.getContext('webgl'))) return; } catch (e) { return; }
+var APP = 'https://app.dghostmarket.uz';
+var lang = document.documentElement.lang || 'ru';
+var frame = sec.querySelector('.s3-frame');
+var caps = sec.querySelectorAll('.s3-cap');
+var bar = sec.querySelector('.s3-bar i');
+var h2 = sec.querySelector('h2');
+sec.classList.add('live');
+var started = false;
+function start(){
+if (started) return;
+started = true;
+frame.src = APP + '/embed.html?key=demo&hero=1&skin=' + encodeURIComponent('★ Karambit | Fade') + '&float=0.012&seed=412&lang=' + lang;
+}
+// Грузим 3D, только когда витрина рядом с экраном.
+if ('IntersectionObserver' in window){
+new IntersectionObserver(function(es, o){ if (es[0].isIntersecting){ start(); o.disconnect(); } }, { rootMargin: '400px 0px' }).observe(sec);
+} else start();
+window.addEventListener('message', function(e){
+if (e.origin !== APP || !e.data || e.data.source !== 'dghost3d') return;
+if (e.data.event === 'ready'){ ready = true; last = -1; frame.classList.add('on'); update(); }
+// 3D не открылось — возвращаем обычный блок.
+if (e.data.event === 'error'){ sec.classList.remove('live'); frame.remove(); }
+});
+var last = -1, ready = false;
+function update(){
+if (!sec.classList.contains('live')){ h2.style.opacity = ''; return; }
+var r = sec.getBoundingClientRect();
+var span = sec.offsetHeight - (window.innerHeight - 64);
+var p = Math.min(1, Math.max(0, (64 - r.top) / Math.max(1, span)));
+if (Math.abs(p - last) > 0.001){
+last = p;
+if (ready && frame.contentWindow) frame.contentWindow.postMessage({ source: 'dghost-site', type: 'hero', p: p }, APP);
+var idx = p < 0.08 ? -1 : Math.min(caps.length - 1, Math.floor((p - 0.08) / 0.92 * caps.length));
+for (var i = 0; i < caps.length; i++) caps[i].classList.toggle('on', i === idx);
+h2.style.opacity = idx < 0 ? 1 : 0.35;
+if (bar) bar.style.width = (p * 100).toFixed(1) + '%';
+}
+}
+window.addEventListener('scroll', update, { passive: true });
+window.addEventListener('resize', update);
+setInterval(update, 500);
+update();
 })();
 </script>
 </body>
