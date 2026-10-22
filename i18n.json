@@ -126,7 +126,14 @@
     "a6": "Yo'q. O'tkazma orqali to'lashda karta egasining ismini ko'rsatasiz va faqat o'z kartangizdan to'lash mumkin. Birovning kartasidan to'lov rad etiladi, pul esa jo'natuvchining kartasiga qaytariladi.",
     "q7": "Pul qanday va qachon qaytariladi?",
     "a7": "Qanday to'lagan bo'lsangiz, o'sha yo'l bilan: balansga — darhol, kartaga — qaytarish to'g'risidagi qarordan keyin 3 bank kuni ichida. Boshqa karta va hisoblarga qaytarilmaydi.",
-    "ct_tg": "Telegram'da qo'llab-quvvatlash"
+    "ct_tg": "Telegram'da qo'llab-quvvatlash",
+    "sc_title": "Har bir skin — <span>3D'da</span>, xuddi o'yindagidek",
+    "sc_1_t": "Har bir bitimda kafil",
+    "sc_1": "Skin Steam'ingizga kelmaguncha pulni platforma ushlab turadi.",
+    "sc_2_t": "Aynan o'sha buyum 3D va AR'da",
+    "sc_2": "Float, pattern va nakleykalar — lotdagidek. Telefon kamerasi orqali pichoqni stolga qo'yib ko'ring.",
+    "sc_3_t": "Narxlar va to'lov so'mda",
+    "sc_3": "Dollar va kriptovalyutasiz: o'z kartangizdan to'laysiz, yonida — bozor narxi."
   },
   "en": {
     "_title": "DGhostMarket — CS2 skin marketplace in Telegram",
@@ -255,6 +262,13 @@
     "a6": "No. When paying by transfer you enter the cardholder's name, and you can only pay from your own card. A payment from someone else's card is declined and refunded to the sender's card.",
     "q7": "How and when are refunds made?",
     "a7": "The same way you paid: to your balance right away, to a card within 3 banking days of the refund decision. Refunds are never sent to other cards or accounts.",
-    "ct_tg": "Support on Telegram"
+    "ct_tg": "Support on Telegram",
+    "sc_title": "Every skin <span>in 3D</span>, just like in the game",
+    "sc_1_t": "Escrow on every deal",
+    "sc_1": "The marketplace holds the money until the skin reaches your Steam.",
+    "sc_2_t": "The exact item in 3D and AR",
+    "sc_2": "Float, pattern and stickers match the listing. Put the knife on your desk with your phone camera.",
+    "sc_3_t": "Prices and payment in UZS",
+    "sc_3": "No dollars or crypto: pay from your own card, with the market price shown alongside."
   }
 }
