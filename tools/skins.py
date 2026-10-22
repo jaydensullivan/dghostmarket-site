@@ -25,6 +25,7 @@ EMBED_KEY = 'pk_t8OmVrXdGBHXUduePmG4'
 EMBED_URL = 'https://app.dghostmarket.uz/embed.html'
 
 TOP_SKINS = 400          # сколько скинов: самые торгуемые по количеству на Skinport
+TOP_STAR = 300           # плюс ножи и перчатки (★) сверх топа — их часто ищут по названию
 RELATED = 6              # ссылок на соседние скины того же оружия
 
 WEARS = ['Factory New', 'Minimal Wear', 'Field-Tested', 'Well-Worn', 'Battle-Scarred']
@@ -50,7 +51,7 @@ T = {
         'desc': 'Цена {name} в сумах: от {low} сум. Все износы{st}, float, коллекция. Купить и продать {name} в Telegram через гаранта — DGhostMarket.',
         'st_desc': ' и StatTrak™',
         'cur': 'сум', 'wear': 'Износ', 'normal': 'Обычный', 'st': 'StatTrak™',
-        'price_note': 'Рыночная цена — минимальное предложение на Skinport в долларах, пересчитанное по курсу ЦБ Узбекистана. Обновляется каждый день.',
+        'price_note': 'Рыночная цена — минимальное предложение на Skinport в долларах, пересчитанное по курсу ЦБ Узбекистана. Обновляется каждый день. В приложении DGhostMarket цена рынка считается по CSFloat, поэтому может немного отличаться.',
         'about': 'О скине', 'weapon': 'Оружие', 'rarity': 'Редкость', 'float': 'Float', 'collection': 'Коллекция', 'case': 'Где выпадает',
         'on_sale': 'В продаже на DGhostMarket', 'buy': 'Купить',
         'none': 'Сейчас этого скина нет в продаже. Добавьте его в «Хочу» — бот напишет, как только он появится, а продавцам подскажет, что его ищут.',
@@ -74,7 +75,7 @@ T = {
         'desc': '{name} narxi so‘mda: {low} so‘mdan. Barcha holatlar{st}, float, kolleksiya. {name}ni Telegramda kafil orqali sotib oling va soting — DGhostMarket.',
         'st_desc': ' va StatTrak™',
         'cur': 'so‘m', 'wear': 'Holati', 'normal': 'Oddiy', 'st': 'StatTrak™',
-        'price_note': 'Bozor narxi — Skinport’dagi eng arzon taklif (dollarda), O‘zbekiston Markaziy banki kursi bo‘yicha hisoblangan. Har kuni yangilanadi.',
+        'price_note': 'Bozor narxi — Skinport’dagi eng arzon taklif (dollarda), O‘zbekiston Markaziy banki kursi bo‘yicha hisoblangan. Har kuni yangilanadi. DGhostMarket ilovasida bozor narxi CSFloat bo‘yicha hisoblanadi, shuning uchun biroz farq qilishi mumkin.',
         'about': 'Skin haqida', 'weapon': 'Qurol', 'rarity': 'Noyoblik', 'float': 'Float', 'collection': 'Kolleksiya', 'case': 'Qayerdan tushadi',
         'on_sale': 'DGhostMarket’da sotuvda', 'buy': 'Sotib olish',
         'none': 'Hozir bu skin sotuvda yo‘q. Uni «Xohlayman» ro‘yxatiga qo‘shing — paydo bo‘lishi bilan bot xabar beradi, sotuvchilarga esa uni qidirishayotganini aytadi.',
@@ -98,7 +99,7 @@ T = {
         'desc': '{name} price in Uzbek sum: from {low} UZS. All wears{st}, float, collection. Buy and sell {name} in Telegram with escrow — DGhostMarket.',
         'st_desc': ' and StatTrak™',
         'cur': 'UZS', 'wear': 'Wear', 'normal': 'Normal', 'st': 'StatTrak™',
-        'price_note': 'Market price is the lowest Skinport listing in USD, converted at the Central Bank of Uzbekistan rate. Updated daily.',
+        'price_note': 'Market price is the lowest Skinport listing in USD, converted at the Central Bank of Uzbekistan rate. Updated daily. In the DGhostMarket app the market price is based on CSFloat, so it may differ slightly.',
         'about': 'About the skin', 'weapon': 'Weapon', 'rarity': 'Rarity', 'float': 'Float', 'collection': 'Collection', 'case': 'Drops from',
         'on_sale': 'On sale at DGhostMarket', 'buy': 'Buy',
         'none': 'This skin isn’t on sale right now. Add it to your wishlist — the bot will message you as soon as it appears and let sellers know it’s wanted.',
@@ -254,7 +255,10 @@ def collect(meta, market, rate, keep=()):
     # Уже опубликованные страницы продолжаем обновлять, даже если скин выпал из топа:
     # иначе на них застынут старые цены.
     ranked = sorted(best.values(), key=lambda s: -s['qty'])
-    top = ranked[:TOP_SKINS] + [s for s in ranked[TOP_SKINS:] if s['slug'] in keep]
+    rest = ranked[TOP_SKINS:]
+    stars = [s for s in rest if s['name'].startswith('★')][:TOP_STAR]
+    star_slugs = {s['slug'] for s in stars}
+    top = ranked[:TOP_SKINS] + stars + [s for s in rest if s['slug'] in keep and s['slug'] not in star_slugs]
     return sorted(top, key=lambda s: s['base'])
 
 

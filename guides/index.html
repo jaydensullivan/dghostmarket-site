@@ -178,6 +178,19 @@ section{padding:44px 0}
 .langs a::after{content:'';position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
 footer a,.crumbs a{display:inline-block;padding:6px 0}
 
+.pro-tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.pro-tier{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:20px;position:relative}
+.pro-tier.pop{border-color:var(--violet)}
+.pro-tier .tag{position:absolute;top:-11px;left:16px;background:var(--grad);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.pro-tier h3{margin:0 0 6px;font-size:18px}
+.pro-tier .p{font-size:24px;font-weight:800}
+.pro-tier .per{color:var(--muted);font-size:13px;margin-bottom:12px}
+.pro-tier ul{list-style:none;padding:0;margin:0;color:var(--muted);font-size:14px}
+.pro-tier li{margin:5px 0}
+.pro-first{margin-top:16px;font-weight:600}
+@media(max-width:900px){.pro-tiers{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.pro-tiers{grid-template-columns:1fr}}
+
 .lots{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .lot{display:flex;flex-direction:column;background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:16px;text-decoration:none;color:inherit}
 .lot img{width:100%;aspect-ratio:4/3;object-fit:contain;background:radial-gradient(ellipse at 50% 40%,#2a2238,#130e1c 70%);border-radius:12px;margin-bottom:12px}
@@ -215,11 +228,12 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <div class="wrap bar">
 <a class="brand" href="#top"><img src="/favicon.png" alt=""><span>DGhost<b>Market</b></span></a>
 <nav class="links">
-<a href="#how" data-i18n="nav_how">Как это работает</a>
-<a href="#fees" data-i18n="nav_fees">Комиссии</a>
-<a href="#safety" data-i18n="nav_safety">Безопасность</a>
-<a href="#docs" data-i18n="nav_docs">Документы</a>
-<a href="#contacts" data-i18n="nav_contacts">Контакты</a>
+<a href="/#how" data-i18n="nav_how">Как это работает</a>
+<a href="/#fees" data-i18n="nav_fees">Комиссии</a>
+<a href="/#sellers" data-i18n="nav_sellers">Продавцам</a>
+<a href="/#safety" data-i18n="nav_safety">Безопасность</a>
+<a href="/#docs" data-i18n="nav_docs">Документы</a>
+<a href="/#contacts" data-i18n="nav_contacts">Контакты</a>
 <a href="/prices/" data-i18n="nav_prices">Цены</a>
 </nav>
 <div class="langs" role="group" aria-label="Язык">
@@ -231,7 +245,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 </div>
 </header>
 
-<main id="top"><div class="wrap"><nav class="crumbs"><a href="/">Главная</a> / Инструкции</nav><h1>Инструкции по скинам CS2</h1><p class="lead">Простые ответы на частые вопросы: как купить и продать скины CS2 за сумы и не потерять ни предмет, ни деньги.</p><div class="guide-list"><a href="/guides/buy-cs2-skins-uzbekistan/"><b>Как купить скин CS2 в Узбекистане за сумы</b><span>Пошаговая инструкция: как купить скин CS2 за сумы через Telegram, без карты Steam и с защитой сделки. Сроки, комиссии и что делать, если предмет не пришёл.</span></a><a href="/guides/sell-cs2-skins/"><b>Как продать скины CS2 за сумы</b><span>Как продать скин CS2 за сумы в Узбекистане: проверка продавца, выставление лота из инвентаря Steam, сроки передачи, комиссия 5% и вывод денег на карту.</span></a><a href="/guides/trade-link/"><b>Где найти trade-ссылку Steam</b><span>Где взять ссылку на обмен (trade URL) в Steam с телефона и компьютера, зачем нужен Steam Guard и как избежать задержки обменов на 15 дней.</span></a><a href="/guides/avoid-scams/"><b>Как не попасть на мошенников при покупке и продаже скинов</b><span>Частые схемы обмана со скинами CS2: фейковые сайты входа в Steam, кража API-ключа, «случайная жалоба», оплата в обход гаранта. Как распознать и защитить аккаунт.</span></a><a href="/guides/float-and-wear/"><b>Что такое float и износ скина в CS2</b><span>Float и износ скинов CS2 простыми словами: диапазоны Factory New — Battle-Scarred, почему цены одного скина отличаются в разы, что такое паттерн и StatTrak™.</span></a></div></div></main>
+<main id="top"><div class="wrap"><nav class="crumbs"><a href="/">Главная</a> / Инструкции</nav><h1>Инструкции по скинам CS2</h1><p class="lead">Простые ответы на частые вопросы: как купить и продать скины CS2 за сумы и не потерять ни предмет, ни деньги.</p><div class="guide-list"><a href="/guides/buy-cs2-skins-uzbekistan/"><b>Как купить скин CS2 в Узбекистане за сумы</b><span>Пошаговая инструкция: как купить скин CS2 за сумы через Telegram, без карты Steam и с защитой сделки. Сроки, комиссии и что делать, если предмет не пришёл.</span></a><a href="/guides/sell-cs2-skins/"><b>Как продать скины CS2 за сумы</b><span>Как продать скин CS2 за сумы в Узбекистане: проверка продавца, выставление лота из инвентаря Steam, сроки передачи, комиссия 5% и вывод денег на карту.</span></a><a href="/guides/trade-link/"><b>Где найти trade-ссылку Steam</b><span>Где взять ссылку на обмен (trade URL) в Steam с телефона и компьютера, зачем нужен Steam Guard и как избежать задержки обменов на 15 дней.</span></a><a href="/guides/avoid-scams/"><b>Как не попасть на мошенников при покупке и продаже скинов</b><span>Частые схемы обмана со скинами CS2: фейковые сайты входа в Steam, кража API-ключа, «случайная жалоба», оплата в обход гаранта. Как распознать и защитить аккаунт.</span></a><a href="/guides/float-and-wear/"><b>Что такое float и износ скина в CS2</b><span>Float и износ скинов CS2 простыми словами: диапазоны Factory New — Battle-Scarred, почему цены одного скина отличаются в разы, что такое паттерн и StatTrak™.</span></a><a href="/guides/how-escrow-works/"><b>Как работает гарант: кто и когда держит деньги</b><span>Что происходит с деньгами в сделке на DGhostMarket: почему продавец получает оплату через 8 дней, что такое Trade Protection в Steam, как открыть спор и как вернуть деньги.</span></a><a href="/guides/withdraw-money/"><b>Как вывести деньги с баланса на карту</b><span>Как продавцу вывести деньги с DGhostMarket на банковскую карту: проверка личности, минимальная сумма, сроки обработки заявки и почему вывод только на свою карту.</span></a><a href="/guides/pro-for-sellers/"><b>Тарифы PRO: продажи через свой Telegram-канал</b><span>Что дают тарифы PRO на DGhostMarket: 3D-видео и GIF лотов, публикация в канал @dghostmarket и в свои каналы, аукционы и розыгрыши для подписчиков. Скидка на первый месяц.</span></a></div></div></main>
 
 <footer>
 <div class="wrap">

@@ -178,6 +178,19 @@ section{padding:44px 0}
 .langs a::after{content:'';position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
 footer a,.crumbs a{display:inline-block;padding:6px 0}
 
+.pro-tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.pro-tier{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:20px;position:relative}
+.pro-tier.pop{border-color:var(--violet)}
+.pro-tier .tag{position:absolute;top:-11px;left:16px;background:var(--grad);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.pro-tier h3{margin:0 0 6px;font-size:18px}
+.pro-tier .p{font-size:24px;font-weight:800}
+.pro-tier .per{color:var(--muted);font-size:13px;margin-bottom:12px}
+.pro-tier ul{list-style:none;padding:0;margin:0;color:var(--muted);font-size:14px}
+.pro-tier li{margin:5px 0}
+.pro-first{margin-top:16px;font-weight:600}
+@media(max-width:900px){.pro-tiers{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.pro-tiers{grid-template-columns:1fr}}
+
 .lots{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .lot{display:flex;flex-direction:column;background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:16px;text-decoration:none;color:inherit}
 .lot img{width:100%;aspect-ratio:4/3;object-fit:contain;background:radial-gradient(ellipse at 50% 40%,#2a2238,#130e1c 70%);border-radius:12px;margin-bottom:12px}
@@ -215,11 +228,12 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <div class="wrap bar">
 <a class="brand" href="#top"><img src="/favicon.png" alt=""><span>DGhost<b>Market</b></span></a>
 <nav class="links">
-<a href="#how" data-i18n="nav_how">Qanday ishlaydi</a>
-<a href="#fees" data-i18n="nav_fees">Komissiyalar</a>
-<a href="#safety" data-i18n="nav_safety">Xavfsizlik</a>
-<a href="#docs" data-i18n="nav_docs">Hujjatlar</a>
-<a href="#contacts" data-i18n="nav_contacts">Kontaktlar</a>
+<a href="/uz/#how" data-i18n="nav_how">Qanday ishlaydi</a>
+<a href="/uz/#fees" data-i18n="nav_fees">Komissiyalar</a>
+<a href="/uz/#sellers" data-i18n="nav_sellers">Sotuvchilarga</a>
+<a href="/uz/#safety" data-i18n="nav_safety">Xavfsizlik</a>
+<a href="/uz/#docs" data-i18n="nav_docs">Hujjatlar</a>
+<a href="/uz/#contacts" data-i18n="nav_contacts">Kontaktlar</a>
 <a href="/uz/prices/" data-i18n="nav_prices">Narxlar</a>
 </nav>
 <div class="langs" role="group" aria-label="Language">
@@ -231,7 +245,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 </div>
 </header>
 
-<main id="top"><div class="wrap"><nav class="crumbs"><a href="/uz/">Bosh sahifa</a> / Qo‘llanmalar</nav><h1>CS2 skinlari bo‘yicha qo‘llanmalar</h1><p class="lead">Ko‘p beriladigan savollarga oddiy javoblar: CS2 skinlarini so‘mga qanday sotib olish va sotish, buyumni ham, pulni ham yo‘qotmaslik.</p><div class="guide-list"><a href="/uz/guides/buy-cs2-skins-uzbekistan/"><b>O‘zbekistonda CS2 skinini so‘mga qanday sotib olish</b><span>Bosqichma-bosqich qo‘llanma: CS2 skinini Telegram orqali so‘mga, Steam kartasisiz va bitim himoyasi bilan qanday sotib olish. Muddatlar, komissiyalar va buyum kelmasa nima qilish kerak.</span></a><a href="/uz/guides/sell-cs2-skins/"><b>CS2 skinlarini so‘mga qanday sotish</b><span>O‘zbekistonda CS2 skinini so‘mga qanday sotish: sotuvchi tekshiruvi, Steam inventaridan lot qo‘yish, topshirish muddati, 5% komissiya va pulni kartaga yechish.</span></a><a href="/uz/guides/trade-link/"><b>Steam trade havolasini qayerdan topish mumkin</b><span>Steam’da almashuv havolasini (trade URL) telefon va kompyuterdan qanday olish, Steam Guard nima uchun kerak va almashuvlarning 15 kunga kechikishidan qanday qochish.</span></a><a href="/uz/guides/avoid-scams/"><b>Skin sotib olish va sotishda firibgarlarga qanday aldanmaslik</b><span>CS2 skinlari bilan tez-tez uchraydigan aldov sxemalari: Steam’ga kirishning soxta sahifalari, API kalitni o‘g‘irlash, «tasodifiy shikoyat», kafilni chetlab to‘lash. Ularni qanday aniqlash va akkauntni himoya qilish.</span></a><a href="/uz/guides/float-and-wear/"><b>CS2’da skin float’i va holati nima</b><span>CS2 skinlarining float’i va holati oddiy so‘zlar bilan: Factory New — Battle-Scarred oraliqlari, nega bitta skin narxi bir necha baravar farq qiladi, naqsh va StatTrak™ nima.</span></a></div></div></main>
+<main id="top"><div class="wrap"><nav class="crumbs"><a href="/uz/">Bosh sahifa</a> / Qo‘llanmalar</nav><h1>CS2 skinlari bo‘yicha qo‘llanmalar</h1><p class="lead">Ko‘p beriladigan savollarga oddiy javoblar: CS2 skinlarini so‘mga qanday sotib olish va sotish, buyumni ham, pulni ham yo‘qotmaslik.</p><div class="guide-list"><a href="/uz/guides/buy-cs2-skins-uzbekistan/"><b>O‘zbekistonda CS2 skinini so‘mga qanday sotib olish</b><span>Bosqichma-bosqich qo‘llanma: CS2 skinini Telegram orqali so‘mga, Steam kartasisiz va bitim himoyasi bilan qanday sotib olish. Muddatlar, komissiyalar va buyum kelmasa nima qilish kerak.</span></a><a href="/uz/guides/sell-cs2-skins/"><b>CS2 skinlarini so‘mga qanday sotish</b><span>O‘zbekistonda CS2 skinini so‘mga qanday sotish: sotuvchi tekshiruvi, Steam inventaridan lot qo‘yish, topshirish muddati, 5% komissiya va pulni kartaga yechish.</span></a><a href="/uz/guides/trade-link/"><b>Steam trade havolasini qayerdan topish mumkin</b><span>Steam’da almashuv havolasini (trade URL) telefon va kompyuterdan qanday olish, Steam Guard nima uchun kerak va almashuvlarning 15 kunga kechikishidan qanday qochish.</span></a><a href="/uz/guides/avoid-scams/"><b>Skin sotib olish va sotishda firibgarlarga qanday aldanmaslik</b><span>CS2 skinlari bilan tez-tez uchraydigan aldov sxemalari: Steam’ga kirishning soxta sahifalari, API kalitni o‘g‘irlash, «tasodifiy shikoyat», kafilni chetlab to‘lash. Ularni qanday aniqlash va akkauntni himoya qilish.</span></a><a href="/uz/guides/float-and-wear/"><b>CS2’da skin float’i va holati nima</b><span>CS2 skinlarining float’i va holati oddiy so‘zlar bilan: Factory New — Battle-Scarred oraliqlari, nega bitta skin narxi bir necha baravar farq qiladi, naqsh va StatTrak™ nima.</span></a><a href="/uz/guides/how-escrow-works/"><b>Kafil qanday ishlaydi: pulni kim va qachon ushlab turadi</b><span>DGhostMarket’dagi bitimda pul bilan nima bo‘ladi: nega sotuvchi to‘lovni 8 kundan keyin oladi, Steam’dagi Trade Protection nima, nizo qanday ochiladi va pul qanday qaytariladi.</span></a><a href="/uz/guides/withdraw-money/"><b>Balansdan pulni kartaga qanday yechish</b><span>Sotuvchi DGhostMarket’dan pulni bank kartasiga qanday yechadi: shaxsni tasdiqlash, eng kam summa, arizani ko‘rib chiqish muddati va nega faqat o‘z kartangizga.</span></a><a href="/uz/guides/pro-for-sellers/"><b>PRO tariflar: o‘z Telegram-kanalingiz orqali savdo</b><span>DGhostMarket’da PRO tariflari nima beradi: lotlarning 3D-videosi va GIF, @dghostmarket kanaliga va o‘z kanallaringizga e’lon, obunachilar uchun auksion va o‘yinlar. Birinchi oyga chegirma.</span></a></div></div></main>
 
 <footer>
 <div class="wrap">
