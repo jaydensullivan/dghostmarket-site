@@ -569,9 +569,9 @@ def build_guides(tpl, i18n, iso):
     return new
 
 
-def site_page(page, lang, path, title, desc, main_html, jsonld=None):
+def site_page(page, lang, path, title, desc, main_html, jsonld=None, path_langs=None):
     """Страница отдельного сайта render.dghostmarket.com из готовой страницы сайта маркета."""
-    s = re.sub(r'<header>.*?</header>', lambda m: render.site_header(lang, path), page, count=1, flags=re.S)
+    s = re.sub(r'<header>.*?</header>', lambda m: render.site_header(lang, path, path_langs), page, count=1, flags=re.S)
     s = re.sub(r'<footer>.*?</footer>', lambda m: render.site_footer(lang), s, count=1, flags=re.S)
     s = re.sub(r'<main id="top">.*?</main>', lambda m: main_html, s, count=1, flags=re.S)
     url = render.site_url(lang, path)
@@ -610,8 +610,9 @@ def build_render_site(tpl, i18n):
     page = localize(tpl, 'en', i18n, render.CSS + render.LEGAL_CSS)
     for kind in render.LEGAL:
         title = render.LEGAL[kind][0]
+        # Условия — только на английском: RU/UZ в шапке ведут на главную.
         out = site_page(page, 'en', f'{kind}/', f'{title} | DGhost 3D', f'{title} of DGhost 3D, an embeddable 3D viewer for CS2 item listings.',
-                        render.legal_main(kind))
+                        render.legal_main(kind), path_langs=('en',))
         out = re.sub(r'<link rel="alternate" hreflang="[^"]*" href="[^"]*">\n?', '', out)
         write(f'render/{kind}/index.html', out)
     urls = [render.site_url(l) for l in render.SITE_LANGS] + [render.site_url('en', f'{k}/') for k in render.LEGAL]
