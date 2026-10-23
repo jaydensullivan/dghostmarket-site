@@ -290,7 +290,7 @@ def site_jsonld(lang):
         {'@context': 'https://schema.org', '@type': 'Organization', 'name': 'DGhostMarket', 'url': SITE + '/',
          'logo': SITE + '/apple-touch-icon.png', 'email': 'support@dghostmarket.uz',
          'contactPoint': {'@type': 'ContactPoint', 'contactType': 'customer support', 'email': 'support@dghostmarket.uz',
-                          'url': 'https://t.me/DGhostMarket_Support', 'availableLanguage': ['uz', 'ru', 'en']},
+                          'url': 'https://t.me/dghostmarketsupportbot', 'availableLanguage': ['uz', 'ru', 'en']},
          'sameAs': ['https://t.me/dghostmarketbot', 'https://t.me/dghostmarket']},
         {'@context': 'https://schema.org', '@type': 'WebSite', 'name': 'DGhostMarket', 'url': page_url(lang, 'home'),
          'inLanguage': lang},
