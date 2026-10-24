@@ -10,13 +10,11 @@
     "nav_contacts": "Kontaktlar",
     "cta_open_short": "Ochish",
     "cta_open": "Telegramda ochish",
-    "cta_how": "Qanday ishlaydi",
     "trust_hold": "🔒 Skin qo'lingizga yetguncha to'lov ushlab turiladi",
     "trust_kyc": "🪪 Sotuvchilar shaxsini tasdiqlaydi",
     "trust_tg": "💬 Bitim — Telegramda",
     "cta_web": "Brauzerda ochish",
     "hero_kicker": "Telegramdagi marketpleys",
-    "hero_title": "CS2 skinlarini <span>so'mga</span> soting va sotib oling",
     "hero_lead": "DGhostMarket skin xaridorlari va sotuvchilarini bog'laydi. Buyum xaridorga yetib bormaguncha to'lov platformada ushlab turiladi, sotuvchilar esa shaxsini tasdiqlaydi.",
     "fact_fee": "sotuvdan komissiya",
     "fact_24_v": "24 soat",
@@ -133,7 +131,10 @@
     "sc_2_t": "Aynan o'sha buyum 3D va AR'da",
     "sc_2": "Float, pattern va nakleykalar — lotdagidek. Telefon kamerasi orqali pichoqni stolga qo'yib ko'ring.",
     "sc_3_t": "Narxlar va to'lov so'mda",
-    "sc_3": "Dollar va kriptovalyutasiz: o'z kartangizdan to'laysiz, yonida — bozor narxi."
+    "sc_3": "Dollar va kriptovalyutasiz: o'z kartangizdan to'laysiz, yonida — bozor narxi.",
+    "hero_title2": "CS2 skinlari so'mga.<br>Pul kafilda.<br><span>Aldovsiz.</span>",
+    "search_ph": "Karambit, AK-47 Redline, qo'lqoplar…",
+    "search_btn": "Topish"
   },
   "en": {
     "_title": "DGhostMarket — CS2 skin marketplace in Telegram",
@@ -146,13 +147,11 @@
     "nav_contacts": "Contacts",
     "cta_open_short": "Open",
     "cta_open": "Open in Telegram",
-    "cta_how": "How it works",
     "trust_hold": "🔒 Payment is held until you receive the skin",
     "trust_kyc": "🪪 Sellers verify their identity",
     "trust_tg": "💬 Deals happen in Telegram",
     "cta_web": "Open in browser",
     "hero_kicker": "Marketplace in Telegram",
-    "hero_title": "Buy and sell <span>CS2</span> skins for sum",
     "hero_lead": "DGhostMarket connects skin buyers and sellers. The platform holds the payment until the item reaches the buyer, and sellers verify their identity.",
     "fact_fee": "fee on sales",
     "fact_24_v": "24 hours",
@@ -269,6 +268,9 @@
     "sc_2_t": "The exact item in 3D and AR",
     "sc_2": "Float, pattern and stickers match the listing. Put the knife on your desk with your phone camera.",
     "sc_3_t": "Prices and payment in UZS",
-    "sc_3": "No dollars or crypto: pay from your own card, with the market price shown alongside."
+    "sc_3": "No dollars or crypto: pay from your own card, with the market price shown alongside.",
+    "hero_title2": "CS2 skins for sum.<br>Escrow on every deal.<br><span>No scams.</span>",
+    "search_ph": "Karambit, AK-47 Redline, gloves…",
+    "search_btn": "Search"
   }
 }
