@@ -54,6 +54,7 @@ T = {
         'price_note': 'Рыночная цена — минимальное предложение на Skinport в долларах, пересчитанное по курсу ЦБ Узбекистана. Обновляется каждый день. В приложении DGhostMarket цена рынка считается по CSFloat, поэтому может немного отличаться.',
         'about': 'О скине', 'weapon': 'Оружие', 'rarity': 'Редкость', 'float': 'Float', 'collection': 'Коллекция', 'case': 'Где выпадает',
         'on_sale': 'В продаже на DGhostMarket', 'buy': 'Купить',
+        'cta_lots': 'Лотов в продаже: {n}', 'cta_from': 'от {price}', 'cta_below': 'на {p}% дешевле рынка', 'cta_btn': 'Купить в DGhostMarket',
         'none': 'Сейчас этого скина нет в продаже. Добавьте его в «Хочу» — бот напишет, как только он появится, а продавцам подскажет, что его ищут.',
         'notify': 'Сообщить, когда появится',
         'rotate3d': 'Покрутить в 3D',
@@ -78,6 +79,7 @@ T = {
         'price_note': 'Bozor narxi — Skinport’dagi eng arzon taklif (dollarda), O‘zbekiston Markaziy banki kursi bo‘yicha hisoblangan. Har kuni yangilanadi. DGhostMarket ilovasida bozor narxi CSFloat bo‘yicha hisoblanadi, shuning uchun biroz farq qilishi mumkin.',
         'about': 'Skin haqida', 'weapon': 'Qurol', 'rarity': 'Noyoblik', 'float': 'Float', 'collection': 'Kolleksiya', 'case': 'Qayerdan tushadi',
         'on_sale': 'DGhostMarket’da sotuvda', 'buy': 'Sotib olish',
+        'cta_lots': 'Sotuvdagi lotlar: {n}', 'cta_from': '{price}dan', 'cta_below': 'bozordan {p}% arzon', 'cta_btn': 'DGhostMarket’da sotib olish',
         'none': 'Hozir bu skin sotuvda yo‘q. Uni «Xohlayman» ro‘yxatiga qo‘shing — paydo bo‘lishi bilan bot xabar beradi, sotuvchilarga esa uni qidirishayotganini aytadi.',
         'notify': 'Paydo bo‘lganda xabar berish',
         'rotate3d': '3D da aylantirish',
@@ -102,6 +104,7 @@ T = {
         'price_note': 'Market price is the lowest Skinport listing in USD, converted at the Central Bank of Uzbekistan rate. Updated daily. In the DGhostMarket app the market price is based on CSFloat, so it may differ slightly.',
         'about': 'About the skin', 'weapon': 'Weapon', 'rarity': 'Rarity', 'float': 'Float', 'collection': 'Collection', 'case': 'Drops from',
         'on_sale': 'On sale at DGhostMarket', 'buy': 'Buy',
+        'cta_lots': 'Lots on sale: {n}', 'cta_from': 'from {price}', 'cta_below': '{p}% below market', 'cta_btn': 'Buy at DGhostMarket',
         'none': 'This skin isn’t on sale right now. Add it to your wishlist — the bot will message you as soon as it appears and let sellers know it’s wanted.',
         'notify': 'Notify me when available',
         'rotate3d': 'Rotate in 3D',
@@ -132,6 +135,10 @@ CSS = """
 .ptable th{color:var(--muted);font-weight:600;font-size:13px}
 .ptable td.num{font-weight:700;white-space:nowrap}
 .pnote{color:var(--muted);font-size:13px;margin:10px 0 0}
+.buy-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding:14px 16px;background:var(--surface);border:1px solid rgba(168,85,247,0.35);border-radius:14px}
+.buy-cta .cta-price{font-size:20px;font-weight:800}
+.buy-cta .cta-sub{color:var(--muted);font-size:13px;margin-top:2px}
+.buy-cta .cta-below{color:#4ade80;font-weight:700}
 .facts-list{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:0;font-size:15px}
 .facts-list dt{color:var(--muted)}
 .facts-list dd{margin:0}
@@ -276,6 +283,24 @@ def matching_lots(skin, lots):
     return sorted(out, key=lambda s: int(s['price']))
 
 
+def buy_cta(found, lang):
+    """Под таблицей цен: сколько лотов на маркете, от какой цены и насколько дешевле рынка."""
+    if not found:
+        return ''
+    t = T[lang]
+    best = found[0]
+    price = int(best['price'])
+    below = ''
+    market = best.get('market_price_uzs')
+    if market and market > price:
+        pct = round((1 - price / market) * 100)
+        if pct >= 1:
+            below = f' · <span class="cta-below">{esc(t["cta_below"].format(p=pct))}</span>'
+    return (f'<div class="buy-cta"><div><div class="cta-price">{esc(t["cta_from"].format(price=money(price) + " " + t["cur"]))}</div>'
+            f'<div class="cta-sub">{esc(t["cta_lots"].format(n=len(found)))}{below}</div></div>'
+            f'<a class="btn primary" href="https://app.dghostmarket.uz/?open=skin_{int(best["id"])}" rel="nofollow">{esc(t["cta_btn"])}</a></div>')
+
+
 def skin_main(skin, lang, lots, related, rate, lot_card, has3d=False):
     t = T[lang]
     p = prefix(lang)
@@ -319,6 +344,7 @@ def skin_main(skin, lang, lots, related, rate, lot_card, has3d=False):
         img = (f'<div class="p3d">{img}<button type="button" class="btn ghost p3d-btn" data-3d="{esc(src)}">'
                f'🧊 {esc(t["rotate3d"])}</button></div>' + P3D_JS)
     found = matching_lots(skin, lots)
+    cta = buy_cta(found, lang)
     if found:
         sale = (f'<section class="box"><h2>{esc(t["on_sale"])}</h2><div class="lots">'
                 + ''.join(lot_card(s, lang) for s in found[:6]) + '</div></section>')
@@ -336,7 +362,7 @@ def skin_main(skin, lang, lots, related, rate, lot_card, has3d=False):
                + ''.join(f'<a href="{p}/prices/{r["slug"]}/">{esc(r["base"])}</a>' for r in related) + '</div></section>')
     crumbs = (f'<nav class="crumbs"><a href="{p}/">{esc(t["home"])}</a> / <a href="{p}/prices/">{esc(t["hub"])}</a> / {esc(name)}</nav>')
     return (f'<main id="top"><div class="wrap">{crumbs}<div class="price-head">{img}<div>'
-            f'<h1>{esc(t["h1"].format(name=name))}</h1>{table}</div></div>'
+            f'<h1>{esc(t["h1"].format(name=name))}</h1>{table}{cta}</div></div>'
             f'<section class="box"><h2>{esc(t["about"])}</h2>{facts_html}</section>{sale}{sell}{rel}</div></main>')
 
 
