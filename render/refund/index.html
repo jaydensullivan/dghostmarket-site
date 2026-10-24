@@ -85,6 +85,20 @@ h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text
 .fact b{display:block;font-size:18px}
 .fact span{font-size:13px;color:var(--muted)}
 .hero-art{display:flex;justify-content:center;order:2}
+/* Первый экран — панель со свечением сверху, поиск скина прямо в ней. */
+.hero-panel{position:relative;padding:44px 44px 36px;border-radius:28px;border:1px solid var(--line);
+background:linear-gradient(180deg,rgba(23,16,34,0.92),rgba(10,8,15,0.96));
+box-shadow:0 -18px 80px -20px rgba(123,44,255,0.55),0 0 0 1px rgba(255,255,255,0.02) inset}
+.hero-panel::before{content:"";position:absolute;left:8%;right:8%;top:-1px;height:2px;border-radius:2px;
+background:linear-gradient(90deg,transparent,#7b6cff,#b34dff,#ff2bd6,transparent)}
+.hsearch{display:flex;gap:8px;margin:6px 0 10px;padding:6px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,0.03);max-width:560px}
+.hsearch input{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--text);font:500 16px Inter,sans-serif;padding:0 10px}
+.hsearch input::placeholder{color:var(--muted)}
+.hsearch:focus-within{border-color:rgba(179,77,255,0.6);box-shadow:0 0 0 3px rgba(179,77,255,0.15)}
+.hsearch .btn{padding:10px 18px}
+.hchips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px}
+.hchips a{font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+.hchips a:hover{color:var(--text);border-color:rgba(179,77,255,0.6)}
 /* Первый экран: 4 реальных лота под кнопками и строка доверия. */
 .hlots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:22px 0 4px}
 .hlot{display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,0.03);color:var(--text);text-decoration:none;min-width:0}
@@ -184,6 +198,8 @@ nav.links{display:none}
 .hero-grid{display:block}
 .hero-art{float:right;width:112px;margin:0 0 8px 12px}
 .hero-art img{max-width:112px}
+.hero-panel{padding:22px 16px 20px;border-radius:20px}
+.cta .btn{flex:1 1 0;padding:12px 10px}
 .trust{clear:both}
 .two,.fees,.cards{grid-template-columns:1fr}
 .docs{grid-template-columns:1fr 1fr}

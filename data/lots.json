@@ -1,5 +1,19 @@
 [
 {
+"id": 227,
+"title": "Tec-9 | Whiteout",
+"wear": "MW",
+"stattrak": 0,
+"price": 150000,
+"photo_url": "https://community.cloudflare.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg",
+"float_value": 0.14520288,
+"pattern": "281",
+"weapon_type": "Tec-9",
+"market_price_uzs": 161407,
+"view_count": 0,
+"created_at": "2026-10-24T17:01:14.682128+00:00"
+},
+{
 "id": 226,
 "title": "Tec-9 | Whiteout",
 "wear": "MW",
@@ -192,7 +206,7 @@
 "pattern": "147",
 "weapon_type": "Desert Eagle",
 "market_price_uzs": 11070,
-"view_count": 70,
+"view_count": 71,
 "created_at": "2026-09-06T07:03:54.246781+00:00"
 },
 {
@@ -360,7 +374,7 @@
 "pattern": "547",
 "weapon_type": "AWP",
 "market_price_uzs": 452796,
-"view_count": 72,
+"view_count": 73,
 "created_at": "2026-08-31T10:53:27.597694+00:00"
 },
 {
