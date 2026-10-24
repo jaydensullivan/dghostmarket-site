@@ -319,6 +319,9 @@ def localize(tpl, lang, i18n, css=''):
 
         s = re.sub(r'(<(\w+)\b[^>]*\sdata-i18n="([^"]+)"[^>]*>)(.*?)(</\2>)', sub_text, s, flags=re.S)
         s = re.sub(r'(<(\w+)\b[^>]*\sdata-i18n-html="([^"]+)"[^>]*>)(.*?)(</\2>)', sub_html, s, flags=re.S)
+        # Подсказка в поле ввода: placeholder="…" data-i18n-ph="ключ".
+        s = re.sub(r'placeholder="[^"]*"(?= data-i18n-ph="([^"]+)")',
+                   lambda m: f'placeholder="{esc(d[m.group(1)])}"' if m.group(1) in d else m.group(0), s)
         s = s.replace('<html lang="ru">', f'<html lang="{lang}">')
         s = re.sub(r'<title>.*?</title>', lambda m: f'<title>{txt(d["_title"])}</title>', s, count=1)
         s = re.sub(r'(<meta name="description" content=")[^"]*', lambda m: m.group(1) + esc(d['_description']), s, count=1)
