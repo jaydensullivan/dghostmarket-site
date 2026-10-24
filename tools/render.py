@@ -318,12 +318,16 @@ SITE_T = {
 }
 
 
-def site_header(lang, path=''):
+def site_header(lang, path='', path_langs=None):
+    """Шапка. path_langs — на каких языках есть эта страница: на остальные
+    переключатель ведёт на главную (условия, например, только на английском)."""
     t = SITE_T[lang]
     p = site_prefix(lang)
     on = ' class="on"'
-    langs = ''.join(f'<a href="{site_prefix(l)}/{path}" hreflang="{l}"{on if l == lang else ""}>{l.upper()}</a>'
-                    for l in SITE_LANGS)
+    langs = ''.join(
+        f'<a href="{site_prefix(l)}/{path if path_langs is None or l in path_langs else ""}" hreflang="{l}"'
+        f'{on if l == lang else ""}>{l.upper()}</a>'
+        for l in SITE_LANGS)
     return (f'<header><div class="wrap bar"><a class="brand" href="{p}/"><img src="/favicon.png" alt=""><span>DGhost<b>3D</b></span></a>'
             f'<nav class="links"><a href="{p}/#demo">{esc(t["nav_demo"])}</a><a href="{p}/#plans">{esc(t["nav_plans"])}</a>'
             f'<a href="{p}/#faq">{esc(t["nav_faq"])}</a></nav>'
