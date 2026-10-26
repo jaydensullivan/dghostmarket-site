@@ -264,7 +264,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 
 <section class="show3d" id="showcase">
 <div class="wrap s3-stage">
-<iframe class="s3-frame" title="Karambit | Fade — 3D" tabindex="-1" aria-hidden="true" loading="eager" allow="xr-spatial-tracking"></iframe>
+<iframe class="s3-frame" title="Karambit | Lore — 3D" tabindex="-1" aria-hidden="true" loading="eager" allow="xr-spatial-tracking"></iframe>
 <h2 data-i18n-html="sc_title">Каждый скин — <span>в 3D</span>, как в игре</h2>
 <div class="s3-caps">
 <div class="s3-cap"><b data-i18n="sc_1_t">Гарант на каждой сделке</b><span data-i18n="sc_1">Деньги удерживает площадка, пока скин не придёт в ваш Steam.</span></div>
@@ -453,7 +453,8 @@ if (saved === 'uz' || saved === 'en') location.replace('/' + saved + '/' + locat
 })();
 </script>
 <script>
-// Витрина: нож Karambit | Fade из 3D-движка мини-аппа (embed.html?hero=1)
+// Витрина: нож Karambit | Lore из 3D-движка мини-аппа (embed.html?hero=1).
+// Fade на ножах пока расходится с игрой (сверка со Steam 53–57), Lore — 90.7.
 // поворачивается прокруткой. Не включаем при «уменьшить движение»,
 // экономии трафика, без WebGL и на слабых устройствах — там остаётся
 // обычный блок с карточками.
@@ -475,7 +476,7 @@ var started = false;
 function start(){
 if (started) return;
 started = true;
-frame.src = APP + '/embed.html?key=demo&hero=1&skin=' + encodeURIComponent('★ Karambit | Fade') + '&float=0.012&seed=412&lang=' + lang;
+frame.src = APP + '/embed.html?key=demo&hero=1&skin=' + encodeURIComponent('★ Karambit | Lore') + '&float=0.03&seed=73&lang=' + lang;
 }
 // Грузим 3D, только когда витрина рядом с экраном.
 if ('IntersectionObserver' in window){
