@@ -191,7 +191,10 @@ details p{margin:0 0 16px;color:var(--muted)}
 .cta-final h2{margin-bottom:8px}
 .cta-final p{color:var(--muted);margin:0 0 24px}
 footer{border-top:1px solid rgba(255,255,255,0.06);padding:28px 0 40px;color:var(--muted);font-size:13px}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+footer .wrap>div{flex:1 1 320px;min-width:0}
+footer .wrap>div:last-child{text-align:right}
+@media (max-width:720px){footer .wrap{flex-direction:column;align-items:center;text-align:center}footer .wrap>div:last-child{text-align:center}}
 @media (max-width:900px){
 nav.links{display:none}
 .langs{margin-left:auto}
@@ -341,7 +344,8 @@ if (saved === 'uz' || saved === 'en') location.replace('/' + saved + '/' + locat
 })();
 </script>
 <script>
-// Витрина: нож Karambit | Fade из 3D-движка мини-аппа (embed.html?hero=1)
+// Витрина: нож Karambit | Lore из 3D-движка мини-аппа (embed.html?hero=1).
+// Fade на ножах пока расходится с игрой (сверка со Steam 53–57), Lore — 90.7.
 // поворачивается прокруткой. Не включаем при «уменьшить движение»,
 // экономии трафика, без WebGL и на слабых устройствах — там остаётся
 // обычный блок с карточками.
@@ -363,7 +367,7 @@ var started = false;
 function start(){
 if (started) return;
 started = true;
-frame.src = APP + '/embed.html?key=demo&hero=1&skin=' + encodeURIComponent('★ Karambit | Fade') + '&float=0.012&seed=412&lang=' + lang;
+frame.src = APP + '/embed.html?key=demo&hero=1&skin=' + encodeURIComponent('★ Karambit | Lore') + '&float=0.03&seed=73&lang=' + lang;
 }
 // Грузим 3D, только когда витрина рядом с экраном.
 if ('IntersectionObserver' in window){
