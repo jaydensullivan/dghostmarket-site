@@ -175,7 +175,10 @@ details p{margin:0 0 16px;color:var(--muted)}
 .cta-final h2{margin-bottom:8px}
 .cta-final p{color:var(--muted);margin:0 0 24px}
 footer{border-top:1px solid rgba(255,255,255,0.06);padding:28px 0 40px;color:var(--muted);font-size:13px}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+footer .wrap>div{flex:1 1 320px;min-width:0}
+footer .wrap>div:last-child{text-align:right}
+@media (max-width:720px){footer .wrap{flex-direction:column;align-items:center;text-align:center}footer .wrap>div:last-child{text-align:center}}
 @media (max-width:900px){
 nav.links{display:none}
 .langs{margin-left:auto}
