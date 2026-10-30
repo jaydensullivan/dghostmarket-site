@@ -92,7 +92,7 @@ function placeKnife(){
   const t = clamp01(y / s1), c = clamp01((y - s1) / Math.max(1, s2 - s1));
   const fade = 1 - clamp01((y - s2) / (innerHeight * .6));
   const d = desk();
-  const tx = d ? lerp(27, 0, t) : 0, ty = d ? lerp(-4, 0, t) : lerp(-26, 0, t), sc = lerp(d ? .95 : 1.1, 1, t);
+  const tx = d ? lerp(27, 0, t) : 0, ty = d ? lerp(-4, 7, t) : lerp(-26, 0, t), sc = lerp(d ? .95 : 1.1, 1, t);
   frame.style.transform = `translate(${tx}vw,${ty}vh) scale(${sc})`;
   frame.style.opacity = String(fade);
   frame.style.visibility = fade <= 0 ? 'hidden' : '';
