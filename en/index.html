@@ -57,8 +57,8 @@ p{margin:0}
 @media (max-width:899px){.grain{display:none}}
 
 /* сцена с ножом */
-#stage{position:fixed;inset:0;z-index:1;pointer-events:none}
-#stage canvas{width:100%!important;height:100%!important;display:block}
+#stage{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+#stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:0;transition:opacity .8s ease;background:transparent;color-scheme:normal;will-change:transform}
 .glow{position:fixed;z-index:0;border-radius:50%;filter:blur(90px);pointer-events:none;opacity:.55}
 .glow.a{width:46vw;height:46vw;right:-12vw;top:-8vw;background:radial-gradient(circle,var(--vio),transparent 65%)}
 .glow.b{width:36vw;height:36vw;left:-10vw;top:40vh;background:radial-gradient(circle,var(--mag),transparent 65%);opacity:.3}
@@ -147,9 +147,9 @@ main,header,footer{position:relative;z-index:2}
 .chap .wrap{min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;padding-block:110px 48px;position:relative}
 .chap h2{font-size:clamp(34px,6vw,96px);font-weight:900;text-transform:uppercase}
 .chap h2 span{color:var(--mag);text-shadow:0 0 40px rgba(255,43,214,.6)}
-.chap .frame{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;opacity:0;transition:opacity .8s ease;background:transparent;color-scheme:normal;z-index:0}
-.chap .frame.on{opacity:1}
 .chap .wrap>*{position:relative;z-index:1}
+/* на телефоне — место под нож между заголовком и карточками */
+@media (max-width:899px){.chap .wrap>div:nth-child(2){min-height:52svh}.chap .wrap{padding-block:90px 40px}}
 .feat{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
 .feat>div:first-child{flex:1 1 320px;max-width:480px;min-width:0}
 .fcards{display:grid;gap:14px;margin-top:14px}
@@ -170,7 +170,7 @@ main,header,footer{position:relative;z-index:2}
 .floatbar span{height:100%}
 .floatbar .fn{width:7%;background:#7cf2a5}.floatbar .mw{width:8%;background:#a7e36a}.floatbar .ft{width:23%;background:#f5d14a}.floatbar .ww{width:7%;background:#f59a4a}.floatbar .bs{width:55%;background:#f2546a}
 .fwrap{position:relative;padding-top:4px}
-.fmark{position:absolute;top:-4px;width:2px;height:18px;background:#fff;box-shadow:0 0 10px #fff;left:3%}
+.fmark{position:absolute;top:-4px;width:2px;height:18px;background:#fff;box-shadow:0 0 10px #fff;left:1%}
 .fval{font:600 28px/1 var(--f-mono);color:var(--fg)}
 .fscale{display:flex;justify-content:space-between}
 
@@ -340,7 +340,7 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 <body class="no-js">
 
 <div class="glow a" aria-hidden="true"></div><div class="glow b" aria-hidden="true"></div>
-<div id="stage" aria-hidden="true"></div>
+<div id="stage" aria-hidden="true"><iframe title="Butterfly Knife | Doppler — 3D" tabindex="-1" allow="xr-spatial-tracking"></iframe></div>
 <div class="grain" aria-hidden="true"></div>
 <div id="prog" aria-hidden="true"></div>
 <div id="cross" aria-hidden="true"><i class="t"></i><i class="bm"></i><i class="l"></i><i class="r"></i><i class="d"></i></div>
@@ -369,10 +369,10 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 
 <section class="hero">
 <div class="hud" aria-hidden="true">
-<span class="mono" data-i18n="hud_demo">Demo model</span>
-<span class="v">★ Karambit | Doppler</span>
+<span class="mono" data-i18n="hud_demo">DGhost 3D render</span>
+<span class="v">★ Butterfly Knife | Doppler</span>
 <span class="mono" style="margin-top:10px">Float</span>
-<span class="v">0.0071</span>
+<span class="v">0.0100</span>
 <span class="mono" style="margin-top:10px">Pattern</span>
 <span class="v">#412</span>
 </div>
@@ -415,7 +415,6 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 </section>
 
 <section class="chap" id="view3d">
-<iframe class="frame" title="Karambit | Lore — 3D" tabindex="-1" aria-hidden="true" allow="xr-spatial-tracking"></iframe>
 <div class="wrap">
 <div>
 <span class="mono" data-i18n="v3_title">The skin in 3D and on your desk</span>
@@ -433,8 +432,8 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 </div>
 <div class="spec">
 <span class="mono" data-i18n="spec_float">Wear (float)</span>
-<div class="v">★ Karambit | Lore</div>
-<div class="fval">0.0300</div>
+<div class="v">★ Butterfly Knife | Doppler</div>
+<div class="fval">0.0100</div>
 <div class="fwrap">
 <div class="floatbar" aria-hidden="true"><span class="fn"></span><span class="mw"></span><span class="ft"></span><span class="ww"></span><span class="bs"></span></div>
 <div class="fmark" aria-hidden="true"></div>
