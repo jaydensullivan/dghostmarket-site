@@ -240,6 +240,48 @@ main,header,footer{position:relative;z-index:2}
 .fee:first-child .big{background:linear-gradient(90deg,var(--mint),var(--ice));-webkit-background-clip:text;background-clip:text;color:transparent}
 .fee p{color:var(--mut)}
 
+/* «Сделка в чате» против DGhostMarket */
+.vs{padding-block:40px 120px}
+.vs h2{font-size:clamp(30px,4.6vw,72px);font-weight:900;text-transform:uppercase;margin:14px 0 40px}
+.vsgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:760px){.vsgrid{grid-template-columns:1fr}.vs{padding-block:20px 80px}}
+.vscol{border-radius:24px;padding:28px;border:1px solid var(--line);background:var(--bg)}
+.vscol.us{background:linear-gradient(var(--bg2),var(--bg2)) padding-box,linear-gradient(140deg,var(--vio),var(--mag),var(--mint)) border-box;border:1px solid transparent;box-shadow:0 30px 80px -40px rgba(255,43,214,.6)}
+.vscol h3{font:700 20px/1.2 var(--f-body);letter-spacing:0;margin-bottom:18px;display:flex;gap:10px;align-items:center}
+.vscol ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.vscol li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;color:var(--mut);font-size:15px}
+.vscol li b{display:block;color:var(--fg);font-weight:600;margin-bottom:2px}
+.vscol i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:14px}
+.vscol.them i{background:rgba(242,84,106,.14);color:#f2546a}
+.vscol.us i{background:rgba(124,242,165,.14);color:var(--mint)}
+
+/* калькулятор продавца */
+.calc{margin-top:20px;padding:28px;border-radius:24px;border:1px solid var(--line);background:var(--bg2);display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
+@media (max-width:900px){.calc{grid-template-columns:1fr;padding:22px}}
+.calc label{display:block;font:600 15px/1.3 var(--f-body);margin-bottom:14px}
+.calc .cprice{font:700 clamp(30px,4vw,44px)/1 var(--f-mono);font-variant-numeric:tabular-nums;margin-bottom:16px}
+.calc .cprice small{font-size:.45em;color:var(--mut);font-weight:400}
+.calc input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--vio),var(--mag)) 0/var(--fill,30%) 100% no-repeat,var(--line);outline-offset:6px;cursor:pointer}
+.calc input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 0 0 6px rgba(255,43,214,.35),0 6px 18px rgba(0,0,0,.5);cursor:pointer}
+.calc input[type=range]::-moz-range-thumb{width:26px;height:26px;border:0;border-radius:50%;background:#fff;box-shadow:0 0 0 6px rgba(255,43,214,.35);cursor:pointer}
+.calc dl{margin:0;display:grid;gap:10px}
+.calc dl div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:10px;font-size:15px}
+.calc dt{color:var(--mut)}
+.calc dd{margin:0;font-family:var(--f-mono);font-variant-numeric:tabular-nums;text-align:right}
+.calc .net dd{color:var(--mint);font-size:20px;font-weight:700}
+.calc .note{font-size:13px;color:var(--mut);margin-top:12px}
+
+/* липкая кнопка на телефоне */
+.sticky-cta{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;display:none;transform:translateY(140%);transition:transform .35s cubic-bezier(.2,.9,.3,1)}
+.sticky-cta .btn{width:100%;padding:16px 20px;font-size:16px}
+.sticky-cta.on{transform:none}
+@media (max-width:899px){.sticky-cta{display:block}footer{padding-bottom:110px}}
+
+/* подсветка за курсором на карточках */
+.glowable{position:relative;isolation:isolate}
+.glowable::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--gx,50%) var(--gy,50%),rgba(255,43,214,.16),transparent 60%)}
+.glowable:hover::before{opacity:1}
+
 /* продавцам */
 .plans{padding-block:40px 120px}
 .plans h2{font-size:clamp(30px,4.4vw,64px);font-weight:900;text-transform:uppercase}
@@ -411,10 +453,10 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 <section class="stats">
 <div class="wrap">
 <div class="grid">
-<div class="stat rv"><div class="n"><span data-count="0">0</span><small>%</small></div><p data-i18n="stat_buyer">комиссия для покупателя</p></div>
-<div class="stat rv"><div class="n"><span data-count="5">5</span><small>%</small></div><p data-i18n="stat_seller">комиссия с продажи — единственный доход площадки</p></div>
-<div class="stat rv"><div class="n"><span data-count="24">24</span><small data-i18n="unit_h">ч</small></div><p data-i18n="stat_24">на передачу предмета, иначе деньги возвращаются</p></div>
-<div class="stat rv"><div class="n"><span data-count="8">8</span><small data-i18n="unit_d">дней</small></div><p data-i18n="stat_8">холд до выплаты продавцу</p></div>
+<div class="stat rv glowable"><div class="n"><span data-count="0">0</span><small>%</small></div><p data-i18n="stat_buyer">комиссия для покупателя</p></div>
+<div class="stat rv glowable"><div class="n"><span data-count="5">5</span><small>%</small></div><p data-i18n="stat_seller">комиссия с продажи — единственный доход площадки</p></div>
+<div class="stat rv glowable"><div class="n"><span data-count="24">24</span><small data-i18n="unit_h">ч</small></div><p data-i18n="stat_24">на передачу предмета, иначе деньги возвращаются</p></div>
+<div class="stat rv glowable"><div class="n"><span data-count="8">8</span><small data-i18n="unit_d">дней</small></div><p data-i18n="stat_8">холд до выплаты продавцу</p></div>
 </div>
 </div>
 </section>
@@ -479,6 +521,35 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 </div>
 </section>
 
+<section class="vs" id="compare">
+<div class="wrap">
+<span class="mono" data-i18n="vs_k">Почему не в чате</span>
+<h2 data-i18n-html="vs_h">Сделка в чате <span style="color:var(--mut)">vs</span> DGhostMarket</h2>
+<div class="vsgrid">
+<div class="vscol them rv glowable">
+<h3 data-i18n="vs_them">💬 Обычная сделка в Telegram-чате</h3>
+<ul>
+<li><i>✕</i><span><b data-i18n="vs_t1_t">Платите незнакомцу напрямую</b><span data-i18n="vs_t1">Деньги уходят продавцу сразу — до того, как вы получили скин.</span></span></li>
+<li><i>✕</i><span><b data-i18n="vs_t2_t">Скин не пришёл — денег нет</b><span data-i18n="vs_t2">Вернуть оплату некому: продавец просто пропадает.</span></span></li>
+<li><i>✕</i><span><b data-i18n="vs_t3_t">Кто продавец — неизвестно</b><span data-i18n="vs_t3">Ник и аватарка, без документов и истории сделок.</span></span></li>
+<li><i>✕</i><span><b data-i18n="vs_t4_t">Откат обмена в Steam</b><span data-i18n="vs_t4">Продавец может отменить обмен в Steam в течение 7 дней — и вы останетесь без скина и без денег.</span></span></li>
+<li><i>✕</i><span><b data-i18n="vs_t5_t">Цена «на глаз»</b><span data-i18n="vs_t5">Не видно, сколько скин стоит на рынке.</span></span></li>
+</ul>
+</div>
+<div class="vscol us rv glowable">
+<h3 data-i18n="vs_us">🛡 Сделка на DGhostMarket</h3>
+<ul>
+<li><i>✓</i><span><b data-i18n="vs_u1_t">Деньги у гаранта</b><span data-i18n="vs_u1">Площадка держит оплату, пока скин не придёт в ваш Steam.</span></span></li>
+<li><i>✓</i><span><b data-i18n="vs_u2_t">Возврат за 24 часа</b><span data-i18n="vs_u2">Не передал вовремя — заказ отменяется, деньги возвращаются сами.</span></span></li>
+<li><i>✓</i><span><b data-i18n="vs_u3_t">Проверенные продавцы</b><span data-i18n="vs_u3">Документ, селфи и телефон — до первого лота.</span></span></li>
+<li><i>✓</i><span><b data-i18n="vs_u4_t">Холд 8 дней</b><span data-i18n="vs_u4">Дольше окна отмены в Steam — обе стороны защищены.</span></span></li>
+<li><i>✓</i><span><b data-i18n="vs_u5_t">Цена рынка рядом</b><span data-i18n="vs_u5">На каждом лоте видно, дешевле он рынка или дороже.</span></span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
 <section class="lots" id="lots"><div class="wrap"><div class="head"><div><span class="mono">Сейчас в продаже</span><h2 style="margin-top:14px">Лоты дня</h2></div><p>Лоты от проверенных продавцов — сделка через гаранта.</p></div><div class="cards"><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_3&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="Glock-18 | Moonrise" loading="lazy" width="360" height="270"><span class="deal-badge">на 4% дешевле рынка</span></div><div class="holo"></div><div class="body"><h3>Glock-18 | Moonrise</h3><div class="meta">Прямо с завода · Float 0.0587</div><div class="row"><span class="price">25 100 <small>сум</small></span><span class="buy">Купить</span></div></div></a><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_4&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="MP7 | Amberline" loading="lazy" width="360" height="270"><span class="deal-badge">на 6% дешевле рынка</span></div><div class="holo"></div><div class="body"><h3>MP7 | Amberline</h3><div class="meta">Немного поношенное · Float 0.1019</div><div class="row"><span class="price">17 200 <small>сум</small></span><span class="buy">Купить</span></div></div></a><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_5&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="Markus Delrow | FBI HRT" loading="lazy" width="360" height="270"><span class="deal-badge">на 3% дешевле рынка</span></div><div class="holo"></div><div class="body"><h3>Markus Delrow | FBI HRT</h3><div class="meta">Agent</div><div class="row"><span class="price">73 900 <small>сум</small></span><span class="buy">Купить</span></div></div></a><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_1&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="Tec-9 | Whiteout" loading="lazy" width="360" height="270"><span class="deal-badge">на 1% дешевле рынка</span></div><div class="holo"></div><div class="body"><h3>Tec-9 | Whiteout</h3><div class="meta">Немного поношенное · Float 0.1452</div><div class="row"><span class="price">147 000 <small>сум</small></span><span class="buy">Купить</span></div></div></a><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_7&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="★ Kukri Knife | Slaughter" loading="lazy" width="360" height="270"></div><div class="holo"></div><div class="body"><h3>★ Kukri Knife | Slaughter</h3><div class="meta">Прямо с завода · Float 0.0349</div><div class="row"><span class="price">1 340 000 <small>сум</small></span><span class="buy">Купить</span></div></div></a><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_2&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="Nova | Koi" loading="lazy" width="360" height="270"></div><div class="holo"></div><div class="body"><h3>Nova | Koi</h3><div class="meta">Прямо с завода · Float 0.0625</div><div class="row"><span class="price">27 200 <small>сум</small></span><span class="buy">Купить</span></div></div></a></div><div class="more"><a class="btn mag" href="https://app.dghostmarket.uz/?src=site_home">Все лоты в приложении</a><a class="btn ghost mag" href="/skins/">Все цены →</a><a class="btn ghost mag" href="/prices/">Рыночные цены всех скинов →</a></div></div></section>
 
 <section class="fees" id="fees">
@@ -488,9 +559,26 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 <p class="sub" data-i18n="fees_sub">Никаких скрытых платежей: все суммы видны до подтверждения.</p>
 </div>
 <div class="feegrid">
-<div class="fee rv"><span class="mono" data-i18n="fee_buyer">Покупателю</span><div class="big">0%</div><p data-i18n="fee_buyer_p">Вы платите цену, указанную на карточке лота. Если способ оплаты берёт сбор, итог показывается до оплаты.</p></div>
-<div class="fee rv"><span class="mono" data-i18n="fee_seller">Продавцу</span><div class="big">5%</div><p data-i18n="fee_seller_p">Вознаграждение площадки с проданного лота. Это единственный доход площадки по сделке.</p></div>
-<div class="fee rv"><span class="mono" data-i18n="fee_withdraw">Вывод</span><div class="big">0%</div><p data-i18n="fee_withdraw_p">Вывод с баланса на банковскую карту без комиссии площадки. Минимум — 50 000 сум.</p></div>
+<div class="fee rv glowable"><span class="mono" data-i18n="fee_buyer">Покупателю</span><div class="big">0%</div><p data-i18n="fee_buyer_p">Вы платите цену, указанную на карточке лота. Если способ оплаты берёт сбор, итог показывается до оплаты.</p></div>
+<div class="fee rv glowable"><span class="mono" data-i18n="fee_seller">Продавцу</span><div class="big">5%</div><p data-i18n="fee_seller_p">Вознаграждение площадки с проданного лота. Это единственный доход площадки по сделке.</p></div>
+<div class="fee rv glowable"><span class="mono" data-i18n="fee_withdraw">Вывод</span><div class="big">0%</div><p data-i18n="fee_withdraw_p">Вывод с баланса на банковскую карту без комиссии площадки. Минимум — 50 000 сум.</p></div>
+</div>
+<div class="calc rv glowable" id="calc">
+<div>
+<label for="calcRange" data-i18n="calc_t">Калькулятор продавца: сколько я получу?</label>
+<div class="cprice"><span id="calcPrice">500 000</span> <small data-i18n="cur">сум</small></div>
+<input type="range" id="calcRange" min="0" max="1000" value="450" step="1" aria-describedby="calcNet">
+</div>
+<div>
+<dl>
+<div><dt data-i18n="calc_buyer">Покупатель платит</dt><dd><span id="calcBuyer">500 000</span> <span data-i18n="cur">сум</span></dd></div>
+<div><dt data-i18n="calc_fee">Комиссия площадки 5%</dt><dd>−<span id="calcFee">25 000</span> <span data-i18n="cur">сум</span></dd></div>
+<div class="net"><dt data-i18n="calc_net">Вы получите</dt><dd id="calcNet"><span id="calcNetV">475 000</span> <span data-i18n="cur">сум</span></dd></div>
+<div><dt data-i18n="calc_when">Деньги на балансе</dt><dd id="calcDate" data-i18n="calc_when_v">через 8 дней после оплаты</dd></div>
+</dl>
+<span hidden id="calcWhenTpl" data-i18n="calc_when_tpl">{date}, если покупатель оплатит сегодня</span>
+<p class="note" data-i18n="calc_note">Вывод на свою карту — без комиссии площадки, от 50 000 сум.</p>
+</div>
 </div>
 </div>
 </section>
@@ -501,9 +589,9 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 <h2 style="margin-top:14px" data-i18n="plans_h">Продавайте через свой канал</h2>
 <p class="lead" data-i18n="sel_sub">Выставлять лоты можно бесплатно. Тарифы нужны тем, кто хочет больше показов и продаёт через свой Telegram-канал.</p>
 <div class="perks">
-<div class="perk rv"><h3 data-i18n="sel_1_t">🎬 3D-видео и GIF</h3><p data-i18n="sel_1">Крутящийся 3D-ролик вашего лота вместо обычной картинки — для чатов и каналов.</p></div>
-<div class="perk rv"><h3 data-i18n="sel_2_t">📢 Публикация в каналы</h3><p data-i18n="sel_2">В канал @dghostmarket и в ваши каналы одной кнопкой — с кнопкой «Купить» под постом.</p></div>
-<div class="perk rv"><h3 data-i18n="sel_3_t">🔨 Аукционы и розыгрыши</h3><p data-i18n="sel_3">Прямо в вашем канале: ставки — в мини-приложении, оплата — через гаранта, победителя розыгрыша выбирает бот.</p></div>
+<div class="perk rv glowable"><h3 data-i18n="sel_1_t">🎬 3D-видео и GIF</h3><p data-i18n="sel_1">Крутящийся 3D-ролик вашего лота вместо обычной картинки — для чатов и каналов.</p></div>
+<div class="perk rv glowable"><h3 data-i18n="sel_2_t">📢 Публикация в каналы</h3><p data-i18n="sel_2">В канал @dghostmarket и в ваши каналы одной кнопкой — с кнопкой «Купить» под постом.</p></div>
+<div class="perk rv glowable"><h3 data-i18n="sel_3_t">🔨 Аукционы и розыгрыши</h3><p data-i18n="sel_3">Прямо в вашем канале: ставки — в мини-приложении, оплата — через гаранта, победителя розыгрыша выбирает бот.</p></div>
 </div>
 <div class="tiers"><div class="tier rv"><h3>Старт</h3><div class="pr">49 990 сум<small>за 30 дней</small></div><dl><div><dt>Своих каналов</dt><dd>1</dd></div><div><dt>Постов в свои каналы в день</dt><dd>5</dd></div><div><dt>Постов в канал @dghostmarket в день</dt><dd>1</dd></div><div><dt>Аукционов в месяц</dt><dd>—</dd></div><div><dt>Розыгрышей в месяц</dt><dd>—</dd></div></dl></div><div class="tier rv pop"><span class="pill">Популярный</span><h3>PRO</h3><div class="pr">129 990 сум<small>за 30 дней</small></div><dl><div><dt>Своих каналов</dt><dd>5</dd></div><div><dt>Постов в свои каналы в день</dt><dd>20</dd></div><div><dt>Постов в канал @dghostmarket в день</dt><dd>3</dd></div><div><dt>Аукционов в месяц</dt><dd>10</dd></div><div><dt>Розыгрышей в месяц</dt><dd>4</dd></div></dl></div><div class="tier rv"><h3>Бизнес</h3><div class="pr">399 990 сум<small>за 30 дней</small></div><dl><div><dt>Своих каналов</dt><dd>15</dd></div><div><dt>Постов в свои каналы в день</dt><dd>60</dd></div><div><dt>Постов в канал @dghostmarket в день</dt><dd>5</dd></div><div><dt>Аукционов в месяц</dt><dd>30</dd></div><div><dt>Розыгрышей в месяц</dt><dd>10</dd></div></dl></div><div class="tier rv"><h3>Гарант</h3><div class="pr">1 199 990 сум<small>за 30 дней</small></div><dl><div><dt>Лимиты</dt><dd>Без ограничений</dd></div><div><dt>Подключение</dt><dd>по заявке</dd></div></dl></div></div><div class="promo"><span>🎁 Скидка 50% на первый месяц</span><a class="btn" href="https://app.dghostmarket.uz/?src=site_home">Подключить в приложении</a></div>
 <p class="note" data-i18n-html="sel_note">Для крупных каналов и магазинов обсуждаем индивидуальные условия — напишите в поддержку. Подробнее — <a href="/guides/pro-for-sellers/">тарифы PRO для продавцов</a>.</p>
@@ -536,12 +624,12 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 <span class="mono" data-i18n="safe_title">Безопасность сделок</span>
 <h2 style="margin-top:14px" data-i18n="safe_h">Защищены обе стороны</h2>
 <div class="sgrid">
-<div class="sitem rv"><h3><i></i><span data-i18n="c1_t">Проверка продавцов</span></h3><p data-i18n="c1">Паспорт или ID, селфи с документом и номер, подтверждённый через Telegram. Решение принимает администратор.</p></div>
-<div class="sitem rv"><h3><i></i><span data-i18n="c2_t">Оплата под защитой</span></h3><p data-i18n="c2">Деньги удерживаются 8 дней с оплаты — дольше, чем Steam позволяет отменить обмен. В сделках с повышенным риском — дольше. Только потом они уходят продавцу.</p></div>
-<div class="sitem rv"><h3><i></i><span data-i18n="c3_t">Жёсткие сроки</span></h3><p data-i18n="c3">24 часа на передачу предмета. Не успел — заказ отменяется, а покупатель получает деньги обратно.</p></div>
-<div class="sitem rv"><h3><i></i><span data-i18n="c4_t">Споры</span></h3><p data-i18n="c4">Если предмет не пришёл, покупатель открывает спор. Выплата замораживается, пока администрация не разберётся.</p></div>
-<div class="sitem rv"><h3><i></i><span data-i18n="c5_t">Антифрод</span></h3><p data-i18n="c5">Оплата — только со своей карты, возврат — только туда, откуда пришли деньги. У новых аккаунтов есть лимиты. Система ищет связанные аккаунты и подозрительные сделки.</p></div>
-<div class="sitem rv"><h3><i></i><span data-i18n="c6_t">Прозрачная история</span></h3><p data-i18n="c6">Каждый шаг сделки фиксируется: оплата, передача, подтверждение, выплата. История всегда доступна в приложении.</p></div>
+<div class="sitem rv glowable"><h3><i></i><span data-i18n="c1_t">Проверка продавцов</span></h3><p data-i18n="c1">Паспорт или ID, селфи с документом и номер, подтверждённый через Telegram. Решение принимает администратор.</p></div>
+<div class="sitem rv glowable"><h3><i></i><span data-i18n="c2_t">Оплата под защитой</span></h3><p data-i18n="c2">Деньги удерживаются 8 дней с оплаты — дольше, чем Steam позволяет отменить обмен. В сделках с повышенным риском — дольше. Только потом они уходят продавцу.</p></div>
+<div class="sitem rv glowable"><h3><i></i><span data-i18n="c3_t">Жёсткие сроки</span></h3><p data-i18n="c3">24 часа на передачу предмета. Не успел — заказ отменяется, а покупатель получает деньги обратно.</p></div>
+<div class="sitem rv glowable"><h3><i></i><span data-i18n="c4_t">Споры</span></h3><p data-i18n="c4">Если предмет не пришёл, покупатель открывает спор. Выплата замораживается, пока администрация не разберётся.</p></div>
+<div class="sitem rv glowable"><h3><i></i><span data-i18n="c5_t">Антифрод</span></h3><p data-i18n="c5">Оплата — только со своей карты, возврат — только туда, откуда пришли деньги. У новых аккаунтов есть лимиты. Система ищет связанные аккаунты и подозрительные сделки.</p></div>
+<div class="sitem rv glowable"><h3><i></i><span data-i18n="c6_t">Прозрачная история</span></h3><p data-i18n="c6">Каждый шаг сделки фиксируется: оплата, передача, подтверждение, выплата. История всегда доступна в приложении.</p></div>
 </div>
 <p class="nogamble" data-i18n="no_gambling">🚫 DGhostMarket — площадка для сделок между игроками. Мы не проводим азартных игр, не продаём кейсы и не принимаем ставок. Розыгрыши бесплатны: участие не требует оплаты.</p>
 </div>
@@ -583,6 +671,9 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 </section>
 
 </main>
+
+<div class="sticky-cta" id="stickyCta"><a class="btn" href="https://t.me/dghostmarketbot?start=site_home"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1.1-1 .2-1.5L20.5 2.7c.9-.3 1.6.2 1.4 1.6z"/></svg><span data-i18n="cta_open">Открыть в Telegram</span></a></div>
+
 
 <footer>
 <div class="wrap">
@@ -642,6 +733,6 @@ if (saved === 'uz' || saved === 'en') location.replace('/' + saved + '/' + locat
 <script defer src="/vendor/gsap-3.12.5.min.js"></script>
 <script defer src="/vendor/ScrollTrigger-3.12.5.min.js"></script>
 <script defer src="/vendor/lenis-1.1.13.min.js"></script>
-<script defer src="/home.js?v=1"></script>
+<script defer src="/home.js?v=3"></script>
 </body>
 </html>

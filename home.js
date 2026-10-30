@@ -158,6 +158,63 @@ if (matchMedia('(hover:hover) and (pointer:fine)').matches && !reduce){
   });
 }
 
+/* ---------- калькулятор продавца ---------- */
+(function(){
+const range = document.getElementById('calcRange');
+if (!range) return;
+const lang = document.documentElement.lang || 'ru';
+const fmt = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+const tpl = (document.getElementById('calcWhenTpl') || {}).textContent || '';
+const FEE = 5, HOLD_DAYS = 8, MIN = 10000, MAX = 20000000;
+// Ползунок — в логарифме: от 10 тыс. до 20 млн сум одинаково удобно.
+function priceAt(v){
+  const raw = MIN * Math.pow(MAX / MIN, v / 1000);
+  const step = raw < 100000 ? 1000 : raw < 1000000 ? 5000 : raw < 5000000 ? 50000 : 100000;
+  return Math.round(raw / step) * step;
+}
+function update(){
+  const price = priceAt(+range.value), fee = Math.round(price * FEE / 100);
+  set('calcPrice', fmt(price)); set('calcBuyer', fmt(price)); set('calcFee', fmt(fee)); set('calcNetV', fmt(price - fee));
+  range.style.setProperty('--fill', (range.value / 10) + '%');
+  range.setAttribute('aria-valuetext', fmt(price));
+  if (tpl){
+    const d = new Date(Date.now() + HOLD_DAYS * 864e5);
+    set('calcDate', tpl.replace('{date}', d.toLocaleDateString(lang === 'en' ? 'en-GB' : lang === 'uz' ? 'uz-UZ' : 'ru-RU', { day: 'numeric', month: 'long' })));
+  }
+}
+range.addEventListener('input', update);
+update();
+})();
+
+/* ---------- кнопка «Открыть в Telegram» внизу (телефон) ---------- */
+(function(){
+const bar = document.getElementById('stickyCta');
+if (!bar) return;
+const hero = document.querySelector('.hero'), fin = document.querySelector('.final');
+let queued = false;
+function check(){
+  queued = false;
+  const past = scrollY > hero.offsetHeight * .8;
+  // У финального блока своя большая кнопка — нижнюю прячем.
+  const atEnd = fin && fin.getBoundingClientRect().top < innerHeight;
+  bar.classList.toggle('on', past && !atEnd);
+}
+addEventListener('scroll', () => { if (!queued){ queued = true; requestAnimationFrame(check); } }, { passive: true });
+check();
+})();
+
+/* ---------- подсветка карточек за курсором (мышь) ---------- */
+if (matchMedia('(hover:hover) and (pointer:fine)').matches){
+  document.addEventListener('pointermove', e => {
+    const el = e.target.closest && e.target.closest('.glowable');
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--gx', (e.clientX - r.left) + 'px');
+    el.style.setProperty('--gy', (e.clientY - r.top) + 'px');
+  }, { passive: true });
+}
+
 if (!hasGsap) return;
 
 /* ---------- бегущие строки (скорость — от прокрутки) ---------- */

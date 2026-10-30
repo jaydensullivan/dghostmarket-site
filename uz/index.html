@@ -240,6 +240,48 @@ main,header,footer{position:relative;z-index:2}
 .fee:first-child .big{background:linear-gradient(90deg,var(--mint),var(--ice));-webkit-background-clip:text;background-clip:text;color:transparent}
 .fee p{color:var(--mut)}
 
+/* «Сделка в чате» против DGhostMarket */
+.vs{padding-block:40px 120px}
+.vs h2{font-size:clamp(30px,4.6vw,72px);font-weight:900;text-transform:uppercase;margin:14px 0 40px}
+.vsgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:760px){.vsgrid{grid-template-columns:1fr}.vs{padding-block:20px 80px}}
+.vscol{border-radius:24px;padding:28px;border:1px solid var(--line);background:var(--bg)}
+.vscol.us{background:linear-gradient(var(--bg2),var(--bg2)) padding-box,linear-gradient(140deg,var(--vio),var(--mag),var(--mint)) border-box;border:1px solid transparent;box-shadow:0 30px 80px -40px rgba(255,43,214,.6)}
+.vscol h3{font:700 20px/1.2 var(--f-body);letter-spacing:0;margin-bottom:18px;display:flex;gap:10px;align-items:center}
+.vscol ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.vscol li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;color:var(--mut);font-size:15px}
+.vscol li b{display:block;color:var(--fg);font-weight:600;margin-bottom:2px}
+.vscol i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:14px}
+.vscol.them i{background:rgba(242,84,106,.14);color:#f2546a}
+.vscol.us i{background:rgba(124,242,165,.14);color:var(--mint)}
+
+/* калькулятор продавца */
+.calc{margin-top:20px;padding:28px;border-radius:24px;border:1px solid var(--line);background:var(--bg2);display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
+@media (max-width:900px){.calc{grid-template-columns:1fr;padding:22px}}
+.calc label{display:block;font:600 15px/1.3 var(--f-body);margin-bottom:14px}
+.calc .cprice{font:700 clamp(30px,4vw,44px)/1 var(--f-mono);font-variant-numeric:tabular-nums;margin-bottom:16px}
+.calc .cprice small{font-size:.45em;color:var(--mut);font-weight:400}
+.calc input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--vio),var(--mag)) 0/var(--fill,30%) 100% no-repeat,var(--line);outline-offset:6px;cursor:pointer}
+.calc input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 0 0 6px rgba(255,43,214,.35),0 6px 18px rgba(0,0,0,.5);cursor:pointer}
+.calc input[type=range]::-moz-range-thumb{width:26px;height:26px;border:0;border-radius:50%;background:#fff;box-shadow:0 0 0 6px rgba(255,43,214,.35);cursor:pointer}
+.calc dl{margin:0;display:grid;gap:10px}
+.calc dl div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:10px;font-size:15px}
+.calc dt{color:var(--mut)}
+.calc dd{margin:0;font-family:var(--f-mono);font-variant-numeric:tabular-nums;text-align:right}
+.calc .net dd{color:var(--mint);font-size:20px;font-weight:700}
+.calc .note{font-size:13px;color:var(--mut);margin-top:12px}
+
+/* липкая кнопка на телефоне */
+.sticky-cta{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;display:none;transform:translateY(140%);transition:transform .35s cubic-bezier(.2,.9,.3,1)}
+.sticky-cta .btn{width:100%;padding:16px 20px;font-size:16px}
+.sticky-cta.on{transform:none}
+@media (max-width:899px){.sticky-cta{display:block}footer{padding-bottom:110px}}
+
+/* подсветка за курсором на карточках */
+.glowable{position:relative;isolation:isolate}
+.glowable::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--gx,50%) var(--gy,50%),rgba(255,43,214,.16),transparent 60%)}
+.glowable:hover::before{opacity:1}
+
 /* продавцам */
 .plans{padding-block:40px 120px}
 .plans h2{font-size:clamp(30px,4.4vw,64px);font-weight:900;text-transform:uppercase}
@@ -411,10 +453,10 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 <section class="stats">
 <div class="wrap">
 <div class="grid">
-<div class="stat rv"><div class="n"><span data-count="0">0</span><small>%</small></div><p data-i18n="stat_buyer">xaridor uchun komissiya</p></div>
-<div class="stat rv"><div class="n"><span data-count="5">5</span><small>%</small></div><p data-i18n="stat_seller">sotuvdan komissiya — platformaning yagona daromadi</p></div>
-<div class="stat rv"><div class="n"><span data-count="24">24</span><small data-i18n="unit_h">soat</small></div><p data-i18n="stat_24">buyumni yuborish uchun, aks holda pul qaytariladi</p></div>
-<div class="stat rv"><div class="n"><span data-count="8">8</span><small data-i18n="unit_d">kun</small></div><p data-i18n="stat_8">sotuvchiga to'lovgacha ushlab turish</p></div>
+<div class="stat rv glowable"><div class="n"><span data-count="0">0</span><small>%</small></div><p data-i18n="stat_buyer">xaridor uchun komissiya</p></div>
+<div class="stat rv glowable"><div class="n"><span data-count="5">5</span><small>%</small></div><p data-i18n="stat_seller">sotuvdan komissiya — platformaning yagona daromadi</p></div>
+<div class="stat rv glowable"><div class="n"><span data-count="24">24</span><small data-i18n="unit_h">soat</small></div><p data-i18n="stat_24">buyumni yuborish uchun, aks holda pul qaytariladi</p></div>
+<div class="stat rv glowable"><div class="n"><span data-count="8">8</span><small data-i18n="unit_d">kun</small></div><p data-i18n="stat_8">sotuvchiga to'lovgacha ushlab turish</p></div>
 </div>
 </div>
 </section>
@@ -479,6 +521,35 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 </div>
 </section>
 
+<section class="vs" id="compare">
+<div class="wrap">
+<span class="mono" data-i18n="vs_k">Nega chatda emas</span>
+<h2 data-i18n-html="vs_h">Chatdagi bitim <span style="color:var(--mut)">vs</span> DGhostMarket</h2>
+<div class="vsgrid">
+<div class="vscol them rv glowable">
+<h3 data-i18n="vs_them">💬 Telegram-chatdagi oddiy bitim</h3>
+<ul>
+<li><i>✕</i><span><b data-i18n="vs_t1_t">Notanish odamga to'g'ridan-to'g'ri to'laysiz</b><span data-i18n="vs_t1">Pul skin kelmasidan oldin darhol sotuvchiga o'tadi.</span></span></li>
+<li><i>✕</i><span><b data-i18n="vs_t2_t">Skin kelmadi — pul ham yo'q</b><span data-i18n="vs_t2">To'lovni qaytaradigan hech kim yo'q: sotuvchi shunchaki yo'qoladi.</span></span></li>
+<li><i>✕</i><span><b data-i18n="vs_t3_t">Sotuvchi kimligi noma'lum</b><span data-i18n="vs_t3">Faqat nik va avatar — hujjatlar va bitimlar tarixisiz.</span></span></li>
+<li><i>✕</i><span><b data-i18n="vs_t4_t">Steam'da almashuvni qaytarish</b><span data-i18n="vs_t4">Sotuvchi Steam'dagi almashuvni 7 kun ichida bekor qilishi mumkin — siz skinsiz ham, pulsiz ham qolasiz.</span></span></li>
+<li><i>✕</i><span><b data-i18n="vs_t5_t">Narx «taxminan»</b><span data-i18n="vs_t5">Skin bozorda qancha turishi ko'rinmaydi.</span></span></li>
+</ul>
+</div>
+<div class="vscol us rv glowable">
+<h3 data-i18n="vs_us">🛡 DGhostMarket'dagi bitim</h3>
+<ul>
+<li><i>✓</i><span><b data-i18n="vs_u1_t">Pul kafilda</b><span data-i18n="vs_u1">Skin Steam'ingizga kelmaguncha to'lov platformada turadi.</span></span></li>
+<li><i>✓</i><span><b data-i18n="vs_u2_t">24 soatda qaytarish</b><span data-i18n="vs_u2">O'z vaqtida yubormadi — buyurtma bekor qilinadi, pul o'zi qaytadi.</span></span></li>
+<li><i>✓</i><span><b data-i18n="vs_u3_t">Tekshirilgan sotuvchilar</b><span data-i18n="vs_u3">Hujjat, selfi va telefon — birinchi lotgacha.</span></span></li>
+<li><i>✓</i><span><b data-i18n="vs_u4_t">8 kun ushlab turish</b><span data-i18n="vs_u4">Steam'dagi bekor qilish muddatidan uzoqroq — ikkala tomon himoyalangan.</span></span></li>
+<li><i>✓</i><span><b data-i18n="vs_u5_t">Yonida bozor narxi</b><span data-i18n="vs_u5">Har bir lotda u bozordan arzonmi yoki qimmatmi — ko'rinadi.</span></span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
 <section class="lots" id="lots"><div class="wrap"><div class="head"><div><span class="mono">Hozir sotuvda</span><h2 style="margin-top:14px">Kun lotlari</h2></div><p>Tekshirilgan sotuvchilarning lotlari — bitim kafil orqali.</p></div><div class="cards"><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_3&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="Glock-18 | Moonrise" loading="lazy" width="360" height="270"><span class="deal-badge">bozordan 4% arzon</span></div><div class="holo"></div><div class="body"><h3>Glock-18 | Moonrise</h3><div class="meta">Zavoddan yangi · Float 0.0587</div><div class="row"><span class="price">25 100 <small>so&#x27;m</small></span><span class="buy">Sotib olish</span></div></div></a><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_4&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="MP7 | Amberline" loading="lazy" width="360" height="270"><span class="deal-badge">bozordan 6% arzon</span></div><div class="holo"></div><div class="body"><h3>MP7 | Amberline</h3><div class="meta">Biroz ishlatilgan · Float 0.1019</div><div class="row"><span class="price">17 200 <small>so&#x27;m</small></span><span class="buy">Sotib olish</span></div></div></a><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_5&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="Markus Delrow | FBI HRT" loading="lazy" width="360" height="270"><span class="deal-badge">bozordan 3% arzon</span></div><div class="holo"></div><div class="body"><h3>Markus Delrow | FBI HRT</h3><div class="meta">Agent</div><div class="row"><span class="price">73 900 <small>so&#x27;m</small></span><span class="buy">Sotib olish</span></div></div></a><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_1&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="Tec-9 | Whiteout" loading="lazy" width="360" height="270"><span class="deal-badge">bozordan 1% arzon</span></div><div class="holo"></div><div class="body"><h3>Tec-9 | Whiteout</h3><div class="meta">Biroz ishlatilgan · Float 0.1452</div><div class="row"><span class="price">147 000 <small>so&#x27;m</small></span><span class="buy">Sotib olish</span></div></div></a><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_7&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="★ Kukri Knife | Slaughter" loading="lazy" width="360" height="270"></div><div class="holo"></div><div class="body"><h3>★ Kukri Knife | Slaughter</h3><div class="meta">Zavoddan yangi · Float 0.0349</div><div class="row"><span class="price">1 340 000 <small>so&#x27;m</small></span><span class="buy">Sotib olish</span></div></div></a><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_2&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="Nova | Koi" loading="lazy" width="360" height="270"></div><div class="holo"></div><div class="body"><h3>Nova | Koi</h3><div class="meta">Zavoddan yangi · Float 0.0625</div><div class="row"><span class="price">27 200 <small>so&#x27;m</small></span><span class="buy">Sotib olish</span></div></div></a></div><div class="more"><a class="btn mag" href="https://app.dghostmarket.uz/?src=site_home">Barcha lotlar ilovada</a><a class="btn ghost mag" href="/uz/skins/">Barcha narxlar →</a><a class="btn ghost mag" href="/uz/prices/">Barcha skinlarning bozor narxlari →</a></div></div></section>
 
 <section class="fees" id="fees">
@@ -488,9 +559,26 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 <p class="sub" data-i18n="fees_sub">Yashirin to'lovlar yo'q: barcha summalar tasdiqlashdan oldin ko'rinadi.</p>
 </div>
 <div class="feegrid">
-<div class="fee rv"><span class="mono" data-i18n="fee_buyer">Xaridorga</span><div class="big">0%</div><p data-i18n="fee_buyer_p">Lot kartochkasidagi narxni to'laysiz. To'lov usuli yig'im olsa, yakuniy summa to'lovdan oldin ko'rsatiladi.</p></div>
-<div class="fee rv"><span class="mono" data-i18n="fee_seller">Sotuvchiga</span><div class="big">5%</div><p data-i18n="fee_seller_p">Sotilgan lotdan platforma mukofoti. Bu platformaning bitimdan yagona daromadi.</p></div>
-<div class="fee rv"><span class="mono" data-i18n="fee_withdraw">Yechish</span><div class="big">0%</div><p data-i18n="fee_withdraw_p">Balansdan bank kartasiga platforma komissiyasisiz. Minimal — 50 000 so'm.</p></div>
+<div class="fee rv glowable"><span class="mono" data-i18n="fee_buyer">Xaridorga</span><div class="big">0%</div><p data-i18n="fee_buyer_p">Lot kartochkasidagi narxni to'laysiz. To'lov usuli yig'im olsa, yakuniy summa to'lovdan oldin ko'rsatiladi.</p></div>
+<div class="fee rv glowable"><span class="mono" data-i18n="fee_seller">Sotuvchiga</span><div class="big">5%</div><p data-i18n="fee_seller_p">Sotilgan lotdan platforma mukofoti. Bu platformaning bitimdan yagona daromadi.</p></div>
+<div class="fee rv glowable"><span class="mono" data-i18n="fee_withdraw">Yechish</span><div class="big">0%</div><p data-i18n="fee_withdraw_p">Balansdan bank kartasiga platforma komissiyasisiz. Minimal — 50 000 so'm.</p></div>
+</div>
+<div class="calc rv glowable" id="calc">
+<div>
+<label for="calcRange" data-i18n="calc_t">Sotuvchi kalkulyatori: qancha olaman?</label>
+<div class="cprice"><span id="calcPrice">500 000</span> <small data-i18n="cur">so'm</small></div>
+<input type="range" id="calcRange" min="0" max="1000" value="450" step="1" aria-describedby="calcNet">
+</div>
+<div>
+<dl>
+<div><dt data-i18n="calc_buyer">Xaridor to'laydi</dt><dd><span id="calcBuyer">500 000</span> <span data-i18n="cur">so'm</span></dd></div>
+<div><dt data-i18n="calc_fee">Platforma komissiyasi 5%</dt><dd>−<span id="calcFee">25 000</span> <span data-i18n="cur">so'm</span></dd></div>
+<div class="net"><dt data-i18n="calc_net">Siz olasiz</dt><dd id="calcNet"><span id="calcNetV">475 000</span> <span data-i18n="cur">so'm</span></dd></div>
+<div><dt data-i18n="calc_when">Pul balansda</dt><dd id="calcDate" data-i18n="calc_when_v">to'lovdan 8 kun o'tib</dd></div>
+</dl>
+<span hidden id="calcWhenTpl" data-i18n="calc_when_tpl">{date}, agar xaridor bugun to'lasa</span>
+<p class="note" data-i18n="calc_note">O'z kartangizga yechish — platforma komissiyasisiz, 50 000 so'mdan.</p>
+</div>
 </div>
 </div>
 </section>
@@ -501,9 +589,9 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 <h2 style="margin-top:14px" data-i18n="plans_h">O'z kanalingiz orqali soting</h2>
 <p class="lead" data-i18n="sel_sub">Lot qo'yish bepul. Tariflar ko'proq ko'rinishni xohlaganlar va o'z Telegram-kanali orqali sotadiganlar uchun.</p>
 <div class="perks">
-<div class="perk rv"><h3 data-i18n="sel_1_t">🎬 3D-video va GIF</h3><p data-i18n="sel_1">Oddiy rasm o'rniga lotingizning aylanib turadigan 3D-roligi — chat va kanallar uchun.</p></div>
-<div class="perk rv"><h3 data-i18n="sel_2_t">📢 Kanallarga e'lon</h3><p data-i18n="sel_2">@dghostmarket kanaliga va o'z kanallaringizga bitta tugma bilan — post ostida «Sotib olish» tugmasi bilan.</p></div>
-<div class="perk rv"><h3 data-i18n="sel_3_t">🔨 Auksion va o'yinlar</h3><p data-i18n="sel_3">To'g'ridan-to'g'ri kanalingizda: stavkalar — mini-ilovada, to'lov — kafil orqali, o'yin g'olibini bot tanlaydi.</p></div>
+<div class="perk rv glowable"><h3 data-i18n="sel_1_t">🎬 3D-video va GIF</h3><p data-i18n="sel_1">Oddiy rasm o'rniga lotingizning aylanib turadigan 3D-roligi — chat va kanallar uchun.</p></div>
+<div class="perk rv glowable"><h3 data-i18n="sel_2_t">📢 Kanallarga e'lon</h3><p data-i18n="sel_2">@dghostmarket kanaliga va o'z kanallaringizga bitta tugma bilan — post ostida «Sotib olish» tugmasi bilan.</p></div>
+<div class="perk rv glowable"><h3 data-i18n="sel_3_t">🔨 Auksion va o'yinlar</h3><p data-i18n="sel_3">To'g'ridan-to'g'ri kanalingizda: stavkalar — mini-ilovada, to'lov — kafil orqali, o'yin g'olibini bot tanlaydi.</p></div>
 </div>
 <div class="tiers"><div class="tier rv"><h3>Start</h3><div class="pr">49 990 so&#x27;m<small>30 kun uchun</small></div><dl><div><dt>O&#x27;z kanallari</dt><dd>1</dd></div><div><dt>O&#x27;z kanallariga kunlik postlar</dt><dd>5</dd></div><div><dt>@dghostmarket kanaliga kunlik postlar</dt><dd>1</dd></div><div><dt>Oyiga auksionlar</dt><dd>—</dd></div><div><dt>Oyiga o&#x27;yinlar</dt><dd>—</dd></div></dl></div><div class="tier rv pop"><span class="pill">Ommabop</span><h3>PRO</h3><div class="pr">129 990 so&#x27;m<small>30 kun uchun</small></div><dl><div><dt>O&#x27;z kanallari</dt><dd>5</dd></div><div><dt>O&#x27;z kanallariga kunlik postlar</dt><dd>20</dd></div><div><dt>@dghostmarket kanaliga kunlik postlar</dt><dd>3</dd></div><div><dt>Oyiga auksionlar</dt><dd>10</dd></div><div><dt>Oyiga o&#x27;yinlar</dt><dd>4</dd></div></dl></div><div class="tier rv"><h3>Biznes</h3><div class="pr">399 990 so&#x27;m<small>30 kun uchun</small></div><dl><div><dt>O&#x27;z kanallari</dt><dd>15</dd></div><div><dt>O&#x27;z kanallariga kunlik postlar</dt><dd>60</dd></div><div><dt>@dghostmarket kanaliga kunlik postlar</dt><dd>5</dd></div><div><dt>Oyiga auksionlar</dt><dd>30</dd></div><div><dt>Oyiga o&#x27;yinlar</dt><dd>10</dd></div></dl></div><div class="tier rv"><h3>Garant</h3><div class="pr">1 199 990 so&#x27;m<small>30 kun uchun</small></div><dl><div><dt>Limitlar</dt><dd>Cheklovsiz</dd></div><div><dt>Ulanish</dt><dd>ariza orqali</dd></div></dl></div></div><div class="promo"><span>🎁 Birinchi oyga 50% chegirma</span><a class="btn" href="https://app.dghostmarket.uz/?src=site_home">Ilovada ulash</a></div>
 <p class="note" data-i18n-html="sel_note">Yirik kanallar va do'konlar bilan individual shartlarni kelishamiz — qo'llab-quvvatlashga yozing. Batafsil — <a href="/uz/guides/pro-for-sellers/">sotuvchilar uchun PRO tariflar</a>.</p>
@@ -536,12 +624,12 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 <span class="mono" data-i18n="safe_title">Bitimlar xavfsizligi</span>
 <h2 style="margin-top:14px" data-i18n="safe_h">Ikkala tomon himoyalangan</h2>
 <div class="sgrid">
-<div class="sitem rv"><h3><i></i><span data-i18n="c1_t">Sotuvchilarni tekshirish</span></h3><p data-i18n="c1">Pasport yoki ID, hujjat bilan selfi va Telegram orqali tasdiqlangan raqam. Qarorni administrator qabul qiladi.</p></div>
-<div class="sitem rv"><h3><i></i><span data-i18n="c2_t">Himoyalangan to'lov</span></h3><p data-i18n="c2">Pul to'lovdan keyin 8 kun ushlab turiladi — Steam almashuvni bekor qilishga ruxsat beradigan muddatdan uzoqroq. Xavfi yuqori bitimlarda — uzoqroq. Shundan keyingina sotuvchiga o'tadi.</p></div>
-<div class="sitem rv"><h3><i></i><span data-i18n="c3_t">Qat'iy muddatlar</span></h3><p data-i18n="c3">Buyumni yuborish uchun 24 soat. Ulgurmasa — buyurtma bekor qilinadi, xaridor pulini qaytarib oladi.</p></div>
-<div class="sitem rv"><h3><i></i><span data-i18n="c4_t">Nizolar</span></h3><p data-i18n="c4">Buyum kelmasa, xaridor nizo ochadi. Administratsiya ko'rib chiqmaguncha to'lov muzlatiladi.</p></div>
-<div class="sitem rv"><h3><i></i><span data-i18n="c5_t">Antifrod</span></h3><p data-i18n="c5">To'lov — faqat o'z kartangizdan, qaytarish — faqat pul kelgan joyga. Yangi akkauntlar uchun limitlar bor. Tizim bog'langan akkauntlar va shubhali bitimlarni qidiradi.</p></div>
-<div class="sitem rv"><h3><i></i><span data-i18n="c6_t">Shaffof tarix</span></h3><p data-i18n="c6">Bitimning har bir qadami qayd etiladi: to'lov, yuborish, tasdiqlash, to'lov. Tarix ilovada doim mavjud.</p></div>
+<div class="sitem rv glowable"><h3><i></i><span data-i18n="c1_t">Sotuvchilarni tekshirish</span></h3><p data-i18n="c1">Pasport yoki ID, hujjat bilan selfi va Telegram orqali tasdiqlangan raqam. Qarorni administrator qabul qiladi.</p></div>
+<div class="sitem rv glowable"><h3><i></i><span data-i18n="c2_t">Himoyalangan to'lov</span></h3><p data-i18n="c2">Pul to'lovdan keyin 8 kun ushlab turiladi — Steam almashuvni bekor qilishga ruxsat beradigan muddatdan uzoqroq. Xavfi yuqori bitimlarda — uzoqroq. Shundan keyingina sotuvchiga o'tadi.</p></div>
+<div class="sitem rv glowable"><h3><i></i><span data-i18n="c3_t">Qat'iy muddatlar</span></h3><p data-i18n="c3">Buyumni yuborish uchun 24 soat. Ulgurmasa — buyurtma bekor qilinadi, xaridor pulini qaytarib oladi.</p></div>
+<div class="sitem rv glowable"><h3><i></i><span data-i18n="c4_t">Nizolar</span></h3><p data-i18n="c4">Buyum kelmasa, xaridor nizo ochadi. Administratsiya ko'rib chiqmaguncha to'lov muzlatiladi.</p></div>
+<div class="sitem rv glowable"><h3><i></i><span data-i18n="c5_t">Antifrod</span></h3><p data-i18n="c5">To'lov — faqat o'z kartangizdan, qaytarish — faqat pul kelgan joyga. Yangi akkauntlar uchun limitlar bor. Tizim bog'langan akkauntlar va shubhali bitimlarni qidiradi.</p></div>
+<div class="sitem rv glowable"><h3><i></i><span data-i18n="c6_t">Shaffof tarix</span></h3><p data-i18n="c6">Bitimning har bir qadami qayd etiladi: to'lov, yuborish, tasdiqlash, to'lov. Tarix ilovada doim mavjud.</p></div>
 </div>
 <p class="nogamble" data-i18n="no_gambling">🚫 DGhostMarket — o'yinchilar o'rtasidagi bitimlar uchun platforma. Biz qimor o'yinlari o'tkazmaymiz, keyslar sotmaymiz va stavkalar qabul qilmaymiz. O'yinlar bepul: ishtirok uchun to'lov talab qilinmaydi.</p>
 </div>
@@ -583,6 +671,9 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 </section>
 
 </main>
+
+<div class="sticky-cta" id="stickyCta"><a class="btn" href="https://t.me/dghostmarketbot?start=site_home"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1.1-1 .2-1.5L20.5 2.7c.9-.3 1.6.2 1.4 1.6z"/></svg><span data-i18n="cta_open">Telegramda ochish</span></a></div>
+
 
 <footer>
 <div class="wrap">
@@ -642,6 +733,6 @@ if (saved === 'uz' || saved === 'en') location.replace('/' + saved + '/' + locat
 <script defer src="/vendor/gsap-3.12.5.min.js"></script>
 <script defer src="/vendor/ScrollTrigger-3.12.5.min.js"></script>
 <script defer src="/vendor/lenis-1.1.13.min.js"></script>
-<script defer src="/home.js?v=1"></script>
+<script defer src="/home.js?v=3"></script>
 </body>
 </html>
