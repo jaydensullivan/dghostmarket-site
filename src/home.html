@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DGhostMarket — маркетплейс скинов CS2 в Telegram</title>
+<meta name="description" content="Покупайте и продавайте скины CS2 за сумы в Telegram. Оплата удерживается до передачи предмета, продавцы проходят проверку, 0% комиссии для покупателя.">
+<meta property="og:title" content="DGhostMarket — маркетплейс скинов CS2 в Telegram">
+<meta property="og:description" content="Безопасные сделки со скинами CS2: проверка продавцов, передача за 24 часа, выплата через 8 дней.">
+<meta property="og:image" content="https://dghostmarket.uz/og.jpg">
+<meta property="og:url" content="https://dghostmarket.uz/">
+<link rel="canonical" href="https://dghostmarket.uz/">
+<!--ALTERNATES-->
+<!--JSONLD-->
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b0711">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Главная: история на прокрутке. Нож на WebGL за контентом (первый экран),
+   закреплённые главы «3D» и «8 дней», сделка лентой. Шрифты лежат на нашем
+   сайте (fonts/, лицензия SIL OFL 1.1), библиотеки — в vendor/. Без JS всё
+   содержимое видно как обычная страница. */
+@font-face{font-family:'Unbounded';font-style:normal;font-weight:600 900;font-display:swap;src:url(/fonts/unbounded-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Unbounded';font-style:normal;font-weight:600 900;font-display:swap;src:url(/fonts/unbounded-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Onest';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/onest-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Onest';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/onest-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/jbmono-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/jbmono-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  --bg:#0b0711; --bg2:#130d1d; --line:#2a2238; --fg:#f4effb; --mut:#a59db6;
+  --vio:#7b2cff; --mag:#ff2bd6; --mint:#7cf2a5; --ice:#57d6ff;
+  --f-disp:"Unbounded","Arial Black",system-ui,sans-serif;
+  --f-body:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+  --gutR:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.55 var(--f-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-disp);text-wrap:balance;margin:0;line-height:.95;letter-spacing:-.02em}
+p{margin:0}
+.wrap{max-width:1320px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gutR)}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.grain{position:fixed;inset:-50%;z-index:70;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1.2s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}33%{transform:translate(-3%,2%)}66%{transform:translate(2%,-3%)}100%{transform:translate(0,0)}}
+@media (max-width:899px){.grain{display:none}}
+
+/* сцена с ножом */
+#stage{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+#stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:0;transition:opacity .8s ease;background:transparent;color-scheme:normal;will-change:transform}
+.glow{position:fixed;z-index:0;border-radius:50%;filter:blur(90px);pointer-events:none;opacity:.55}
+.glow.a{width:46vw;height:46vw;right:-12vw;top:-8vw;background:radial-gradient(circle,var(--vio),transparent 65%)}
+.glow.b{width:36vw;height:36vw;left:-10vw;top:40vh;background:radial-gradient(circle,var(--mag),transparent 65%);opacity:.3}
+main,header,footer{position:relative;z-index:2}
+
+/* полоса прогресса и прицел */
+#prog{position:fixed;left:0;top:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);z-index:80;background:linear-gradient(90deg,var(--vio),var(--mag),var(--mint))}
+#cross{position:fixed;left:0;top:0;z-index:90;pointer-events:none;width:44px;height:44px;margin:-22px 0 0 -22px;display:none;mix-blend-mode:difference}
+#cross i{position:absolute;background:#fff;transition:transform .25s}
+#cross .t{left:21px;top:2px;width:2px;height:12px}#cross .bm{left:21px;bottom:2px;width:2px;height:12px}
+#cross .l{top:21px;left:2px;height:2px;width:12px}#cross .r{top:21px;right:2px;height:2px;width:12px}
+#cross .d{left:20px;top:20px;width:4px;height:4px;border-radius:50%}
+#cross.hot .t{transform:translateY(-7px)}#cross.hot .bm{transform:translateY(7px)}#cross.hot .l{transform:translateX(-7px)}#cross.hot .r{transform:translateX(7px)}
+.js-cursor #cross{display:block}
+.js-cursor,.js-cursor a,.js-cursor button,.js-cursor summary{cursor:none}
+
+/* шапка: прозрачная на первом экране, дальше — тёмная с размытием,
+   чтобы заголовки разделов не наезжали на логотип и кнопку */
+.nav{position:fixed;left:0;right:0;top:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(11,7,17,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:rgba(255,255,255,.06)}
+.nav .wrap{display:flex;align-items:center;gap:18px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font:800 15px/1 var(--f-disp);letter-spacing:.02em;white-space:nowrap}
+.logo img{width:34px;height:34px;border-radius:10px;box-shadow:0 0 24px rgba(123,44,255,.6)}
+.logo span em{font-style:normal;color:var(--mag)}
+.nav ul{display:flex;gap:20px;list-style:none;margin:0 0 0 auto;padding:10px 20px;border:1px solid rgba(255,255,255,.08);border-radius:99px;background:rgba(14,9,22,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav ul a{font-size:14px;color:var(--mut);transition:color .2s;white-space:nowrap}
+.nav ul a:hover{color:var(--fg)}
+.langs{display:flex;border:1px solid rgba(255,255,255,.12);border-radius:99px;overflow:hidden;flex:none}
+.langs a{font:600 12px/1 var(--f-body);padding:9px 10px;color:var(--mut)}
+.langs a.on{color:#fff;background:rgba(255,255,255,.1)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:99px;font:600 15px/1 var(--f-body);border:0;color:#fff;background:linear-gradient(120deg,var(--vio),var(--mag));box-shadow:0 10px 40px -8px rgba(255,43,214,.55),inset 0 1px 0 rgba(255,255,255,.3);position:relative;will-change:transform;cursor:pointer}
+.btn.ghost{background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.btn svg{width:16px;height:16px;flex:none}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
+@media (max-width:1100px){.nav ul{display:none}.nav .langs{margin-left:auto}}
+@media (max-width:520px){.nav .wrap{gap:10px;height:60px}.logo span{display:none}.nav .btn{padding:11px 14px;font-size:14px}}
+
+/* первый экран */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-block:120px 40px;position:relative}
+.hero .wrap{width:100%}
+.hero .kicker{display:flex;gap:12px;align-items:center;margin-bottom:24px}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(124,242,165,.7);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 12px rgba(124,242,165,0)}100%{box-shadow:0 0 0 0 rgba(124,242,165,0)}}
+.h1{font-size:clamp(40px,6.6vw,112px);font-weight:900;text-transform:uppercase;line-height:.92;max-width:11ch}
+.h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.h1 .ln>span{display:inline-block}
+.h1 .out{background:linear-gradient(180deg,#ffffff 0%,#cbbfe0 45%,#5b4d78 52%,#e9e2f5 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.h1 .grad{background:linear-gradient(90deg,var(--mag),var(--vio) 60%,var(--ice));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-row{display:flex;flex-wrap:wrap;gap:28px 48px;align-items:flex-end;justify-content:space-between;margin-top:34px}
+.hero-row>div:first-child{flex:1 1 380px;max-width:560px}
+.hero-row p{color:var(--mut);font-size:17px}
+.hero-row p b{color:var(--fg);font-weight:600}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hsearch{display:flex;gap:8px;margin-top:20px;max-width:520px}
+.hsearch input{flex:1;min-width:0;font:500 15px/1 var(--f-body);color:var(--fg);background:rgba(11,7,17,.6);border:1px solid var(--line);border-radius:99px;padding:14px 18px;-webkit-appearance:none;appearance:none}
+.hsearch input::placeholder{color:var(--mut)}
+.hsearch .btn{padding:14px 20px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chips a{font:500 13px/1 var(--f-mono);padding:9px 14px;border-radius:99px;border:1px solid var(--line);color:var(--mut);background:rgba(11,7,17,.5);transition:.2s}
+.chips a:hover{border-color:var(--mag);color:var(--fg)}
+.hud{position:absolute;right:var(--gutR);top:22vh;display:grid;gap:6px;text-align:right}
+.hud .mono{font-size:11px}
+.hud .v{font:600 13px/1 var(--f-mono);color:var(--fg)}
+@media (max-width:899px){.hud{display:none}.hero{padding-top:44vh}.no-knife .hero{padding-top:130px}}
+
+/* бегущая строка лотов */
+.ticker{border-block:1px solid var(--line);background:rgba(11,7,17,.75);backdrop-filter:blur(8px);overflow:hidden;padding-block:18px}
+.ticker .row{display:flex;gap:48px;width:max-content;will-change:transform}
+.ticker .it{display:flex;gap:14px;align-items:center;white-space:nowrap;font:600 15px/1 var(--f-body)}
+.ticker .it i{font-style:normal;font-family:var(--f-mono);font-size:13px;color:var(--mint)}
+.ticker .sep{color:var(--mag);font-size:12px}
+
+/* цифры */
+.stats{padding-block:110px 60px}
+.stats .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+.stat{background:var(--bg);padding:34px 28px;display:grid;gap:12px;min-width:0}
+.stat .n{font:900 clamp(44px,6vw,84px)/1 var(--f-disp);letter-spacing:-.04em}
+.stat .n small{font-size:.42em;letter-spacing:0;margin-left:4px;color:var(--mut)}
+.stat:nth-child(1) .n{color:var(--mint)}
+.stat p{color:var(--mut);font-size:15px}
+@media (max-width:900px){.stats .grid{grid-template-columns:1fr 1fr}.stats{padding-block:70px 40px}}
+@media (max-width:420px){.stat{padding:26px 18px}}
+
+/* глава «3D»: настоящая модель из 3D-движка мини-аппа */
+.chap{min-height:100svh;position:relative;overflow:hidden}
+.chap .wrap{min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;padding-block:110px 48px;position:relative}
+.chap h2{font-size:clamp(34px,6vw,96px);font-weight:900;text-transform:uppercase}
+.chap h2 span{color:var(--mag);text-shadow:0 0 40px rgba(255,43,214,.6)}
+.chap .wrap>*{position:relative;z-index:1}
+/* на телефоне — место под нож между заголовком и карточками */
+@media (max-width:899px){.chap .wrap>div:nth-child(2){min-height:52svh}.chap .wrap{padding-block:90px 40px}}
+.feat{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.feat>div:first-child{flex:1 1 320px;max-width:480px;min-width:0}
+.fcards{display:grid;gap:14px;margin-top:14px}
+.fcard{padding:26px;border-radius:20px;background:rgba(19,13,29,.72);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.fcard h3{font-size:20px;margin:10px 0;line-height:1.15;letter-spacing:0}
+.fcard p{color:var(--mut)}
+.dots{display:none;gap:8px}
+.dots i{width:28px;height:3px;border-radius:2px;background:var(--line);transition:background .3s}
+.dots i.on{background:var(--mag)}
+/* на ПК с JS — по одной карточке, листаются прокруткой */
+.pin3d .dots{display:flex}
+.pin3d .fcards{position:relative;min-height:210px;display:block}
+.pin3d .fcard{position:absolute;inset:auto 0 0 0;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s}
+.pin3d .fcard.on{opacity:1;transform:none}
+.spec{display:grid;gap:14px;min-width:240px;padding:20px;border-radius:18px;background:rgba(11,7,17,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.spec .v{font:600 15px/1.3 var(--f-mono)}
+.floatbar{position:relative;height:10px;border-radius:5px;display:flex;overflow:hidden}
+.floatbar span{height:100%}
+.floatbar .fn{width:7%;background:#7cf2a5}.floatbar .mw{width:8%;background:#a7e36a}.floatbar .ft{width:23%;background:#f5d14a}.floatbar .ww{width:7%;background:#f59a4a}.floatbar .bs{width:55%;background:#f2546a}
+.fwrap{position:relative;padding-top:4px}
+.fmark{position:absolute;top:-4px;width:2px;height:18px;background:#fff;box-shadow:0 0 10px #fff;left:1%}
+.fval{font:600 28px/1 var(--f-mono);color:var(--fg)}
+.fscale{display:flex;justify-content:space-between}
+
+/* сделка: на ПК лентой вбок, на телефоне списком */
+.deal{position:relative;overflow:hidden}
+.deal .head{padding-block:110px 40px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.deal h2,.lots h2,.fees h2,.safe h2{font-size:clamp(34px,5.4vw,84px);font-weight:900;text-transform:uppercase}
+.deal .head p{color:var(--mut);max-width:42ch}
+.tabs{display:inline-flex;padding:5px;border-radius:99px;border:1px solid var(--line);background:var(--bg2)}
+.tabs button{font:600 14px/1 var(--f-body);color:var(--mut);padding:12px 18px;border-radius:99px;border:0;background:none;cursor:pointer}
+.tabs button[aria-selected="true"]{color:#fff;background:linear-gradient(120deg,var(--vio),var(--mag))}
+.track{display:flex;gap:24px;padding-left:var(--gut);padding-right:var(--gutR);padding-bottom:90px;width:max-content;position:relative}
+.track[hidden]{display:none}
+.step{width:min(420px,78vw);min-height:340px;padding:30px;border-radius:24px;background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.step .no{font:900 120px/0.8 var(--f-disp);color:rgba(255,255,255,.05);position:absolute;right:18px;bottom:14px}
+.step h3{font-size:26px;letter-spacing:-.01em;line-height:1.1;margin-top:auto}
+.step p{color:var(--mut);max-width:34ch;position:relative}
+.step .tag{align-self:flex-start;font:600 12px/1 var(--f-mono);padding:8px 12px;border-radius:99px;background:rgba(124,242,165,.1);color:var(--mint);letter-spacing:.06em;text-transform:uppercase}
+.step.money .tag{background:rgba(255,43,214,.12);color:var(--mag)}
+.rail{position:absolute;left:0;right:0;bottom:46px;height:2px;background:var(--line)}
+.rail b{position:absolute;inset:0;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--vio),var(--mag),var(--mint));box-shadow:0 0 18px var(--mag)}
+@media (max-width:899px){
+  .deal .head{padding-block:80px 30px}
+  .track{flex-direction:column;width:auto;padding-bottom:60px;gap:14px}
+  .step{width:100%;min-height:0;padding:24px}
+  .step h3{font-size:22px;margin-top:6px}
+  .step .no{font-size:84px}
+  .rail{display:none}
+}
+
+/* лоты */
+.lots{padding-block:120px}
+.lots .head,.fees .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.lots .head p{color:var(--mut);max-width:36ch}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;perspective:1100px}
+@media (max-width:1000px){.cards{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.cards{grid-template-columns:1fr}.lots{padding-block:80px}}
+.card{position:relative;border-radius:22px;background:var(--bg2);border:1px solid rgba(255,255,255,.07);overflow:hidden;transform-style:preserve-3d;transition:transform .15s ease-out,border-color .3s;min-width:0;display:block}
+.card:hover{border-color:rgba(255,43,214,.5)}
+.card .art{height:220px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 45%,#2e2142,#130d1d 70%)}
+.card .art img{max-width:86%;max-height:84%;object-fit:contain;filter:drop-shadow(0 18px 30px rgba(0,0,0,.55))}
+.card .holo{position:absolute;inset:0;pointer-events:none;mix-blend-mode:color-dodge;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.55),transparent 40%),linear-gradient(115deg,transparent 20%,rgba(87,214,255,.35) 40%,rgba(255,43,214,.35) 55%,transparent 75%);background-size:100% 100%,200% 200%;background-position:0 0,var(--hx,50%) 50%}
+.card:hover .holo{opacity:1}
+.card .body{padding:20px 20px 22px;display:grid;gap:10px}
+.card h3{font:600 18px/1.25 var(--f-body);letter-spacing:0}
+.card .meta{font:500 12px/1.4 var(--f-mono);color:var(--mut);letter-spacing:.04em}
+.card .row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:4px}
+.card .price{font:700 20px/1 var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.card .price small{font-size:12px;color:var(--mut);font-weight:400}
+.card .buy{font:600 14px/1 var(--f-body);padding:11px 16px;border-radius:99px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);transition:.2s;white-space:nowrap}
+.card:hover .buy{background:linear-gradient(120deg,var(--vio),var(--mag));border-color:transparent}
+.deal-badge{position:absolute;top:14px;right:14px;font:600 11px/1 var(--f-mono);padding:7px 10px;border-radius:99px;background:rgba(11,7,17,.75);color:var(--mint);letter-spacing:.05em}
+.more{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+
+/* комиссии */
+.fees{padding-block:60px 120px}
+.fees .sub{color:var(--mut);max-width:44ch}
+.feegrid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:20px}
+@media (max-width:900px){.feegrid{grid-template-columns:1fr}.fees{padding-block:40px 80px}}
+.fee{padding:30px;border-radius:24px;border:1px solid var(--line);display:grid;gap:14px;align-content:start;background:var(--bg)}
+.fee .big{font:900 clamp(72px,10vw,150px)/.85 var(--f-disp);letter-spacing:-.05em}
+.fee:first-child .big{background:linear-gradient(90deg,var(--mint),var(--ice));-webkit-background-clip:text;background-clip:text;color:transparent}
+.fee p{color:var(--mut)}
+
+/* продавцам */
+.plans{padding-block:40px 120px}
+.plans h2{font-size:clamp(30px,4.4vw,64px);font-weight:900;text-transform:uppercase}
+.plans .lead{color:var(--mut);max-width:60ch;margin:16px 0 36px}
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px}
+@media (max-width:900px){.perks{grid-template-columns:1fr}.plans{padding-block:20px 80px}}
+.perk{padding:24px;border-radius:20px;background:var(--bg2);border:1px solid rgba(255,255,255,.06)}
+.perk h3{font:600 17px/1.3 var(--f-body);letter-spacing:0;margin-bottom:8px}
+.perk p{color:var(--mut);font-size:15px}
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media (max-width:1000px){.tiers{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.tiers{grid-template-columns:1fr}}
+.tier{padding:26px;border-radius:22px;border:1px solid var(--line);display:flex;flex-direction:column;gap:16px;background:var(--bg);position:relative}
+.tier.pop{background:linear-gradient(var(--bg2),var(--bg2)) padding-box,linear-gradient(140deg,var(--vio),var(--mag)) border-box;border:1px solid transparent;box-shadow:0 30px 80px -30px rgba(255,43,214,.55)}
+.tier .pill{position:absolute;top:-12px;left:22px;font:600 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border-radius:99px;background:var(--mag);color:#fff}
+.tier h3{font-size:22px;letter-spacing:0}
+.tier .pr{font:700 24px/1 var(--f-mono);font-variant-numeric:tabular-nums}
+.tier .pr small{display:block;font:400 12px/1.6 var(--f-mono);color:var(--mut);margin-top:4px}
+.tier dl{margin:0;display:grid;gap:9px;font-size:14px}
+.tier dl div{display:flex;justify-content:space-between;gap:10px;border-top:1px dashed var(--line);padding-top:9px}
+.tier dt{color:var(--mut)}
+.tier dd{margin:0;font-family:var(--f-mono);font-variant-numeric:tabular-nums;text-align:right}
+.promo{margin-top:24px;padding:18px 22px;border-radius:16px;background:rgba(124,242,165,.08);color:var(--mint);font-weight:600;display:flex;gap:10px 20px;flex-wrap:wrap;justify-content:space-between;align-items:center}
+.note{color:var(--mut);margin-top:18px;font-size:15px}
+.note a{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
+
+/* «8 дней» */
+.hold{min-height:100svh;position:relative}
+.hold .wrap{min-height:100svh;display:flex;flex-direction:column;justify-content:center;gap:40px;padding-block:90px 40px}
+.hold h2{font-size:clamp(30px,5.6vw,96px);font-weight:900;text-transform:uppercase}
+.hold h2 .d{color:var(--mint)}
+.days{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;position:relative}
+.day{height:72px;border-radius:10px;background:var(--bg2);border:1px solid var(--line);position:relative;overflow:hidden}
+.day b{position:absolute;inset:0;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--vio),var(--mag))}
+.no-js .day b,.no-anim .day b{transform:none}
+.day:last-child b{background:linear-gradient(90deg,var(--mag),var(--mint))}
+.day span{position:absolute;left:10px;top:10px;font:600 12px/1 var(--f-mono);z-index:1}
+.marks{display:grid;grid-template-columns:7fr 1fr;gap:6px;font-size:14px;margin-top:10px}
+.marks div{border-top:2px solid var(--mag);padding-top:10px;color:var(--mut)}
+.marks div:last-child{border-color:var(--mint);color:var(--fg)}
+.marks b{display:block;color:var(--fg);font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.holdcap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
+.holdcap p{max-width:52ch;color:var(--mut)}
+.holdcap .count{font:700 clamp(48px,7vw,96px)/1 var(--f-mono);font-variant-numeric:tabular-nums}
+@media (max-width:600px){.day{height:48px}.day span{left:6px;top:6px;font-size:10px}.marks{font-size:12px;grid-template-columns:5fr 2fr}.hold .wrap{gap:28px}}
+
+/* безопасность */
+.safe{padding-block:120px}
+.safe h2{margin-bottom:44px}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+@media (max-width:900px){.sgrid{grid-template-columns:1fr 1fr}.safe{padding-block:80px}}
+@media (max-width:560px){.sgrid{grid-template-columns:1fr}}
+.sitem{padding:30px 26px 34px 0;border-bottom:1px solid var(--line);display:grid;gap:10px;align-content:start}
+.sitem h3{font:600 19px/1.25 var(--f-body);letter-spacing:0;display:flex;gap:12px;align-items:center}
+.sitem h3 i{width:10px;height:10px;border-radius:2px;background:var(--mag);transform:rotate(45deg);flex:none}
+.sitem p{color:var(--mut);font-size:15px;max-width:40ch}
+.nogamble{margin-top:36px;padding:20px 24px;border-radius:16px;border:1px solid var(--line);color:var(--mut);font-size:15px}
+
+/* вопросы */
+.faq{padding-block:40px 100px}
+.faq .g,.docs .g{display:grid;grid-template-columns:1fr 1.6fr;gap:48px}
+@media (max-width:900px){.faq .g,.docs .g{grid-template-columns:1fr;gap:20px}}
+.faq h2,.docs h2{font-size:clamp(34px,5vw,72px);font-weight:900;text-transform:uppercase}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;padding:22px 40px 22px 0;font:600 18px/1.35 var(--f-body);position:relative;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;margin-top:-7px;background:linear-gradient(var(--mag),var(--mag)) center/14px 2px no-repeat,linear-gradient(var(--mag),var(--mag)) center/2px 14px no-repeat;transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--mut);padding-bottom:22px;max-width:62ch}
+
+/* документы */
+.docs{padding-block:20px 100px}
+.docs .sub{color:var(--mut);margin-top:16px;max-width:40ch}
+.dlist{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:620px){.dlist{grid-template-columns:1fr}}
+.doc{padding:22px;border-radius:18px;border:1px solid var(--line);display:grid;gap:6px;transition:border-color .2s}
+.doc:hover{border-color:var(--mag)}
+.doc b{font-weight:600}
+.doc span{color:var(--mut);font-size:14px}
+
+/* финал */
+.final{padding-block:60px;overflow:hidden}
+.bigmq{display:flex;width:max-content;gap:.4em;font:900 clamp(56px,12vw,220px)/1 var(--f-disp);text-transform:uppercase;white-space:nowrap;will-change:transform}
+.bigmq span:nth-child(even){color:var(--mag)}
+.final .wrap{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;margin-top:40px}
+.final p{color:var(--mut);max-width:44ch;font-size:17px}
+.final .btn{padding:20px 30px;font-size:17px}
+
+footer{border-top:1px solid var(--line);padding-block:48px calc(48px + env(safe-area-inset-bottom,0px));background:var(--bg)}
+footer .g{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:32px}
+@media (max-width:900px){footer .g{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){footer .g{grid-template-columns:1fr}}
+footer h4{font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:0 0 14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14px}
+footer ul a:hover{color:var(--mag)}
+footer .tag{color:var(--mut);font-size:14px;margin-top:16px;max-width:40ch}
+footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.rv{will-change:transform}
+@media (prefers-reduced-motion:reduce){.grain,.pulse{animation:none}.pin3d .fcard{transition:none}}
+</style>
+</head>
+<body class="no-js">
+
+<div class="glow a" aria-hidden="true"></div><div class="glow b" aria-hidden="true"></div>
+<div id="stage" aria-hidden="true"><iframe title="Butterfly Knife | Doppler — 3D" tabindex="-1" allow="xr-spatial-tracking"></iframe></div>
+<div class="grain" aria-hidden="true"></div>
+<div id="prog" aria-hidden="true"></div>
+<div id="cross" aria-hidden="true"><i class="t"></i><i class="bm"></i><i class="l"></i><i class="r"></i><i class="d"></i></div>
+
+<header class="nav" id="nav">
+<div class="wrap">
+<a class="logo" href="#top"><img src="favicon.png" alt="" width="34" height="34"><span>DGhost<em>Market</em></span></a>
+<ul>
+<li><a href="#how" data-i18n="nav_how">Как это работает</a></li>
+<li><a href="#fees" data-i18n="nav_fees">Комиссии</a></li>
+<li><a href="#sellers" data-i18n="nav_sellers">Продавцам</a></li>
+<li><a href="#safety" data-i18n="nav_safety">Безопасность</a></li>
+<li><a href="#faq" data-i18n="nav_faq">Вопросы</a></li>
+<li><a href="/skins/" data-i18n="nav_prices">Цены</a></li>
+</ul>
+<div class="langs" role="group" aria-label="Язык">
+<a href="/" data-lang="ru" class="on" hreflang="ru">RU</a>
+<a href="/uz/" data-lang="uz" hreflang="uz">UZ</a>
+<a href="/en/" data-lang="en" hreflang="en">EN</a>
+</div>
+<a class="btn mag" href="https://t.me/dghostmarketbot" data-i18n="cta_open_short">Открыть</a>
+</div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+<div class="hud" aria-hidden="true">
+<span class="mono" data-i18n="hud_demo">3D-рендер DGhost</span>
+<span class="v">★ Butterfly Knife | Doppler</span>
+<span class="mono" style="margin-top:10px">Float</span>
+<span class="v">0.0100</span>
+<span class="mono" style="margin-top:10px">Pattern</span>
+<span class="v">#412</span>
+</div>
+<div class="wrap">
+<div class="kicker"><span class="pulse"></span><span class="mono" data-i18n="hero_kicker2">Маркетплейс скинов CS2 в Telegram</span></div>
+<h1 class="h1">
+<span class="ln"><span data-i18n="h1_l1">Скины CS2</span></span>
+<span class="ln"><span class="grad" data-i18n="h1_l2">за сумы.</span></span>
+<span class="ln"><span class="out" data-i18n="h1_l3">Деньги у гаранта.</span></span>
+</h1>
+<div class="hero-row">
+<div>
+<p data-i18n-html="hero_p">Площадка держит оплату, пока скин не придёт в ваш Steam. Продавцы проходят проверку личности. <b>Без обмана.</b></p>
+<form class="hsearch" action="https://app.dghostmarket.uz/" method="get" role="search">
+<input type="hidden" name="open" value="search">
+<input type="search" name="q" maxlength="120" autocomplete="off" placeholder="Karambit, AK-47 Redline, перчатки…" data-i18n-ph="search_ph" aria-label="Поиск скина">
+<button class="btn" type="submit" data-i18n="search_btn">Найти</button>
+</form>
+<div class="chips"><a href="https://app.dghostmarket.uz/?open=search&amp;q=Karambit">Karambit</a><a href="https://app.dghostmarket.uz/?open=search&amp;q=Butterfly">Butterfly</a><a href="https://app.dghostmarket.uz/?open=search&amp;q=AK-47">AK-47</a><a href="https://app.dghostmarket.uz/?open=search&amp;q=AWP">AWP</a><a href="https://app.dghostmarket.uz/?open=search&amp;q=Gloves">Gloves</a></div>
+</div>
+<div class="ctas">
+<a class="btn mag" href="https://t.me/dghostmarketbot"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1.1-1 .2-1.5L20.5 2.7c.9-.3 1.6.2 1.4 1.6z"/></svg><span data-i18n="cta_open">Открыть в Telegram</span></a>
+<a class="btn ghost mag" href="https://app.dghostmarket.uz/" data-i18n="cta_web">Открыть в браузере</a>
+</div>
+</div>
+</div>
+</section>
+
+<!--TICKER-->
+
+<section class="stats">
+<div class="wrap">
+<div class="grid">
+<div class="stat rv"><div class="n"><span data-count="0">0</span><small>%</small></div><p data-i18n="stat_buyer">комиссия для покупателя</p></div>
+<div class="stat rv"><div class="n"><span data-count="5">5</span><small>%</small></div><p data-i18n="stat_seller">комиссия с продажи — единственный доход площадки</p></div>
+<div class="stat rv"><div class="n"><span data-count="24">24</span><small data-i18n="unit_h">ч</small></div><p data-i18n="stat_24">на передачу предмета, иначе деньги возвращаются</p></div>
+<div class="stat rv"><div class="n"><span data-count="8">8</span><small data-i18n="unit_d">дней</small></div><p data-i18n="stat_8">холд до выплаты продавцу</p></div>
+</div>
+</div>
+</section>
+
+<section class="chap" id="view3d">
+<div class="wrap">
+<div>
+<span class="mono" data-i18n="v3_title">Скин в 3D и на вашем столе</span>
+<h2 style="margin-top:14px" data-i18n-html="sc_title">Каждый скин — <span>в 3D</span>, как в игре</h2>
+</div>
+<div></div>
+<div class="feat">
+<div>
+<div class="dots" id="fdots"><i class="on"></i><i></i><i></i></div>
+<div class="fcards" id="fcards">
+<div class="fcard on"><span class="mono">01 / <span data-i18n="v3_1_t">3D со всех сторон</span></span><h3 data-i18n="f1_h">Тот самый предмет, а не картинка из Steam</h3><p data-i18n="v3_1">Покрутите скин, приблизьте детали, смените фон на карту CS2. Модели собраны из файлов игры.</p></div>
+<div class="fcard"><span class="mono">02 / <span data-i18n="v3_2_t">«На столе» — AR</span></span><h3 data-i18n="f2_h">Нож около 25 см, AK — около 88 см</h3><p data-i18n="f2_p">С телефона поставьте скин на стол или пол в натуральную величину.</p></div>
+<div class="fcard"><span class="mono">03 / <span data-i18n="v3_3_t">Float, паттерн и наклейки</span></span><h3 data-i18n="f3_h">Всё как у конкретного лота</h3><p data-i18n="v3_3">Износ, рисунок паттерна и наклейки показаны как у конкретного лота, а цена — рядом с ценой рынка.</p></div>
+</div>
+</div>
+<div class="spec">
+<span class="mono" data-i18n="spec_float">Износ (float)</span>
+<div class="v">★ Butterfly Knife | Doppler</div>
+<div class="fval">0.0100</div>
+<div class="fwrap">
+<div class="floatbar" aria-hidden="true"><span class="fn"></span><span class="mw"></span><span class="ft"></span><span class="ww"></span><span class="bs"></span></div>
+<div class="fmark" aria-hidden="true"></div>
+</div>
+<div class="mono fscale" aria-hidden="true"><span>FN</span><span>MW</span><span>FT</span><span>WW</span><span>BS</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="deal" id="how">
+<div class="wrap head">
+<div>
+<span class="mono" data-i18n="how_title">Как проходит сделка</span>
+<h2 style="margin-top:14px" data-i18n-html="deal_h">Четыре шага.<br>Деньги под защитой.</h2>
+</div>
+<div style="display:grid;gap:18px;justify-items:start">
+<p data-i18n="how_sub">Предмет передаётся напрямую между аккаунтами Steam, а площадка следит за сроками и держит оплату до завершения сделки.</p>
+<div class="tabs" role="tablist">
+<button type="button" role="tab" id="tabBuy" aria-selected="true" aria-controls="trackBuy" data-i18n="fee_buyer">Покупателю</button>
+<button type="button" role="tab" id="tabSell" aria-selected="false" aria-controls="trackSell" data-i18n="fee_seller">Продавцу</button>
+</div>
+</div>
+</div>
+<div class="track" id="trackBuy" role="tabpanel" aria-labelledby="tabBuy">
+<article class="step"><span class="tag" data-i18n="bt1">Шаг 1</span><h3 data-i18n="b1_t">Выберите скин</h3><p data-i18n="b1">Каталог с фильтрами по оружию, качеству, float и цене.</p><span class="no">1</span></article>
+<article class="step money"><span class="tag" data-i18n="bt2">Деньги у гаранта</span><h3 data-i18n="b2_t">Оплатите заказ</h3><p data-i18n="b2">Переводом со своей карты по реквизитам (с чеком) или с баланса. Деньги удерживает площадка — продавец их пока не получает.</p><span class="no">2</span></article>
+<article class="step"><span class="tag" data-i18n="bt3">24 часа</span><h3 data-i18n="b3_t">Получите предмет</h3><p data-i18n="b3">Продавец отправляет обмен в Steam в течение 24 часов. Не отправил — деньги возвращаются тем же путём, каким вы платили.</p><span class="no">3</span></article>
+<article class="step"><span class="tag" data-i18n="bt4">Готово</span><h3 data-i18n="b4_t">Подтвердите получение</h3><p data-i18n="b4">Примите обмен в Steam и нажмите «Получил». Если что-то не так — откройте спор.</p><span class="no">4</span></article>
+<div class="rail"><b></b></div>
+</div>
+<div class="track" id="trackSell" role="tabpanel" aria-labelledby="tabSell" hidden>
+<article class="step"><span class="tag" data-i18n="st1">Один раз</span><h3 data-i18n="s1_t">Пройдите проверку</h3><p data-i18n="s1">Номер телефона через Telegram, фото документа и селфи — один раз перед первым лотом.</p><span class="no">1</span></article>
+<article class="step"><span class="tag" data-i18n="st2">Бесплатно</span><h3 data-i18n="s2_t">Выставьте предмет</h3><p data-i18n="s2">Прямо из инвентаря Steam: фото, float и наклейки подтянутся сами, а приложение подскажет цену рынка. Можно выставить весь инвентарь сразу — «Все по рынку −3%».</p><span class="no">2</span></article>
+<article class="step"><span class="tag" data-i18n="st3">24 часа</span><h3 data-i18n="s3_t">Передайте за 24 часа</h3><p data-i18n="s3">После оплаты отправьте обмен в Steam и отметьте «Отправил».</p><span class="no">3</span></article>
+<article class="step money"><span class="tag" data-i18n="st4">Через 8 дней</span><h3 data-i18n="s4_t">Получите деньги</h3><p data-i18n="s4">Через 8 дней с оплаты сумма за вычетом 5% приходит на баланс. Вывод на свою карту — без комиссии площадки.</p><span class="no">4</span></article>
+<div class="rail"><b></b></div>
+</div>
+</section>
+
+<!--LOTS-->
+
+<section class="fees" id="fees">
+<div class="wrap">
+<div class="head">
+<div><span class="mono" data-i18n="fees_title">Комиссии</span><h2 style="margin-top:14px" data-i18n="fees_h">Без скрытых платежей</h2></div>
+<p class="sub" data-i18n="fees_sub">Никаких скрытых платежей: все суммы видны до подтверждения.</p>
+</div>
+<div class="feegrid">
+<div class="fee rv"><span class="mono" data-i18n="fee_buyer">Покупателю</span><div class="big">0%</div><p data-i18n="fee_buyer_p">Вы платите цену, указанную на карточке лота. Если способ оплаты берёт сбор, итог показывается до оплаты.</p></div>
+<div class="fee rv"><span class="mono" data-i18n="fee_seller">Продавцу</span><div class="big">5%</div><p data-i18n="fee_seller_p">Вознаграждение площадки с проданного лота. Это единственный доход площадки по сделке.</p></div>
+<div class="fee rv"><span class="mono" data-i18n="fee_withdraw">Вывод</span><div class="big">0%</div><p data-i18n="fee_withdraw_p">Вывод с баланса на банковскую карту без комиссии площадки. Минимум — 50 000 сум.</p></div>
+</div>
+</div>
+</section>
+
+<section class="plans" id="sellers">
+<div class="wrap">
+<span class="mono" data-i18n="sel_title">Продавцам и владельцам каналов</span>
+<h2 style="margin-top:14px" data-i18n="plans_h">Продавайте через свой канал</h2>
+<p class="lead" data-i18n="sel_sub">Выставлять лоты можно бесплатно. Тарифы нужны тем, кто хочет больше показов и продаёт через свой Telegram-канал.</p>
+<div class="perks">
+<div class="perk rv"><h3 data-i18n="sel_1_t">🎬 3D-видео и GIF</h3><p data-i18n="sel_1">Крутящийся 3D-ролик вашего лота вместо обычной картинки — для чатов и каналов.</p></div>
+<div class="perk rv"><h3 data-i18n="sel_2_t">📢 Публикация в каналы</h3><p data-i18n="sel_2">В канал @dghostmarket и в ваши каналы одной кнопкой — с кнопкой «Купить» под постом.</p></div>
+<div class="perk rv"><h3 data-i18n="sel_3_t">🔨 Аукционы и розыгрыши</h3><p data-i18n="sel_3">Прямо в вашем канале: ставки — в мини-приложении, оплата — через гаранта, победителя розыгрыша выбирает бот.</p></div>
+</div>
+<!--PRO_TIERS-->
+<p class="note" data-i18n-html="sel_note">Для крупных каналов и магазинов обсуждаем индивидуальные условия — напишите в поддержку. Подробнее — <a href="/guides/pro-for-sellers/">тарифы PRO для продавцов</a>.</p>
+</div>
+</section>
+
+<section class="hold" id="hold">
+<div class="wrap">
+<div>
+<span class="mono" data-i18n="hold_k">Почему выплата через 8 дней</span>
+<h2 style="margin-top:14px" data-i18n-html="hold_h">Steam отменяет обмен 7 дней.<br>Мы держим <span class="d">8.</span></h2>
+</div>
+<div>
+<div class="days" id="days"><div class="day"><span>1</span><b></b></div><div class="day"><span>2</span><b></b></div><div class="day"><span>3</span><b></b></div><div class="day"><span>4</span><b></b></div><div class="day"><span>5</span><b></b></div><div class="day"><span>6</span><b></b></div><div class="day"><span>7</span><b></b></div><div class="day"><span>8</span><b></b></div></div>
+<div class="marks">
+<div><b data-i18n="hold_m1_t">Окно отмены в Steam</b><span data-i18n="hold_m1">Обмен ещё можно откатить — деньги остаются у площадки</span></div>
+<div><b data-i18n="hold_m2_t">Выплата</b><span data-i18n="hold_m2">продавцу</span></div>
+</div>
+</div>
+<div class="holdcap">
+<p data-i18n="hold_p">Так покупатель не останется без предмета, а продавец — без денег. В сделках с повышенным риском холд дольше.</p>
+<div class="count" id="holdCount" aria-hidden="true"></div>
+</div>
+<span hidden id="txtDay" data-i18n="hold_day">День</span>
+</div>
+</section>
+
+<section class="safe" id="safety">
+<div class="wrap">
+<span class="mono" data-i18n="safe_title">Безопасность сделок</span>
+<h2 style="margin-top:14px" data-i18n="safe_h">Защищены обе стороны</h2>
+<div class="sgrid">
+<div class="sitem rv"><h3><i></i><span data-i18n="c1_t">Проверка продавцов</span></h3><p data-i18n="c1">Паспорт или ID, селфи с документом и номер, подтверждённый через Telegram. Решение принимает администратор.</p></div>
+<div class="sitem rv"><h3><i></i><span data-i18n="c2_t">Оплата под защитой</span></h3><p data-i18n="c2">Деньги удерживаются 8 дней с оплаты — дольше, чем Steam позволяет отменить обмен. В сделках с повышенным риском — дольше. Только потом они уходят продавцу.</p></div>
+<div class="sitem rv"><h3><i></i><span data-i18n="c3_t">Жёсткие сроки</span></h3><p data-i18n="c3">24 часа на передачу предмета. Не успел — заказ отменяется, а покупатель получает деньги обратно.</p></div>
+<div class="sitem rv"><h3><i></i><span data-i18n="c4_t">Споры</span></h3><p data-i18n="c4">Если предмет не пришёл, покупатель открывает спор. Выплата замораживается, пока администрация не разберётся.</p></div>
+<div class="sitem rv"><h3><i></i><span data-i18n="c5_t">Антифрод</span></h3><p data-i18n="c5">Оплата — только со своей карты, возврат — только туда, откуда пришли деньги. У новых аккаунтов есть лимиты. Система ищет связанные аккаунты и подозрительные сделки.</p></div>
+<div class="sitem rv"><h3><i></i><span data-i18n="c6_t">Прозрачная история</span></h3><p data-i18n="c6">Каждый шаг сделки фиксируется: оплата, передача, подтверждение, выплата. История всегда доступна в приложении.</p></div>
+</div>
+<p class="nogamble" data-i18n="no_gambling">🚫 DGhostMarket — площадка для сделок между игроками. Мы не проводим азартных игр, не продаём кейсы и не принимаем ставок. Розыгрыши бесплатны: участие не требует оплаты.</p>
+</div>
+</section>
+
+<section class="faq" id="faq">
+<div class="wrap g">
+<div><span class="mono">FAQ</span><h2 style="margin-top:14px" data-i18n="faq_title">Частые вопросы</h2></div>
+<div>
+<details><summary data-i18n="q1">Что, если продавец не передаст предмет?</summary><p data-i18n="a1">Если за 24 часа после оплаты продавец не отметил передачу и предмет не появился у вас в Steam, заказ отменяется автоматически, а деньги возвращаются.</p></details>
+<details><summary data-i18n="q2">Почему деньги продавцу приходят через 8 дней?</summary><p data-i18n="a2">Steam позволяет отменить обмен в течение 7 дней. Площадка держит оплату чуть дольше, чтобы покупатель не остался без предмета, а продавец — без денег.</p></details>
+<details><summary data-i18n="q3">Нужно ли покупателю проходить проверку?</summary><p data-i18n="a3">Для обычных покупок — нет: достаточно войти через Telegram и привязать ссылку на обмен Steam. Для крупной покупки или когда у нового аккаунта исчерпан лимит, площадка попросит подтвердить личность. Продавцы проходят проверку перед первым лотом.</p></details>
+<details><summary data-i18n="q6">Можно ли платить с чужой карты?</summary><p data-i18n="a6">Нет. При оплате переводом вы указываете имя владельца карты, и платить можно только со своей. Платёж с чужой карты отклоняется, а деньги возвращаются на карту отправителя.</p></details>
+<details><summary data-i18n="q7">Как и когда возвращаются деньги?</summary><p data-i18n="a7">Тем же путём, каким вы платили: на баланс — сразу, на карту — в течение 3 банковских дней с решения о возврате. На другие карты и счета возврат не делается.</p></details>
+<details><summary data-i18n="q4">Связана ли площадка с Valve или Steam?</summary><p data-i18n="a4">Нет. DGhostMarket — независимая площадка. Предметы передаются стандартными обменами Steam между аккаунтами пользователей.</p></details>
+<details><summary data-i18n="q5">Как связаться с поддержкой?</summary><p data-i18n="a5">Напишите в Telegram @dghostmarketsupportbot или на support@dghostmarket.uz — отвечаем в течение 24 часов. По конкретной сделке удобнее писать прямо из приложения.</p></details>
+</div>
+</div>
+</section>
+
+<section class="docs" id="docs">
+<div class="wrap g">
+<div><h2 data-i18n="docs_title">Документы</h2><p class="sub" data-i18n="docs_sub">Правила, по которым работает площадка, — на узбекском и русском языках. Об изменениях мы предупреждаем не менее чем за 30 дней.</p></div>
+<div class="dlist">
+<a class="doc" href="https://api.dghostmarket.uz/legal?doc=terms"><b data-i18n="d1">Общие условия использования</b><span data-i18n="d1s">Для всех пользователей</span></a>
+<a class="doc" href="https://api.dghostmarket.uz/legal?doc=buyer"><b data-i18n="d2">Оферта для покупателя</b><span data-i18n="d2s">Оплата, получение, возвраты</span></a>
+<a class="doc" href="https://api.dghostmarket.uz/legal?doc=seller"><b data-i18n="d3">Оферта для продавца</b><span data-i18n="d3s">Комиссия, холд, вывод</span></a>
+<a class="doc" href="https://api.dghostmarket.uz/legal?doc=privacy"><b data-i18n="d4">Политика конфиденциальности</b><span data-i18n="d4s">Какие данные мы храним и зачем</span></a>
+</div>
+</div>
+</section>
+
+<section class="final">
+<div class="bigmq" id="bigmq" aria-hidden="true"><span data-i18n="mq1">Первая сделка</span><span data-i18n="mq2">без обмана</span><span data-i18n="mq1">Первая сделка</span><span data-i18n="mq2">без обмана</span></div>
+<div class="wrap">
+<div><h2 style="font-size:clamp(24px,3vw,36px);margin-bottom:12px" data-i18n="final_title">Готовы к первой сделке?</h2><p data-i18n="final_sub">Откройте DGhostMarket в Telegram — вход через Telegram, отдельная регистрация не нужна.</p></div>
+<a class="btn mag" href="https://t.me/dghostmarketbot" data-i18n="cta_open">Открыть в Telegram</a>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="wrap">
+<div class="g">
+<div>
+<a class="logo" href="#top"><img src="favicon.png" alt="" width="34" height="34"><span>DGhost<em>Market</em></span></a>
+<p class="tag" data-i18n="foot_tag">Маркетплейс скинов CS2 в Telegram. Оплата в сумах, деньги у гаранта.</p>
+</div>
+<div>
+<h4 data-i18n="foot_site">Сайт</h4>
+<ul>
+<li><a href="/skins/" data-i18n="nav_prices">Цены</a></li>
+<li><a href="/prices/" data-i18n="foot_market">Рыночные цены скинов</a></li>
+<li><a href="/guides/" data-i18n="foot_guides">Инструкции</a></li>
+<li><a href="/3d-api/" data-i18n="foot_3d">3D-рендер для бизнеса</a></li>
+</ul>
+</div>
+<div id="contacts">
+<h4 data-i18n="ct_title">Контакты</h4>
+<ul>
+<li><a href="https://t.me/dghostmarketsupportbot">@dghostmarketsupportbot</a></li>
+<li><a href="https://t.me/dghostmarketbot">@dghostmarketbot</a></li>
+<li><a href="https://t.me/dghostmarket" data-i18n="ct_channel">Канал @dghostmarket</a></li>
+<li><a href="mailto:support@dghostmarket.uz">support@dghostmarket.uz</a></li>
+<li style="color:var(--mut)" data-i18n="ct_time_full">Ответ — в течение 24 часов</li>
+</ul>
+</div>
+<div>
+<h4 data-i18n="rq_title">Реквизиты</h4>
+<ul style="color:var(--mut)">
+<li data-i18n="rq_owner_v">ИП Ахмадбеков Нодирбек Сардорбек угли</li>
+<li><span data-i18n="rq_cert">Свидетельство</span> № 8026051</li>
+<li><span data-i18n="rq_inn">ИНН</span> 633585243</li>
+<li data-i18n="rq_addr_v">Мирзо-Улугбекский р-н, г. Ташкент, Узбекистан</li>
+</ul>
+</div>
+</div>
+<div class="legal"><span>© 2026 DGhostMarket</span><span data-i18n="disclaimer">DGhostMarket не связан с Valve Corporation. CS2, Counter-Strike и Steam — товарные знаки Valve Corporation.</span></div>
+</div>
+</footer>
+
+<script>
+// Языки — отдельные страницы (/, /uz/, /en/): их видят поисковики. Выбор
+// языка запоминаем; на русской странице узбекоязычного гостя (по языку
+// браузера) отправляем на /uz/.
+document.querySelectorAll('[data-lang]').forEach(a => a.addEventListener('click', () => {
+try { localStorage.setItem('dgm_lang', a.dataset.lang); } catch (e) {}
+}));
+(function(){
+if (document.documentElement.lang !== 'ru') return;
+let saved = null;
+try { saved = localStorage.getItem('dgm_lang'); } catch (e) {}
+if (!saved && (navigator.language || '').toLowerCase().startsWith('uz')) saved = 'uz';
+if (saved === 'uz' || saved === 'en') location.replace('/' + saved + '/' + location.hash);
+})();
+</script>
+<script defer src="/vendor/gsap-3.12.5.min.js"></script>
+<script defer src="/vendor/ScrollTrigger-3.12.5.min.js"></script>
+<script defer src="/vendor/lenis-1.1.13.min.js"></script>
+<script defer src="/home.js?v=1"></script>
+</body>
+</html>
