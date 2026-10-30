@@ -80,9 +80,11 @@ main,header,footer{position:relative;z-index:2}
 .nav{position:fixed;left:0;right:0;top:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
 .nav.solid{background:rgba(11,7,17,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:rgba(255,255,255,.06)}
 .nav .wrap{display:flex;align-items:center;gap:18px;height:68px}
-.logo{display:flex;align-items:center;gap:10px;font:800 15px/1 var(--f-disp);letter-spacing:.02em;white-space:nowrap}
-.logo img{width:34px;height:34px;border-radius:10px;box-shadow:0 0 24px rgba(123,44,255,.6)}
-.logo span em{font-style:normal;color:var(--mag)}
+.logo{display:flex;align-items:center;flex:none}
+/* Логотип бренда (призрак + DGhost MARKET); копии logo-h120/h240.webp — из logo.webp. */
+.logo img{height:54px;width:auto;filter:drop-shadow(0 0 14px rgba(123,44,255,.55));transition:transform .25s}
+.logo:hover img{transform:scale(1.05) rotate(-2deg)}
+.logo-big img{height:110px}
 .nav ul{display:flex;gap:20px;list-style:none;margin:0 0 0 auto;padding:10px 20px;border:1px solid rgba(255,255,255,.08);border-radius:99px;background:rgba(14,9,22,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .nav ul a{font-size:14px;color:var(--mut);transition:color .2s;white-space:nowrap}
 .nav ul a:hover{color:var(--fg)}
@@ -94,7 +96,7 @@ main,header,footer{position:relative;z-index:2}
 .btn svg{width:16px;height:16px;flex:none}
 .btn:focus-visible,a:focus-visible,summary:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
 @media (max-width:1100px){.nav ul{display:none}.nav .langs{margin-left:auto}}
-@media (max-width:520px){.nav .wrap{gap:10px;height:60px}.logo span{display:none}.nav .btn{padding:11px 14px;font-size:14px}}
+@media (max-width:520px){.nav .wrap{gap:10px;height:60px}.logo img{height:46px}.nav .btn{padding:11px 14px;font-size:14px}}
 
 /* первый экран */
 .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-block:120px 40px;position:relative}
@@ -389,7 +391,7 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 
 <header class="nav" id="nav">
 <div class="wrap">
-<a class="logo" href="#top"><img src="favicon.png" alt="" width="34" height="34"><span>DGhost<em>Market</em></span></a>
+<a class="logo" href="#top" aria-label="DGhostMarket"><img src="/logo-h120.webp" alt="DGhostMarket" width="147" height="120"></a>
 <ul>
 <li><a href="#how" data-i18n="nav_how">Как это работает</a></li>
 <li><a href="#fees" data-i18n="nav_fees">Комиссии</a></li>
@@ -674,7 +676,7 @@ footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justi
 <div class="wrap">
 <div class="g">
 <div>
-<a class="logo" href="#top"><img src="favicon.png" alt="" width="34" height="34"><span>DGhost<em>Market</em></span></a>
+<a class="logo logo-big" href="#top" aria-label="DGhostMarket"><img src="/logo-h240.webp" alt="DGhostMarket" width="294" height="240" loading="lazy"></a>
 <p class="tag" data-i18n="foot_tag">Маркетплейс скинов CS2 в Telegram. Оплата в сумах, деньги у гаранта.</p>
 </div>
 <div>
