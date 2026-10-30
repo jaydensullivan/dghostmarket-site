@@ -54,7 +54,7 @@ border-bottom:1px solid rgba(255,255,255,0.06);
 }
 .bar{display:flex;align-items:center;gap:18px;height:64px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:Orbitron,Inter,sans-serif;font-weight:900;letter-spacing:.02em;font-size:18px}
-.brand img{width:34px;height:34px}
+.brand img{height:46px;width:auto;filter:drop-shadow(0 0 12px rgba(123,44,255,.5))}
 .brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 nav.links{display:flex;gap:22px;margin-left:auto}
 nav.links a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:500}
@@ -304,7 +304,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 
 <header>
 <div class="wrap bar">
-<a class="brand" href="#top"><img src="/favicon.png" alt=""><span>DGhost<b>Market</b></span></a>
+<a class="brand" href="#top" aria-label="DGhostMarket"><img src="/logo-h120.webp" alt="DGhostMarket" width="147" height="120"></a>
 <nav class="links">
 <a href="/#how" data-i18n="nav_how">Как это работает</a>
 <a href="/#fees" data-i18n="nav_fees">Комиссии</a>
