@@ -43,7 +43,6 @@ PRO_FALLBACK = {'first_discount_percent': 50, 'tiers': [
 ]}
 APP = 'https://app.dghostmarket.uz/'
 LANGS = ['ru', 'uz', 'en']
-PREVIEW = 6
 
 WEAR = {
     'ru': {'FN': 'Прямо с завода', 'MW': 'Немного поношенное', 'FT': 'После полевых испытаний', 'WW': 'Поношенное', 'BS': 'Закалённое в боях'},
@@ -54,6 +53,7 @@ WEAR = {
 # Тексты сгенерированных частей (превью лотов и страница цен).
 L = {
     'ru': {
+        'lots_h': 'Лоты дня', 'all_lots': 'Все лоты в приложении', 'ticker': 'Лоты в продаже',
         'cur': 'сум', 'buy': 'Купить', 'below': 'на {p}% дешевле рынка', 'market': 'Рынок Steam: {v}',
         'preview_title': 'Сейчас в продаже', 'preview_sub': 'Лоты от проверенных продавцов — сделка через гаранта.',
         'all_prices': 'Все цены →',
@@ -67,6 +67,7 @@ L = {
         'home': 'Главная', 'market_prices': 'Рыночные цены всех скинов →', 'guides': 'Как купить и продать — инструкции →',
     },
     'uz': {
+        'lots_h': 'Kun lotlari', 'all_lots': 'Barcha lotlar ilovada', 'ticker': 'Sotuvdagi lotlar',
         'cur': "so'm", 'buy': 'Sotib olish', 'below': "bozordan {p}% arzon", 'market': 'Steam bozori: {v}',
         'preview_title': 'Hozir sotuvda', 'preview_sub': "Tekshirilgan sotuvchilarning lotlari — bitim kafil orqali.",
         'all_prices': 'Barcha narxlar →',
@@ -80,6 +81,7 @@ L = {
         'home': 'Bosh sahifa', 'market_prices': 'Barcha skinlarning bozor narxlari →', 'guides': 'Qanday sotib olish va sotish — qo‘llanmalar →',
     },
     'en': {
+        'lots_h': 'Today’s listings', 'all_lots': 'All listings in the app', 'ticker': 'Listings on sale',
         'cur': 'UZS', 'buy': 'Buy', 'below': '{p}% below market', 'market': 'Steam market: {v}',
         'preview_title': 'On sale now', 'preview_sub': 'Listings from verified sellers — every deal goes through escrow.',
         'all_prices': 'All prices →',
@@ -101,19 +103,22 @@ PRO_T = {
            'channels': 'Своих каналов: {v}', 'posts': 'Постов в свои каналы в день: {v}',
            'market': 'Постов в канал @dghostmarket в день: {v}',
            'auctions': 'Аукционов в месяц: {v}', 'raffles': 'Розыгрышей в месяц: {v}', 'none': '—',
-           'first': 'Скидка {p}% на первый месяц', 'cta': 'Подключить в приложении'},
+           'first': 'Скидка {p}% на первый месяц', 'cta': 'Подключить в приложении',
+           'limits': 'Лимиты', 'connect': 'Подключение'},
     'uz': {'names': {'start': 'Start', 'pro': 'PRO', 'business': 'Biznes', 'garant': 'Garant'},
            'per': '{d} kun uchun', 'popular': 'Ommabop', 'unlimited': 'Cheklovsiz', 'by_request': 'ariza orqali',
            'channels': "O'z kanallari: {v}", 'posts': "O'z kanallariga kunlik postlar: {v}",
            'market': '@dghostmarket kanaliga kunlik postlar: {v}',
            'auctions': 'Oyiga auksionlar: {v}', 'raffles': "Oyiga o'yinlar: {v}", 'none': '—',
-           'first': 'Birinchi oyga {p}% chegirma', 'cta': 'Ilovada ulash'},
+           'first': 'Birinchi oyga {p}% chegirma', 'cta': 'Ilovada ulash',
+           'limits': 'Limitlar', 'connect': 'Ulanish'},
     'en': {'names': {'start': 'Start', 'pro': 'PRO', 'business': 'Business', 'garant': 'Garant'},
            'per': 'per {d} days', 'popular': 'Popular', 'unlimited': 'Unlimited', 'by_request': 'on request',
            'channels': 'Own channels: {v}', 'posts': 'Posts to own channels per day: {v}',
            'market': 'Posts to @dghostmarket per day: {v}',
            'auctions': 'Auctions per month: {v}', 'raffles': 'Giveaways per month: {v}', 'none': '—',
-           'first': '{p}% off the first month', 'cta': 'Subscribe in the app'},
+           'first': '{p}% off the first month', 'cta': 'Subscribe in the app',
+           'limits': 'Limits', 'connect': 'Activation'},
 }
 
 PRO_CSS = """
@@ -209,33 +214,6 @@ def load_pro_tiers():
             return PRO_FALLBACK
 
 
-def pro_tiers_html(data, lang):
-    t = PRO_T[lang]
-    cur = L[lang]['cur']
-
-    def lim(v):
-        if v is None:
-            return t['unlimited']
-        return t['none'] if not v else str(v)
-
-    cards = []
-    for x in data.get('tiers', []):
-        name = t['names'].get(x['key'], x.get('name', x['key']))
-        rows = [t['channels'].format(v=lim(x.get('own_channels'))), t['posts'].format(v=lim(x.get('own_posts'))),
-                t['market'].format(v=lim(x.get('market_posts'))), t['auctions'].format(v=lim(x.get('own_auctions'))),
-                t['raffles'].format(v=lim(x.get('own_raffles')))]
-        if x.get('approval'):
-            rows = [t['unlimited'] + ' · ' + t['by_request']]
-        tag = f'<span class="tag">{esc(t["popular"])}</span>' if x.get('popular') else ''
-        cards.append(f'<div class="pro-tier{" pop" if x.get("popular") else ""}">{tag}<h3>{esc(name)}</h3>'
-                     f'<div class="p">{money(x["price"])} {esc(cur)}</div>'
-                     f'<div class="per">{esc(t["per"].format(d=x.get("days", 30)))}</div>'
-                     '<ul>' + ''.join(f'<li>{esc(r)}</li>' for r in rows) + '</ul></div>')
-    first = data.get('first_discount_percent') or 0
-    first_html = f'<p class="pro-first">🎁 {esc(t["first"].format(p=first))}</p>' if first else ''
-    return f'<div class="pro-tiers">{"".join(cards)}</div>{first_html}'
-
-
 def faq_jsonld(page):
     """FAQPage из блока «Частые вопросы» уже переведённой страницы."""
     qa = re.findall(r'<details><summary[^>]*>(.*?)</summary><p[^>]*>(.*?)</p></details>', page, flags=re.S)
@@ -303,7 +281,7 @@ def alternates(kind, langs=LANGS):
     return '\n'.join(out)
 
 
-def localize(tpl, lang, i18n, css=''):
+def localize(tpl, lang, i18n, css='', extra=True):
     """Шаблон (русский) → страница на языке lang."""
     s = tpl
     if lang != 'ru':
@@ -339,7 +317,9 @@ def localize(tpl, lang, i18n, css=''):
         s = s.replace('/legal?doc=', '/legal?lang=uz&amp;doc=')
     # Картинки и иконки — от корня сайта (страницы лежат и в подпапках).
     s = re.sub(r'(href|src)="(favicon\.png|apple-touch-icon\.png|logo\.webp|og\.jpg)"', r'\1="/\2"', s)
-    s = s.replace('</style>', EXTRA_CSS + css + '</style>', 1)
+    # Главная (src/home.html) — со своими стилями, общие для страниц не нужны.
+    if extra:
+        s = s.replace('</style>', EXTRA_CSS + css + '</style>', 1)
     return s
 
 
@@ -360,7 +340,8 @@ def jsonld_tag(obj):
     return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False).replace('</', '<\\/') + '</script>'
 
 
-HERO_LOTS = 4
+HOME_LOTS = 6
+TICKER_LOTS = 14
 SHOWCASE_FILLER_PRICE = 3000   # как в мини-аппе (app-catalog.js)
 OVERPRICED_SINK_RATIO = 1.5
 
@@ -381,35 +362,92 @@ def showcase_order(lots):
     return sorted(lots, key=lambda s: (rank(s), -(s.get('view_count') or 0), -(s.get('id') or 0)))
 
 
-def hero_lots(lots, lang):
-    """4 реальных лота на первом экране главной — сразу под кнопками."""
+def lot_name(s):
+    return ('StatTrak™ ' if s.get('stattrak') else '') + (s.get('title') or '')
+
+
+def home_ticker(lots, lang):
+    """Бегущая строка под первым экраном главной — живые лоты витрины."""
     t = L[lang]
-    top = [s for s in showcase_order(lots) if s.get('photo_url')][:HERO_LOTS]
+    top = showcase_order(lots)[:TICKER_LOTS]
     if not top:
         return ''
-    cards = []
-    for s in top:
-        name = ('StatTrak™ ' if s.get('stattrak') else '') + (s.get('title') or '')
-        img = skins.steam_img_attrs(s['photo_url'], '(max-width:520px) 45vw, 150px')
-        cards.append(f'<a class="hlot" href="{APP}?open=skin_{int(s["id"])}" rel="nofollow">'
-                     f'<img {img} alt="{esc(name)}" width="160" height="120">'
-                     f'<b>{esc(name)}</b><span>{money(int(s["price"]))} {esc(t["cur"])}</span></a>')
-    return '<div class="hlots">' + ''.join(cards) + '</div>'
+    items = ''.join(
+        f'<a class="it" href="{APP}?open=skin_{int(s["id"])}" rel="nofollow">{esc(lot_name(s))} '
+        f'<i>{money(int(s["price"]))} {esc(t["cur"])}</i></a><span class="it sep" aria-hidden="true">◆</span>'
+        for s in top)
+    return f'<div class="ticker" aria-label="{esc(t["ticker"])}"><div class="row" id="tick">{items}</div></div>'
 
 
-def preview_section(lots, lang):
+def home_lot_card(s, lang):
     t = L[lang]
-    if not lots:
+    name = lot_name(s)
+    sub = [s.get('weapon_type') if s.get('weapon_type') and s.get('weapon_type') not in name else '',
+           WEAR[lang].get(s.get('wear') or '', '')]
+    if s.get('float_value') is not None:
+        sub.append(f"{t['float']} {float(s['float_value']):.4f}")
+    sub = ' · '.join(x for x in sub if x)
+    price = int(s['price'])
+    market = s.get('market_price_uzs')
+    badge = ''
+    if market and market > price:
+        p = round((1 - price / market) * 100)
+        if p >= 1:
+            badge = f'<span class="deal-badge">{esc(t["below"].format(p=p))}</span>'
+    img = (f'<img {skins.steam_img_attrs(s["photo_url"], "(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px")} '
+           f'alt="{esc(name)}" loading="lazy" width="360" height="270">') if s.get('photo_url') else ''
+    return (f'<a class="card rv" href="{APP}?open=skin_{int(s["id"])}" rel="nofollow"><div class="art">{img}{badge}</div>'
+            f'<div class="holo"></div><div class="body"><h3>{esc(name)}</h3><div class="meta">{esc(sub)}</div>'
+            f'<div class="row"><span class="price">{money(price)} <small>{esc(t["cur"])}</small></span>'
+            f'<span class="buy">{esc(t["buy"])}</span></div></div></a>')
+
+
+def home_lots(lots, lang):
+    """Раздел «Лоты дня» главной: витрина мини-аппа, лоты с фото."""
+    t = L[lang]
+    top = [s for s in showcase_order(lots) if s.get('photo_url')][:HOME_LOTS]
+    if not top:
         return ''
-    # Те же лоты, что на первом экране, не повторяем — дальше по витрине.
-    shown = {s['id'] for s in [x for x in showcase_order(lots) if x.get('photo_url')][:HERO_LOTS]}
-    top = [s for s in showcase_order(lots) if s['id'] not in shown][:PREVIEW]
     prefix = '' if lang == 'ru' else f'/{lang}'
-    return (f'<section id="lots"><div class="wrap"><div class="sec-head"><h2>{esc(t["preview_title"])}</h2>'
-            f'<p>{esc(t["preview_sub"])}</p></div><div class="lots">'
-            + ''.join(lot_card(s, lang) for s in top)
-            + f'</div><p class="more"><a class="btn ghost" href="{prefix}/skins/">{esc(t["all_prices"])}</a> '
-            f'<a class="btn ghost" href="{prefix}/prices/">{esc(t["market_prices"])}</a></p></div></section>')
+    return (f'<section class="lots" id="lots"><div class="wrap"><div class="head"><div><span class="mono">{esc(t["preview_title"])}</span>'
+            f'<h2 style="margin-top:14px">{esc(t["lots_h"])}</h2></div><p>{esc(t["preview_sub"])}</p></div>'
+            f'<div class="cards">{"".join(home_lot_card(s, lang) for s in top)}</div>'
+            f'<div class="more"><a class="btn mag" href="{APP}">{esc(t["all_lots"])}</a>'
+            f'<a class="btn ghost mag" href="{prefix}/skins/">{esc(t["all_prices"])}</a>'
+            f'<a class="btn ghost mag" href="{prefix}/prices/">{esc(t["market_prices"])}</a></div></div></section>')
+
+
+def home_tiers(data, lang):
+    """Тарифы PRO на главной (цены и лимиты — из бота, /api/pro/tiers)."""
+    t = PRO_T[lang]
+    cur = L[lang]['cur']
+
+    def lim(v):
+        if v is None:
+            return t['unlimited']
+        return t['none'] if not v else str(v)
+
+    def label(key):
+        return t[key].replace(': {v}', '')
+
+    cards = []
+    for x in data.get('tiers', []):
+        name = t['names'].get(x['key'], x.get('name', x['key']))
+        if x.get('approval'):
+            rows = [(t['limits'], t['unlimited']), (t['connect'], t['by_request'])]
+        else:
+            rows = [(label(k), lim(x.get(f))) for k, f in (('channels', 'own_channels'), ('posts', 'own_posts'),
+                    ('market', 'market_posts'), ('auctions', 'own_auctions'), ('raffles', 'own_raffles'))]
+        pop = x.get('popular')
+        cards.append(f'<div class="tier rv{" pop" if pop else ""}">'
+                     + (f'<span class="pill">{esc(t["popular"])}</span>' if pop else '')
+                     + f'<h3>{esc(name)}</h3><div class="pr">{money(x["price"])} {esc(cur)}'
+                     f'<small>{esc(t["per"].format(d=x.get("days", 30)))}</small></div><dl>'
+                     + ''.join(f'<div><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in rows) + '</dl></div>')
+    first = data.get('first_discount_percent') or 0
+    promo = (f'<div class="promo"><span>🎁 {esc(t["first"].format(p=first))}</span>'
+             f'<a class="btn" href="{APP}">{esc(t["cta"])}</a></div>') if first else ''
+    return f'<div class="tiers">{"".join(cards)}</div>{promo}'
 
 
 def catalog_main(lots, lang, today):
@@ -656,13 +694,14 @@ def main():
     pro = load_pro_tiers()
     today = dt.datetime.now(dt.timezone(dt.timedelta(hours=5))).strftime('%d.%m.%Y')
     pages = []
+    home_tpl = open(os.path.join(ROOT, 'src', 'home.html'), encoding='utf-8').read()
     for lang in LANGS:
         page = localize(tpl, lang, i18n)
-        home = set_meta(page, lang, 'home')
-        home = home.replace('<!--PRO_TIERS-->', pro_tiers_html(pro, lang))
+        home = set_meta(localize(home_tpl, lang, i18n, extra=False), lang, 'home')
+        home = home.replace('<!--PRO_TIERS-->', home_tiers(pro, lang))
         faq = faq_jsonld(home)
         home = home.replace('<!--JSONLD-->', '\n'.join(jsonld_tag(o) for o in site_jsonld(lang) + ([faq] if faq else [])))
-        home = home.replace('<!--LOTS-->', preview_section(lots, lang)).replace('<!--HERO_LOTS-->', hero_lots(lots, lang))
+        home = home.replace('<!--LOTS-->', home_lots(lots, lang)).replace('<!--TICKER-->', home_ticker(lots, lang))
         base = '' if lang == 'ru' else f'{lang}/'
         write(base + 'index.html', tag_links(home, 'home'))
         pages.append(page_url(lang, 'home'))

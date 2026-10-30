@@ -2,7 +2,7 @@
 <html lang="uz">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>DGhostMarket — Telegramdagi CS2 skinlari marketpleysi</title>
 <meta name="description" content="CS2 skinlarini Telegramda so&#x27;mga soting va sotib oling. Buyum yetib bormaguncha to&#x27;lov ushlab turiladi, sotuvchilar tekshiruvdan o&#x27;tadi, komissiya 5%.">
 <meta property="og:title" content="DGhostMarket — Telegramdagi CS2 skinlari marketpleysi">
@@ -18,415 +18,535 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "DGhostMarket", "url": "https://dghostmarket.uz/uz/", "inLanguage": "uz"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Sotuvchi buyumni yubormasa-chi?", "acceptedAnswer": {"@type": "Answer", "text": "To'lovdan keyin 24 soat ichida sotuvchi yuborishni belgilamasa va buyum Steam'ingizda paydo bo'lmasa, buyurtma avtomatik bekor qilinadi va pul qaytariladi."}}, {"@type": "Question", "name": "Nega sotuvchiga pul 8 kundan keyin tushadi?", "acceptedAnswer": {"@type": "Answer", "text": "Steam almashuvni 7 kun ichida bekor qilishga ruxsat beradi. Platforma to'lovni biroz uzoqroq ushlab turadi — xaridor buyumsiz, sotuvchi esa pulsiz qolmasligi uchun."}}, {"@type": "Question", "name": "Xaridor tekshiruvdan o'tishi kerakmi?", "acceptedAnswer": {"@type": "Answer", "text": "Oddiy xaridlar uchun — yo'q: Telegram orqali kirish va Steam almashuv havolasini bog'lash kifoya. Katta xarid uchun yoki yangi akkauntning limiti tugaganda platforma shaxsni tasdiqlashni so'raydi. Sotuvchilar birinchi lotdan oldin tekshiruvdan o'tadi."}}, {"@type": "Question", "name": "Birovning kartasidan to'lash mumkinmi?", "acceptedAnswer": {"@type": "Answer", "text": "Yo'q. O'tkazma orqali to'lashda karta egasining ismini ko'rsatasiz va faqat o'z kartangizdan to'lash mumkin. Birovning kartasidan to'lov rad etiladi, pul esa jo'natuvchining kartasiga qaytariladi."}}, {"@type": "Question", "name": "Pul qanday va qachon qaytariladi?", "acceptedAnswer": {"@type": "Answer", "text": "Qanday to'lagan bo'lsangiz, o'sha yo'l bilan: balansga — darhol, kartaga — qaytarish to'g'risidagi qarordan keyin 3 bank kuni ichida. Boshqa karta va hisoblarga qaytarilmaydi."}}, {"@type": "Question", "name": "Platforma Valve yoki Steam bilan bog'liqmi?", "acceptedAnswer": {"@type": "Answer", "text": "Yo'q. DGhostMarket — mustaqil platforma. Buyumlar foydalanuvchi akkauntlari o'rtasida standart Steam almashuvlari orqali o'tkaziladi."}}, {"@type": "Question", "name": "Qo'llab-quvvatlash bilan qanday bog'lanish mumkin?", "acceptedAnswer": {"@type": "Answer", "text": "Telegram'da @dghostmarketsupportbot ga yoki support@dghostmarket.uz manziliga yozing — 24 soat ichida javob beramiz. Muayyan bitim bo'yicha to'g'ridan-to'g'ri ilovadan yozish qulayroq."}}]}</script>
 <meta property="og:type" content="website">
+<meta name="theme-color" content="#0b0711">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* Шрифты лежат на нашем сайте (fonts/, лицензия SIL OFL 1.1) — без запросов к Google. */
-@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/inter-cyrillic.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
-@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/inter-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
-@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/inter-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
-@font-face{font-family:'Orbitron';font-style:normal;font-weight:800 900;font-display:swap;src:url(/fonts/orbitron-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+/* Главная: история на прокрутке. Нож на WebGL за контентом (первый экран),
+   закреплённые главы «3D» и «8 дней», сделка лентой. Шрифты лежат на нашем
+   сайте (fonts/, лицензия SIL OFL 1.1), библиотеки — в vendor/. Без JS всё
+   содержимое видно как обычная страница. */
+@font-face{font-family:'Unbounded';font-style:normal;font-weight:600 900;font-display:swap;src:url(/fonts/unbounded-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Unbounded';font-style:normal;font-weight:600 900;font-display:swap;src:url(/fonts/unbounded-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Onest';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/onest-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Onest';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/onest-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/jbmono-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/jbmono-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{
---bg:#08070D;
---surface:#130E1C;
---surface-2:#1B1428;
---line:rgba(168,85,247,0.22);
---accent:#7B2CFF;
---accent-2:#FF2BD6;
---violet:#A855F7;
---text:#F2F0F5;
---muted:#A8A4B3;
---grad:linear-gradient(135deg,#7B2CFF,#FF2BD6);
+  --bg:#0b0711; --bg2:#130d1d; --line:#2a2238; --fg:#f4effb; --mut:#a59db6;
+  --vio:#7b2cff; --mag:#ff2bd6; --mint:#7cf2a5; --ice:#57d6ff;
+  --f-disp:"Unbounded","Arial Black",system-ui,sans-serif;
+  --f-body:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+  --gutR:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-margin:0;background:var(--bg);color:var(--text);
-font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-overflow-x:hidden;
-}
-a{color:inherit}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-/* шапка */
-header{
-position:sticky;top:0;z-index:10;
-background:rgba(8,7,13,0.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-border-bottom:1px solid rgba(255,255,255,0.06);
-}
-.bar{display:flex;align-items:center;gap:18px;height:64px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:Orbitron,Inter,sans-serif;font-weight:900;letter-spacing:.02em;font-size:18px}
-.brand img{width:34px;height:34px}
-.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-nav.links{display:flex;gap:22px;margin-left:auto}
-nav.links a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:500}
-nav.links a:hover{color:var(--text)}
-.langs{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
-.langs a{background:none;border:0;color:var(--muted);font:600 12px Inter,sans-serif;padding:6px 10px;cursor:pointer;text-decoration:none}
-.langs a.on{background:var(--accent);color:#fff}
-.btn{
-display:inline-flex;align-items:center;justify-content:center;gap:8px;
-padding:12px 22px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;
-border:1px solid transparent;cursor:pointer;white-space:nowrap;
-}
-.btn.primary{background:var(--grad);color:#fff;box-shadow:0 8px 30px rgba(123,44,255,0.35)}
-.btn.ghost{border-color:var(--line);color:var(--text);background:rgba(255,255,255,0.02)}
-.btn.small{padding:8px 14px;font-size:14px;border-radius:10px}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.55 var(--f-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-disp);text-wrap:balance;margin:0;line-height:.95;letter-spacing:-.02em}
+p{margin:0}
+.wrap{max-width:1320px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gutR)}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.grain{position:fixed;inset:-50%;z-index:70;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1.2s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}33%{transform:translate(-3%,2%)}66%{transform:translate(2%,-3%)}100%{transform:translate(0,0)}}
+@media (max-width:899px){.grain{display:none}}
+
+/* сцена с ножом */
+#stage{position:fixed;inset:0;z-index:1;pointer-events:none}
+#stage canvas{width:100%!important;height:100%!important;display:block}
+.glow{position:fixed;z-index:0;border-radius:50%;filter:blur(90px);pointer-events:none;opacity:.55}
+.glow.a{width:46vw;height:46vw;right:-12vw;top:-8vw;background:radial-gradient(circle,var(--vio),transparent 65%)}
+.glow.b{width:36vw;height:36vw;left:-10vw;top:40vh;background:radial-gradient(circle,var(--mag),transparent 65%);opacity:.3}
+main,header,footer{position:relative;z-index:2}
+
+/* полоса прогресса и прицел */
+#prog{position:fixed;left:0;top:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);z-index:80;background:linear-gradient(90deg,var(--vio),var(--mag),var(--mint))}
+#cross{position:fixed;left:0;top:0;z-index:90;pointer-events:none;width:44px;height:44px;margin:-22px 0 0 -22px;display:none;mix-blend-mode:difference}
+#cross i{position:absolute;background:#fff;transition:transform .25s}
+#cross .t{left:21px;top:2px;width:2px;height:12px}#cross .bm{left:21px;bottom:2px;width:2px;height:12px}
+#cross .l{top:21px;left:2px;height:2px;width:12px}#cross .r{top:21px;right:2px;height:2px;width:12px}
+#cross .d{left:20px;top:20px;width:4px;height:4px;border-radius:50%}
+#cross.hot .t{transform:translateY(-7px)}#cross.hot .bm{transform:translateY(7px)}#cross.hot .l{transform:translateX(-7px)}#cross.hot .r{transform:translateX(7px)}
+.js-cursor #cross{display:block}
+.js-cursor,.js-cursor a,.js-cursor button,.js-cursor summary{cursor:none}
+
+/* шапка: прозрачная на первом экране, дальше — тёмная с размытием,
+   чтобы заголовки разделов не наезжали на логотип и кнопку */
+.nav{position:fixed;left:0;right:0;top:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(11,7,17,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:rgba(255,255,255,.06)}
+.nav .wrap{display:flex;align-items:center;gap:18px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font:800 15px/1 var(--f-disp);letter-spacing:.02em;white-space:nowrap}
+.logo img{width:34px;height:34px;border-radius:10px;box-shadow:0 0 24px rgba(123,44,255,.6)}
+.logo span em{font-style:normal;color:var(--mag)}
+.nav ul{display:flex;gap:20px;list-style:none;margin:0 0 0 auto;padding:10px 20px;border:1px solid rgba(255,255,255,.08);border-radius:99px;background:rgba(14,9,22,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav ul a{font-size:14px;color:var(--mut);transition:color .2s;white-space:nowrap}
+.nav ul a:hover{color:var(--fg)}
+.langs{display:flex;border:1px solid rgba(255,255,255,.12);border-radius:99px;overflow:hidden;flex:none}
+.langs a{font:600 12px/1 var(--f-body);padding:9px 10px;color:var(--mut)}
+.langs a.on{color:#fff;background:rgba(255,255,255,.1)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:99px;font:600 15px/1 var(--f-body);border:0;color:#fff;background:linear-gradient(120deg,var(--vio),var(--mag));box-shadow:0 10px 40px -8px rgba(255,43,214,.55),inset 0 1px 0 rgba(255,255,255,.3);position:relative;will-change:transform;cursor:pointer}
+.btn.ghost{background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.btn svg{width:16px;height:16px;flex:none}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
+@media (max-width:1100px){.nav ul{display:none}.nav .langs{margin-left:auto}}
+@media (max-width:520px){.nav .wrap{gap:10px;height:60px}.logo span{display:none}.nav .btn{padding:11px 14px;font-size:14px}}
+
 /* первый экран */
-.hero{position:relative;padding-top:72px;padding-bottom:56px}
-.hero::before{
-content:"";position:absolute;top:-120px;left:50%;width:100vw;transform:translateX(-50%);height:620px;z-index:-1;pointer-events:none;
-background:radial-gradient(600px 320px at 75% 40%,rgba(123,44,255,0.28),transparent 70%),
-radial-gradient(420px 260px at 20% 20%,rgba(255,43,214,0.14),transparent 70%);
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-block:120px 40px;position:relative}
+.hero .wrap{width:100%}
+.hero .kicker{display:flex;gap:12px;align-items:center;margin-bottom:24px}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(124,242,165,.7);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 12px rgba(124,242,165,0)}100%{box-shadow:0 0 0 0 rgba(124,242,165,0)}}
+.h1{font-size:clamp(40px,6.6vw,112px);font-weight:900;text-transform:uppercase;line-height:.92;max-width:11ch}
+.h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.h1 .ln>span{display:inline-block}
+.h1 .out{background:linear-gradient(180deg,#ffffff 0%,#cbbfe0 45%,#5b4d78 52%,#e9e2f5 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.h1 .grad{background:linear-gradient(90deg,var(--mag),var(--vio) 60%,var(--ice));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-row{display:flex;flex-wrap:wrap;gap:28px 48px;align-items:flex-end;justify-content:space-between;margin-top:34px}
+.hero-row>div:first-child{flex:1 1 380px;max-width:560px}
+.hero-row p{color:var(--mut);font-size:17px}
+.hero-row p b{color:var(--fg);font-weight:600}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hsearch{display:flex;gap:8px;margin-top:20px;max-width:520px}
+.hsearch input{flex:1;min-width:0;font:500 15px/1 var(--f-body);color:var(--fg);background:rgba(11,7,17,.6);border:1px solid var(--line);border-radius:99px;padding:14px 18px;-webkit-appearance:none;appearance:none}
+.hsearch input::placeholder{color:var(--mut)}
+.hsearch .btn{padding:14px 20px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chips a{font:500 13px/1 var(--f-mono);padding:9px 14px;border-radius:99px;border:1px solid var(--line);color:var(--mut);background:rgba(11,7,17,.5);transition:.2s}
+.chips a:hover{border-color:var(--mag);color:var(--fg)}
+.hud{position:absolute;right:var(--gutR);top:22vh;display:grid;gap:6px;text-align:right}
+.hud .mono{font-size:11px}
+.hud .v{font:600 13px/1 var(--f-mono);color:var(--fg)}
+@media (max-width:899px){.hud{display:none}.hero{padding-top:44vh}.no-knife .hero{padding-top:130px}}
+
+/* бегущая строка лотов */
+.ticker{border-block:1px solid var(--line);background:rgba(11,7,17,.75);backdrop-filter:blur(8px);overflow:hidden;padding-block:18px}
+.ticker .row{display:flex;gap:48px;width:max-content;will-change:transform}
+.ticker .it{display:flex;gap:14px;align-items:center;white-space:nowrap;font:600 15px/1 var(--f-body)}
+.ticker .it i{font-style:normal;font-family:var(--f-mono);font-size:13px;color:var(--mint)}
+.ticker .sep{color:var(--mag);font-size:12px}
+
+/* цифры */
+.stats{padding-block:110px 60px}
+.stats .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+.stat{background:var(--bg);padding:34px 28px;display:grid;gap:12px;min-width:0}
+.stat .n{font:900 clamp(44px,6vw,84px)/1 var(--f-disp);letter-spacing:-.04em}
+.stat .n small{font-size:.42em;letter-spacing:0;margin-left:4px;color:var(--mut)}
+.stat:nth-child(1) .n{color:var(--mint)}
+.stat p{color:var(--mut);font-size:15px}
+@media (max-width:900px){.stats .grid{grid-template-columns:1fr 1fr}.stats{padding-block:70px 40px}}
+@media (max-width:420px){.stat{padding:26px 18px}}
+
+/* глава «3D»: настоящая модель из 3D-движка мини-аппа */
+.chap{min-height:100svh;position:relative;overflow:hidden}
+.chap .wrap{min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;padding-block:110px 48px;position:relative}
+.chap h2{font-size:clamp(34px,6vw,96px);font-weight:900;text-transform:uppercase}
+.chap h2 span{color:var(--mag);text-shadow:0 0 40px rgba(255,43,214,.6)}
+.chap .frame{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;opacity:0;transition:opacity .8s ease;background:transparent;color-scheme:normal;z-index:0}
+.chap .frame.on{opacity:1}
+.chap .wrap>*{position:relative;z-index:1}
+.feat{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.feat>div:first-child{flex:1 1 320px;max-width:480px;min-width:0}
+.fcards{display:grid;gap:14px;margin-top:14px}
+.fcard{padding:26px;border-radius:20px;background:rgba(19,13,29,.72);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.fcard h3{font-size:20px;margin:10px 0;line-height:1.15;letter-spacing:0}
+.fcard p{color:var(--mut)}
+.dots{display:none;gap:8px}
+.dots i{width:28px;height:3px;border-radius:2px;background:var(--line);transition:background .3s}
+.dots i.on{background:var(--mag)}
+/* на ПК с JS — по одной карточке, листаются прокруткой */
+.pin3d .dots{display:flex}
+.pin3d .fcards{position:relative;min-height:210px;display:block}
+.pin3d .fcard{position:absolute;inset:auto 0 0 0;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s}
+.pin3d .fcard.on{opacity:1;transform:none}
+.spec{display:grid;gap:14px;min-width:240px;padding:20px;border-radius:18px;background:rgba(11,7,17,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.spec .v{font:600 15px/1.3 var(--f-mono)}
+.floatbar{position:relative;height:10px;border-radius:5px;display:flex;overflow:hidden}
+.floatbar span{height:100%}
+.floatbar .fn{width:7%;background:#7cf2a5}.floatbar .mw{width:8%;background:#a7e36a}.floatbar .ft{width:23%;background:#f5d14a}.floatbar .ww{width:7%;background:#f59a4a}.floatbar .bs{width:55%;background:#f2546a}
+.fwrap{position:relative;padding-top:4px}
+.fmark{position:absolute;top:-4px;width:2px;height:18px;background:#fff;box-shadow:0 0 10px #fff;left:3%}
+.fval{font:600 28px/1 var(--f-mono);color:var(--fg)}
+.fscale{display:flex;justify-content:space-between}
+
+/* сделка: на ПК лентой вбок, на телефоне списком */
+.deal{position:relative;overflow:hidden}
+.deal .head{padding-block:110px 40px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.deal h2,.lots h2,.fees h2,.safe h2{font-size:clamp(34px,5.4vw,84px);font-weight:900;text-transform:uppercase}
+.deal .head p{color:var(--mut);max-width:42ch}
+.tabs{display:inline-flex;padding:5px;border-radius:99px;border:1px solid var(--line);background:var(--bg2)}
+.tabs button{font:600 14px/1 var(--f-body);color:var(--mut);padding:12px 18px;border-radius:99px;border:0;background:none;cursor:pointer}
+.tabs button[aria-selected="true"]{color:#fff;background:linear-gradient(120deg,var(--vio),var(--mag))}
+.track{display:flex;gap:24px;padding-left:var(--gut);padding-right:var(--gutR);padding-bottom:90px;width:max-content;position:relative}
+.track[hidden]{display:none}
+.step{width:min(420px,78vw);min-height:340px;padding:30px;border-radius:24px;background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.step .no{font:900 120px/0.8 var(--f-disp);color:rgba(255,255,255,.05);position:absolute;right:18px;bottom:14px}
+.step h3{font-size:26px;letter-spacing:-.01em;line-height:1.1;margin-top:auto}
+.step p{color:var(--mut);max-width:34ch;position:relative}
+.step .tag{align-self:flex-start;font:600 12px/1 var(--f-mono);padding:8px 12px;border-radius:99px;background:rgba(124,242,165,.1);color:var(--mint);letter-spacing:.06em;text-transform:uppercase}
+.step.money .tag{background:rgba(255,43,214,.12);color:var(--mag)}
+.rail{position:absolute;left:0;right:0;bottom:46px;height:2px;background:var(--line)}
+.rail b{position:absolute;inset:0;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--vio),var(--mag),var(--mint));box-shadow:0 0 18px var(--mag)}
+@media (max-width:899px){
+  .deal .head{padding-block:80px 30px}
+  .track{flex-direction:column;width:auto;padding-bottom:60px;gap:14px}
+  .step{width:100%;min-height:0;padding:24px}
+  .step h3{font-size:22px;margin-top:6px}
+  .step .no{font-size:84px}
+  .rail{display:none}
 }
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-.kicker{display:inline-block;font-size:13px;font-weight:600;color:var(--violet);border:1px solid var(--line);border-radius:999px;padding:5px 12px;margin-bottom:18px}
-h1{font-size:clamp(32px,5vw,52px);line-height:1.1;margin:0 0 18px;letter-spacing:-0.02em}
-h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{color:var(--muted);font-size:18px;max-width:560px;margin:0 0 28px}
-.cta{display:flex;gap:12px;flex-wrap:wrap}
-.facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
-.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
-.fact b{display:block;font-size:18px}
-.fact span{font-size:13px;color:var(--muted)}
-.hero-art{display:flex;justify-content:center;order:2}
-/* Первый экран — панель со свечением сверху, поиск скина прямо в ней. */
-.hero-panel{position:relative;padding:44px 44px 36px;border-radius:28px;border:1px solid var(--line);
-background:linear-gradient(180deg,rgba(23,16,34,0.92),rgba(10,8,15,0.96));
-box-shadow:0 -18px 80px -20px rgba(123,44,255,0.55),0 0 0 1px rgba(255,255,255,0.02) inset}
-.hero-panel::before{content:"";position:absolute;left:8%;right:8%;top:-1px;height:2px;border-radius:2px;
-background:linear-gradient(90deg,transparent,#7b6cff,#b34dff,#ff2bd6,transparent)}
-.hsearch{display:flex;gap:8px;margin:6px 0 10px;padding:6px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,0.03);max-width:560px}
-.hsearch input{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--text);font:500 16px Inter,sans-serif;padding:0 10px}
-.hsearch input::placeholder{color:var(--muted)}
-.hsearch:focus-within{border-color:rgba(179,77,255,0.6);box-shadow:0 0 0 3px rgba(179,77,255,0.15)}
-.hsearch .btn{padding:10px 18px}
-.hchips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px}
-.hchips a{font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 11px}
-.hchips a:hover{color:var(--text);border-color:rgba(179,77,255,0.6)}
-/* Первый экран: 4 реальных лота под кнопками и строка доверия. */
-.hlots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:22px 0 4px}
-.hlot{display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,0.03);color:var(--text);text-decoration:none;min-width:0}
-.hlot img{width:100%;aspect-ratio:4/3;object-fit:contain;border-radius:10px;background:radial-gradient(ellipse at 50% 40%,#2a2238,#130e1c 70%)}
-.hlot b{font-size:13px;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
-.hlot span{font-size:14px;font-weight:700;white-space:nowrap}
-.trust{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;padding:0;margin:14px 0 0;color:var(--muted);font-size:13px}
-.hero-art img{width:100%;max-width:440px;height:auto;filter:drop-shadow(0 20px 60px rgba(123,44,255,0.45))}
-/* Витрина: нож в 3D поворачивается прокруткой. Без JS, WebGL или при
-   «уменьшить движение» — обычный блок из трёх карточек. */
-.show3d{padding:24px 0 40px}
-.show3d .s3-stage{position:relative}
-.show3d .s3-frame{display:none}
-.show3d h2{text-align:center;margin:0 auto 22px;max-width:720px}
-.show3d h2 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.s3-caps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.s3-cap{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px}
-.s3-cap b{display:block;font-size:17px;margin-bottom:4px}
-.s3-cap span{color:var(--muted);font-size:15px}
-.show3d.live{height:260vh;padding:0}
-.show3d.live .s3-stage{position:sticky;top:64px;height:calc(100vh - 64px);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:24px 0}
-.show3d.live .s3-stage::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-background:radial-gradient(520px 360px at 50% 50%,rgba(123,44,255,0.30),transparent 70%),radial-gradient(360px 240px at 70% 70%,rgba(255,43,214,0.14),transparent 70%)}
-.show3d.live .s3-frame{display:block;position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;opacity:0;transition:opacity .8s ease;background:transparent;color-scheme:normal}
-.show3d.live .s3-frame.on{opacity:1}
-.show3d.live h2{position:relative;transition:opacity .4s,transform .4s}
-.show3d.live .s3-caps{position:relative;display:block;height:120px}
-.show3d.live .s3-cap{position:absolute;left:50%;bottom:0;width:min(520px,calc(100% - 40px));transform:translate(-50%,16px);opacity:0;transition:opacity .45s,transform .45s;
-background:rgba(19,14,28,0.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);text-align:center}
-.show3d.live .s3-cap.on{opacity:1;transform:translate(-50%,0)}
-.show3d.live .s3-bar{position:absolute;left:50%;bottom:10px;width:120px;height:3px;transform:translateX(-50%);border-radius:3px;background:rgba(255,255,255,0.08);overflow:hidden}
-.show3d.live .s3-bar i{display:block;height:100%;width:0;background:var(--grad)}
-.s3-bar{display:none}
-@media (max-width:900px){
-.s3-caps{grid-template-columns:1fr}
-.show3d.live .s3-stage{top:64px}
-.show3d.live .s3-caps{height:140px}
-}
-/* секции */
-section{padding:64px 0}
-.sec-head{max-width:640px;margin-bottom:32px}
-h2{font-size:clamp(26px,3.4vw,36px);margin:0 0 10px;letter-spacing:-0.01em}
-.sec-head p{color:var(--muted);margin:0}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.panel{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:26px}
-.panel h3{margin:0 0 16px;font-size:19px;display:flex;align-items:center;gap:10px}
-.steps{list-style:none;margin:0;padding:0;counter-reset:s}
-.steps li{position:relative;padding:0 0 18px 48px;counter-increment:s}
-.steps li:last-child{padding-bottom:0}
-.steps li::before{
-content:counter(s);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:10px;
-display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;
-background:rgba(123,44,255,0.16);color:#cfa8ff;border:1px solid var(--line);
-}
-.steps b{display:block;margin-bottom:2px}
-.steps span{color:var(--muted);font-size:15px}
+
+/* лоты */
+.lots{padding-block:120px}
+.lots .head,.fees .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.lots .head p{color:var(--mut);max-width:36ch}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;perspective:1100px}
+@media (max-width:1000px){.cards{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.cards{grid-template-columns:1fr}.lots{padding-block:80px}}
+.card{position:relative;border-radius:22px;background:var(--bg2);border:1px solid rgba(255,255,255,.07);overflow:hidden;transform-style:preserve-3d;transition:transform .15s ease-out,border-color .3s;min-width:0;display:block}
+.card:hover{border-color:rgba(255,43,214,.5)}
+.card .art{height:220px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 45%,#2e2142,#130d1d 70%)}
+.card .art img{max-width:86%;max-height:84%;object-fit:contain;filter:drop-shadow(0 18px 30px rgba(0,0,0,.55))}
+.card .holo{position:absolute;inset:0;pointer-events:none;mix-blend-mode:color-dodge;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.55),transparent 40%),linear-gradient(115deg,transparent 20%,rgba(87,214,255,.35) 40%,rgba(255,43,214,.35) 55%,transparent 75%);background-size:100% 100%,200% 200%;background-position:0 0,var(--hx,50%) 50%}
+.card:hover .holo{opacity:1}
+.card .body{padding:20px 20px 22px;display:grid;gap:10px}
+.card h3{font:600 18px/1.25 var(--f-body);letter-spacing:0}
+.card .meta{font:500 12px/1.4 var(--f-mono);color:var(--mut);letter-spacing:.04em}
+.card .row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:4px}
+.card .price{font:700 20px/1 var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.card .price small{font-size:12px;color:var(--mut);font-weight:400}
+.card .buy{font:600 14px/1 var(--f-body);padding:11px 16px;border-radius:99px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);transition:.2s;white-space:nowrap}
+.card:hover .buy{background:linear-gradient(120deg,var(--vio),var(--mag));border-color:transparent}
+.deal-badge{position:absolute;top:14px;right:14px;font:600 11px/1 var(--f-mono);padding:7px 10px;border-radius:99px;background:rgba(11,7,17,.75);color:var(--mint);letter-spacing:.05em}
+.more{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+
 /* комиссии */
-.fees{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.fee{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:24px}
-.fee .who{font-size:13px;font-weight:600;color:var(--violet);text-transform:uppercase;letter-spacing:.06em}
-.fee .num{font-size:40px;font-weight:800;margin:8px 0 6px;letter-spacing:-0.02em}
-.fee p{margin:0;color:var(--muted);font-size:15px}
+.fees{padding-block:60px 120px}
+.fees .sub{color:var(--mut);max-width:44ch}
+.feegrid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:20px}
+@media (max-width:900px){.feegrid{grid-template-columns:1fr}.fees{padding-block:40px 80px}}
+.fee{padding:30px;border-radius:24px;border:1px solid var(--line);display:grid;gap:14px;align-content:start;background:var(--bg)}
+.fee .big{font:900 clamp(72px,10vw,150px)/.85 var(--f-disp);letter-spacing:-.05em}
+.fee:first-child .big{background:linear-gradient(90deg,var(--mint),var(--ice));-webkit-background-clip:text;background-clip:text;color:transparent}
+.fee p{color:var(--mut)}
+
+/* продавцам */
+.plans{padding-block:40px 120px}
+.plans h2{font-size:clamp(30px,4.4vw,64px);font-weight:900;text-transform:uppercase}
+.plans .lead{color:var(--mut);max-width:60ch;margin:16px 0 36px}
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px}
+@media (max-width:900px){.perks{grid-template-columns:1fr}.plans{padding-block:20px 80px}}
+.perk{padding:24px;border-radius:20px;background:var(--bg2);border:1px solid rgba(255,255,255,.06)}
+.perk h3{font:600 17px/1.3 var(--f-body);letter-spacing:0;margin-bottom:8px}
+.perk p{color:var(--mut);font-size:15px}
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media (max-width:1000px){.tiers{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.tiers{grid-template-columns:1fr}}
+.tier{padding:26px;border-radius:22px;border:1px solid var(--line);display:flex;flex-direction:column;gap:16px;background:var(--bg);position:relative}
+.tier.pop{background:linear-gradient(var(--bg2),var(--bg2)) padding-box,linear-gradient(140deg,var(--vio),var(--mag)) border-box;border:1px solid transparent;box-shadow:0 30px 80px -30px rgba(255,43,214,.55)}
+.tier .pill{position:absolute;top:-12px;left:22px;font:600 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border-radius:99px;background:var(--mag);color:#fff}
+.tier h3{font-size:22px;letter-spacing:0}
+.tier .pr{font:700 24px/1 var(--f-mono);font-variant-numeric:tabular-nums}
+.tier .pr small{display:block;font:400 12px/1.6 var(--f-mono);color:var(--mut);margin-top:4px}
+.tier dl{margin:0;display:grid;gap:9px;font-size:14px}
+.tier dl div{display:flex;justify-content:space-between;gap:10px;border-top:1px dashed var(--line);padding-top:9px}
+.tier dt{color:var(--mut)}
+.tier dd{margin:0;font-family:var(--f-mono);font-variant-numeric:tabular-nums;text-align:right}
+.promo{margin-top:24px;padding:18px 22px;border-radius:16px;background:rgba(124,242,165,.08);color:var(--mint);font-weight:600;display:flex;gap:10px 20px;flex-wrap:wrap;justify-content:space-between;align-items:center}
+.note{color:var(--mut);margin-top:18px;font-size:15px}
+.note a{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
+
+/* «8 дней» */
+.hold{min-height:100svh;position:relative}
+.hold .wrap{min-height:100svh;display:flex;flex-direction:column;justify-content:center;gap:40px;padding-block:90px 40px}
+.hold h2{font-size:clamp(30px,5.6vw,96px);font-weight:900;text-transform:uppercase}
+.hold h2 .d{color:var(--mint)}
+.days{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;position:relative}
+.day{height:72px;border-radius:10px;background:var(--bg2);border:1px solid var(--line);position:relative;overflow:hidden}
+.day b{position:absolute;inset:0;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--vio),var(--mag))}
+.no-js .day b,.no-anim .day b{transform:none}
+.day:last-child b{background:linear-gradient(90deg,var(--mag),var(--mint))}
+.day span{position:absolute;left:10px;top:10px;font:600 12px/1 var(--f-mono);z-index:1}
+.marks{display:grid;grid-template-columns:7fr 1fr;gap:6px;font-size:14px;margin-top:10px}
+.marks div{border-top:2px solid var(--mag);padding-top:10px;color:var(--mut)}
+.marks div:last-child{border-color:var(--mint);color:var(--fg)}
+.marks b{display:block;color:var(--fg);font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.holdcap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
+.holdcap p{max-width:52ch;color:var(--mut)}
+.holdcap .count{font:700 clamp(48px,7vw,96px)/1 var(--f-mono);font-variant-numeric:tabular-nums}
+@media (max-width:600px){.day{height:48px}.day span{left:6px;top:6px;font-size:10px}.marks{font-size:12px;grid-template-columns:5fr 2fr}.hold .wrap{gap:28px}}
+
 /* безопасность */
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:22px}
-.card .ic{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(123,44,255,0.16);border:1px solid var(--line);margin-bottom:14px}
-.card .ic svg{width:22px;height:22px;stroke:#cfa8ff}
-.card h3{margin:0 0 6px;font-size:17px}
-.card p{margin:0;color:var(--muted);font-size:15px}
-.note{margin-top:20px;padding:16px 18px;border-radius:14px;border:1px solid var(--line);background:rgba(123,44,255,0.07);color:var(--text);font-size:15px}
+.safe{padding-block:120px}
+.safe h2{margin-bottom:44px}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+@media (max-width:900px){.sgrid{grid-template-columns:1fr 1fr}.safe{padding-block:80px}}
+@media (max-width:560px){.sgrid{grid-template-columns:1fr}}
+.sitem{padding:30px 26px 34px 0;border-bottom:1px solid var(--line);display:grid;gap:10px;align-content:start}
+.sitem h3{font:600 19px/1.25 var(--f-body);letter-spacing:0;display:flex;gap:12px;align-items:center}
+.sitem h3 i{width:10px;height:10px;border-radius:2px;background:var(--mag);transform:rotate(45deg);flex:none}
+.sitem p{color:var(--mut);font-size:15px;max-width:40ch}
+.nogamble{margin-top:36px;padding:20px 24px;border-radius:16px;border:1px solid var(--line);color:var(--mut);font-size:15px}
+
 /* вопросы */
-details{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:4px 20px;margin-bottom:10px}
-summary{cursor:pointer;font-weight:600;padding:14px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq{padding-block:40px 100px}
+.faq .g,.docs .g{display:grid;grid-template-columns:1fr 1.6fr;gap:48px}
+@media (max-width:900px){.faq .g,.docs .g{grid-template-columns:1fr;gap:20px}}
+.faq h2,.docs h2{font-size:clamp(34px,5vw,72px);font-weight:900;text-transform:uppercase}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;padding:22px 40px 22px 0;font:600 18px/1.35 var(--f-body);position:relative;cursor:pointer}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--violet);font-size:20px;line-height:1}
-details[open] summary::after{content:"−"}
-details p{margin:0 0 16px;color:var(--muted)}
-/* документы и контакты */
-.docs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.doc{display:flex;flex-direction:column;gap:6px;text-decoration:none;background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:18px;transition:border-color .15s}
-.doc:hover{border-color:var(--violet)}
-.doc b{font-size:15px}
-.doc span{color:var(--muted);font-size:13px}
-.req{display:grid;grid-template-columns:auto 1fr;gap:8px 20px;margin:0}
-.req dt{color:var(--muted);font-size:14px}
-.req dd{margin:0;font-size:15px}
-.cta-final{text-align:center;padding:56px 24px;border-radius:24px;background:radial-gradient(500px 220px at 50% 0%,rgba(123,44,255,0.35),transparent 70%),var(--surface);border:1px solid var(--line)}
-.cta-final h2{margin-bottom:8px}
-.cta-final p{color:var(--muted);margin:0 0 24px}
-footer{border-top:1px solid rgba(255,255,255,0.06);padding:28px 0 40px;color:var(--muted);font-size:13px}
-footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-footer .wrap>div{flex:1 1 320px;min-width:0}
-footer .wrap>div:last-child{text-align:right}
-@media (max-width:720px){footer .wrap{flex-direction:column;align-items:center;text-align:center}footer .wrap>div:last-child{text-align:center}}
-@media (max-width:900px){
-nav.links{display:none}
-.langs{margin-left:auto}
-.hero{padding-top:40px;padding-bottom:24px}
-.hero-grid{grid-template-columns:1fr}
-.hero-grid{display:block}
-.hero-art{float:right;width:112px;margin:0 0 8px 12px}
-.hero-art img{max-width:112px}
-.hero-panel{padding:22px 16px 20px;border-radius:20px}
-.cta .btn{flex:1 1 0;padding:12px 10px}
-.trust{clear:both}
-.two,.fees,.cards{grid-template-columns:1fr}
-.docs{grid-template-columns:1fr 1fr}
-section{padding:44px 0}
-}
-@media (max-width:520px){
-.wrap{padding:0 16px}
-.hlots{grid-template-columns:repeat(2,minmax(0,1fr))}
-.bar .btn.small{display:none}
-.docs{grid-template-columns:1fr}
-.cta .btn{flex:1}
-/* Длинная подпись кнопки (узбекский) не вылезает за экран. */
-.btn{max-width:100%;white-space:normal;text-align:center}
-.req{grid-template-columns:1fr;gap:2px}
-.req dd{margin-bottom:10px}
-}
-/* Зоны нажатия ≥44px: внешний вид прежний, расширяется только невидимая область. */
-.langs{overflow:visible}
-.langs a{position:relative}
-.langs a:first-child{border-radius:999px 0 0 999px}
-.langs a:last-child{border-radius:0 999px 999px 0}
-.langs a::after{content:'';position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
-footer a,.crumbs a{display:inline-block;padding:6px 0}
+summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;margin-top:-7px;background:linear-gradient(var(--mag),var(--mag)) center/14px 2px no-repeat,linear-gradient(var(--mag),var(--mag)) center/2px 14px no-repeat;transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--mut);padding-bottom:22px;max-width:62ch}
 
-.pro-tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
-.pro-tier{background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:20px;position:relative}
-.pro-tier.pop{border-color:var(--violet)}
-.pro-tier .tag{position:absolute;top:-11px;left:16px;background:var(--grad);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
-.pro-tier h3{margin:0 0 6px;font-size:18px}
-.pro-tier .p{font-size:24px;font-weight:800}
-.pro-tier .per{color:var(--muted);font-size:13px;margin-bottom:12px}
-.pro-tier ul{list-style:none;padding:0;margin:0;color:var(--muted);font-size:14px}
-.pro-tier li{margin:5px 0}
-.pro-first{margin-top:16px;font-weight:600}
-@media(max-width:900px){.pro-tiers{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.pro-tiers{grid-template-columns:1fr}}
+/* документы */
+.docs{padding-block:20px 100px}
+.docs .sub{color:var(--mut);margin-top:16px;max-width:40ch}
+.dlist{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:620px){.dlist{grid-template-columns:1fr}}
+.doc{padding:22px;border-radius:18px;border:1px solid var(--line);display:grid;gap:6px;transition:border-color .2s}
+.doc:hover{border-color:var(--mag)}
+.doc b{font-weight:600}
+.doc span{color:var(--mut);font-size:14px}
 
-.lots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.lot{display:flex;flex-direction:column;min-width:0;background:var(--surface);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:16px;text-decoration:none;color:inherit}
-.lot img{width:100%;aspect-ratio:4/3;object-fit:contain;background:radial-gradient(ellipse at 50% 40%,#2a2238,#130e1c 70%);border-radius:12px;margin-bottom:12px}
-.lot h3{margin:0 0 4px;font-size:16px;line-height:1.3}
-.lot .sub{color:var(--muted);font-size:13px;margin-bottom:10px}
-.lot .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}
-.lot .price{font-weight:700;font-size:18px}
-.lot .tag{font-size:12px;color:#7CF2A5}
-.lot .go{background:var(--grad);color:#fff;border-radius:999px;padding:6px 14px;font-weight:600;font-size:13px;white-space:nowrap}
-.cat-group{margin:36px 0 14px;font-size:20px}
-.crumbs{color:var(--muted);font-size:14px;margin:24px 0 8px}
-.crumbs a{color:var(--muted)}
-.more{margin-top:20px}
-@media(max-width:900px){.lots{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:560px){.lots{grid-template-columns:minmax(0,1fr)}}
+/* финал */
+.final{padding-block:60px;overflow:hidden}
+.bigmq{display:flex;width:max-content;gap:.4em;font:900 clamp(56px,12vw,220px)/1 var(--f-disp);text-transform:uppercase;white-space:nowrap;will-change:transform}
+.bigmq span:nth-child(even){color:var(--mag)}
+.final .wrap{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;margin-top:40px}
+.final p{color:var(--mut);max-width:44ch;font-size:17px}
+.final .btn{padding:20px 30px;font-size:17px}
+
+footer{border-top:1px solid var(--line);padding-block:48px calc(48px + env(safe-area-inset-bottom,0px));background:var(--bg)}
+footer .g{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:32px}
+@media (max-width:900px){footer .g{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){footer .g{grid-template-columns:1fr}}
+footer h4{font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:0 0 14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14px}
+footer ul a:hover{color:var(--mag)}
+footer .tag{color:var(--mut);font-size:14px;margin-top:16px;max-width:40ch}
+footer .legal{margin-top:40px;font-size:12px;color:var(--mut);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.rv{will-change:transform}
+@media (prefers-reduced-motion:reduce){.grain,.pulse{animation:none}.pin3d .fcard{transition:none}}
 </style>
 </head>
-<body>
+<body class="no-js">
 
-<header>
-<div class="wrap bar">
-<a class="brand" href="#top"><img src="/favicon.png" alt=""><span>DGhost<b>Market</b></span></a>
-<nav class="links">
-<a href="#how" data-i18n="nav_how">Qanday ishlaydi</a>
-<a href="#fees" data-i18n="nav_fees">Komissiyalar</a>
-<a href="#sellers" data-i18n="nav_sellers">Sotuvchilarga</a>
-<a href="#safety" data-i18n="nav_safety">Xavfsizlik</a>
-<a href="#docs" data-i18n="nav_docs">Hujjatlar</a>
-<a href="#contacts" data-i18n="nav_contacts">Kontaktlar</a>
-<a href="/uz/skins/" data-i18n="nav_prices">Narxlar</a>
-</nav>
+<div class="glow a" aria-hidden="true"></div><div class="glow b" aria-hidden="true"></div>
+<div id="stage" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div id="prog" aria-hidden="true"></div>
+<div id="cross" aria-hidden="true"><i class="t"></i><i class="bm"></i><i class="l"></i><i class="r"></i><i class="d"></i></div>
+
+<header class="nav" id="nav">
+<div class="wrap">
+<a class="logo" href="#top"><img src="/favicon.png" alt="" width="34" height="34"><span>DGhost<em>Market</em></span></a>
+<ul>
+<li><a href="#how" data-i18n="nav_how">Qanday ishlaydi</a></li>
+<li><a href="#fees" data-i18n="nav_fees">Komissiyalar</a></li>
+<li><a href="#sellers" data-i18n="nav_sellers">Sotuvchilarga</a></li>
+<li><a href="#safety" data-i18n="nav_safety">Xavfsizlik</a></li>
+<li><a href="#faq" data-i18n="nav_faq">Savollar</a></li>
+<li><a href="/uz/skins/" data-i18n="nav_prices">Narxlar</a></li>
+</ul>
 <div class="langs" role="group" aria-label="Language">
 <a href="/" data-lang="ru" hreflang="ru">RU</a>
 <a href="/uz/" data-lang="uz" class="on" hreflang="uz">UZ</a>
 <a href="/en/" data-lang="en" hreflang="en">EN</a>
 </div>
-<a class="btn primary small" href="https://t.me/dghostmarketbot?start=site_home" data-i18n="cta_open_short">Ochish</a>
+<a class="btn mag" href="https://t.me/dghostmarketbot?start=site_home" data-i18n="cta_open_short">Ochish</a>
 </div>
 </header>
 
 <main id="top">
 
-<div class="wrap hero">
-<div class="hero-grid hero-panel">
-<div class="hero-art"><img src="/logo.webp" srcset="/logo-520.webp 520w, /logo.webp 720w" sizes="(max-width:900px) 112px, 440px" width="720" height="576" alt="DGhostMarket" fetchpriority="high"></div>
-<div class="hero-text">
-<span class="kicker" data-i18n="hero_kicker">Telegramdagi marketpleys</span>
-<h1 data-i18n-html="hero_title2">CS2 skinlari so'mga.<br>Pul kafilda.<br><span>Aldovsiz.</span></h1>
+<section class="hero">
+<div class="hud" aria-hidden="true">
+<span class="mono" data-i18n="hud_demo">Demo-model</span>
+<span class="v">★ Karambit | Doppler</span>
+<span class="mono" style="margin-top:10px">Float</span>
+<span class="v">0.0071</span>
+<span class="mono" style="margin-top:10px">Pattern</span>
+<span class="v">#412</span>
+</div>
+<div class="wrap">
+<div class="kicker"><span class="pulse"></span><span class="mono" data-i18n="hero_kicker2">Telegramdagi CS2 skinlari marketpleysi</span></div>
+<h1 class="h1">
+<span class="ln"><span data-i18n="h1_l1">CS2 skinlari</span></span>
+<span class="ln"><span class="grad" data-i18n="h1_l2">so'mga.</span></span>
+<span class="ln"><span class="out" data-i18n="h1_l3">Pul kafilda.</span></span>
+</h1>
+<div class="hero-row">
+<div>
+<p data-i18n-html="hero_p">Skin Steam'ingizga kelmaguncha to'lov platformada turadi. Sotuvchilar shaxsini tasdiqlaydi. <b>Aldovsiz.</b></p>
 <form class="hsearch" action="https://app.dghostmarket.uz/" method="get" role="search">
 <input type="hidden" name="open" value="search">
 <input type="search" name="q" maxlength="120" autocomplete="off" placeholder="Karambit, AK-47 Redline, qo&#x27;lqoplar…" data-i18n-ph="search_ph" aria-label="Поиск скина">
-<button class="btn primary" type="submit" data-i18n="search_btn">Topish</button>
+<button class="btn" type="submit" data-i18n="search_btn">Topish</button>
 </form>
-<div class="hchips"><a href="https://app.dghostmarket.uz/?open=search&amp;q=Karambit&amp;src=site_home">Karambit</a><a href="https://app.dghostmarket.uz/?open=search&amp;q=Butterfly&amp;src=site_home">Butterfly</a><a href="https://app.dghostmarket.uz/?open=search&amp;q=AK-47&amp;src=site_home">AK-47</a><a href="https://app.dghostmarket.uz/?open=search&amp;q=AWP&amp;src=site_home">AWP</a><a href="https://app.dghostmarket.uz/?open=search&amp;q=Gloves&amp;src=site_home">Gloves</a></div>
-<div class="cta">
-<a class="btn primary" href="https://t.me/dghostmarketbot?start=site_home" data-i18n="cta_open">Telegramda ochish</a>
-<a class="btn ghost" href="https://app.dghostmarket.uz/?src=site_home" data-i18n="cta_web">Brauzerda ochish</a>
+<div class="chips"><a href="https://app.dghostmarket.uz/?open=search&amp;q=Karambit&amp;src=site_home">Karambit</a><a href="https://app.dghostmarket.uz/?open=search&amp;q=Butterfly&amp;src=site_home">Butterfly</a><a href="https://app.dghostmarket.uz/?open=search&amp;q=AK-47&amp;src=site_home">AK-47</a><a href="https://app.dghostmarket.uz/?open=search&amp;q=AWP&amp;src=site_home">AWP</a><a href="https://app.dghostmarket.uz/?open=search&amp;q=Gloves&amp;src=site_home">Gloves</a></div>
 </div>
-<div class="hlots"><a class="hlot" href="https://app.dghostmarket.uz/?open=skin_3&amp;src=site_home" rel="nofollow"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0 512w" sizes="(max-width:520px) 45vw, 150px" alt="Glock-18 | Moonrise" width="160" height="120"><b>Glock-18 | Moonrise</b><span>25 100 so&#x27;m</span></a><a class="hlot" href="https://app.dghostmarket.uz/?open=skin_4&amp;src=site_home" rel="nofollow"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw 512w" sizes="(max-width:520px) 45vw, 150px" alt="MP7 | Amberline" width="160" height="120"><b>MP7 | Amberline</b><span>17 200 so&#x27;m</span></a><a class="hlot" href="https://app.dghostmarket.uz/?open=skin_5&amp;src=site_home" rel="nofollow"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ 512w" sizes="(max-width:520px) 45vw, 150px" alt="Markus Delrow | FBI HRT" width="160" height="120"><b>Markus Delrow | FBI HRT</b><span>73 900 so&#x27;m</span></a><a class="hlot" href="https://app.dghostmarket.uz/?open=skin_7&amp;src=site_home" rel="nofollow"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T 512w" sizes="(max-width:520px) 45vw, 150px" alt="★ Kukri Knife | Slaughter" width="160" height="120"><b>★ Kukri Knife | Slaughter</b><span>1 340 000 so&#x27;m</span></a></div>
-<ul class="trust">
-<li data-i18n="trust_hold">🔒 Skin qo'lingizga yetguncha to'lov ushlab turiladi</li>
-<li data-i18n="trust_kyc">🪪 Sotuvchilar shaxsini tasdiqlaydi</li>
-<li data-i18n="trust_tg">💬 Bitim — Telegramda</li>
-</ul>
-<p class="lead" data-i18n="hero_lead">DGhostMarket skin xaridorlari va sotuvchilarini bog'laydi. Buyum xaridorga yetib bormaguncha to'lov platformada ushlab turiladi, sotuvchilar esa shaxsini tasdiqlaydi.</p>
-<div class="facts">
-<div class="fact"><b>5%</b><span data-i18n="fact_fee">sotuvdan komissiya</span></div>
-<div class="fact"><b data-i18n="fact_24_v">24 soat</b><span data-i18n="fact_24">buyumni yuborish uchun</span></div>
-<div class="fact"><b data-i18n="fact_8_v">8 kun</b><span data-i18n="fact_8">sotuvchiga to'lovgacha</span></div>
+<div class="ctas">
+<a class="btn mag" href="https://t.me/dghostmarketbot?start=site_home"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1.1-1 .2-1.5L20.5 2.7c.9-.3 1.6.2 1.4 1.6z"/></svg><span data-i18n="cta_open">Telegramda ochish</span></a>
+<a class="btn ghost mag" href="https://app.dghostmarket.uz/?src=site_home" data-i18n="cta_web">Brauzerda ochish</a>
 </div>
 </div>
-</div>
-</div>
-
-<section class="show3d" id="showcase">
-<div class="wrap s3-stage">
-<iframe class="s3-frame" title="Karambit | Lore — 3D" tabindex="-1" aria-hidden="true" loading="eager" allow="xr-spatial-tracking"></iframe>
-<h2 data-i18n-html="sc_title">Har bir skin — <span>3D'da</span>, xuddi o'yindagidek</h2>
-<div class="s3-caps">
-<div class="s3-cap"><b data-i18n="sc_1_t">Har bir bitimda kafil</b><span data-i18n="sc_1">Skin Steam'ingizga kelmaguncha pulni platforma ushlab turadi.</span></div>
-<div class="s3-cap"><b data-i18n="sc_2_t">Aynan o'sha buyum 3D va AR'da</b><span data-i18n="sc_2">Float, pattern va nakleykalar — lotdagidek. Telefon kamerasi orqali pichoqni stolga qo'yib ko'ring.</span></div>
-<div class="s3-cap"><b data-i18n="sc_3_t">Narxlar va to'lov so'mda</b><span data-i18n="sc_3">Dollar va kriptovalyutasiz: o'z kartangizdan to'laysiz, yonida — bozor narxi.</span></div>
-</div>
-<div class="s3-bar" aria-hidden="true"><i></i></div>
 </div>
 </section>
 
-<section id="lots"><div class="wrap"><div class="sec-head"><h2>Hozir sotuvda</h2><p>Tekshirilgan sotuvchilarning lotlari — bitim kafil orqali.</p></div><div class="lots"><a class="lot" href="https://app.dghostmarket.uz/?open=skin_1&amp;src=site_home" rel="nofollow"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg 512w" sizes="(max-width:560px) 100vw, (max-width:900px) 50vw, 320px" alt="Tec-9 | Whiteout" loading="lazy" width="320" height="240"><h3>Tec-9 | Whiteout</h3><div class="sub">Biroz ishlatilgan · Float 0.1452</div><div class="row"><div><div class="price">147 000 so&#x27;m</div><span class="tag">bozordan 1% arzon</span></div><span class="go">Sotib olish</span></div></a><a class="lot" href="https://app.dghostmarket.uz/?open=skin_2&amp;src=site_home" rel="nofollow"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0 512w" sizes="(max-width:560px) 100vw, (max-width:900px) 50vw, 320px" alt="Nova | Koi" loading="lazy" width="320" height="240"><h3>Nova | Koi</h3><div class="sub">Zavoddan yangi · Float 0.0625</div><div class="row"><div><div class="price">27 200 so&#x27;m</div></div><span class="go">Sotib olish</span></div></a></div><p class="more"><a class="btn ghost" href="/uz/skins/">Barcha narxlar →</a> <a class="btn ghost" href="/uz/prices/">Barcha skinlarning bozor narxlari →</a></p></div></section>
-<section id="how">
+<div class="ticker" aria-label="Sotuvdagi lotlar"><div class="row" id="tick"><a class="it" href="https://app.dghostmarket.uz/?open=skin_3&amp;src=site_home" rel="nofollow">Glock-18 | Moonrise <i>25 100 so&#x27;m</i></a><span class="it sep" aria-hidden="true">◆</span><a class="it" href="https://app.dghostmarket.uz/?open=skin_4&amp;src=site_home" rel="nofollow">MP7 | Amberline <i>17 200 so&#x27;m</i></a><span class="it sep" aria-hidden="true">◆</span><a class="it" href="https://app.dghostmarket.uz/?open=skin_5&amp;src=site_home" rel="nofollow">Markus Delrow | FBI HRT <i>73 900 so&#x27;m</i></a><span class="it sep" aria-hidden="true">◆</span><a class="it" href="https://app.dghostmarket.uz/?open=skin_1&amp;src=site_home" rel="nofollow">Tec-9 | Whiteout <i>147 000 so&#x27;m</i></a><span class="it sep" aria-hidden="true">◆</span><a class="it" href="https://app.dghostmarket.uz/?open=skin_7&amp;src=site_home" rel="nofollow">★ Kukri Knife | Slaughter <i>1 340 000 so&#x27;m</i></a><span class="it sep" aria-hidden="true">◆</span><a class="it" href="https://app.dghostmarket.uz/?open=skin_2&amp;src=site_home" rel="nofollow">Nova | Koi <i>27 200 so&#x27;m</i></a><span class="it sep" aria-hidden="true">◆</span></div></div>
+
+<section class="stats">
 <div class="wrap">
-<div class="sec-head">
-<h2 data-i18n="how_title">Bitim qanday o'tadi</h2>
+<div class="grid">
+<div class="stat rv"><div class="n"><span data-count="0">0</span><small>%</small></div><p data-i18n="stat_buyer">xaridor uchun komissiya</p></div>
+<div class="stat rv"><div class="n"><span data-count="5">5</span><small>%</small></div><p data-i18n="stat_seller">sotuvdan komissiya — platformaning yagona daromadi</p></div>
+<div class="stat rv"><div class="n"><span data-count="24">24</span><small data-i18n="unit_h">soat</small></div><p data-i18n="stat_24">buyumni yuborish uchun, aks holda pul qaytariladi</p></div>
+<div class="stat rv"><div class="n"><span data-count="8">8</span><small data-i18n="unit_d">kun</small></div><p data-i18n="stat_8">sotuvchiga to'lovgacha ushlab turish</p></div>
+</div>
+</div>
+</section>
+
+<section class="chap" id="view3d">
+<iframe class="frame" title="Karambit | Lore — 3D" tabindex="-1" aria-hidden="true" allow="xr-spatial-tracking"></iframe>
+<div class="wrap">
+<div>
+<span class="mono" data-i18n="v3_title">Skin 3D'da va stolingizda</span>
+<h2 style="margin-top:14px" data-i18n-html="sc_title">Har bir skin — <span>3D'da</span>, xuddi o'yindagidek</h2>
+</div>
+<div></div>
+<div class="feat">
+<div>
+<div class="dots" id="fdots"><i class="on"></i><i></i><i></i></div>
+<div class="fcards" id="fcards">
+<div class="fcard on"><span class="mono">01 / <span data-i18n="v3_1_t">Har tomondan 3D</span></span><h3 data-i18n="f1_h">Aynan o'sha buyum, Steam'dagi rasm emas</h3><p data-i18n="v3_1">Skinni aylantiring, detallarni yaqinlashtiring, fonni CS2 xaritasiga almashtiring. Modellar o'yin fayllaridan yig'ilgan.</p></div>
+<div class="fcard"><span class="mono">02 / <span data-i18n="v3_2_t">«Stolda» — AR</span></span><h3 data-i18n="f2_h">Pichoq taxminan 25 sm, AK — taxminan 88 sm</h3><p data-i18n="f2_p">Telefondan skinni stol yoki polga haqiqiy o'lchamda qo'ying.</p></div>
+<div class="fcard"><span class="mono">03 / <span data-i18n="v3_3_t">Float, naqsh va stikerlar</span></span><h3 data-i18n="f3_h">Hammasi aniq lotdagidek</h3><p data-i18n="v3_3">Holat, naqsh chizmasi va stikerlar aynan shu lotdagidek ko'rsatiladi, narx esa bozor narxi yonida.</p></div>
+</div>
+</div>
+<div class="spec">
+<span class="mono" data-i18n="spec_float">Eskirish (float)</span>
+<div class="v">★ Karambit | Lore</div>
+<div class="fval">0.0300</div>
+<div class="fwrap">
+<div class="floatbar" aria-hidden="true"><span class="fn"></span><span class="mw"></span><span class="ft"></span><span class="ww"></span><span class="bs"></span></div>
+<div class="fmark" aria-hidden="true"></div>
+</div>
+<div class="mono fscale" aria-hidden="true"><span>FN</span><span>MW</span><span>FT</span><span>WW</span><span>BS</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="deal" id="how">
+<div class="wrap head">
+<div>
+<span class="mono" data-i18n="how_title">Bitim qanday o'tadi</span>
+<h2 style="margin-top:14px" data-i18n-html="deal_h">To'rt qadam.<br>Pul himoyada.</h2>
+</div>
+<div style="display:grid;gap:18px;justify-items:start">
 <p data-i18n="how_sub">Buyum Steam akkauntlari o'rtasida to'g'ridan-to'g'ri o'tkaziladi, platforma esa muddatlarni kuzatadi va bitim tugaguncha to'lovni ushlab turadi.</p>
+<div class="tabs" role="tablist">
+<button type="button" role="tab" id="tabBuy" aria-selected="true" aria-controls="trackBuy" data-i18n="fee_buyer">Xaridorga</button>
+<button type="button" role="tab" id="tabSell" aria-selected="false" aria-controls="trackSell" data-i18n="fee_seller">Sotuvchiga</button>
 </div>
-<div class="two">
-<div class="panel">
-<h3 data-i18n="how_buyer">🛒 Xaridorga</h3>
-<ol class="steps">
-<li><b data-i18n="b1_t">Skin tanlang</b><span data-i18n="b1">Qurol, sifat, float va narx bo'yicha filtrlari bor katalog.</span></li>
-<li><b data-i18n="b2_t">Buyurtmani to'lang</b><span data-i18n="b2">Rekvizitlarga o'z kartangizdan o'tkazma (chek bilan) yoki balansdan. Pulni platforma ushlab turadi — sotuvchi uni hali olmaydi.</span></li>
-<li><b data-i18n="b3_t">Buyumni oling</b><span data-i18n="b3">Sotuvchi 24 soat ichida Steam'da almashuv yuboradi. Yubormasa — pul qanday to'lagan bo'lsangiz, o'sha yo'l bilan qaytadi.</span></li>
-<li><b data-i18n="b4_t">Qabul qilishni tasdiqlang</b><span data-i18n="b4">Steam'da almashuvni qabul qiling va «Oldim»ni bosing. Muammo bo'lsa — nizo oching.</span></li>
-</ol>
 </div>
-<div class="panel">
-<h3 data-i18n="how_seller">💼 Sotuvchiga</h3>
-<ol class="steps">
-<li><b data-i18n="s1_t">Tekshiruvdan o'ting</b><span data-i18n="s1">Telegram orqali telefon raqami, hujjat surati va selfi — birinchi lotdan oldin bir marta.</span></li>
-<li><b data-i18n="s2_t">Buyumni joylang</b><span data-i18n="s2">To'g'ridan-to'g'ri Steam inventaridan: surat, float va stikerlar o'zi qo'shiladi, ilova bozor narxini ko'rsatadi. Butun inventarni birdaniga qo'yish mumkin — «Hammasi bozor narxidan −3%».</span></li>
-<li><b data-i18n="s3_t">24 soat ichida yuboring</b><span data-i18n="s3">To'lovdan keyin Steam'da almashuv yuboring va «Yubordim»ni belgilang.</span></li>
-<li><b data-i18n="s4_t">Pulingizni oling</b><span data-i18n="s4">To'lovdan 8 kun o'tgach, 5% chegirilgan summa balansga tushadi. O'z kartangizga yechish — platforma komissiyasisiz.</span></li>
-</ol>
 </div>
+<div class="track" id="trackBuy" role="tabpanel" aria-labelledby="tabBuy">
+<article class="step"><span class="tag" data-i18n="bt1">1-qadam</span><h3 data-i18n="b1_t">Skin tanlang</h3><p data-i18n="b1">Qurol, sifat, float va narx bo'yicha filtrlari bor katalog.</p><span class="no">1</span></article>
+<article class="step money"><span class="tag" data-i18n="bt2">Pul kafilda</span><h3 data-i18n="b2_t">Buyurtmani to'lang</h3><p data-i18n="b2">Rekvizitlarga o'z kartangizdan o'tkazma (chek bilan) yoki balansdan. Pulni platforma ushlab turadi — sotuvchi uni hali olmaydi.</p><span class="no">2</span></article>
+<article class="step"><span class="tag" data-i18n="bt3">24 soat</span><h3 data-i18n="b3_t">Buyumni oling</h3><p data-i18n="b3">Sotuvchi 24 soat ichida Steam'da almashuv yuboradi. Yubormasa — pul qanday to'lagan bo'lsangiz, o'sha yo'l bilan qaytadi.</p><span class="no">3</span></article>
+<article class="step"><span class="tag" data-i18n="bt4">Tayyor</span><h3 data-i18n="b4_t">Qabul qilishni tasdiqlang</h3><p data-i18n="b4">Steam'da almashuvni qabul qiling va «Oldim»ni bosing. Muammo bo'lsa — nizo oching.</p><span class="no">4</span></article>
+<div class="rail"><b></b></div>
+</div>
+<div class="track" id="trackSell" role="tabpanel" aria-labelledby="tabSell" hidden>
+<article class="step"><span class="tag" data-i18n="st1">Bir marta</span><h3 data-i18n="s1_t">Tekshiruvdan o'ting</h3><p data-i18n="s1">Telegram orqali telefon raqami, hujjat surati va selfi — birinchi lotdan oldin bir marta.</p><span class="no">1</span></article>
+<article class="step"><span class="tag" data-i18n="st2">Bepul</span><h3 data-i18n="s2_t">Buyumni joylang</h3><p data-i18n="s2">To'g'ridan-to'g'ri Steam inventaridan: surat, float va stikerlar o'zi qo'shiladi, ilova bozor narxini ko'rsatadi. Butun inventarni birdaniga qo'yish mumkin — «Hammasi bozor narxidan −3%».</p><span class="no">2</span></article>
+<article class="step"><span class="tag" data-i18n="st3">24 soat</span><h3 data-i18n="s3_t">24 soat ichida yuboring</h3><p data-i18n="s3">To'lovdan keyin Steam'da almashuv yuboring va «Yubordim»ni belgilang.</p><span class="no">3</span></article>
+<article class="step money"><span class="tag" data-i18n="st4">8 kundan keyin</span><h3 data-i18n="s4_t">Pulingizni oling</h3><p data-i18n="s4">To'lovdan 8 kun o'tgach, 5% chegirilgan summa balansga tushadi. O'z kartangizga yechish — platforma komissiyasisiz.</p><span class="no">4</span></article>
+<div class="rail"><b></b></div>
+</div>
+</section>
+
+<section class="lots" id="lots"><div class="wrap"><div class="head"><div><span class="mono">Hozir sotuvda</span><h2 style="margin-top:14px">Kun lotlari</h2></div><p>Tekshirilgan sotuvchilarning lotlari — bitim kafil orqali.</p></div><div class="cards"><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_3&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a7s2pZKtuK8_CVliF0-x3vt5kQCa9qhsipTiXpYPwJiPTcANzXJNyFOEMthXsktHhMLzl4FaK3toWn3iqhi9BvHw9su5UU6Zw-_bJz1aWcX-Jd_0 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="Glock-18 | Moonrise" loading="lazy" width="360" height="270"><span class="deal-badge">bozordan 4% arzon</span></div><div class="holo"></div><div class="body"><h3>Glock-18 | Moonrise</h3><div class="meta">Zavoddan yangi · Float 0.0587</div><div class="row"><span class="price">25 100 <small>so&#x27;m</small></span><span class="buy">Sotib olish</span></div></div></a><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_4&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf8DIM0POjaqF_LPmdC1icyOl-pK9rTCzlzBx14m-AyNupdXqfaQElXsN0QLICsxSxw4HjZuzm4gePjY5C02yg2Z3LgsMw 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="MP7 | Amberline" loading="lazy" width="360" height="270"><span class="deal-badge">bozordan 6% arzon</span></div><div class="holo"></div><div class="body"><h3>MP7 | Amberline</h3><div class="meta">Biroz ishlatilgan · Float 0.1019</div><div class="row"><span class="price">17 200 <small>so&#x27;m</small></span><span class="buy">Sotib olish</span></div></div></a><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_5&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIa-2lmxU-LR0dnuNm6E8Vl45Iv181z1fh7lk6nm_ytk-fO8YaVjNPfdWT7Dx7dy5OJtGnDhkE5xtj6Hyd6veXjEbVUnW8YiRrVeuhTtk4fvY_SiuVKEkIDFLQ 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="Markus Delrow | FBI HRT" loading="lazy" width="360" height="270"><span class="deal-badge">bozordan 3% arzon</span></div><div class="holo"></div><div class="body"><h3>Markus Delrow | FBI HRT</h3><div class="meta">Agent</div><div class="row"><span class="price">73 900 <small>so&#x27;m</small></span><span class="buy">Sotib olish</span></div></div></a><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_1&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFU0OWmYbBoL-WHMXOVwrdJvOhuRz39lB9_smmDn9ugdCrCbFcnCJEmFrVcuhC4w9TgNePhsQWKiN4QzSv7hzQJsHg2FaN_Cg 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="Tec-9 | Whiteout" loading="lazy" width="360" height="270"><span class="deal-badge">bozordan 1% arzon</span></div><div class="holo"></div><div class="body"><h3>Tec-9 | Whiteout</h3><div class="meta">Biroz ishlatilgan · Float 0.1452</div><div class="row"><span class="price">147 000 <small>so&#x27;m</small></span><span class="buy">Sotib olish</span></div></div></a><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_7&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q-vm8YZtsLc-JC2WCwNF6ueZhW2fmwkwj62TWmdyuc3nEOFB1Csd5ReFZtUTpxtXvYb_k4waPj4wXxXitkGoXuVwivb-T 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="★ Kukri Knife | Slaughter" loading="lazy" width="360" height="270"></div><div class="holo"></div><div class="body"><h3>★ Kukri Knife | Slaughter</h3><div class="meta">Zavoddan yangi · Float 0.0349</div><div class="row"><span class="price">1 340 000 <small>so&#x27;m</small></span><span class="buy">Sotib olish</span></div></div></a><a class="card rv" href="https://app.dghostmarket.uz/?open=skin_2&amp;src=site_home" rel="nofollow"><div class="art"><img src="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0/360fx360f" srcset="https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0/256fx256f 256w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0/360fx360f 360w, https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSK_-aMWuZxuZi_rBqGCu3xEoksm_SzomhcHiQP1QjD8BxQuAN50TtlIK1Yri05lDeiY5bjXKpu6W3YF0 512w" sizes="(max-width:620px) 90vw, (max-width:1000px) 45vw, 400px" alt="Nova | Koi" loading="lazy" width="360" height="270"></div><div class="holo"></div><div class="body"><h3>Nova | Koi</h3><div class="meta">Zavoddan yangi · Float 0.0625</div><div class="row"><span class="price">27 200 <small>so&#x27;m</small></span><span class="buy">Sotib olish</span></div></div></a></div><div class="more"><a class="btn mag" href="https://app.dghostmarket.uz/?src=site_home">Barcha lotlar ilovada</a><a class="btn ghost mag" href="/uz/skins/">Barcha narxlar →</a><a class="btn ghost mag" href="/uz/prices/">Barcha skinlarning bozor narxlari →</a></div></div></section>
+
+<section class="fees" id="fees">
+<div class="wrap">
+<div class="head">
+<div><span class="mono" data-i18n="fees_title">Komissiyalar</span><h2 style="margin-top:14px" data-i18n="fees_h">Yashirin to'lovlarsiz</h2></div>
+<p class="sub" data-i18n="fees_sub">Yashirin to'lovlar yo'q: barcha summalar tasdiqlashdan oldin ko'rinadi.</p>
+</div>
+<div class="feegrid">
+<div class="fee rv"><span class="mono" data-i18n="fee_buyer">Xaridorga</span><div class="big">0%</div><p data-i18n="fee_buyer_p">Lot kartochkasidagi narxni to'laysiz. To'lov usuli yig'im olsa, yakuniy summa to'lovdan oldin ko'rsatiladi.</p></div>
+<div class="fee rv"><span class="mono" data-i18n="fee_seller">Sotuvchiga</span><div class="big">5%</div><p data-i18n="fee_seller_p">Sotilgan lotdan platforma mukofoti. Bu platformaning bitimdan yagona daromadi.</p></div>
+<div class="fee rv"><span class="mono" data-i18n="fee_withdraw">Yechish</span><div class="big">0%</div><p data-i18n="fee_withdraw_p">Balansdan bank kartasiga platforma komissiyasisiz. Minimal — 50 000 so'm.</p></div>
 </div>
 </div>
 </section>
 
-<section id="view3d">
+<section class="plans" id="sellers">
 <div class="wrap">
-<div class="sec-head">
-<h2 data-i18n="v3_title">Skin 3D'da va stolingizda</h2>
-<p data-i18n="v3_sub">Steam'dagi rasmni emas, aynan sotib olayotgan buyumingizni ko'ring.</p>
+<span class="mono" data-i18n="sel_title">Sotuvchilar va kanal egalariga</span>
+<h2 style="margin-top:14px" data-i18n="plans_h">O'z kanalingiz orqali soting</h2>
+<p class="lead" data-i18n="sel_sub">Lot qo'yish bepul. Tariflar ko'proq ko'rinishni xohlaganlar va o'z Telegram-kanali orqali sotadiganlar uchun.</p>
+<div class="perks">
+<div class="perk rv"><h3 data-i18n="sel_1_t">🎬 3D-video va GIF</h3><p data-i18n="sel_1">Oddiy rasm o'rniga lotingizning aylanib turadigan 3D-roligi — chat va kanallar uchun.</p></div>
+<div class="perk rv"><h3 data-i18n="sel_2_t">📢 Kanallarga e'lon</h3><p data-i18n="sel_2">@dghostmarket kanaliga va o'z kanallaringizga bitta tugma bilan — post ostida «Sotib olish» tugmasi bilan.</p></div>
+<div class="perk rv"><h3 data-i18n="sel_3_t">🔨 Auksion va o'yinlar</h3><p data-i18n="sel_3">To'g'ridan-to'g'ri kanalingizda: stavkalar — mini-ilovada, to'lov — kafil orqali, o'yin g'olibini bot tanlaydi.</p></div>
 </div>
-<div class="cards">
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></div><h3 data-i18n="v3_1_t">Har tomondan 3D</h3><p data-i18n="v3_1">Skinni aylantiring, detallarni yaqinlashtiring, fonni CS2 xaritasiga almashtiring. Modellar o'yin fayllaridan yig'ilgan.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M12 8l4 2.2v4.4L12 17l-4-2.4v-4.4z"/></svg></div><h3 data-i18n="v3_2_t">«Stolda» — AR</h3><p data-i18n="v3_2">Telefondan skinni stol yoki polga haqiqiy o'lchamda qo'ying: pichoq taxminan 25 sm, AK — taxminan 88 sm.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h16"/><path d="M6 18V9M10 18V6M14 18v-8M18 18v-5"/></svg></div><h3 data-i18n="v3_3_t">Float, naqsh va stikerlar</h3><p data-i18n="v3_3">Holat, naqsh chizmasi va stikerlar aynan shu lotdagidek ko'rsatiladi, narx esa bozor narxi yonida.</p></div>
-</div>
-</div>
-</section>
-
-<section id="fees">
-<div class="wrap">
-<div class="sec-head">
-<h2 data-i18n="fees_title">Komissiyalar</h2>
-<p data-i18n="fees_sub">Yashirin to'lovlar yo'q: barcha summalar tasdiqlashdan oldin ko'rinadi.</p>
-</div>
-<div class="fees">
-<div class="fee"><div class="who" data-i18n="fee_buyer">Xaridorga</div><div class="num">0%</div><p data-i18n="fee_buyer_p">Lot kartochkasidagi narxni to'laysiz. To'lov usuli yig'im olsa, yakuniy summa to'lovdan oldin ko'rsatiladi.</p></div>
-<div class="fee"><div class="who" data-i18n="fee_seller">Sotuvchiga</div><div class="num">5%</div><p data-i18n="fee_seller_p">Sotilgan lotdan platforma mukofoti. Bu platformaning bitimdan yagona daromadi.</p></div>
-<div class="fee"><div class="who" data-i18n="fee_withdraw">Yechish</div><div class="num">0%</div><p data-i18n="fee_withdraw_p">Balansdan bank kartasiga platforma komissiyasisiz. Minimal — 50 000 so'm.</p></div>
-</div>
-</div>
-</section>
-
-<section id="sellers">
-<div class="wrap">
-<div class="sec-head">
-<h2 data-i18n="sel_title">Sotuvchilar va kanal egalariga</h2>
-<p data-i18n="sel_sub">Lot qo'yish bepul. Tariflar ko'proq ko'rinishni xohlaganlar va o'z Telegram-kanali orqali sotadiganlar uchun.</p>
-</div>
-<div class="cards">
-<div class="card"><h3 data-i18n="sel_1_t">🎬 3D-video va GIF</h3><p data-i18n="sel_1">Oddiy rasm o'rniga lotingizning aylanib turadigan 3D-roligi — chat va kanallar uchun.</p></div>
-<div class="card"><h3 data-i18n="sel_2_t">📢 Kanallarga e'lon</h3><p data-i18n="sel_2">@dghostmarket kanaliga va o'z kanallaringizga bitta tugma bilan — post ostida «Sotib olish» tugmasi bilan.</p></div>
-<div class="card"><h3 data-i18n="sel_3_t">🔨 Auksion va o'yinlar</h3><p data-i18n="sel_3">To'g'ridan-to'g'ri kanalingizda: stavkalar — mini-ilovada, to'lov — kafil orqali, o'yin g'olibini bot tanlaydi.</p></div>
-</div>
-<div class="pro-tiers"><div class="pro-tier"><h3>Start</h3><div class="p">49 990 so&#x27;m</div><div class="per">30 kun uchun</div><ul><li>O&#x27;z kanallari: 1</li><li>O&#x27;z kanallariga kunlik postlar: 5</li><li>@dghostmarket kanaliga kunlik postlar: 1</li><li>Oyiga auksionlar: —</li><li>Oyiga o&#x27;yinlar: —</li></ul></div><div class="pro-tier pop"><span class="tag">Ommabop</span><h3>PRO</h3><div class="p">129 990 so&#x27;m</div><div class="per">30 kun uchun</div><ul><li>O&#x27;z kanallari: 5</li><li>O&#x27;z kanallariga kunlik postlar: 20</li><li>@dghostmarket kanaliga kunlik postlar: 3</li><li>Oyiga auksionlar: 10</li><li>Oyiga o&#x27;yinlar: 4</li></ul></div><div class="pro-tier"><h3>Biznes</h3><div class="p">399 990 so&#x27;m</div><div class="per">30 kun uchun</div><ul><li>O&#x27;z kanallari: 15</li><li>O&#x27;z kanallariga kunlik postlar: 60</li><li>@dghostmarket kanaliga kunlik postlar: 5</li><li>Oyiga auksionlar: 30</li><li>Oyiga o&#x27;yinlar: 10</li></ul></div><div class="pro-tier"><h3>Garant</h3><div class="p">1 199 990 so&#x27;m</div><div class="per">30 kun uchun</div><ul><li>Cheklovsiz · ariza orqali</li></ul></div></div><p class="pro-first">🎁 Birinchi oyga 50% chegirma</p>
+<div class="tiers"><div class="tier rv"><h3>Start</h3><div class="pr">49 990 so&#x27;m<small>30 kun uchun</small></div><dl><div><dt>O&#x27;z kanallari</dt><dd>1</dd></div><div><dt>O&#x27;z kanallariga kunlik postlar</dt><dd>5</dd></div><div><dt>@dghostmarket kanaliga kunlik postlar</dt><dd>1</dd></div><div><dt>Oyiga auksionlar</dt><dd>—</dd></div><div><dt>Oyiga o&#x27;yinlar</dt><dd>—</dd></div></dl></div><div class="tier rv pop"><span class="pill">Ommabop</span><h3>PRO</h3><div class="pr">129 990 so&#x27;m<small>30 kun uchun</small></div><dl><div><dt>O&#x27;z kanallari</dt><dd>5</dd></div><div><dt>O&#x27;z kanallariga kunlik postlar</dt><dd>20</dd></div><div><dt>@dghostmarket kanaliga kunlik postlar</dt><dd>3</dd></div><div><dt>Oyiga auksionlar</dt><dd>10</dd></div><div><dt>Oyiga o&#x27;yinlar</dt><dd>4</dd></div></dl></div><div class="tier rv"><h3>Biznes</h3><div class="pr">399 990 so&#x27;m<small>30 kun uchun</small></div><dl><div><dt>O&#x27;z kanallari</dt><dd>15</dd></div><div><dt>O&#x27;z kanallariga kunlik postlar</dt><dd>60</dd></div><div><dt>@dghostmarket kanaliga kunlik postlar</dt><dd>5</dd></div><div><dt>Oyiga auksionlar</dt><dd>30</dd></div><div><dt>Oyiga o&#x27;yinlar</dt><dd>10</dd></div></dl></div><div class="tier rv"><h3>Garant</h3><div class="pr">1 199 990 so&#x27;m<small>30 kun uchun</small></div><dl><div><dt>Limitlar</dt><dd>Cheklovsiz</dd></div><div><dt>Ulanish</dt><dd>ariza orqali</dd></div></dl></div></div><div class="promo"><span>🎁 Birinchi oyga 50% chegirma</span><a class="btn" href="https://app.dghostmarket.uz/?src=site_home">Ilovada ulash</a></div>
 <p class="note" data-i18n-html="sel_note">Yirik kanallar va do'konlar bilan individual shartlarni kelishamiz — qo'llab-quvvatlashga yozing. Batafsil — <a href="/uz/guides/pro-for-sellers/">sotuvchilar uchun PRO tariflar</a>.</p>
 </div>
 </section>
 
-<section id="safety">
+<section class="hold" id="hold">
 <div class="wrap">
-<div class="sec-head">
-<h2 data-i18n="safe_title">Bitimlar xavfsizligi</h2>
-<p data-i18n="safe_sub">Platforma qoidalari ikkala tomonni ham himoya qiladi: xaridorni ham, sotuvchini ham.</p>
+<div>
+<span class="mono" data-i18n="hold_k">Nega to'lov 8 kundan keyin</span>
+<h2 style="margin-top:14px" data-i18n-html="hold_h">Steam almashuvni 7 kun bekor qila oladi.<br>Biz <span class="d">8</span> kun ushlaymiz.</h2>
 </div>
-<div class="cards">
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2.5"/><path d="M14 10h4M14 14h3"/></svg></div><h3 data-i18n="c1_t">Sotuvchilarni tekshirish</h3><p data-i18n="c1">Pasport yoki ID, hujjat bilan selfi va Telegram orqali tasdiqlangan raqam. Qarorni administrator qabul qiladi.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3 data-i18n="c2_t">Himoyalangan to'lov</h3><p data-i18n="c2">Pul to'lovdan keyin 8 kun ushlab turiladi — Steam almashuvni bekor qilishga ruxsat beradigan muddatdan uzoqroq. Xavfi yuqori bitimlarda — uzoqroq. Shundan keyingina sotuvchiga o'tadi.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3 data-i18n="c3_t">Qat'iy muddatlar</h3><p data-i18n="c3">Buyumni yuborish uchun 24 soat. Ulgurmasa — buyurtma bekor qilinadi, xaridor pulini qaytarib oladi.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3 data-i18n="c4_t">Nizolar</h3><p data-i18n="c4">Buyum kelmasa, xaridor nizo ochadi. Administratsiya ko'rib chiqmaguncha to'lov muzlatiladi.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div><h3 data-i18n="c5_t">Antifrod</h3><p data-i18n="c5">To'lov — faqat o'z kartangizdan, qaytarish — faqat pul kelgan joyga. Yangi akkauntlar uchun limitlar bor. Tizim bog'langan akkauntlar va shubhali bitimlarni qidiradi.</p></div>
-<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><h3 data-i18n="c6_t">Shaffof tarix</h3><p data-i18n="c6">Bitimning har bir qadami qayd etiladi: to'lov, yuborish, tasdiqlash, to'lov. Tarix ilovada doim mavjud.</p></div>
+<div>
+<div class="days" id="days"><div class="day"><span>1</span><b></b></div><div class="day"><span>2</span><b></b></div><div class="day"><span>3</span><b></b></div><div class="day"><span>4</span><b></b></div><div class="day"><span>5</span><b></b></div><div class="day"><span>6</span><b></b></div><div class="day"><span>7</span><b></b></div><div class="day"><span>8</span><b></b></div></div>
+<div class="marks">
+<div><b data-i18n="hold_m1_t">Steam'da bekor qilish oynasi</b><span data-i18n="hold_m1">Almashuvni hali qaytarish mumkin — pul platformada qoladi</span></div>
+<div><b data-i18n="hold_m2_t">To'lov</b><span data-i18n="hold_m2">sotuvchiga</span></div>
 </div>
-<div class="note" data-i18n="no_gambling">🚫 DGhostMarket — o'yinchilar o'rtasidagi bitimlar uchun platforma. Biz qimor o'yinlari o'tkazmaymiz, keyslar sotmaymiz va stavkalar qabul qilmaymiz. O'yinlar bepul: ishtirok uchun to'lov talab qilinmaydi.</div>
+</div>
+<div class="holdcap">
+<p data-i18n="hold_p">Shunday qilib xaridor buyumsiz, sotuvchi esa pulsiz qolmaydi. Xavfi yuqori bitimlarda ushlab turish uzoqroq.</p>
+<div class="count" id="holdCount" aria-hidden="true"></div>
+</div>
+<span hidden id="txtDay" data-i18n="hold_day">Kun</span>
 </div>
 </section>
 
-<section id="faq">
+<section class="safe" id="safety">
 <div class="wrap">
-<div class="sec-head"><h2 data-i18n="faq_title">Ko'p so'raladigan savollar</h2></div>
+<span class="mono" data-i18n="safe_title">Bitimlar xavfsizligi</span>
+<h2 style="margin-top:14px" data-i18n="safe_h">Ikkala tomon himoyalangan</h2>
+<div class="sgrid">
+<div class="sitem rv"><h3><i></i><span data-i18n="c1_t">Sotuvchilarni tekshirish</span></h3><p data-i18n="c1">Pasport yoki ID, hujjat bilan selfi va Telegram orqali tasdiqlangan raqam. Qarorni administrator qabul qiladi.</p></div>
+<div class="sitem rv"><h3><i></i><span data-i18n="c2_t">Himoyalangan to'lov</span></h3><p data-i18n="c2">Pul to'lovdan keyin 8 kun ushlab turiladi — Steam almashuvni bekor qilishga ruxsat beradigan muddatdan uzoqroq. Xavfi yuqori bitimlarda — uzoqroq. Shundan keyingina sotuvchiga o'tadi.</p></div>
+<div class="sitem rv"><h3><i></i><span data-i18n="c3_t">Qat'iy muddatlar</span></h3><p data-i18n="c3">Buyumni yuborish uchun 24 soat. Ulgurmasa — buyurtma bekor qilinadi, xaridor pulini qaytarib oladi.</p></div>
+<div class="sitem rv"><h3><i></i><span data-i18n="c4_t">Nizolar</span></h3><p data-i18n="c4">Buyum kelmasa, xaridor nizo ochadi. Administratsiya ko'rib chiqmaguncha to'lov muzlatiladi.</p></div>
+<div class="sitem rv"><h3><i></i><span data-i18n="c5_t">Antifrod</span></h3><p data-i18n="c5">To'lov — faqat o'z kartangizdan, qaytarish — faqat pul kelgan joyga. Yangi akkauntlar uchun limitlar bor. Tizim bog'langan akkauntlar va shubhali bitimlarni qidiradi.</p></div>
+<div class="sitem rv"><h3><i></i><span data-i18n="c6_t">Shaffof tarix</span></h3><p data-i18n="c6">Bitimning har bir qadami qayd etiladi: to'lov, yuborish, tasdiqlash, to'lov. Tarix ilovada doim mavjud.</p></div>
+</div>
+<p class="nogamble" data-i18n="no_gambling">🚫 DGhostMarket — o'yinchilar o'rtasidagi bitimlar uchun platforma. Biz qimor o'yinlari o'tkazmaymiz, keyslar sotmaymiz va stavkalar qabul qilmaymiz. O'yinlar bepul: ishtirok uchun to'lov talab qilinmaydi.</p>
+</div>
+</section>
+
+<section class="faq" id="faq">
+<div class="wrap g">
+<div><span class="mono">FAQ</span><h2 style="margin-top:14px" data-i18n="faq_title">Ko'p so'raladigan savollar</h2></div>
+<div>
 <details><summary data-i18n="q1">Sotuvchi buyumni yubormasa-chi?</summary><p data-i18n="a1">To'lovdan keyin 24 soat ichida sotuvchi yuborishni belgilamasa va buyum Steam'ingizda paydo bo'lmasa, buyurtma avtomatik bekor qilinadi va pul qaytariladi.</p></details>
 <details><summary data-i18n="q2">Nega sotuvchiga pul 8 kundan keyin tushadi?</summary><p data-i18n="a2">Steam almashuvni 7 kun ichida bekor qilishga ruxsat beradi. Platforma to'lovni biroz uzoqroq ushlab turadi — xaridor buyumsiz, sotuvchi esa pulsiz qolmasligi uchun.</p></details>
 <details><summary data-i18n="q3">Xaridor tekshiruvdan o'tishi kerakmi?</summary><p data-i18n="a3">Oddiy xaridlar uchun — yo'q: Telegram orqali kirish va Steam almashuv havolasini bog'lash kifoya. Katta xarid uchun yoki yangi akkauntning limiti tugaganda platforma shaxsni tasdiqlashni so'raydi. Sotuvchilar birinchi lotdan oldin tekshiruvdan o'tadi.</p></details>
@@ -435,15 +555,13 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 <details><summary data-i18n="q4">Platforma Valve yoki Steam bilan bog'liqmi?</summary><p data-i18n="a4">Yo'q. DGhostMarket — mustaqil platforma. Buyumlar foydalanuvchi akkauntlari o'rtasida standart Steam almashuvlari orqali o'tkaziladi.</p></details>
 <details><summary data-i18n="q5">Qo'llab-quvvatlash bilan qanday bog'lanish mumkin?</summary><p data-i18n="a5">Telegram'da @dghostmarketsupportbot ga yoki support@dghostmarket.uz manziliga yozing — 24 soat ichida javob beramiz. Muayyan bitim bo'yicha to'g'ridan-to'g'ri ilovadan yozish qulayroq.</p></details>
 </div>
+</div>
 </section>
 
-<section id="docs">
-<div class="wrap">
-<div class="sec-head">
-<h2 data-i18n="docs_title">Hujjatlar</h2>
-<p data-i18n="docs_sub">Platforma ishlaydigan qoidalar — o'zbek va rus tillarida. O'zgarishlar haqida kamida 30 kun oldin ogohlantiramiz.</p>
-</div>
-<div class="docs">
+<section class="docs" id="docs">
+<div class="wrap g">
+<div><h2 data-i18n="docs_title">Hujjatlar</h2><p class="sub" data-i18n="docs_sub">Platforma ishlaydigan qoidalar — o'zbek va rus tillarida. O'zgarishlar haqida kamida 30 kun oldin ogohlantiramiz.</p></div>
+<div class="dlist">
 <a class="doc" href="https://api.dghostmarket.uz/legal?lang=uz&amp;doc=terms"><b data-i18n="d1">Umumiy foydalanish shartlari</b><span data-i18n="d1s">Barcha foydalanuvchilar uchun</span></a>
 <a class="doc" href="https://api.dghostmarket.uz/legal?lang=uz&amp;doc=buyer"><b data-i18n="d2">Xaridor uchun oferta</b><span data-i18n="d2s">To'lov, olish, qaytarish</span></a>
 <a class="doc" href="https://api.dghostmarket.uz/legal?lang=uz&amp;doc=seller"><b data-i18n="d3">Sotuvchi uchun oferta</b><span data-i18n="d3s">Komissiya, hold, yechish</span></a>
@@ -452,36 +570,11 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 </div>
 </section>
 
-<section id="contacts">
-<div class="wrap two">
-<div class="panel">
-<h3 data-i18n="ct_title">Kontaktlar</h3>
-<dl class="req">
-<dt data-i18n="ct_tg">Telegram'da qo'llab-quvvatlash</dt><dd><a href="https://t.me/dghostmarketsupportbot">@dghostmarketsupportbot</a></dd>
-<dt data-i18n="ct_mail">Qo'llab-quvvatlash</dt><dd><a href="mailto:support@dghostmarket.uz">support@dghostmarket.uz</a></dd>
-<dt data-i18n="ct_bot">Telegram-bot</dt><dd><a href="https://t.me/dghostmarketbot?start=site_home">@dghostmarketbot</a></dd>
-<dt data-i18n="ct_time">Javob</dt><dd data-i18n="ct_time_v">24 soat ichida</dd>
-</dl>
-</div>
-<div class="panel">
-<h3 data-i18n="rq_title">Rekvizitlar</h3>
-<dl class="req">
-<dt data-i18n="rq_owner">Egasi</dt><dd data-i18n="rq_owner_v">YaTT Axmadbekov Nodirbek Sardorbek o'g'li</dd>
-<dt data-i18n="rq_cert">Guvohnoma</dt><dd>№ 8026051</dd>
-<dt data-i18n="rq_inn">STIR</dt><dd>633585243</dd>
-<dt data-i18n="rq_addr">Manzil</dt><dd data-i18n="rq_addr_v">Mirzo Ulug'bek tumani, Toshkent sh., O'zbekiston</dd>
-</dl>
-</div>
-</div>
-</section>
-
-<section>
+<section class="final">
+<div class="bigmq" id="bigmq" aria-hidden="true"><span data-i18n="mq1">Birinchi bitim</span><span data-i18n="mq2">aldovsiz</span><span data-i18n="mq1">Birinchi bitim</span><span data-i18n="mq2">aldovsiz</span></div>
 <div class="wrap">
-<div class="cta-final">
-<h2 data-i18n="final_title">Birinchi bitimga tayyormisiz?</h2>
-<p data-i18n="final_sub">DGhostMarket'ni Telegramda oching — Telegram orqali kirasiz, alohida ro'yxatdan o'tish shart emas.</p>
-<a class="btn primary" href="https://t.me/dghostmarketbot?start=site_home" data-i18n="cta_open">Telegramda ochish</a>
-</div>
+<div><h2 style="font-size:clamp(24px,3vw,36px);margin-bottom:12px" data-i18n="final_title">Birinchi bitimga tayyormisiz?</h2><p data-i18n="final_sub">DGhostMarket'ni Telegramda oching — Telegram orqali kirasiz, alohida ro'yxatdan o'tish shart emas.</p></div>
+<a class="btn mag" href="https://t.me/dghostmarketbot?start=site_home" data-i18n="cta_open">Telegramda ochish</a>
 </div>
 </section>
 
@@ -489,8 +582,41 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 
 <footer>
 <div class="wrap">
-<div>© 2026 DGhostMarket · <a href="/uz/3d-api/" data-i18n="foot_3d">Biznes uchun 3D-render</a></div>
-<div data-i18n="disclaimer">DGhostMarket Valve Corporation bilan bog'liq emas. CS2, Counter-Strike va Steam — Valve Corporation tovar belgilari.</div>
+<div class="g">
+<div>
+<a class="logo" href="#top"><img src="/favicon.png" alt="" width="34" height="34"><span>DGhost<em>Market</em></span></a>
+<p class="tag" data-i18n="foot_tag">Telegramdagi CS2 skinlari marketpleysi. To'lov so'mda, pul kafilda.</p>
+</div>
+<div>
+<h4 data-i18n="foot_site">Sayt</h4>
+<ul>
+<li><a href="/uz/skins/" data-i18n="nav_prices">Narxlar</a></li>
+<li><a href="/uz/prices/" data-i18n="foot_market">Skinlarning bozor narxlari</a></li>
+<li><a href="/uz/guides/" data-i18n="foot_guides">Qo'llanmalar</a></li>
+<li><a href="/uz/3d-api/" data-i18n="foot_3d">Biznes uchun 3D-render</a></li>
+</ul>
+</div>
+<div id="contacts">
+<h4 data-i18n="ct_title">Kontaktlar</h4>
+<ul>
+<li><a href="https://t.me/dghostmarketsupportbot">@dghostmarketsupportbot</a></li>
+<li><a href="https://t.me/dghostmarketbot?start=site_home">@dghostmarketbot</a></li>
+<li><a href="https://t.me/dghostmarket" data-i18n="ct_channel">@dghostmarket kanali</a></li>
+<li><a href="mailto:support@dghostmarket.uz">support@dghostmarket.uz</a></li>
+<li style="color:var(--mut)" data-i18n="ct_time_full">Javob — 24 soat ichida</li>
+</ul>
+</div>
+<div>
+<h4 data-i18n="rq_title">Rekvizitlar</h4>
+<ul style="color:var(--mut)">
+<li data-i18n="rq_owner_v">YaTT Axmadbekov Nodirbek Sardorbek o'g'li</li>
+<li><span data-i18n="rq_cert">Guvohnoma</span> № 8026051</li>
+<li><span data-i18n="rq_inn">STIR</span> 633585243</li>
+<li data-i18n="rq_addr_v">Mirzo Ulug'bek tumani, Toshkent sh., O'zbekiston</li>
+</ul>
+</div>
+</div>
+<div class="legal"><span>© 2026 DGhostMarket</span><span data-i18n="disclaimer">DGhostMarket Valve Corporation bilan bog'liq emas. CS2, Counter-Strike va Steam — Valve Corporation tovar belgilari.</span></div>
 </div>
 </footer>
 
@@ -509,62 +635,9 @@ if (!saved && (navigator.language || '').toLowerCase().startsWith('uz')) saved =
 if (saved === 'uz' || saved === 'en') location.replace('/' + saved + '/' + location.hash);
 })();
 </script>
-<script>
-// Витрина: нож Karambit | Lore из 3D-движка мини-аппа (embed.html?hero=1).
-// Fade на ножах пока расходится с игрой (сверка со Steam 53–57), Lore — 90.7.
-// поворачивается прокруткой. Не включаем при «уменьшить движение»,
-// экономии трафика, без WebGL и на слабых устройствах — там остаётся
-// обычный блок с карточками.
-(function(){
-var sec = document.getElementById('showcase');
-if (!sec) return;
-var nav = navigator, conn = nav.connection || {};
-if ((window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) || conn.saveData
-  || (nav.deviceMemory && nav.deviceMemory < 3) || (nav.hardwareConcurrency && nav.hardwareConcurrency < 4)) return;
-try { var c = document.createElement('canvas'); if (!(c.getContext('webgl2') || c.getContext('webgl'))) return; } catch (e) { return; }
-var APP = 'https://app.dghostmarket.uz';
-var lang = document.documentElement.lang || 'ru';
-var frame = sec.querySelector('.s3-frame');
-var caps = sec.querySelectorAll('.s3-cap');
-var bar = sec.querySelector('.s3-bar i');
-var h2 = sec.querySelector('h2');
-sec.classList.add('live');
-var started = false;
-function start(){
-if (started) return;
-started = true;
-frame.src = APP + '/embed.html?key=demo&hero=1&skin=' + encodeURIComponent('★ Karambit | Lore') + '&float=0.03&seed=73&lang=' + lang;
-}
-// Грузим 3D, только когда витрина рядом с экраном.
-if ('IntersectionObserver' in window){
-new IntersectionObserver(function(es, o){ if (es[0].isIntersecting){ start(); o.disconnect(); } }, { rootMargin: '400px 0px' }).observe(sec);
-} else start();
-window.addEventListener('message', function(e){
-if (e.origin !== APP || !e.data || e.data.source !== 'dghost3d') return;
-if (e.data.event === 'ready'){ ready = true; last = -1; frame.classList.add('on'); update(); }
-// 3D не открылось — возвращаем обычный блок.
-if (e.data.event === 'error'){ sec.classList.remove('live'); frame.remove(); }
-});
-var last = -1, ready = false;
-function update(){
-if (!sec.classList.contains('live')){ h2.style.opacity = ''; return; }
-var r = sec.getBoundingClientRect();
-var span = sec.offsetHeight - (window.innerHeight - 64);
-var p = Math.min(1, Math.max(0, (64 - r.top) / Math.max(1, span)));
-if (Math.abs(p - last) > 0.001){
-last = p;
-if (ready && frame.contentWindow) frame.contentWindow.postMessage({ source: 'dghost-site', type: 'hero', p: p }, APP);
-var idx = p < 0.08 ? -1 : Math.min(caps.length - 1, Math.floor((p - 0.08) / 0.92 * caps.length));
-for (var i = 0; i < caps.length; i++) caps[i].classList.toggle('on', i === idx);
-h2.style.opacity = idx < 0 ? 1 : 0.35;
-if (bar) bar.style.width = (p * 100).toFixed(1) + '%';
-}
-}
-window.addEventListener('scroll', update, { passive: true });
-window.addEventListener('resize', update);
-setInterval(update, 500);
-update();
-})();
-</script>
+<script defer src="/vendor/gsap-3.12.5.min.js"></script>
+<script defer src="/vendor/ScrollTrigger-3.12.5.min.js"></script>
+<script defer src="/vendor/lenis-1.1.13.min.js"></script>
+<script defer src="/home.js?v=1"></script>
 </body>
 </html>
