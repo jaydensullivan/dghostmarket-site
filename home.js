@@ -3,14 +3,16 @@
 // Нож — наш 3D-рендер (embed.html мини-аппа) в одном iframe за контентом:
 // на первом экране справа (на телефоне сверху), дальше переезжает в центр
 // главы «3D» и поворачивается прокруткой, после неё гаснет. На слабых
-// устройствах, при «уменьшить движение» и экономии трафика не грузим.
+// устройствах, медленной сети (3G), «уменьшить движение» и экономии
+// трафика не грузим. Нож (~2 МБ моделей) начинает грузиться после load —
+// сначала текст, шрифты и картинки первого экрана.
 (function(){
 'use strict';
 const body = document.body;
 body.classList.remove('no-js');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const nav = navigator, conn = nav.connection || {};
-const weak = !!(conn.saveData || (nav.deviceMemory && nav.deviceMemory < 3) || (nav.hardwareConcurrency && nav.hardwareConcurrency < 4));
+const weak = !!(conn.saveData || /^(slow-2g|2g|3g)$/.test(conn.effectiveType || '') || (nav.deviceMemory && nav.deviceMemory < 3) || (nav.hardwareConcurrency && nav.hardwareConcurrency < 4));
 const hasWebgl = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
 const rich = !reduce && !weak && hasWebgl;
 const desk = () => innerWidth >= 900;
@@ -68,8 +70,12 @@ addEventListener('message', e => {
   if (e.data.event === 'error'){ frame.remove(); body.classList.add('no-knife'); }
 });
 if (rich){
-  frame.src = APP + '/embed.html?key=demo&hero=1&skin=' + encodeURIComponent(KNIFE.skin) + '&float=' + KNIFE.float
-    + '&seed=' + KNIFE.seed + '&lang=' + (document.documentElement.lang || 'ru');
+  const startKnife = () => {
+    frame.src = APP + '/embed.html?key=demo&hero=1&skin=' + encodeURIComponent(KNIFE.skin) + '&float=' + KNIFE.float
+      + '&seed=' + KNIFE.seed + '&lang=' + (document.documentElement.lang || 'ru');
+  };
+  if (document.readyState === 'complete') startKnife();
+  else addEventListener('load', startKnife, { once: true });
 } else {
   frame.remove();
   body.classList.add('no-knife');
