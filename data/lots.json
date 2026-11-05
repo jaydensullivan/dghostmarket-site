@@ -178,7 +178,7 @@
 "pattern": "518",
 "weapon_type": "M4A1-S",
 "market_price_uzs": 10967,
-"view_count": 1,
+"view_count": 2,
 "created_at": "2026-11-04T23:16:45.847948+00:00"
 },
 {
@@ -1144,7 +1144,7 @@
 "pattern": "541",
 "weapon_type": "AK-47",
 "market_price_uzs": 69021,
-"view_count": 26,
+"view_count": 27,
 "created_at": "2026-11-01T17:59:36.546398+00:00"
 },
 {
@@ -1158,7 +1158,7 @@
 "pattern": "388",
 "weapon_type": "Glock-18",
 "market_price_uzs": 47087,
-"view_count": 13,
+"view_count": 14,
 "created_at": "2026-11-01T17:59:31.267229+00:00"
 }
 ]
