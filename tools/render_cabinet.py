@@ -52,10 +52,11 @@ TX = {
         'e_domain_taken': 'Этот сайт уже подключён. Если это ваш сайт — напишите нам.',
         'e_too_many_signups': 'Слишком много попыток с этого адреса. Попробуйте завтра или напишите нам.',
         'e_network': 'Сервис не ответил. Проверьте интернет и попробуйте ещё раз.',
+        'rec_h': 'Получить ссылку на почту', 'rec_ph': 'Почта, с которой регистрировались', 'rec_btn': 'Прислать ссылку', 'rec_sent': 'Если такая почта есть у нас, письмо со ссылкой уже в пути. Проверьте и папку «Спам».', 'e_too_many_requests': 'Слишком много запросов. Попробуйте через несколько часов.',
         'cab_title': 'Кабинет DGhost 3D', 'cab_loading': 'Загружаем кабинет…',
-        'cab_noauth_h': 'Нужна ссылка на кабинет', 'cab_noauth': 'Кабинет открывается по личной ссылке, которую вы получили при регистрации. Нет ссылки — зарегистрируйтесь или напишите нам.',
+        'cab_noauth_h': 'Нужна ссылка на кабинет', 'cab_noauth': 'Кабинет открывается по личной ссылке из письма, которое пришло после регистрации. Потеряли ссылку — пришлём новую на почту.',
         'cab_signup': 'Зарегистрироваться', 'cab_contact': 'Написать в Telegram',
-        'cab_save_h': 'Сохраните ссылку на кабинет', 'cab_save': 'Это ваш вход — почты и пароля нет. Добавьте страницу в закладки или скопируйте ссылку в надёжное место.',
+        'cab_save_h': 'Сохраните ссылку на кабинет', 'cab_save': 'Это ваш вход — пароля нет. Ссылка также пришла вам на почту; потеряете — новую можно получить на этой странице.',
         'cab_copy_link': 'Скопировать ссылку', 'copied': 'Скопировано', 'cab_new_link': 'Выдать новую ссылку',
         'cab_new_confirm': 'Старая ссылка перестанет работать. Продолжить?',
         'cab_key': 'Ключ', 'cab_plan': 'Тариф', 'cab_until': 'до {d}', 'cab_expired': 'Срок закончился — виджет на сайте не показывается. Выберите тариф ниже.',
@@ -82,10 +83,11 @@ TX = {
         'e_domain_taken': 'Bu sayt allaqachon ulangan. Agar sayt sizniki bo‘lsa — bizga yozing.',
         'e_too_many_signups': 'Bu manzildan juda ko‘p urinish. Ertaga urinib ko‘ring yoki bizga yozing.',
         'e_network': 'Xizmat javob bermadi. Internetni tekshirib, qayta urinib ko‘ring.',
+        'rec_h': 'Havolani pochtaga olish', 'rec_ph': 'Ro‘yxatdan o‘tgan pochtangiz', 'rec_btn': 'Havolani yuborish', 'rec_sent': 'Agar bu pochta bizda bo‘lsa, havolali xat yo‘lda. «Spam» jildini ham tekshiring.', 'e_too_many_requests': 'So‘rovlar juda ko‘p. Bir necha soatdan keyin urinib ko‘ring.',
         'cab_title': 'DGhost 3D kabineti', 'cab_loading': 'Kabinet yuklanmoqda…',
-        'cab_noauth_h': 'Kabinet havolasi kerak', 'cab_noauth': 'Kabinet ro‘yxatdan o‘tishda olgan shaxsiy havolangiz orqali ochiladi. Havola yo‘qmi — ro‘yxatdan o‘ting yoki bizga yozing.',
+        'cab_noauth_h': 'Kabinet havolasi kerak', 'cab_noauth': 'Kabinet ro‘yxatdan o‘tgandan keyin kelgan xatdagi shaxsiy havola orqali ochiladi. Havolani yo‘qotdingizmi — pochtaga yangisini yuboramiz.',
         'cab_signup': 'Ro‘yxatdan o‘tish', 'cab_contact': 'Telegram’da yozish',
-        'cab_save_h': 'Kabinet havolasini saqlang', 'cab_save': 'Bu sizning kirishingiz — pochta va parol yo‘q. Sahifani xatcho‘pga qo‘shing yoki havolani ishonchli joyga nusxalang.',
+        'cab_save_h': 'Kabinet havolasini saqlang', 'cab_save': 'Bu sizning kirishingiz — parol yo‘q. Havola pochtangizga ham yuborildi; yo‘qotsangiz — yangisini shu sahifada olish mumkin.',
         'cab_copy_link': 'Havolani nusxalash', 'copied': 'Nusxalandi', 'cab_new_link': 'Yangi havola berish',
         'cab_new_confirm': 'Eski havola ishlamay qoladi. Davom etasizmi?',
         'cab_key': 'Kalit', 'cab_plan': 'Tarif', 'cab_until': '{d} gacha', 'cab_expired': 'Muddat tugadi — vidjet saytda ko‘rinmaydi. Quyida tarifni tanlang.',
@@ -112,10 +114,11 @@ TX = {
         'e_domain_taken': 'This website is already connected. If it is yours, message us.',
         'e_too_many_signups': 'Too many attempts from this address. Try tomorrow or message us.',
         'e_network': 'The service did not respond. Check your connection and try again.',
+        'rec_h': 'Get the link by email', 'rec_ph': 'The email you signed up with', 'rec_btn': 'Send me the link', 'rec_sent': 'If we have this email, the link is on its way. Check your spam folder too.', 'e_too_many_requests': 'Too many requests. Please try again in a few hours.',
         'cab_title': 'DGhost 3D dashboard', 'cab_loading': 'Loading your dashboard…',
-        'cab_noauth_h': 'You need your dashboard link', 'cab_noauth': 'The dashboard opens with the personal link you got when you signed up. No link? Sign up or message us.',
+        'cab_noauth_h': 'You need your dashboard link', 'cab_noauth': 'The dashboard opens with the personal link from the email we sent after signup. Lost it? We will email you a new one.',
         'cab_signup': 'Sign up', 'cab_contact': 'Message us on Telegram',
-        'cab_save_h': 'Save your dashboard link', 'cab_save': 'This link is your login — there is no email or password. Bookmark this page or keep the link somewhere safe.',
+        'cab_save_h': 'Save your dashboard link', 'cab_save': 'This link is your login — there is no password. We also emailed it to you; if you lose it, get a new one on this page.',
         'cab_copy_link': 'Copy link', 'copied': 'Copied', 'cab_new_link': 'Issue a new link',
         'cab_new_confirm': 'Your old link will stop working. Continue?',
         'cab_key': 'Key', 'cab_plan': 'Plan', 'cab_until': 'until {d}', 'cab_expired': 'Your plan has ended — the widget is not shown on your site. Pick a plan below.',
@@ -250,7 +253,7 @@ location.href=C.cabinet+(f.elements.plan.value?'?plan='+f.elements.plan.value:''
 })();</script>""")
 
 
-CAB_KEYS = [k for k in TX['ru'] if k.startswith(('cab_', 'e_', 'per_', 'm_')) or k in ('copied',)]
+CAB_KEYS = [k for k in TX['ru'] if k.startswith(('cab_', 'e_', 'per_', 'm_', 'rec_')) or k in ('copied',)]
 
 
 def cabinet_main(lang, start_url):
@@ -272,7 +275,13 @@ var wantPlan=(location.search.match(/plan=(\w+)/)||[])[1]||'';
 var period='month',data=null,status={};
 function api(path,body){return fetch(C.api+path,{method:body?'POST':'GET',headers:Object.assign({'Authorization':'Bearer '+token},body?{'Content-Type':'application/json'}:{}),body:body?JSON.stringify(body):undefined})
 .then(function(r){return r.json().catch(function(){return{error:'network'};}).then(function(d){d._s=r.status;return d;});});}
-function noauth(){root.className='center';root.innerHTML='<h1>'+e(T.cab_noauth_h)+'</h1><p>'+e(T.cab_noauth)+'</p><div class="row" style="justify-content:center"><a class="btn primary" href="'+e(C.start)+'">'+e(T.cab_signup)+'</a><a class="btn ghost" href="'+e(C.tg)+'">'+e(T.cab_contact)+'</a></div>';}
+function noauth(){root.className='center';root.innerHTML='<h1>'+e(T.cab_noauth_h)+'</h1><p>'+e(T.cab_noauth)+'</p>'
++'<form id="cabRec" class="row" style="justify-content:center"><input class="dom" style="max-width:320px;margin:0" type="email" name="email" required autocomplete="email" placeholder="'+e(T.rec_ph)+'"><button class="btn primary" type="submit">'+e(T.rec_btn)+'</button></form><p class="msg" id="cabRecMsg" role="status"></p>'
++'<div class="row" style="justify-content:center"><a class="btn ghost" href="'+e(C.start)+'">'+e(T.cab_signup)+'</a><a class="btn ghost" href="'+e(C.tg)+'">'+e(T.cab_contact)+'</a></div>';
+var f=document.getElementById('cabRec');f.addEventListener('submit',function(ev){ev.preventDefault();var mm=document.getElementById('cabRecMsg'),b=f.querySelector('button');b.disabled=true;mm.className='msg';mm.textContent='';
+fetch(C.api+'/api/cabinet/recover',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:f.elements.email.value,lang:C.lang})})
+.then(function(r){return r.json().catch(function(){return{error:'network'};});}).then(function(d){b.disabled=false;
+if(d.ok){mm.className='msg ok';mm.textContent=T.rec_sent;}else{mm.textContent=T['e_'+d.error]||T.e_network;}},function(){b.disabled=false;mm.textContent=T.e_network;});});}
 function link(){return location.origin+location.pathname+'#t='+token;}
 function copy(text,btn){var done=function(){var o=btn.textContent;btn.textContent=T.copied;setTimeout(function(){btn.textContent=o;},1500);};
 if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).then(done,done);else done();}
