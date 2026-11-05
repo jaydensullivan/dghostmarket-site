@@ -21,8 +21,23 @@ def esc(s):
     return html.escape(str(s), quote=True)
 
 
+# Кабинет — на сайте сервиса render.dghostmarket.com: окно оплаты Paddle
+# открывается только на сайте, одобренном в Paddle (это он, не маркет).
+RENDER_SITE = 'https://render.dghostmarket.com'
+
+
 def cabinet_url(lang):
-    return f'{MARKET_SITE}{"" if lang == "ru" else "/" + lang}/{CABINET_PATH}'
+    return f'{RENDER_SITE}{"" if lang == "en" else "/" + lang}/cabinet/'
+
+
+def redirect_page_main(lang):
+    """Старый адрес кабинета на dghostmarket.uz: ведём на render.dghostmarket.com
+    вместе с ссылкой входа (а если её нет в адресе — с запомненной этим браузером)."""
+    target = json.dumps(cabinet_url(lang))
+    return ('<main id="top" class="r3d cab"><div class="wrap"><div class="center"><p>…</p></div></div></main>'
+            '<script>(function(){var t=' + target + ';var h=location.hash;'
+            'if(!/t=/.test(h)){try{var s=localStorage.getItem("dg3d_cab");if(s)h="#t="+s;}catch(e){}}'
+            'location.replace(t+location.search+h);})();</script>')
 
 
 TX = {

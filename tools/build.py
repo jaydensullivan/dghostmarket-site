@@ -648,6 +648,14 @@ def build_render_site(tpl, i18n):
         ld['provider'] = {'@type': 'Organization', 'name': 'DGhost 3D', 'url': render.RENDER_SITE + '/'}
         out = site_page(page, lang, '', t['title'], t['desc'], main_html, ld)
         write('render/' + ('' if lang == 'en' else f'{lang}/') + 'index.html', out)
+        # Кабинет клиента (вход по личной ссылке, в поиск не попадает).
+        ct = render.cab.TX[lang]
+        home = '/' if lang == 'en' else f'/{lang}/'
+        cab = site_page(page, lang, 'cabinet/', ct['cab_title'] + ' | DGhost 3D', ct['cab_title'],
+                        render.cab.cabinet_main(lang, home + '#start'))
+        cab = re.sub(r'<link rel="alternate" hreflang="[^"]*" href="[^"]*">\n?', '', cab)
+        cab = cab.replace('</head>', '<meta name="robots" content="noindex">\n</head>', 1)
+        write('render/' + ('' if lang == 'en' else f'{lang}/') + 'cabinet/index.html', cab)
     page = localize(tpl, 'en', i18n, render.CSS + render.LEGAL_CSS)
     for kind in render.LEGAL:
         title = render.LEGAL[kind][0]
@@ -686,7 +694,7 @@ def build_render(tpl, i18n, iso):
         # Кабинет клиента: вход по личной ссылке, в поиск не попадает.
         ct = render.cab.TX[lang]
         cabp = set_meta(page, lang, '3d-api/cabinet', ct['cab_title'] + ' | DGhost 3D', ct['cab_title'], render.LANGS)
-        cabp = re.sub(r'<main id="top">.*?</main>', lambda m: render.cab.cabinet_main(lang, f'{render.prefix(lang)}/3d-api/#start'), cabp, count=1, flags=re.S)
+        cabp = re.sub(r'<main id="top">.*?</main>', lambda m: render.cab.redirect_page_main(lang), cabp, count=1, flags=re.S)
         cabp = cabp.replace('<!--JSONLD-->', '').replace('</head>', '<meta name="robots" content="noindex">\n</head>', 1)
         for l in render.LANGS:
             cabp = cabp.replace(f'href="{"/" if l == "ru" else f"/{l}/"}" data-lang="{l}"',
