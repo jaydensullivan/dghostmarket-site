@@ -382,62 +382,7 @@ footer a,.crumbs a{display:inline-block;padding:6px 0}
 </div>
 </header>
 
-<main id="top" class="r3d cab"><div class="wrap"><div id="cab" class="center"><p>Загружаем кабинет…</p></div></div></main><script>(function(){var C={"api": "https://dghost-3d-api-production.up.railway.app", "lang": "ru", "start": "/3d-api/#start", "tg": "https://t.me/dghostmarket?direct", "mail": "support@dghostmarket.uz", "t": {"e_bad_email": "Проверьте адрес почты.", "e_bad_website": "Укажите адрес сайта, например shop.uz.", "e_email_taken": "На эту почту уже есть кабинет. Откройте его по своей ссылке или напишите нам — пришлём новую.", "e_domain_taken": "Этот сайт уже подключён. Если это ваш сайт — напишите нам.", "e_too_many_signups": "Слишком много попыток с этого адреса. Попробуйте завтра или напишите нам.", "e_network": "Сервис не ответил. Проверьте интернет и попробуйте ещё раз.", "cab_title": "Кабинет DGhost 3D", "cab_loading": "Загружаем кабинет…", "cab_noauth_h": "Нужна ссылка на кабинет", "cab_noauth": "Кабинет открывается по личной ссылке, которую вы получили при регистрации. Нет ссылки — зарегистрируйтесь или напишите нам.", "cab_signup": "Зарегистрироваться", "cab_contact": "Написать в Telegram", "cab_save_h": "Сохраните ссылку на кабинет", "cab_save": "Это ваш вход — почты и пароля нет. Добавьте страницу в закладки или скопируйте ссылку в надёжное место.", "cab_copy_link": "Скопировать ссылку", "copied": "Скопировано", "cab_new_link": "Выдать новую ссылку", "cab_new_confirm": "Старая ссылка перестанет работать. Продолжить?", "cab_key": "Ключ", "cab_plan": "Тариф", "cab_until": "до {d}", "cab_expired": "Срок закончился — виджет на сайте не показывается. Выберите тариф ниже.", "cab_sub_on": "Подписка продлевается сама.", "cab_sub_cancel": "Подписка отменена — ключ работает до конца оплаченного срока.", "cab_views": "Показы в этом месяце", "cab_nolimit": "без лимита", "cab_domains": "Сайты, где работает виджет", "cab_domains_max": "до {n}", "cab_save_btn": "Сохранить", "cab_saved": "Сохранено", "cab_code": "Код для страницы товара", "cab_copy": "Скопировать код", "cab_usage": "Показы по месяцам", "cab_month": "Месяц", "cab_shown": "Показано", "cab_denied": "Отказано", "cab_plans": "Тарифы", "per_month": "/ мес", "per_year": "/ год", "m_month": "Помесячно", "m_year": "За год −20%", "cab_current": "Ваш тариф", "cab_choose": "Выбрать", "cab_contact_plan": "Написать нам", "cab_views_n": "{n} показов", "cab_domains_n": "сайтов: {n}", "cab_ar": "AR «на столе»", "cab_nobadge": "без значка", "cab_pay_soon_h": "Оплата картой подключается", "cab_pay_soon": "Пока оплата — через нас: напишите в Telegram или на почту, укажите тариф и ключ, пришлём счёт. Ключ продлим сразу после оплаты.", "cab_paid": "Оплата прошла — обновляем тариф…", "e_bad_domains": "Проверьте адреса сайтов.", "e_too_many_domains": "Сайтов в вашем тарифе: не больше {n}.", "e_unauthorized": "Ссылка устарела. Откройте новую ссылку на кабинет."}};
-var T=C.t,root=document.getElementById('cab');
-function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
-function n(v){return Number(v||0).toLocaleString(C.lang==='en'?'en-US':'ru-RU');}
-var token=null,m=location.hash.match(/t=([A-Za-z0-9_-]{20,})/);
-if(m){token=m[1];try{localStorage.setItem('dg3d_cab',token);}catch(x){}history.replaceState(null,'',location.pathname+location.search);}
-if(!token){try{token=localStorage.getItem('dg3d_cab');}catch(x){}}
-var wantPlan=(location.search.match(/plan=(\w+)/)||[])[1]||'';
-var period='month',data=null,status={};
-function api(path,body){return fetch(C.api+path,{method:body?'POST':'GET',headers:Object.assign({'Authorization':'Bearer '+token},body?{'Content-Type':'application/json'}:{}),body:body?JSON.stringify(body):undefined})
-.then(function(r){return r.json().catch(function(){return{error:'network'};}).then(function(d){d._s=r.status;return d;});});}
-function noauth(){root.className='center';root.innerHTML='<h1>'+e(T.cab_noauth_h)+'</h1><p>'+e(T.cab_noauth)+'</p><div class="row" style="justify-content:center"><a class="btn primary" href="'+e(C.start)+'">'+e(T.cab_signup)+'</a><a class="btn ghost" href="'+e(C.tg)+'">'+e(T.cab_contact)+'</a></div>';}
-function link(){return location.origin+location.pathname+'#t='+token;}
-function copy(text,btn){var done=function(){var o=btn.textContent;btn.textContent=T.copied;setTimeout(function(){btn.textContent=o;},1500);};
-if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).then(done,done);else done();}
-function render(){var k=data.key,c=data.client;root.className='';
-var isNew=false;try{isNew=localStorage.getItem('dg3d_new')==='1';}catch(x){}
-var h='<h1>'+e(T.cab_title)+'</h1><p class="who">'+e(c.name)+' · '+e(c.email)+'</p>';
-h+='<div class="box save"'+(isNew?'':' style="border-color:rgba(255,255,255,.07);background:var(--surface)"')+'><h3>'+e(T.cab_save_h)+'</h3><p>'+e(T.cab_save)+'</p><div class="row"><button class="btn primary small" data-a="copylink">'+e(T.cab_copy_link)+'</button><button class="btn ghost small" data-a="newlink">'+e(T.cab_new_link)+'</button></div></div>';
-if(k){var lim=k.limit,pct=lim?Math.min(100,Math.round(k.views/lim*100)):0;
-var until=k.expires_at?T.cab_until.replace('{d}',new Date(k.expires_at).toLocaleDateString(C.lang==='en'?'en-GB':'ru-RU')):'';
-h+='<div class="grid"><div class="box"><dl class="kv"><dt>'+e(T.cab_plan)+'</dt><dd>'+e(k.plan_name)+(until?' · '+e(until):'')+'</dd><dt>'+e(T.cab_key)+'</dt><dd class="mono">'+e(k.key)+'</dd></dl>';
-if(k.expired)h+='<p class="warn">'+e(T.cab_expired)+'</p>';else if(k.cancel_at_end)h+='<p class="warn">'+e(T.cab_sub_cancel)+'</p>';else if(k.subscription)h+='<p class="ok" style="margin:10px 0 0">'+e(T.cab_sub_on)+'</p>';
-h+='<h3 style="margin-top:18px">'+e(T.cab_views)+'</h3><div class="mono">'+n(k.views)+' / '+(lim?n(lim):e(T.cab_nolimit))+'</div>'+(lim?'<div class="bar"><i style="width:'+pct+'%"></i></div>':'');
-h+='<h3 style="margin-top:18px">'+e(T.cab_domains)+(k.max_domains?' · '+e(T.cab_domains_max.replace('{n}',k.max_domains)):'')+'</h3><input class="dom" id="cabDom" value="'+e((k.domains||[]).join(', '))+'" autocapitalize="off" inputmode="url"><div class="row"><button class="btn ghost small" data-a="domains">'+e(T.cab_save_btn)+'</button><span class="msg" id="cabDomMsg"></span></div></div>';
-h+='<div class="box"><h3>'+e(T.cab_code)+'</h3><pre id="cabCode">'+e(k.code)+'</pre><button class="btn ghost small" data-a="copycode">'+e(T.cab_copy)+'</button>';
-if((k.usage||[]).length){h+='<h3 style="margin-top:18px">'+e(T.cab_usage)+'</h3><table><tr><th>'+e(T.cab_month)+'</th><th>'+e(T.cab_shown)+'</th><th>'+e(T.cab_denied)+'</th></tr>'+k.usage.map(function(u){return'<tr><td class="mono">'+e(u.month)+'</td><td class="mono">'+n(u.views)+'</td><td class="mono">'+n(u.denied)+'</td></tr>';}).join('')+'</table>';}
-h+='</div></div>';}
-h+='<div class="block"><h2>'+e(T.cab_plans)+'</h2><div class="seg"><button data-p="month" class="'+(period==='month'?'on':'')+'">'+e(T.m_month)+'</button><button data-p="year" class="'+(period==='year'?'on':'')+'">'+e(T.m_year)+'</button></div><div class="plans">';
-data.plans.forEach(function(p){var cur=k&&k.plan===p.key&&!k.expired;var price=p.usd_month==null?'':(period==='year'?'$'+p.usd_year+' <small>'+e(T.per_year)+'</small>':'$'+p.usd_month+' <small>'+e(T.per_month)+'</small>');
-h+='<div class="pl'+(cur?' cur':'')+'"><b>'+e(p.name)+'</b><div class="pr">'+price+'</div><ul><li>'+e(T.cab_views_n.replace('{n}',p.views?n(p.views):T.cab_nolimit))+'</li><li>'+e(T.cab_domains_n.replace('{n}',p.domains||T.cab_nolimit))+'</li>'+(p.ar?'<li>'+e(T.cab_ar)+'</li>':'')+(!p.badge?'<li>'+e(T.cab_nobadge)+'</li>':'')+'</ul>'
-+(p.usd_month==null?'<a class="btn ghost" href="'+e(C.tg)+'">'+e(T.cab_contact_plan)+'</a>':cur?'<span class="btn ghost" aria-disabled="true">'+e(T.cab_current)+'</span>':'<button class="btn primary" data-buy="'+e(p.key)+'">'+e(T.cab_choose)+'</button>')+'</div>';});
-h+='</div><div id="cabPay"></div></div>';
-root.innerHTML=h;}
-function paySoon(){document.getElementById('cabPay').innerHTML='<div class="note"><b>'+e(T.cab_pay_soon_h)+'</b><p>'+e(T.cab_pay_soon)+'</p><div class="row"><a class="btn primary small" href="'+e(C.tg)+'">'+e(T.cab_contact)+'</a><a class="btn ghost small" href="mailto:'+e(C.mail)+'">'+e(C.mail)+'</a></div></div>';
-document.getElementById('cabPay').scrollIntoView({behavior:'smooth',block:'center'});}
-function paddle(cfg){var go=function(){try{if(cfg.environment==='sandbox')Paddle.Environment.set('sandbox');Paddle.Initialize({token:cfg.client_token,eventCallback:function(ev){if(ev&&ev.name==='checkout.completed'){document.getElementById('cabPay').innerHTML='<div class="note"><b>'+e(T.cab_paid)+'</b></div>';setTimeout(load,4000);setTimeout(load,12000);}}});
-Paddle.Checkout.open({items:[{priceId:cfg.price_id,quantity:1}],customData:cfg.custom_data,customer:cfg.email?{email:cfg.email}:undefined});}catch(x){paySoon();}};
-if(window.Paddle)return go();var s=document.createElement('script');s.src='https://cdn.paddle.com/paddle/v2/paddle.js';s.onload=go;s.onerror=paySoon;document.head.appendChild(s);}
-function buy(plan){api('/api/cabinet/checkout',{plan:plan,period:period}).then(function(d){if(d.provider==='paddle')paddle(d);else if(d._s===401)noauth();else paySoon();},paySoon);}
-root.addEventListener('click',function(ev){var b=ev.target.closest('[data-a],[data-p],[data-buy]');if(!b)return;
-if(b.dataset.p){period=b.dataset.p;render();return;}
-if(b.dataset.buy){buy(b.dataset.buy);return;}
-var a=b.dataset.a;
-if(a==='copylink'){copy(link(),b);try{localStorage.removeItem('dg3d_new');}catch(x){}}
-else if(a==='copycode'){copy(data.key.code,b);}
-else if(a==='newlink'){if(!confirm(T.cab_new_confirm))return;api('/api/cabinet/token',{}).then(function(d){if(d.token){token=d.token;try{localStorage.setItem('dg3d_cab',token);localStorage.setItem('dg3d_new','1');}catch(x){}render();}});}
-else if(a==='domains'){var mm=document.getElementById('cabDomMsg');mm.textContent='';api('/api/cabinet/domains',{domains:document.getElementById('cabDom').value}).then(function(d){
-if(d.key){data=d;render();var m2=document.getElementById('cabDomMsg');if(m2){m2.className='msg ok';m2.textContent=T.cab_saved;}}
-else{mm.textContent=(T['e_'+d.error]||T.e_network).replace('{n}',d.max||'');}});}});
-function load(){api('/api/cabinet').then(function(d){if(d._s===401){try{localStorage.removeItem('dg3d_cab');}catch(x){}noauth();return;}
-if(!d.client){root.className='center';root.innerHTML='<p>'+e(T.e_network)+'</p>';return;}
-data=d;render();if(wantPlan){var w=wantPlan;wantPlan='';var el=document.querySelector('[data-buy="'+w+'"]');if(el){el.scrollIntoView({block:'center'});buy(w);}}},
-function(){root.className='center';root.innerHTML='<p>'+e(T.e_network)+'</p>';});}
-if(!token)noauth();else load();
-})();</script>
+<main id="top" class="r3d cab"><div class="wrap"><div class="center"><p>…</p></div></div></main><script>(function(){var t="https://render.dghostmarket.com/ru/cabinet/";var h=location.hash;if(!/t=/.test(h)){try{var s=localStorage.getItem("dg3d_cab");if(s)h="#t="+s;}catch(e){}}location.replace(t+location.search+h);})();</script>
 
 <footer>
 <div class="wrap">
