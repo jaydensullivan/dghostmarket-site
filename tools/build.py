@@ -683,6 +683,15 @@ def build_render(tpl, i18n, iso):
         rel = ('' if lang == 'ru' else f'{lang}/') + '3d-api'
         changed = write(rel + '/index.html', tag_links(out, 'render3d'))
         new[rel] = iso if changed or rel not in lastmod else lastmod[rel]
+        # Кабинет клиента: вход по личной ссылке, в поиск не попадает.
+        ct = render.cab.TX[lang]
+        cabp = set_meta(page, lang, '3d-api/cabinet', ct['cab_title'] + ' | DGhost 3D', ct['cab_title'], render.LANGS)
+        cabp = re.sub(r'<main id="top">.*?</main>', lambda m: render.cab.cabinet_main(lang, f'{render.prefix(lang)}/3d-api/#start'), cabp, count=1, flags=re.S)
+        cabp = cabp.replace('<!--JSONLD-->', '').replace('</head>', '<meta name="robots" content="noindex">\n</head>', 1)
+        for l in render.LANGS:
+            cabp = cabp.replace(f'href="{"/" if l == "ru" else f"/{l}/"}" data-lang="{l}"',
+                                f'href="{render.prefix(l)}/3d-api/cabinet/" data-lang="{l}"')
+        write(rel + '/cabinet/index.html', tag_links(cabp, 'render3d'))
     write('data/render-lastmod.json', json.dumps(dict(sorted(new.items())), ensure_ascii=False, indent=0) + '\n')
     return new
 
