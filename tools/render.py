@@ -6,6 +6,8 @@
 """
 import os
 import html
+
+import render_cabinet as cab
 from urllib.parse import quote
 
 LANGS = ['ru', 'uz', 'en']
@@ -57,7 +59,7 @@ T = {
         'lead': 'Тот же 3D-движок, что в маркете DGhostMarket: реальная раскраска, float и паттерн конкретного предмета. Добавьте виджет на страницу товара одной строкой кода.',
         'cta': 'Получить пробный ключ', 'cta_mail': 'Написать на почту', 'cta_demo': 'Посмотреть 3D в маркете',
         'demo_h': 'Попробуйте прямо здесь', 'demo_sub': 'Это и есть виджет — так он будет выглядеть на вашем сайте. Крутите пальцем или мышкой, переключайте фоны и износ.',
-        'code_h': 'Код для вашего сайта', 'code_sub': 'Ключ выдаём сразу по запросу. Скин, float и паттерн подставляете из своих товаров.',
+        'code_h': 'Код для вашего сайта', 'code_sub': 'Ключ приходит сразу после регистрации. Скин, float и паттерн подставляете из своих товаров.',
         'what_h': 'Что вы получаете',
         'what': [('🧊 3D-виджет', 'Одна строка кода — и на странице товара 3D-просмотр: вращение, приближение, фоны карт CS2, износ по float, рисунок по паттерну и наклейки.'), ('📐 AR «на столе»', 'Покупатель ставит скин на свой стол через камеру телефона в натуральную величину.'), ('🔑 Ключ под ваш домен', 'Ключ работает только на ваших сайтах — чужой сайт его не использует. Домены добавляете сами.'), ('📊 Кабинет и статистика', 'Показы за месяц, лимит тарифа и код для вставки — в личном кабинете.')],
         'who_h': 'Кому подходит',
@@ -88,7 +90,7 @@ T = {
         'lead': 'DGhostMarket marketidagi o‘sha 3D-dvigatel: aynan shu buyumning haqiqiy bo‘yog‘i, float va naqshi. Vidjetni tovar sahifasiga bitta qator kod bilan qo‘shing.',
         'cta': 'Sinov kalitini olish', 'cta_mail': 'Pochtaga yozish', 'cta_demo': 'Marketda 3D’ni ko‘rish',
         'demo_h': 'Shu yerning o‘zida sinab ko‘ring', 'demo_sub': 'Bu vidjetning o‘zi — saytingizda ham xuddi shunday ko‘rinadi. Barmoq yoki sichqoncha bilan aylantiring, fon va eskirishni almashtiring.',
-        'code_h': 'Saytingiz uchun kod', 'code_sub': 'Kalitni so‘rov bo‘yicha darhol beramiz. Skin, float va naqshni o‘z tovarlaringizdan qo‘yasiz.',
+        'code_h': 'Saytingiz uchun kod', 'code_sub': 'Kalit ro‘yxatdan o‘tgach darhol beriladi. Skin, float va naqshni o‘z tovarlaringizdan qo‘yasiz.',
         'what_h': 'Siz nimani olasiz',
         'what': [('🧊 3D-vidjet', 'Bitta qator kod — va tovar sahifasida 3D-ko‘rinish: aylantirish, yaqinlashtirish, CS2 xaritalari fonlari, float bo‘yicha eskirish, naqsh va stikerlar.'), ('📐 AR «Stolda»', 'Xaridor telefon kamerasi orqali skinni stoliga haqiqiy o‘lchamda qo‘yadi.'), ('🔑 Domeningizga kalit', 'Kalit faqat sizning saytlaringizda ishlaydi — boshqa sayt undan foydalana olmaydi. Domenlarni o‘zingiz qo‘shasiz.'), ('📊 Kabinet va statistika', 'Oylik ko‘rsatuvlar, tarif limiti va joylash kodi — shaxsiy kabinetda.')],
         'who_h': 'Kimlar uchun',
@@ -119,7 +121,7 @@ T = {
         'lead': 'The same 3D engine that powers the DGhostMarket marketplace: real finish, float and pattern of the exact item. Add the viewer to your product page with one line of code.',
         'cta': 'Get a trial key', 'cta_mail': 'Email us', 'cta_demo': 'See 3D in action',
         'demo_h': 'Try it right here', 'demo_sub': 'This is the widget itself — it will look the same on your website. Drag to rotate, switch backgrounds and wear.',
-        'code_h': 'Code for your website', 'code_sub': 'We issue your key on request. Fill in the skin, float and pattern from your own listings.',
+        'code_h': 'Code for your website', 'code_sub': 'Your key arrives right after signup. Fill in the skin, float and pattern from your own listings.',
         'what_h': 'What you get',
         'what': [('🧊 3D widget', 'One line of code adds a 3D viewer to your product page: rotate, zoom, CS2 map backgrounds, wear by float, artwork by pattern and stickers.'), ('📐 AR on the table', 'Buyers place the skin on their desk at real size with their phone camera.'), ('🔑 Domain-locked key', 'Your key only works on your own websites — no one else can use it. You add your domains yourself.'), ('📊 Dashboard and usage', 'Monthly views, plan limit and the embed code — all in your dashboard.')],
         'who_h': 'Who it is for',
@@ -185,6 +187,9 @@ CSS = """
 @media(max-width:560px){.r3d .plans,.r3d .cards{grid-template-columns:1fr}.r3d .demo iframe{height:360px}}
 """
 
+CSS += cab.CSS
+
+
 
 def esc(s):
     return html.escape(str(s), quote=True)
@@ -226,7 +231,7 @@ def plan_card(p, lang):
     return (f'<div class="plan{" best" if p.get("best") else ""}">{tag}<h3>{esc(t["plan_" + p["key"]])}</h3>'
             f'<div class="price">{price}</div><div class="approx">{approx}</div><dl>'
             + ''.join(f'<dt>{esc(k)}</dt><dd>{esc(v)}</dd>' for k, v in rows)
-            + '</dl></div>')
+            + '</dl>' + cab.plan_button(p['key'], lang) + '</div>')
 
 
 def embed_src(key, skin, lang):
@@ -238,13 +243,13 @@ def render_main(lang, app_url):
     t = T[lang]
     p = prefix(lang)
     mail = f'mailto:{SUPPORT_MAIL}?subject={quote(t["mail_subject"])}'
-    actions = (f'<div class="actions"><a class="btn primary" href="{SUPPORT_TG}">{esc(t["cta"])}</a>'
+    actions = (f'<div class="actions"><a class="btn primary" href="#start">{esc(t["cta"])}</a>'
                f'<a class="btn ghost" href="{esc(mail)}">{esc(t["cta_mail"])}</a>'
                f'<a class="btn ghost" href="{esc(app_url)}">{esc(t["cta_demo"])}</a></div>')
     what = ''.join(f'<div class="card"><b>{esc(h)}</b><p>{esc(x)}</p></div>' for h, x in t['what'])
     who = ''.join(f'<li>{esc(x)}</li>' for x in t['who'])
     plans = ''.join(plan_card(pl, lang) for pl in PLANS)
-    how = ''.join(f'<li>{esc(x)}</li>' for x in t['how'])
+    how = ''.join(f'<li>{esc(x)}</li>' for x in cab.HOW[lang])
     faq = ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in t['faq'])
     first = DEMO_SKINS[0]
     src = embed_src('demo', first, lang)
@@ -268,11 +273,12 @@ def render_main(lang, app_url):
             f'<div class="block" id="plans"><h2>{esc(t["plans_h"])}</h2><p class="sub">{esc(t["plans_sub"])}</p>'
             f'<div class="plans">{plans}</div>'
             f'<div class="note"><b>{esc(t["over_h"])}</b>{esc(t["over"])}</div></div>'
+            + cab.start_block(lang) +
             f'<div class="block"><h2>{esc(t["how_h"])}</h2><ol class="how">{how}</ol></div>'
             f'<div class="block"><h2>{esc(t["code_h"])}</h2><p class="sub">{esc(t["code_sub"])}</p><pre class="code">{code}</pre></div>'
             f'<div class="block"><h2>{esc(t["faq_h"])}</h2>{faq}{actions}</div>'
             f'<p class="legal">{esc(t["legal"])}</p>'
-            f'</div></main>')
+            f'</div></main>' + cab.start_script(lang))
 
 
 def offer_jsonld(lang, url, site):
