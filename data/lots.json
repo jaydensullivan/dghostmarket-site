@@ -555,7 +555,7 @@
 "float_value": 0.1972663,
 "pattern": "226",
 "weapon_type": "AK-47",
-"market_price_uzs": 42795,
+"market_price_uzs": 42915,
 "view_count": 3,
 "created_at": "2026-11-03T11:00:07.956424+00:00"
 },
@@ -569,7 +569,7 @@
 "float_value": 0.1871203,
 "pattern": "722",
 "weapon_type": "AK-47",
-"market_price_uzs": 42795,
+"market_price_uzs": 42915,
 "view_count": 0,
 "created_at": "2026-11-03T10:59:59.336662+00:00"
 },
