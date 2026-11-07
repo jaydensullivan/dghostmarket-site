@@ -9,8 +9,8 @@
 "float_value": 0.29312494,
 "pattern": "234",
 "weapon_type": "AK-47",
-"market_price_uzs": 282339,
-"view_count": 1,
+"market_price_uzs": 283496,
+"view_count": 5,
 "created_at": "2026-11-06T07:48:41.849627+00:00"
 },
 {
@@ -23,7 +23,7 @@
 "float_value": 0.37955108,
 "pattern": "725",
 "weapon_type": "AK-47",
-"market_price_uzs": 138661,
+"market_price_uzs": 138811,
 "view_count": 0,
 "created_at": "2026-11-06T07:48:29.616493+00:00"
 },
@@ -37,8 +37,8 @@
 "float_value": 0.33586109,
 "pattern": "45",
 "weapon_type": "M4A4",
-"market_price_uzs": 306464,
-"view_count": 0,
+"market_price_uzs": 312266,
+"view_count": 1,
 "created_at": "2026-11-06T07:47:33.410426+00:00"
 },
 {
@@ -51,8 +51,8 @@
 "float_value": 0.37695602,
 "pattern": "799",
 "weapon_type": "★ Hand Wraps",
-"market_price_uzs": 902910,
-"view_count": 1,
+"market_price_uzs": 906229,
+"view_count": 2,
 "created_at": "2026-11-06T07:47:14.176047+00:00"
 },
 {
@@ -66,7 +66,7 @@
 "pattern": null,
 "weapon_type": "1st Lieutenant Farlow",
 "market_price_uzs": null,
-"view_count": 1,
+"view_count": 2,
 "created_at": "2026-11-06T07:46:26.845526+00:00"
 },
 {
@@ -94,7 +94,7 @@
 "pattern": null,
 "weapon_type": "Sir Bloody Loudmouth Darryl",
 "market_price_uzs": null,
-"view_count": 1,
+"view_count": 2,
 "created_at": "2026-11-06T07:45:36.682976+00:00"
 },
 {
@@ -121,7 +121,7 @@
 "float_value": 0.147549,
 "pattern": "336",
 "weapon_type": "R8 Revolver",
-"market_price_uzs": 15765,
+"market_price_uzs": 16063,
 "view_count": 1,
 "created_at": "2026-11-05T09:40:13.896308+00:00"
 },
@@ -135,7 +135,7 @@
 "float_value": 0.10206006,
 "pattern": "371",
 "weapon_type": "USP-S",
-"market_price_uzs": 26156,
+"market_price_uzs": 26492,
 "view_count": 1,
 "created_at": "2026-11-05T09:40:06.699327+00:00"
 },
@@ -149,7 +149,7 @@
 "float_value": 0.14993694,
 "pattern": "427",
 "weapon_type": "AWP",
-"market_price_uzs": 43354,
+"market_price_uzs": 44233,
 "view_count": 3,
 "created_at": "2026-11-05T09:39:58.979802+00:00"
 },
@@ -163,7 +163,7 @@
 "float_value": 0.23017879,
 "pattern": "274",
 "weapon_type": "SSG 08",
-"market_price_uzs": 955,
+"market_price_uzs": 959,
 "view_count": 0,
 "created_at": "2026-11-05T04:08:29.435853+00:00"
 },
@@ -177,8 +177,8 @@
 "float_value": 0.28616282,
 "pattern": "549",
 "weapon_type": "AWP",
-"market_price_uzs": 24842,
-"view_count": 6,
+"market_price_uzs": 24574,
+"view_count": 7,
 "created_at": "2026-11-04T23:19:52.495797+00:00"
 },
 {
@@ -191,7 +191,7 @@
 "float_value": 0.20702301,
 "pattern": "168",
 "weapon_type": "AWP",
-"market_price_uzs": 24842,
+"market_price_uzs": 24574,
 "view_count": 1,
 "created_at": "2026-11-04T23:19:43.286338+00:00"
 },
@@ -205,7 +205,7 @@
 "float_value": 0.30537435,
 "pattern": "509",
 "weapon_type": "AK-47",
-"market_price_uzs": 21617,
+"market_price_uzs": 21937,
 "view_count": 5,
 "created_at": "2026-11-04T23:17:52.101770+00:00"
 },
@@ -219,7 +219,7 @@
 "float_value": 0.31251252,
 "pattern": "844",
 "weapon_type": "AK-47",
-"market_price_uzs": 21617,
+"market_price_uzs": 21937,
 "view_count": 0,
 "created_at": "2026-11-04T23:17:43.567416+00:00"
 },
@@ -233,7 +233,7 @@
 "float_value": 0.31148618,
 "pattern": "870",
 "weapon_type": "AK-47",
-"market_price_uzs": 21617,
+"market_price_uzs": 21937,
 "view_count": 1,
 "created_at": "2026-11-04T23:17:34.631031+00:00"
 },
@@ -247,7 +247,7 @@
 "float_value": 0.32501966,
 "pattern": "217",
 "weapon_type": "AK-47",
-"market_price_uzs": 21617,
+"market_price_uzs": 21937,
 "view_count": 0,
 "created_at": "2026-11-04T23:17:24.361684+00:00"
 },
@@ -261,7 +261,7 @@
 "float_value": 0.32021779,
 "pattern": "961",
 "weapon_type": "AK-47",
-"market_price_uzs": 21617,
+"market_price_uzs": 21937,
 "view_count": 2,
 "created_at": "2026-11-04T23:17:16.230289+00:00"
 },
@@ -275,7 +275,7 @@
 "float_value": 0.23199555,
 "pattern": "106",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 12660,
+"market_price_uzs": 12706,
 "view_count": 2,
 "created_at": "2026-11-04T23:16:56.286099+00:00"
 },
@@ -289,7 +289,7 @@
 "float_value": 0.34562907,
 "pattern": "518",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 12660,
+"market_price_uzs": 12706,
 "view_count": 2,
 "created_at": "2026-11-04T23:16:45.847948+00:00"
 },
@@ -303,7 +303,7 @@
 "float_value": 0.27833393,
 "pattern": "435",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 5733,
+"market_price_uzs": 5874,
 "view_count": 1,
 "created_at": "2026-11-04T23:16:32.919911+00:00"
 },
@@ -317,7 +317,7 @@
 "float_value": 0.23017879,
 "pattern": "274",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 5733,
+"market_price_uzs": 5874,
 "view_count": 0,
 "created_at": "2026-11-04T23:16:19.755862+00:00"
 },
@@ -331,7 +331,7 @@
 "float_value": 0.22625089,
 "pattern": "271",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 4658,
+"market_price_uzs": 4675,
 "view_count": 0,
 "created_at": "2026-11-04T23:15:52.116405+00:00"
 },
@@ -345,8 +345,8 @@
 "float_value": 0.16036634,
 "pattern": "918",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 4658,
-"view_count": 1,
+"market_price_uzs": 4675,
+"view_count": 2,
 "created_at": "2026-11-04T23:15:41.280622+00:00"
 },
 {
@@ -359,8 +359,8 @@
 "float_value": 0.17932349,
 "pattern": "386",
 "weapon_type": "AWP",
-"market_price_uzs": 34994,
-"view_count": 12,
+"market_price_uzs": 35122,
+"view_count": 13,
 "created_at": "2026-11-04T13:43:05.887292+00:00"
 },
 {
@@ -373,7 +373,7 @@
 "float_value": 0.21648197,
 "pattern": "436",
 "weapon_type": "USP-S",
-"market_price_uzs": 35352,
+"market_price_uzs": 34883,
 "view_count": 5,
 "created_at": "2026-11-04T13:42:56.941021+00:00"
 },
@@ -387,7 +387,7 @@
 "float_value": 0.29896051,
 "pattern": "153",
 "weapon_type": "USP-S",
-"market_price_uzs": 36905,
+"market_price_uzs": 36920,
 "view_count": 3,
 "created_at": "2026-11-04T13:42:47.488486+00:00"
 },
@@ -401,7 +401,7 @@
 "float_value": 0.29175565,
 "pattern": "565",
 "weapon_type": "USP-S",
-"market_price_uzs": 36905,
+"market_price_uzs": 36920,
 "view_count": 2,
 "created_at": "2026-11-04T13:42:37.685164+00:00"
 },
@@ -457,8 +457,8 @@
 "float_value": null,
 "pattern": null,
 "weapon_type": "Music Kit",
-"market_price_uzs": 30097,
-"view_count": 10,
+"market_price_uzs": 29488,
+"view_count": 11,
 "created_at": "2026-11-04T04:17:38.499663+00:00"
 },
 {
@@ -471,7 +471,7 @@
 "float_value": 0.21156704,
 "pattern": "769",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 39532,
+"market_price_uzs": 38359,
 "view_count": 4,
 "created_at": "2026-11-04T04:16:41.752789+00:00"
 },
@@ -485,7 +485,7 @@
 "float_value": 0.21388952,
 "pattern": "110",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 39532,
+"market_price_uzs": 38359,
 "view_count": 2,
 "created_at": "2026-11-04T04:16:32.491403+00:00"
 },
@@ -499,7 +499,7 @@
 "float_value": 0.10193759,
 "pattern": "251",
 "weapon_type": "MP7",
-"market_price_uzs": 17437,
+"market_price_uzs": 17142,
 "view_count": 13,
 "created_at": "2026-11-03T11:35:36.976381+00:00"
 },
@@ -513,7 +513,7 @@
 "float_value": 0.21637337,
 "pattern": "221",
 "weapon_type": "USP-S",
-"market_price_uzs": 36905,
+"market_price_uzs": 36920,
 "view_count": 3,
 "created_at": "2026-11-03T11:01:54.259735+00:00"
 },
@@ -527,7 +527,7 @@
 "float_value": 0.33122185,
 "pattern": "399",
 "weapon_type": "USP-S",
-"market_price_uzs": 36905,
+"market_price_uzs": 36920,
 "view_count": 0,
 "created_at": "2026-11-03T11:01:46.265076+00:00"
 },
@@ -541,7 +541,7 @@
 "float_value": 0.29774466,
 "pattern": "70",
 "weapon_type": "Glock-18",
-"market_price_uzs": 36785,
+"market_price_uzs": 37400,
 "view_count": 1,
 "created_at": "2026-11-03T11:01:35.010842+00:00"
 },
@@ -555,7 +555,7 @@
 "float_value": 0.23978287,
 "pattern": "367",
 "weapon_type": "Glock-18",
-"market_price_uzs": 36785,
+"market_price_uzs": 37400,
 "view_count": 1,
 "created_at": "2026-11-03T11:01:24.675679+00:00"
 },
@@ -569,7 +569,7 @@
 "float_value": 0.33122185,
 "pattern": "399",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 37024,
+"market_price_uzs": 35722,
 "view_count": 2,
 "created_at": "2026-11-03T11:01:15.652782+00:00"
 },
@@ -583,7 +583,7 @@
 "float_value": null,
 "pattern": null,
 "weapon_type": null,
-"market_price_uzs": 37024,
+"market_price_uzs": 36321,
 "view_count": 4,
 "created_at": "2026-11-03T11:01:05.936561+00:00"
 },
@@ -597,7 +597,7 @@
 "float_value": 0.30842775,
 "pattern": "178",
 "weapon_type": "MP9",
-"market_price_uzs": 38816,
+"market_price_uzs": 38958,
 "view_count": 1,
 "created_at": "2026-11-03T11:00:56.697915+00:00"
 },
@@ -611,7 +611,7 @@
 "float_value": 0.24781398,
 "pattern": "831",
 "weapon_type": "MP9",
-"market_price_uzs": 38816,
+"market_price_uzs": 38958,
 "view_count": 0,
 "created_at": "2026-11-03T11:00:46.187250+00:00"
 },
@@ -625,7 +625,7 @@
 "float_value": 0.30295974,
 "pattern": "886",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 39532,
+"market_price_uzs": 38359,
 "view_count": 7,
 "created_at": "2026-11-03T11:00:36.269769+00:00"
 },
@@ -639,7 +639,7 @@
 "float_value": 0.23581785,
 "pattern": "516",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 39532,
+"market_price_uzs": 38359,
 "view_count": 2,
 "created_at": "2026-11-03T11:00:28.472098+00:00"
 },
@@ -653,7 +653,7 @@
 "float_value": 0.28121078,
 "pattern": "427",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 39532,
+"market_price_uzs": 38359,
 "view_count": 1,
 "created_at": "2026-11-03T11:00:19.343573+00:00"
 },
@@ -667,7 +667,7 @@
 "float_value": 0.1972663,
 "pattern": "226",
 "weapon_type": "AK-47",
-"market_price_uzs": 42399,
+"market_price_uzs": 42554,
 "view_count": 3,
 "created_at": "2026-11-03T11:00:07.956424+00:00"
 },
@@ -681,7 +681,7 @@
 "float_value": 0.1871203,
 "pattern": "722",
 "weapon_type": "AK-47",
-"market_price_uzs": 42399,
+"market_price_uzs": 42554,
 "view_count": 0,
 "created_at": "2026-11-03T10:59:59.336662+00:00"
 },
@@ -695,7 +695,7 @@
 "float_value": 0.2571395,
 "pattern": "448",
 "weapon_type": "AK-47",
-"market_price_uzs": 43473,
+"market_price_uzs": 43513,
 "view_count": 2,
 "created_at": "2026-11-03T10:59:50.421422+00:00"
 },
@@ -709,7 +709,7 @@
 "float_value": 0.27457434,
 "pattern": "121",
 "weapon_type": "AK-47",
-"market_price_uzs": 43473,
+"market_price_uzs": 43513,
 "view_count": 1,
 "created_at": "2026-11-03T10:59:39.620363+00:00"
 },
@@ -723,7 +723,7 @@
 "float_value": 0.30923727,
 "pattern": "700",
 "weapon_type": "AK-47",
-"market_price_uzs": 43473,
+"market_price_uzs": 43513,
 "view_count": 2,
 "created_at": "2026-11-03T10:59:28.428303+00:00"
 },
@@ -779,7 +779,7 @@
 "float_value": 0.26238137,
 "pattern": "605",
 "weapon_type": "FAMAS",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 2,
 "created_at": "2026-11-03T10:03:21.962436+00:00"
 },
@@ -794,7 +794,7 @@
 "pattern": null,
 "weapon_type": "Cmdr. Mae 'Dead Cold' Jamison",
 "market_price_uzs": null,
-"view_count": 42,
+"view_count": 44,
 "created_at": "2026-11-03T07:32:14.850166+00:00"
 },
 {
@@ -821,7 +821,7 @@
 "float_value": 0.1808764,
 "pattern": "470",
 "weapon_type": "Dual Berettas",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 0,
 "created_at": "2026-11-03T04:17:36.955199+00:00"
 },
@@ -835,7 +835,7 @@
 "float_value": 0.24056748,
 "pattern": "463",
 "weapon_type": "PP-Bizon",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 0,
 "created_at": "2026-11-03T04:17:36.745366+00:00"
 },
@@ -849,7 +849,7 @@
 "float_value": 0.2509875,
 "pattern": "244",
 "weapon_type": "Zeus x27",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 0,
 "created_at": "2026-11-03T04:17:36.685738+00:00"
 },
@@ -863,7 +863,7 @@
 "float_value": 0.21452762,
 "pattern": "788",
 "weapon_type": "FAMAS",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 0,
 "created_at": "2026-11-03T04:17:36.629998+00:00"
 },
@@ -877,7 +877,7 @@
 "float_value": 0.36981767,
 "pattern": "539",
 "weapon_type": "G3SG1",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 0,
 "created_at": "2026-11-03T04:17:36.577266+00:00"
 },
@@ -891,7 +891,7 @@
 "float_value": 0.24513434,
 "pattern": "338",
 "weapon_type": "MP7",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 0,
 "created_at": "2026-11-03T04:17:36.522239+00:00"
 },
@@ -905,7 +905,7 @@
 "float_value": 0.28980801,
 "pattern": "602",
 "weapon_type": "XM1014",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 0,
 "created_at": "2026-11-03T04:17:36.462927+00:00"
 },
@@ -919,7 +919,7 @@
 "float_value": 0.49895549,
 "pattern": "455",
 "weapon_type": "Tec-9",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 0,
 "created_at": "2026-11-03T04:17:36.400683+00:00"
 },
@@ -933,7 +933,7 @@
 "float_value": 0.19169287,
 "pattern": "44",
 "weapon_type": "AUG",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 0,
 "created_at": "2026-11-03T04:17:36.349858+00:00"
 },
@@ -947,7 +947,7 @@
 "float_value": 0.31173688,
 "pattern": "294",
 "weapon_type": "MP9",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 0,
 "created_at": "2026-11-03T04:17:36.296501+00:00"
 },
@@ -961,7 +961,7 @@
 "float_value": 0.2544283,
 "pattern": "789",
 "weapon_type": "AUG",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 0,
 "created_at": "2026-11-03T04:17:36.231549+00:00"
 },
@@ -975,7 +975,7 @@
 "float_value": 0.20377664,
 "pattern": "974",
 "weapon_type": "Galil AR",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 0,
 "created_at": "2026-11-03T04:17:36.168970+00:00"
 },
@@ -989,7 +989,7 @@
 "float_value": 0.21046303,
 "pattern": "584",
 "weapon_type": "M4A4",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 1,
 "created_at": "2026-11-03T04:17:36.110138+00:00"
 },
@@ -1003,7 +1003,7 @@
 "float_value": 0.21856181,
 "pattern": "75",
 "weapon_type": "P250",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 1,
 "created_at": "2026-11-03T04:17:36.051144+00:00"
 },
@@ -1017,7 +1017,7 @@
 "float_value": 0.2366392,
 "pattern": "392",
 "weapon_type": "USP-S",
-"market_price_uzs": 478,
+"market_price_uzs": 479,
 "view_count": 0,
 "created_at": "2026-11-03T04:17:35.984345+00:00"
 },
@@ -1031,8 +1031,8 @@
 "float_value": 0.2390445,
 "pattern": "459",
 "weapon_type": "AK-47",
-"market_price_uzs": 717,
-"view_count": 1,
+"market_price_uzs": 719,
+"view_count": 2,
 "created_at": "2026-11-03T04:17:35.906218+00:00"
 },
 {
@@ -1045,7 +1045,7 @@
 "float_value": 0.38235265,
 "pattern": "189",
 "weapon_type": "Glock-18",
-"market_price_uzs": 2628,
+"market_price_uzs": 2637,
 "view_count": 6,
 "created_at": "2026-11-03T04:17:35.836136+00:00"
 },
@@ -1059,7 +1059,7 @@
 "float_value": 0.41149223,
 "pattern": "752",
 "weapon_type": "SSG 08",
-"market_price_uzs": 1433,
+"market_price_uzs": 1319,
 "view_count": 2,
 "created_at": "2026-11-03T04:17:35.765169+00:00"
 },
@@ -1073,7 +1073,7 @@
 "float_value": 0.26045161,
 "pattern": "41",
 "weapon_type": "Desert Eagle",
-"market_price_uzs": 1911,
+"market_price_uzs": 1918,
 "view_count": 4,
 "created_at": "2026-11-03T02:49:53.487393+00:00"
 },
@@ -1087,7 +1087,7 @@
 "float_value": 0.82150245,
 "pattern": "781",
 "weapon_type": "Souvenir USP-S",
-"market_price_uzs": 30814,
+"market_price_uzs": 3117,
 "view_count": 1,
 "created_at": "2026-11-03T02:49:53.437109+00:00"
 },
@@ -1101,7 +1101,7 @@
 "float_value": 0.08487157,
 "pattern": "279",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 1194,
+"market_price_uzs": 1199,
 "view_count": 2,
 "created_at": "2026-11-03T02:49:53.378364+00:00"
 },
@@ -1115,7 +1115,7 @@
 "float_value": 0.36829996,
 "pattern": "480",
 "weapon_type": "Glock-18",
-"market_price_uzs": 1075,
+"market_price_uzs": 1079,
 "view_count": 0,
 "created_at": "2026-11-03T02:49:53.320057+00:00"
 },
@@ -1129,8 +1129,8 @@
 "float_value": 0.21042532,
 "pattern": "266",
 "weapon_type": "AK-47",
-"market_price_uzs": 717,
-"view_count": 3,
+"market_price_uzs": 719,
+"view_count": 4,
 "created_at": "2026-11-03T02:49:53.265133+00:00"
 },
 {
@@ -1143,7 +1143,7 @@
 "float_value": 0.21792199,
 "pattern": "922",
 "weapon_type": "SSG 08",
-"market_price_uzs": 955,
+"market_price_uzs": 1079,
 "view_count": 0,
 "created_at": "2026-11-03T02:49:53.194646+00:00"
 },
@@ -1157,7 +1157,7 @@
 "float_value": 0.16290681,
 "pattern": "959",
 "weapon_type": "M4A4",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 1,
 "created_at": "2026-11-03T02:49:53.138666+00:00"
 },
@@ -1171,7 +1171,7 @@
 "float_value": 0.16816129,
 "pattern": "191",
 "weapon_type": "Galil AR",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 0,
 "created_at": "2026-11-03T02:49:53.089263+00:00"
 },
@@ -1185,7 +1185,7 @@
 "float_value": 0.25677884,
 "pattern": "391",
 "weapon_type": "Tec-9",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 0,
 "created_at": "2026-11-03T02:49:52.937682+00:00"
 },
@@ -1199,7 +1199,7 @@
 "float_value": 0.32330859,
 "pattern": "508",
 "weapon_type": "MAC-10",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 0,
 "created_at": "2026-11-03T02:49:52.860146+00:00"
 },
@@ -1213,7 +1213,7 @@
 "float_value": 0.21856181,
 "pattern": "75",
 "weapon_type": "Nova",
-"market_price_uzs": 358,
+"market_price_uzs": 360,
 "view_count": 1,
 "created_at": "2026-11-03T02:49:52.777436+00:00"
 },
@@ -1227,7 +1227,7 @@
 "float_value": 0.13930027,
 "pattern": "541",
 "weapon_type": "AK-47",
-"market_price_uzs": 67957,
+"market_price_uzs": 69406,
 "view_count": 17,
 "created_at": "2026-11-02T15:45:45.672899+00:00"
 },
@@ -1241,7 +1241,7 @@
 "float_value": 0.05871461,
 "pattern": "349",
 "weapon_type": "Glock-18",
-"market_price_uzs": 25917,
+"market_price_uzs": 26252,
 "view_count": 8,
 "created_at": "2026-11-02T06:42:52.769077+00:00"
 },
@@ -1255,7 +1255,7 @@
 "float_value": 0.13930027,
 "pattern": "541",
 "weapon_type": "AK-47",
-"market_price_uzs": 67957,
+"market_price_uzs": 69406,
 "view_count": 27,
 "created_at": "2026-11-01T17:59:36.546398+00:00"
 },
@@ -1269,7 +1269,7 @@
 "float_value": 0.29047117,
 "pattern": "388",
 "weapon_type": "Glock-18",
-"market_price_uzs": 47056,
+"market_price_uzs": 47229,
 "view_count": 15,
 "created_at": "2026-11-01T17:59:31.267229+00:00"
 }
