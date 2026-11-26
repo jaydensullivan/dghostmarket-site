@@ -1,0 +1,121 @@
+[
+  {
+    "id": "sfx-tap-1",
+    "src": "assets/sfx/tap-1.wav",
+    "start": 1.183,
+    "volume": 0.7,
+    "dur": 0.12
+  },
+  {
+    "id": "sfx-tap-2",
+    "src": "assets/sfx/tap-2.wav",
+    "start": 3.633,
+    "volume": 0.7,
+    "dur": 0.12
+  },
+  {
+    "id": "sfx-tap-3",
+    "src": "assets/sfx/tap-3.wav",
+    "start": 6.183,
+    "volume": 0.7,
+    "dur": 0.12
+  },
+  {
+    "id": "sfx-tap-4",
+    "src": "assets/sfx/tap-4.wav",
+    "start": 9.783,
+    "volume": 0.7,
+    "dur": 0.12
+  },
+  {
+    "id": "sfx-open-1",
+    "src": "assets/sfx/open-1.wav",
+    "start": 1.208,
+    "volume": 0.6,
+    "dur": 0.55
+  },
+  {
+    "id": "sfx-sheen",
+    "src": "assets/sfx/sheen.wav",
+    "start": 2.633,
+    "volume": 0.3,
+    "dur": 0.7
+  },
+  {
+    "id": "sfx-lot",
+    "src": "assets/sfx/lot.wav",
+    "start": 3.708,
+    "volume": 0.55,
+    "dur": 0.55
+  },
+  {
+    "id": "sfx-back-1",
+    "src": "assets/sfx/back-1.wav",
+    "start": 5.613,
+    "volume": 0.45,
+    "dur": 0.47
+  },
+  {
+    "id": "sfx-open-2",
+    "src": "assets/sfx/open-2.wav",
+    "start": 6.208,
+    "volume": 0.6,
+    "dur": 0.55
+  },
+  {
+    "id": "sfx-back-2",
+    "src": "assets/sfx/back-2.wav",
+    "start": 9.213,
+    "volume": 0.45,
+    "dur": 0.47
+  },
+  {
+    "id": "sfx-open-3",
+    "src": "assets/sfx/open-3.wav",
+    "start": 9.808,
+    "volume": 0.6,
+    "dur": 0.55
+  },
+  {
+    "id": "sfx-focus-2",
+    "src": "assets/sfx/focus-2.wav",
+    "start": 7.583,
+    "volume": 0.55,
+    "dur": 0.33
+  },
+  {
+    "id": "sfx-focus-3",
+    "src": "assets/sfx/focus-3.wav",
+    "start": 11.083,
+    "volume": 0.55,
+    "dur": 0.33
+  },
+  {
+    "id": "sfx-riser",
+    "src": "assets/sfx/riser.wav",
+    "start": 11.533,
+    "volume": 0.55,
+    "dur": 1
+  },
+  {
+    "id": "sfx-suck",
+    "src": "assets/sfx/suck.wav",
+    "start": 11.933,
+    "volume": 0.55,
+    "dur": 0.6
+  },
+  {
+    "id": "sfx-impact",
+    "src": "assets/sfx/impact.wav",
+    "start": 12.533,
+    "volume": 0.95,
+    "dur": 2.2
+  },
+  {
+    "id": "sfx-cta",
+    "src": "assets/sfx/cta.wav",
+    "start": 12.933,
+    "volume": 0.6,
+    "dur": 0.31
+  }
+]

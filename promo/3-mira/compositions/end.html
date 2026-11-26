@@ -1,0 +1,35 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #08070D; font-family: "Inter"; color: #fff; }
+    .tag { position: absolute; left: 120px; top: 300px; font-family: "Orbitron"; font-weight: 900; font-size: 28px; letter-spacing: 0.2em; white-space: nowrap; }
+    .title { position: absolute; left: 120px; top: 346px; width: 840px; font-weight: 900; font-size: 76px; line-height: 84px; letter-spacing: -0.02em; }
+    .title .w { display: inline-block; }
+    .sub { position: absolute; left: 120px; top: 526px; font-weight: 700; font-size: 36px; color: rgba(255,255,255,0.72); white-space: nowrap; }
+    .phone { position: absolute; left: 240px; top: 620px; width: 600px; height: 1021px; border-radius: 56px; overflow: hidden;
+             border: 3px solid rgba(255,255,255,0.14); box-shadow: 0 40px 90px rgba(0,0,0,0.55); background: #08070D; }
+    .scr { position: absolute; inset: 0; }
+    .scr img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+    .field { position: absolute; inset: 0; }
+    #root .field { background: radial-gradient(80% 45% at 50% 30%, rgba(123,44,255,0.45), rgba(255,43,214,0.12) 55%, rgba(8,7,13,0) 80%); }
+    #end-logo { position: absolute; left: 330px; top: 296px; width: 420px; height: 336px; }
+    #end-cta { position: absolute; left: 195px; width: 690px; top: 724px; height: 104px; border-radius: 56px; background: linear-gradient(90deg, #7B2CFF, #FF2BD6); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 52px; box-shadow: 0 24px 60px rgba(123,44,255,0.45); }
+    #end-sub { position: absolute; left: 0; width: 1080px; top: 652px; text-align: center; font-weight: 700; font-size: 31px; color: rgba(255,255,255,0.75); }
+  </style>
+  <div id="root" data-composition-id="end" data-width="1080" data-height="1920">
+    <div class="field" id="end-field"></div>
+    <img id="end-logo" src="assets/logo.webp" alt="DGhost">
+    <div id="end-cta">@dghostmarketbot</div>
+    <div id="end-sub"><span class="ru">Всё необходимое — в одной экосистеме</span><span class="uz">Kerakli hammasi — bitta ekotizimda</span></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#end-field", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+      // логотип приходит оттуда, где сжался телефон, и садится с пружиной
+      tl.fromTo("#end-logo", { scale: 0.31, opacity: 0.4 }, { scale: 1, opacity: 1, duration: 0.6, ease: "elastic.out(1,0.75)" }, 0);
+      tl.fromTo("#end-cta", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.55, ease: "elastic.out(1,0.7)" }, 0.4);
+      tl.fromTo("#end-sub", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.3);
+      window.__timelines["end"] = tl;
+    })();
+  </script>
+</template>

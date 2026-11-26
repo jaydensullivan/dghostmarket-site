@@ -1,0 +1,10 @@
+    #root { position: absolute; inset: 0; overflow: hidden; background: #08070D; font-family: "Inter"; color: #fff; }
+    .tag { position: absolute; left: 120px; top: 300px; font-family: "Orbitron"; font-weight: 900; font-size: 28px; letter-spacing: 0.2em; white-space: nowrap; }
+    .title { position: absolute; left: 120px; top: 346px; width: 840px; font-weight: 900; font-size: 76px; line-height: 84px; letter-spacing: -0.02em; }
+    .title .w { display: inline-block; }
+    .sub { position: absolute; left: 120px; top: 526px; font-weight: 700; font-size: 36px; color: rgba(255,255,255,0.72); white-space: nowrap; }
+    .phone { position: absolute; left: 160px; top: 600px; width: 760px; height: 1294px; border-radius: 64px; overflow: hidden;
+             border: 3px solid rgba(255,255,255,0.14); box-shadow: 0 40px 90px rgba(0,0,0,0.55); background: #08070D; }
+    .scr { position: absolute; inset: 0; }
+    .scr img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+    .field { position: absolute; inset: 0; }

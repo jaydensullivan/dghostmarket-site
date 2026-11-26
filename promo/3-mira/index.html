@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru" data-composition-variables='[{"id":"lang","type":"enum","label":"Язык","default":"ru","options":[{"value":"ru","label":"Русский"},{"value":"uz","label":"Oʻzbekcha"}]}]'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Orbitron"; src: url("assets/fonts/orbitron.woff2") format("woff2"); font-weight: 400 900; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #08070D; }
+      #root { width: 100%; height: 100%; position: relative; }
+      /* версия языка: видна только своя подпись и свой экран */
+      html[data-lang="uz"] .ru, html:not([data-lang="uz"]) .uz { display: none !important; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="15" data-width="1080" data-height="1920" data-motion-blur="on">
+      <div id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" class="clip" data-start="0" data-duration="2" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="skins" data-composition-id="skins" data-composition-src="compositions/skins.html" class="clip" data-start="2" data-duration="3.6" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="gifts" data-composition-id="gifts" data-composition-src="compositions/gifts.html" class="clip" data-start="5.6" data-duration="3.6" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="topup" data-composition-id="topup" data-composition-src="compositions/topup.html" class="clip" data-start="9.2" data-duration="3.3" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="end" data-composition-id="end" data-composition-src="compositions/end.html" class="clip" data-start="12.5" data-duration="2.5" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <audio id="bed" class="clip" src="assets/sfx/bed.wav" data-start="0" data-duration="15" data-track-index="3" data-volume="0.5" data-fade-out="0.4"></audio>
+      <audio id="sfx-tap-1" class="clip" src="assets/sfx/tap-1.wav" data-start="1.183" data-duration="0.120" data-track-index="4" data-volume="0.7"></audio>
+      <audio id="sfx-open-1" class="clip" src="assets/sfx/open-1.wav" data-start="1.208" data-duration="0.550" data-track-index="5" data-volume="0.6"></audio>
+      <audio id="sfx-sheen" class="clip" src="assets/sfx/sheen.wav" data-start="2.633" data-duration="0.700" data-track-index="4" data-volume="0.3"></audio>
+      <audio id="sfx-tap-2" class="clip" src="assets/sfx/tap-2.wav" data-start="3.633" data-duration="0.120" data-track-index="4" data-volume="0.7"></audio>
+      <audio id="sfx-lot" class="clip" src="assets/sfx/lot.wav" data-start="3.708" data-duration="0.550" data-track-index="5" data-volume="0.55"></audio>
+      <audio id="sfx-back-1" class="clip" src="assets/sfx/back-1.wav" data-start="5.613" data-duration="0.470" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="sfx-tap-3" class="clip" src="assets/sfx/tap-3.wav" data-start="6.183" data-duration="0.120" data-track-index="4" data-volume="0.7"></audio>
+      <audio id="sfx-open-2" class="clip" src="assets/sfx/open-2.wav" data-start="6.208" data-duration="0.550" data-track-index="5" data-volume="0.6"></audio>
+      <audio id="sfx-focus-2" class="clip" src="assets/sfx/focus-2.wav" data-start="7.583" data-duration="0.330" data-track-index="4" data-volume="0.55"></audio>
+      <audio id="sfx-back-2" class="clip" src="assets/sfx/back-2.wav" data-start="9.213" data-duration="0.470" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="sfx-tap-4" class="clip" src="assets/sfx/tap-4.wav" data-start="9.783" data-duration="0.120" data-track-index="4" data-volume="0.7"></audio>
+      <audio id="sfx-open-3" class="clip" src="assets/sfx/open-3.wav" data-start="9.808" data-duration="0.550" data-track-index="5" data-volume="0.6"></audio>
+      <audio id="sfx-focus-3" class="clip" src="assets/sfx/focus-3.wav" data-start="11.083" data-duration="0.330" data-track-index="4" data-volume="0.55"></audio>
+      <audio id="sfx-riser" class="clip" src="assets/sfx/riser.wav" data-start="11.533" data-duration="1.000" data-track-index="4" data-volume="0.55"></audio>
+      <audio id="sfx-suck" class="clip" src="assets/sfx/suck.wav" data-start="11.933" data-duration="0.600" data-track-index="5" data-volume="0.55"></audio>
+      <audio id="sfx-impact" class="clip" src="assets/sfx/impact.wav" data-start="12.533" data-duration="2.200" data-track-index="4" data-volume="0.95"></audio>
+      <audio id="sfx-cta" class="clip" src="assets/sfx/cta.wav" data-start="12.933" data-duration="0.310" data-track-index="5" data-volume="0.6"></audio>
+    </div>
+    <script>
+      // Язык версии: переменная lang (ru | uz). Подписи и экраны обоих языков лежат в сценах,
+      // CSS выше оставляет видимым только выбранный.
+      (function () {
+        var v = {};
+        try { v = window.__hyperframes.getVariables() || {}; } catch (e) {}
+        document.documentElement.dataset.lang = v.lang === "uz" ? "uz" : "ru";
+      })();
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

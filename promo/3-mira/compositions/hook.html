@@ -1,0 +1,75 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #08070D; font-family: "Inter"; color: #fff; }
+    .tag { position: absolute; left: 120px; top: 300px; font-family: "Orbitron"; font-weight: 900; font-size: 28px; letter-spacing: 0.2em; white-space: nowrap; }
+    .title { position: absolute; left: 120px; top: 346px; width: 840px; font-weight: 900; font-size: 76px; line-height: 84px; letter-spacing: -0.02em; }
+    .title .w { display: inline-block; }
+    .sub { position: absolute; left: 120px; top: 526px; font-weight: 700; font-size: 36px; color: rgba(255,255,255,0.72); white-space: nowrap; }
+    .phone { position: absolute; left: 160px; top: 600px; width: 760px; height: 1294px; border-radius: 64px; overflow: hidden;
+             border: 3px solid rgba(255,255,255,0.14); box-shadow: 0 40px 90px rgba(0,0,0,0.55); background: #08070D; }
+    .scr { position: absolute; inset: 0; }
+    .scr img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+    .field { position: absolute; inset: 0; }
+
+    #root .fld { position: absolute; inset: 0; }
+    #root #hook-field0 { background: radial-gradient(85% 50% at 25% 20%, #7B2CFFcc, #FF2BD633 55%, rgba(8,7,13,0) 80%); }
+    #root #hook-field { background: radial-gradient(85% 50% at 25% 20%, #7B2CFF66, #FF2BD61f 55%, rgba(8,7,13,0) 80%); }
+    #root #hook-field2 { background: radial-gradient(85% 50% at 25% 20%, #7c3aedcc, #9333ea33 55%, rgba(8,7,13,0) 80%); }
+    #root .tag { color: #c4a0ff; }
+    .g { background: linear-gradient(90deg, #A855F7, #FF2BD6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .home, .home .bg { position: absolute; left: 0; top: 0; width: 760px; height: 1294px; }
+    .home .card { position: absolute; overflow: hidden; border-radius: 46.8px; }
+    .home .card img { position: absolute; width: 760px; height: 1294px; }
+    .lcard { position: absolute; overflow: hidden; border-radius: 31.2px; }
+    .lcard img { position: absolute; width: 760px; height: 1294px; }
+    .sheen { position: absolute; overflow: hidden; border-radius: 19.5px; }
+    .sheen .bar { position: absolute; left: -60%; top: -40%; width: 220%; height: 180%; background: linear-gradient(105deg, transparent 42%, rgba(255,255,255,.16) 50%, transparent 58%); }
+    .lotdim { position: absolute; inset: 0; background: #08070D; opacity: 0; }
+    .lottop { position: absolute; left: 0; top: 0; width: 760px; overflow: hidden; opacity: 0; border-radius: 0 0 34px 34px; box-shadow: 0 30px 70px rgba(0,0,0,0.6); }
+    .lottop img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+    .fly { position: absolute; overflow: hidden; opacity: 0; border-radius: 23.4px; }
+    .fly .a, .fly .b { position: absolute; inset: 0; }
+    .fly img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+    .dim { position: absolute; left: 160px; top: 600px; width: 760px; height: 1294px; border-radius: 64px; background: #08070D; opacity: 0; }
+    .focus { position: absolute; left: 160.0px; top: 600.0px; width: 1.9px; height: 1.9px;
+             border-radius: 26px; overflow: hidden; opacity: 0; box-shadow: 0 30px 80px rgba(0,0,0,0.6); z-index: 4; }
+    .focus img { position: absolute; left: 0.0px; top: 0.0px; width: 760px; height: 1294px; }
+    .chip { position: absolute; left: 120px; top: 612px; padding: 22px 34px; border-radius: 24px; background: #fff; color: #120a22; font-weight: 800; font-size: 40px; white-space: nowrap; box-shadow: 0 20px 50px rgba(0,0,0,0.45); z-index: 5; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    
+    <div class="fld" id="hook-field"></div>
+    <div class="fld" id="hook-field2" style="opacity:0"></div>
+    <div id="hook-text">
+      <div class="title" id="hook-title" style="top:300px;font-size:96px;line-height:104px"><span class="ru"><span class="w">Три</span> <span class="w">мира</span> <span class="w">—</span><br><span class="w g">один</span> <span class="w g">бот</span></span><span class="uz"><span class="w">Uch</span> <span class="w">dunyo</span> <span class="w">—</span><br><span class="w g">bitta</span> <span class="w g">bot</span></span></div>
+    </div>
+    <div class="phone" id="hook-phone">
+      <div class="home" id="hook-home"><img class="ru bg" src="assets/screens/ru-home-bg.jpg" alt=""><img class="uz bg" src="assets/screens/uz-home-bg.jpg" alt="">
+        <div class="card ru" id="hook-card-skins-ru" style="left:26.5px;top:317.6px;width:707.0px;height:366.4px"><img src="assets/screens/ru-home.jpg" alt="" style="left:-26.5px;top:-317.6px"></div><div class="card ru" id="hook-card-gifts-ru" style="left:26.5px;top:705.4px;width:707.0px;height:366.4px"><img src="assets/screens/ru-home.jpg" alt="" style="left:-26.5px;top:-705.4px"></div><div class="card ru" id="hook-card-topup-ru" style="left:26.5px;top:1089.3px;width:707.0px;height:366.4px"><img src="assets/screens/ru-home.jpg" alt="" style="left:-26.5px;top:-1089.3px"></div>
+        <div class="card uz" id="hook-card-skins-uz" style="left:26.5px;top:381.9px;width:707.0px;height:366.4px"><img src="assets/screens/uz-home.jpg" alt="" style="left:-26.5px;top:-381.9px"></div><div class="card uz" id="hook-card-gifts-uz" style="left:26.5px;top:767.8px;width:707.0px;height:366.4px"><img src="assets/screens/uz-home.jpg" alt="" style="left:-26.5px;top:-767.8px"></div><div class="card uz" id="hook-card-topup-uz" style="left:26.5px;top:1153.6px;width:707.0px;height:366.4px"><img src="assets/screens/uz-home.jpg" alt="" style="left:-26.5px;top:-1153.6px"></div></div>
+      <div class="scr" id="hook-scr" style="opacity:0"><img class="ru" src="assets/screens/ru-skins.jpg" alt=""><img class="uz" src="assets/screens/uz-skins.jpg" alt=""></div>
+      
+      
+    </div>
+    
+  </div>
+  <script>
+    (function () {
+      // позиция карточки зависит от языка (lang ставит index.html) — читаем при первом кадре анимации
+      const CLIP_skins = () => (document.documentElement.dataset.lang === "uz" ? "inset(381.9px 26.5px 545.6px 26.5px round 46.8px)" : "inset(317.6px 26.5px 609.9px 26.5px round 46.8px)");
+      const CLIP_gifts = () => (document.documentElement.dataset.lang === "uz" ? "inset(767.8px 26.5px 159.8px 26.5px round 46.8px)" : "inset(705.4px 26.5px 222.2px 26.5px round 46.8px)");
+      const CLIP_topup = () => (document.documentElement.dataset.lang === "uz" ? "inset(1153.6px 26.5px 0.0px 26.5px round 46.8px)" : "inset(1089.3px 26.5px 0.0px 26.5px round 46.8px)");
+      const tl = gsap.timeline({ paused: true });
+      
+      tl.to("#hook-card-skins-ru, #hook-card-skins-uz", { scale: 0.98, duration: 0.1, ease: "power2.out" }, 1.15);
+      tl.to("#hook-card-skins-ru, #hook-card-skins-uz", { scale: 1, duration: 0.14, ease: "power2.out" }, 1.25);
+      tl.fromTo("#hook-scr", { opacity: 1, clipPath: CLIP_skins }, { opacity: 1, clipPath: "inset(0px 0px 0px 0px round 0px)", immediateRender: false, duration: 0.48, ease: "power3.out" }, 1.31);
+      tl.to("#hook-home", { opacity: 0, duration: 0.48, ease: "power1.inOut" }, 1.31);
+      tl.to("#hook-card-gifts-ru, #hook-card-gifts-uz", { xPercent: -115, opacity: 0, duration: 0.39, ease: "power2.inOut" }, 1.31);
+      tl.to("#hook-card-topup-ru, #hook-card-topup-uz", { xPercent: 115, opacity: 0, duration: 0.39, ease: "power2.inOut" }, 1.31);
+      tl.to("#hook-title .w", { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power3.in", stagger: 0.03 }, 1.2);
+      tl.fromTo("#hook-field2", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 1.3);
+      window.__timelines["hook"] = tl;
+    })();
+  </script>
+</template>

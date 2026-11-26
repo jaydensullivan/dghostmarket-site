@@ -1,0 +1,96 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #08070D; font-family: "Inter"; color: #fff; }
+    .tag { position: absolute; left: 120px; top: 300px; font-family: "Orbitron"; font-weight: 900; font-size: 28px; letter-spacing: 0.2em; white-space: nowrap; }
+    .title { position: absolute; left: 120px; top: 346px; width: 840px; font-weight: 900; font-size: 76px; line-height: 84px; letter-spacing: -0.02em; }
+    .title .w { display: inline-block; }
+    .sub { position: absolute; left: 120px; top: 526px; font-weight: 700; font-size: 36px; color: rgba(255,255,255,0.72); white-space: nowrap; }
+    .phone { position: absolute; left: 160px; top: 600px; width: 760px; height: 1294px; border-radius: 64px; overflow: hidden;
+             border: 3px solid rgba(255,255,255,0.14); box-shadow: 0 40px 90px rgba(0,0,0,0.55); background: #08070D; }
+    .scr { position: absolute; inset: 0; }
+    .scr img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+    .field { position: absolute; inset: 0; }
+
+    #root .fld { position: absolute; inset: 0; }
+    #root #topup-field0 { background: radial-gradient(85% 50% at 25% 20%, #c026d3cc, #ec489933 55%, rgba(8,7,13,0) 80%); }
+    #root #topup-field { background: radial-gradient(85% 50% at 25% 20%, #4f46e5cc, #3b82f633 55%, rgba(8,7,13,0) 80%); }
+    #root #topup-field2 { background: radial-gradient(85% 50% at 25% 20%, #7c3aedcc, #9333ea33 55%, rgba(8,7,13,0) 80%); }
+    #root .tag { color: #8cb4ff; }
+    .g { background: linear-gradient(90deg, #A855F7, #FF2BD6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .home, .home .bg { position: absolute; left: 0; top: 0; width: 760px; height: 1294px; }
+    .home .card { position: absolute; overflow: hidden; border-radius: 46.8px; }
+    .home .card img { position: absolute; width: 760px; height: 1294px; }
+    .lcard { position: absolute; overflow: hidden; border-radius: 31.2px; }
+    .lcard img { position: absolute; width: 760px; height: 1294px; }
+    .sheen { position: absolute; overflow: hidden; border-radius: 19.5px; }
+    .sheen .bar { position: absolute; left: -60%; top: -40%; width: 220%; height: 180%; background: linear-gradient(105deg, transparent 42%, rgba(255,255,255,.16) 50%, transparent 58%); }
+    .lotdim { position: absolute; inset: 0; background: #08070D; opacity: 0; }
+    .lottop { position: absolute; left: 0; top: 0; width: 760px; overflow: hidden; opacity: 0; border-radius: 0 0 34px 34px; box-shadow: 0 30px 70px rgba(0,0,0,0.6); }
+    .lottop img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+    .fly { position: absolute; overflow: hidden; opacity: 0; border-radius: 23.4px; }
+    .fly .a, .fly .b { position: absolute; inset: 0; }
+    .fly img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+    .dim { position: absolute; left: 160px; top: 600px; width: 760px; height: 1294px; border-radius: 64px; background: #08070D; opacity: 0; }
+    .focus { position: absolute; left: 551.7px; top: 1126.2px; width: 335.2px; height: 393.6px;
+             border-radius: 26px; overflow: hidden; opacity: 0; box-shadow: 0 30px 80px rgba(0,0,0,0.6); z-index: 4; }
+    .focus img { position: absolute; left: -391.7px; top: -526.2px; width: 760px; height: 1294px; }
+    .chip { position: absolute; left: 120px; top: 612px; padding: 22px 34px; border-radius: 24px; background: #fff; color: #120a22; font-weight: 800; font-size: 40px; white-space: nowrap; box-shadow: 0 20px 50px rgba(0,0,0,0.45); z-index: 5; }
+  </style>
+  <div id="root" data-composition-id="topup" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    <div class="fld" id="topup-field0"></div>
+    <div class="fld" id="topup-field"></div>
+    
+    <div id="topup-text">
+      <div class="tag" id="topup-tag">03 / TOP-UP</div>
+      <div class="title" id="topup-title"><span class="ru"><span class="w">Пополнения</span><br><span class="w">за</span> <span class="w">1–5</span> <span class="w">минут</span></span><span class="uz"><span class="w">To'ldirish</span><br><span class="w">1–5</span> <span class="w">daqiqada</span></span></div>
+      <div class="sub" id="topup-sub"><span class="ru">Steam, Stars, игры</span><span class="uz">Steam, Stars, o'yinlar</span></div>
+    </div>
+    <div class="phone" id="topup-phone">
+      <div class="home" id="topup-home"><img class="ru bg" src="assets/screens/ru-home-bg.jpg" alt=""><img class="uz bg" src="assets/screens/uz-home-bg.jpg" alt="">
+        <div class="card ru" id="topup-card-skins-ru" style="left:26.5px;top:317.6px;width:707.0px;height:366.4px"><img src="assets/screens/ru-home.jpg" alt="" style="left:-26.5px;top:-317.6px"></div><div class="card ru" id="topup-card-gifts-ru" style="left:26.5px;top:705.4px;width:707.0px;height:366.4px"><img src="assets/screens/ru-home.jpg" alt="" style="left:-26.5px;top:-705.4px"></div><div class="card ru" id="topup-card-topup-ru" style="left:26.5px;top:1089.3px;width:707.0px;height:366.4px"><img src="assets/screens/ru-home.jpg" alt="" style="left:-26.5px;top:-1089.3px"></div>
+        <div class="card uz" id="topup-card-skins-uz" style="left:26.5px;top:381.9px;width:707.0px;height:366.4px"><img src="assets/screens/uz-home.jpg" alt="" style="left:-26.5px;top:-381.9px"></div><div class="card uz" id="topup-card-gifts-uz" style="left:26.5px;top:767.8px;width:707.0px;height:366.4px"><img src="assets/screens/uz-home.jpg" alt="" style="left:-26.5px;top:-767.8px"></div><div class="card uz" id="topup-card-topup-uz" style="left:26.5px;top:1153.6px;width:707.0px;height:366.4px"><img src="assets/screens/uz-home.jpg" alt="" style="left:-26.5px;top:-1153.6px"></div></div>
+      <div class="scr" id="topup-scr" style="opacity:0"><img class="ru" src="assets/screens/ru-topup.jpg" alt=""><img class="uz" src="assets/screens/uz-topup.jpg" alt=""></div>
+      
+      <div class="scr" id="topup-prev"><img class="ru" src="assets/screens/ru-gifts.jpg" alt=""><img class="uz" src="assets/screens/uz-gifts.jpg" alt=""></div>
+    </div>
+    <div class="dim" id="topup-dim"></div>
+    <div class="focus" id="topup-focus"><img class="ru" src="assets/screens/ru-topup.jpg" alt=""><img class="uz" src="assets/screens/uz-topup.jpg" alt=""></div>
+    
+  </div>
+  <script>
+    (function () {
+      // позиция карточки зависит от языка (lang ставит index.html) — читаем при первом кадре анимации
+      const CLIP_skins = () => (document.documentElement.dataset.lang === "uz" ? "inset(381.9px 26.5px 545.6px 26.5px round 46.8px)" : "inset(317.6px 26.5px 609.9px 26.5px round 46.8px)");
+      const CLIP_gifts = () => (document.documentElement.dataset.lang === "uz" ? "inset(767.8px 26.5px 159.8px 26.5px round 46.8px)" : "inset(705.4px 26.5px 222.2px 26.5px round 46.8px)");
+      const CLIP_topup = () => (document.documentElement.dataset.lang === "uz" ? "inset(1153.6px 26.5px 0.0px 26.5px round 46.8px)" : "inset(1089.3px 26.5px 0.0px 26.5px round 46.8px)");
+      const tl = gsap.timeline({ paused: true });
+      
+      tl.fromTo("#topup-prev", { clipPath: "inset(0px 0px 0px 0px round 0px)", opacity: 1 }, { clipPath: CLIP_gifts, duration: 0.42, ease: "power2.inOut" }, 0);
+      tl.to("#topup-prev", { opacity: 0, duration: 0.10, ease: "none" }, 0.32);
+      tl.fromTo("#topup-card-skins-ru, #topup-card-skins-uz", { xPercent: -115, opacity: 0 }, { xPercent: 0, opacity: 1, duration: 0.42, ease: "power3.out" }, 0);
+      tl.fromTo("#topup-card-topup-ru, #topup-card-topup-uz", { xPercent: 115, opacity: 0 }, { xPercent: 0, opacity: 1, duration: 0.42, ease: "power3.out" }, 0);
+      tl.to("#topup-card-topup-ru, #topup-card-topup-uz", { scale: 0.98, duration: 0.1, ease: "power2.out" }, 0.55);
+      tl.to("#topup-card-topup-ru, #topup-card-topup-uz", { scale: 1, duration: 0.14, ease: "power2.out" }, 0.65);
+      tl.fromTo("#topup-scr", { opacity: 1, clipPath: CLIP_topup }, { opacity: 1, clipPath: "inset(0px 0px 0px 0px round 0px)", immediateRender: false, duration: 0.48, ease: "power3.out" }, 0.71);
+      tl.to("#topup-home", { opacity: 0, duration: 0.48, ease: "power1.inOut" }, 0.71);
+      tl.to("#topup-card-skins-ru, #topup-card-skins-uz", { xPercent: -115, opacity: 0, duration: 0.39, ease: "power2.inOut" }, 0.71);
+      tl.to("#topup-card-gifts-ru, #topup-card-gifts-uz", { xPercent: 115, opacity: 0, duration: 0.39, ease: "power2.inOut" }, 0.71);
+      tl.to("#topup-field0", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 0);
+      tl.fromTo("#topup-field", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0.7);
+      tl.fromTo("#topup-tag", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, 1.05);
+      tl.fromTo("#topup-title .w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out", stagger: 0.067 }, 1.13);
+      tl.fromTo("#topup-sub", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.55);
+      // главное на экране выезжает из телефона целиком, телефон за ним темнеет
+      tl.fromTo("#topup-focus", { opacity: 0, x: 0, y: 0, scale: 1 }, { opacity: 1, duration: 0.01 }, 1.85);
+      tl.to("#topup-focus", { x: -179.3, y: -323.0, scale: 1.4, duration: 0.6, ease: "expo.out" }, 1.86);
+      tl.fromTo("#topup-dim", { opacity: 0 }, { opacity: 0.55, duration: 0.4, ease: "power2.out" }, 1.85);
+      
+      tl.to("#topup-focus, #topup-dim", { opacity: 0, duration: 0.2, ease: "power2.in" }, 2.55);
+      tl.to("#topup-text", { opacity: 0, filter: "blur(8px)", duration: 0.22, ease: "power3.in" }, 2.75);
+      tl.to("#topup-phone", { scale: 0.171, y: -783.0, borderRadius: 140, duration: 0.55, ease: "power3.inOut" }, 2.75);
+      tl.to("#topup-phone", { opacity: 0, duration: 0.12, ease: "power1.in" }, 3.16);
+      tl.to("#topup-field", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 2.80);
+      window.__timelines["topup"] = tl;
+    })();
+  </script>
+</template>
