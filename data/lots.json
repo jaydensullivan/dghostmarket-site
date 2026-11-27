@@ -51,7 +51,7 @@
 "float_value": 0.09773162,
 "pattern": "49",
 "weapon_type": "AK-47",
-"market_price_uzs": 225039,
+"market_price_uzs": 226240,
 "view_count": 5,
 "created_at": "2026-11-21T09:41:07.993929+00:00"
 },
@@ -65,7 +65,7 @@
 "float_value": 0.06696104,
 "pattern": "808",
 "weapon_type": "USP-S",
-"market_price_uzs": 809902,
+"market_price_uzs": 802580,
 "view_count": 7,
 "created_at": "2026-11-17T21:39:36.911140+00:00"
 },
@@ -93,7 +93,7 @@
 "float_value": 0.21413036,
 "pattern": "187",
 "weapon_type": "M4A1-S",
-"market_price_uzs": 35646,
+"market_price_uzs": 34806,
 "view_count": 9,
 "created_at": "2026-11-13T10:49:23.599470+00:00"
 },
@@ -107,7 +107,7 @@
 "float_value": 0.37849396,
 "pattern": "489",
 "weapon_type": "M4A4",
-"market_price_uzs": 129983,
+"market_price_uzs": 129023,
 "view_count": 7,
 "created_at": "2026-11-13T10:48:29.429306+00:00"
 },
@@ -121,7 +121,7 @@
 "float_value": 0.33159843,
 "pattern": "88",
 "weapon_type": "AK-47",
-"market_price_uzs": 304973,
+"market_price_uzs": 304853,
 "view_count": 13,
 "created_at": "2026-11-13T10:47:42.803397+00:00"
 },
@@ -135,7 +135,7 @@
 "float_value": 0.60648674,
 "pattern": "990",
 "weapon_type": "AWP",
-"market_price_uzs": 378066,
+"market_price_uzs": 373145,
 "view_count": 6,
 "created_at": "2026-11-13T10:47:22.984383+00:00"
 },
@@ -149,7 +149,7 @@
 "float_value": 0.21562825,
 "pattern": "361",
 "weapon_type": "★ Hand Wraps",
-"market_price_uzs": 398830,
+"market_price_uzs": 402790,
 "view_count": 2,
 "created_at": "2026-11-13T10:46:54.987009+00:00"
 },
@@ -206,7 +206,7 @@
 "pattern": "338",
 "weapon_type": "MP7",
 "market_price_uzs": 360,
-"view_count": 3,
+"view_count": 4,
 "created_at": "2026-11-03T04:17:36.522239+00:00"
 },
 {
@@ -220,7 +220,7 @@
 "pattern": "541",
 "weapon_type": "AK-47",
 "market_price_uzs": 66972,
-"view_count": 32,
+"view_count": 34,
 "created_at": "2026-11-02T15:45:45.672899+00:00"
 },
 {
@@ -234,7 +234,7 @@
 "pattern": "541",
 "weapon_type": "AK-47",
 "market_price_uzs": 66972,
-"view_count": 43,
+"view_count": 44,
 "created_at": "2026-11-01T17:59:36.546398+00:00"
 },
 {
@@ -247,7 +247,7 @@
 "float_value": 0.29047117,
 "pattern": "388",
 "weapon_type": "Glock-18",
-"market_price_uzs": 41887,
+"market_price_uzs": 42367,
 "view_count": 30,
 "created_at": "2026-11-01T17:59:31.267229+00:00"
 }
