@@ -371,16 +371,22 @@ def urlquote(s):
     return quote(s, safe='')
 
 
-def skin_jsonld(skin, lang, url):
+def skin_jsonld(skin, lang, url, lots=()):
+    """Разметка для поиска. Предложения — только живые лоты DGhostMarket:
+    рыночные цены Skinport из таблицы — не наши предложения, и при «нет в
+    продаже» на странице разметка не должна говорить поиску обратное."""
     t = T[lang]
-    prices = list(skin['prices'].values())
-    return {
+    data = {
         '@context': 'https://schema.org', '@type': 'Product', 'name': skin['base'],
         'image': skin['image'] or None, 'category': skin['category'] or 'CS2 skin',
         'description': t['desc'].format(name=skin['base'], low=money(skin['low']), st=t['st_desc'] if skin['stattrak'] else ''),
-        'offers': {'@type': 'AggregateOffer', 'priceCurrency': 'UZS', 'lowPrice': min(prices), 'highPrice': max(prices),
-                   'offerCount': len(prices), 'url': url},
     }
+    found = matching_lots(skin, lots)
+    if found:
+        prices = [int(s['price']) for s in found]
+        data['offers'] = {'@type': 'AggregateOffer', 'priceCurrency': 'UZS', 'lowPrice': min(prices), 'highPrice': max(prices),
+                          'offerCount': len(found), 'availability': 'https://schema.org/InStock', 'url': url}
+    return data
 
 
 def hub_main(skins, lang):

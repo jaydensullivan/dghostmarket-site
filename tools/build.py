@@ -556,7 +556,7 @@ def build_prices(tpl, i18n, lots, iso):
             title = t['title'].format(name=s['base'])
             desc = t['desc'].format(name=s['base'], low=skins.money(s['low']), st=t['st_desc'] if s['stattrak'] else '')
             out = set_meta(page, lang, kind, title, desc)
-            out = out.replace('<!--JSONLD-->', jsonld_tag(skins.skin_jsonld(s, lang, page_url(lang, kind))))
+            out = out.replace('<!--JSONLD-->', jsonld_tag(skins.skin_jsonld(s, lang, page_url(lang, kind), lots)))
             same = by_weapon.get(s['weapon'], [])
             i = same.index(s)
             related = (same[i + 1:] + same[:i])[:skins.RELATED]
