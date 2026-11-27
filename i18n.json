@@ -1,7 +1,7 @@
 {
   "uz": {
     "_title": "DGhostMarket — Telegramdagi CS2 skinlari marketpleysi",
-    "_description": "CS2 skinlarini Telegramda so'mga soting va sotib oling. Buyum yetib bormaguncha to'lov ushlab turiladi, sotuvchilar tekshiruvdan o'tadi, komissiya 5%.",
+    "_description": "CS2 skinlarini Telegramda so'mga soting va sotib oling. Buyum yetib bormaguncha to'lov ushlab turiladi, sotuvchilar tekshiruvdan o'tadi, xaridor uchun komissiya 0%.",
     "_og_description": "CS2 skinlari bilan xavfsiz bitimlar: sotuvchilarni tekshirish, 24 soatda yuborish, 8 kundan keyin to'lov.",
     "nav_how": "Qanday ishlaydi",
     "nav_fees": "Komissiyalar",
@@ -217,7 +217,7 @@
   },
   "en": {
     "_title": "DGhostMarket — CS2 skin marketplace in Telegram",
-    "_description": "Buy and sell CS2 skins for Uzbek sum in Telegram. Payment is held until the item arrives, sellers are verified, 5% fee.",
+    "_description": "Buy and sell CS2 skins for Uzbek sum in Telegram. Payment is held until the item arrives, sellers are verified, 0% fee for buyers.",
     "_og_description": "Safe CS2 skin deals: verified sellers, 24-hour transfer, payout after 8 days.",
     "nav_how": "How it works",
     "nav_fees": "Fees",
