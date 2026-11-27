@@ -336,6 +336,23 @@ def set_meta(s, lang, kind, title=None, desc=None, langs=LANGS):
     return s.replace('<!--ALTERNATES-->', alternates(kind, langs))
 
 
+def set_og_image(s, url, w, h):
+    """Своя картинка превью (Telegram, соцсети) вместо общей og.jpg."""
+    tag = (f'<meta property="og:image" content="{esc(url)}">\n'
+           f'<meta property="og:image:width" content="{w}">\n<meta property="og:image:height" content="{h}">\n'
+           f'<meta name="twitter:card" content="summary_large_image">')
+    return re.sub(r'<meta property="og:image" content="[^"]*">', lambda m: tag, s, count=1)
+
+
+def price_og_image(s):
+    """Карточка из tools/og_cards.py, если уже нарисована; иначе фото скина из Steam."""
+    if os.path.exists(os.path.join(ROOT, 'og', 'prices', s['slug'] + '.jpg')):
+        return f'{SITE}/og/prices/{s["slug"]}.jpg', 1200, 630
+    if s.get('image'):
+        return s['image'], 512, 384
+    return None
+
+
 def jsonld_tag(obj):
     return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False).replace('</', '<\\/') + '</script>'
 
@@ -556,6 +573,9 @@ def build_prices(tpl, i18n, lots, iso):
             title = t['title'].format(name=s['base'])
             desc = t['desc'].format(name=s['base'], low=skins.money(s['low']), st=t['st_desc'] if s['stattrak'] else '')
             out = set_meta(page, lang, kind, title, desc)
+            og = price_og_image(s)
+            if og:
+                out = set_og_image(out, *og)
             out = out.replace('<!--JSONLD-->', jsonld_tag(skins.skin_jsonld(s, lang, page_url(lang, kind), lots)))
             same = by_weapon.get(s['weapon'], [])
             i = same.index(s)
